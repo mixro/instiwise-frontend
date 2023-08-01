@@ -1,0 +1,295 @@
+import './details.css'
+import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+
+const Details = () => {
+    const courses = useSelector((state) => state.courses.courses);
+    const ongoingLessons = useSelector((state) => state.ongoingLessons.ongoingLessons);
+    const freeRooms = useSelector((state) => state.freeRooms.freeRooms);
+    const ongoingCourses = useSelector((state) => state.ongoingCourses.ongoingCourses);
+    const upcomingLessons = useSelector((state) => state.upcomingLessons.upcomingLessons);
+    const inUseRooms = useSelector((state) => state.inUseRooms.inUseRooms);
+
+    const calculateRemainingTime = (end) => {
+        const now = new Date();
+        const endTimestamp = new Date(`${now.toDateString()} ${end}`);
+    
+        if (endTimestamp < now) {
+          return 'Lesson has ended';
+        }
+    
+        const remainingTime = endTimestamp - now;
+        const minutes = Math.floor((remainingTime / 1000 / 60) % 60);
+        const hours = Math.floor((remainingTime / (1000 * 60 * 60)) % 24);
+    
+        return `${hours} hrs ${minutes} mins`;
+    };
+
+    const calculateTimeUntilStart = (start) => {
+        const now = new Date();
+        const startTimestamp = new Date(`${now.toDateString()} ${start}`);
+    
+        if (startTimestamp < now) {
+          return 'Lesson has already started';
+        }
+    
+        const timeUntilStart = startTimestamp - now;
+        const minutes = Math.floor((timeUntilStart / 1000 / 60) % 60);
+        const hours = Math.floor((timeUntilStart / (1000 * 60 * 60)) % 24);
+    
+        return `${hours} hrs ${minutes} mins`;
+    };
+
+    const MAX_LENGTH = 6;
+
+    function truncateText(text, maxLength) {
+    if (text.length <= maxLength) {
+        return text;
+    }
+    return text.slice(0, maxLength) + "...";
+    }
+
+  return (
+    <div className="details_body">
+        <div className="details_container">
+            <div className="details_item">
+                <div className="details_item_header">
+                    <p>ONGOING LESSONS</p>
+                    <span>{ongoingLessons && ongoingLessons.length}</span>
+                </div>
+                
+                {ongoingLessons.length > 0 
+                    ? 
+                    <div className="parent_body">
+                        <div className="details_item_body">
+                            {ongoingLessons.slice(0, 3).map((lesson) => (
+                                <Link to={`lesson/${lesson._id}`} key={lesson._id} className='link-main'>
+                                    <div className="details_body_item">
+                                        <div className="details_body_image">
+                                            <p>{lesson.courseId && truncateText(lesson.courseId.name, MAX_LENGTH)}</p>
+                                            <div className="ongoing_dot"></div>
+                                        </div>
+                                        <div className="details_body_desc">
+                                            <h1>{lesson.name}</h1>
+                                            <p>start: <span> {lesson.start}</span></p>
+                                            <p>End: <span> {lesson.end}</span></p>
+                                            <p>Remainging:<span> {calculateRemainingTime(lesson.end)}</span></p>
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+
+                        <Link to='/lessons' className='link-main'>
+                            <div className="details_bottom">
+                                <p>Explore More</p>
+                            </div>
+                        </Link>
+                    </div>
+                    :
+                    <div className="noData_loading">
+                        <p>No Ongoing Lessons</p>
+                    </div>
+                }
+            </div>
+
+            <div className="details_item">
+                <div className="details_item_header">
+                    <p>FREE ROOMS</p>
+                    <span>{freeRooms && freeRooms.length}</span>
+                </div>
+
+                {freeRooms.length > 0 
+                    ? 
+                    <div className="parent_body">
+                        <div className="details_item_body">
+                            {freeRooms.slice(0, 3).map((room) => (
+                                <Link to={`room/${room._id}`} key={room._id} className='link-main'>
+                                    <div className="details_body_item">
+                                        <div className="details_body_image roomImage">
+                                            <img src='/assets/room-1.jpg' alt='ROOM' />
+                                        </div>
+                                        <div className="details_body_desc freeRoomDesc">
+                                            <h1>{room.roomName}</h1>
+                                            <p>seats:<span> {room.seats}</span></p>
+                                            <p>Building:<span> {room.building}</span></p>
+                                            <p>Status: free</p>
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+
+                        <Link to='/freerooms' className='link-main'>
+                            <div className="details_bottom">
+                                <p>Explore More</p>
+                            </div>
+                        </Link>
+                    </div>
+                    :
+                    <div className="noData_loading">
+                        <p>No Free Rooms</p>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div className="details_grid">
+            <div className="grid_left">
+                <div className="details_item_header">
+                    <p>ONGOING COURSES</p>
+                    <span>{ongoingCourses && ongoingCourses.length}</span>
+                </div>
+                
+                <div className="coursesBody">
+                    {Array.isArray(ongoingCourses) && ongoingCourses.length > 0
+                        ? ongoingCourses.slice(0, 5).map((course) => (
+                            <div className="course_item" key={course._id}>
+                                <Link to={`/course/${course._id}`} className='link-main'>
+                                    <p>{truncateText(course.name, MAX_LENGTH)}</p>
+                                </Link>
+                            </div>
+                            ))
+                        : <div className="noData_courses">
+                            <p>NO ONGOING COURSES</p>
+                        </div>
+                    }
+                </div>
+
+                {Array.isArray(ongoingCourses) && ongoingCourses.length > 0 && 
+                    <Link to='/courses' className='link-main'>
+                        <div className="details_bottom grid_more">
+                            <p>Explore More</p>
+                        </div>
+                    </Link>
+                }
+            </div>
+
+            <div className="grid_right">
+                <h1>InstiWise</h1>
+            </div>
+        </div>
+
+        <div className="details_container">
+            <div className="details_item">
+                <div className="details_item_header">
+                    <p>UPCOMING LESSONS</p>
+                    <span>{upcomingLessons && upcomingLessons.length}</span>
+                </div>
+
+                {upcomingLessons.length > 0 
+                    ? 
+                    <div className="parent_body">
+                        <div className="details_item_body">
+                            {upcomingLessons.slice(0, 3).map((lesson) => (
+                                <Link to={`lesson/${lesson._id}`} className='link-main' key={lesson._id}>
+                                    <div className="details_body_item">
+                                        <div className="details_body_image">
+                                            <p>{lesson.courseId && truncateText(lesson.courseId.name, MAX_LENGTH)}</p>
+                                        </div>
+                                        <div className="details_body_desc">
+                                            <h1>{lesson.namae}</h1>
+                                            <p>start: <span>{lesson.start}</span></p>
+                                            <p>End: <span>{lesson.end}</span></p>
+                                            <p>Time Untill start: <span>{calculateTimeUntilStart(lesson.start)}</span></p>
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+
+                        <Link to='/lessons' className='link-main'>
+                            <div className="details_bottom">
+                                <p>Explore More</p>
+                            </div>
+                        </Link>
+                    </div>
+                    :
+                    <div className="noData_loading">
+                        <p>No Ongoing Lessons</p>
+                    </div>
+                }
+            </div>
+
+            <div className="details_item">
+                <div className="details_item_header">
+                    <p>ROOMS IN USE</p>
+                    <span>{inUseRooms && inUseRooms.length}</span>
+                </div>
+
+                
+                {inUseRooms.length > 0 
+                    ? 
+                    <div className="parent_body">
+                        <div className="details_item_body">
+                            {inUseRooms.slice(0, 3).map((room) => (
+                                <Link to={`room/${room._id}`} key={room._id} className='link-main'>
+                                    <div className="details_body_item">
+                                        <div className="details_body_image roomImage">
+                                            <img src='/assets/room-1.jpg' alt='ROOM' />
+                                        </div>
+                                        <div className="details_body_desc freeRoomDesc">
+                                            <h1>{room.roomName}</h1>
+                                            <p>seats:<span> {room.seats}</span></p>
+                                            <p>Building:<span> {room.building}</span></p>
+                                            <p>Status: in use</p>
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))}                    
+                        </div>
+
+                        <Link to='/freerooms' className='link-main'>
+                            <div className="details_bottom">
+                                <p>Explore More</p>
+                            </div>
+                        </Link>
+                    </div>
+                    :
+                    <div className="noData_loading">
+                        <p>No Rooms In Use</p>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div className="details_grid flex-inverse">
+            <div className="grid_left">
+                <div className="details_item_header">
+                    <p>COURSES</p>
+                    <span>{courses && courses.length}</span>
+                </div>
+
+                <div className="coursesBody">
+                    {Array.isArray(courses) && courses.length > 0
+                        ? courses.slice(0, 5).map((course) => (
+                            <div className="course_item" key={course._id}>
+                                <Link to={`course/${course._id}`} className="link-main">
+                                    <p>{truncateText(course.name, MAX_LENGTH)}</p>
+                                </Link>
+                            </div>
+                            ))
+                        : <div className="noData_courses">
+                            <p>NO COURSES</p>
+                        </div>
+                    }
+                </div>
+
+                {Array.isArray(courses) && courses.length > 0 && 
+                    <Link to='/courses' className='link-main'>
+                        <div className="details_bottom grid_more">
+                            <p>Explore More</p>
+                        </div>
+                    </Link>
+                }
+            </div>
+
+            <div className="grid_right">
+                <h1>InstiWise</h1>
+            </div>
+        </div>
+    </div>
+  )
+}
+
+export default Details

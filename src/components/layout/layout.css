@@ -1,0 +1,122 @@
+.layoutContainer  {
+    display: flex;
+    justify-content: space-between;
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+.layoutContainer:focus {
+    outline: none !important;
+}
+
+.layoutSidebar {
+    height: 100vh;
+    top: 0;
+    position: sticky;
+    flex-basis: 17%;
+    background: #01222b;
+}
+
+main {
+    flex-basis: calc(100vw - 17%);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    color: black;
+    background: rgb(255, 255, 255);
+}
+
+.topbar {
+    width: 100%;
+    top: 0;
+    position: sticky;
+    z-index: 999;
+    background: rgb(255, 255, 255);
+}
+
+.main-body {
+    padding: 10px 2%;
+}
+
+.children {
+    margin: 0;
+    padding: 0;
+}
+
+.link-top {
+    color: black;
+    text-decoration: none;
+}
+
+.nav-bottom-button {
+    display: none;
+}
+
+.bottom-nav-link {
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+    /*--------------MEDIA QUERY AND SCREEN--------------*/
+@media screen and (max-width: 770px){
+    .nav-bottom-button {
+        display: block;
+    }
+
+    .topbar {
+        width: 100%;
+        top: 0;
+        position: sticky;
+        z-index: 999;
+        background: rgb(255, 255, 255);
+    }
+}
+
+
+
+
+
+@media screen and (max-width: 900px) {
+    .layoutContainer {
+        overflow-x: hidden;
+
+            /* highlighting */
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .layoutSidebar {
+        display: none;
+    }
+
+    main {
+        flex-basis: 100%;
+        width: 100vw;
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width: 1220px) {
+    .layoutSidebar {
+        display: none;
+    }
+
+    main {
+        flex-basis: 100%;
+        width: 100vw;
+    }
+}

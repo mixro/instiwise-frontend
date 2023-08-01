@@ -1,0 +1,42 @@
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import coursesRedux from "./coursesRedux";
+import lessonsRedux from "./lessonsRedux";
+import roomsRedux from "./roomsRedux";
+import freeRooms from "./freeRooms";
+import ongoingCourses from "./ongoingCourses";
+import ongoingLessons from "./ongoingLessons";
+import upcomingLessons from "./upcomingLessons";
+import roomsInUse from "./roomsInUse";
+
+const persistConfig = {
+  key: "root",
+  version: 1,
+  storage,
+};
+
+const rootReducer = combineReducers({
+  courses: coursesRedux,
+  lessons: lessonsRedux,
+  rooms: roomsRedux,
+  freeRooms: freeRooms,
+  inUseRooms: roomsInUse,
+  ongoingCourses: ongoingCourses,
+  ongoingLessons: ongoingLessons,
+  upcomingLessons: upcomingLessons,
+});
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+});
+
+export let persistor = persistStore(store);

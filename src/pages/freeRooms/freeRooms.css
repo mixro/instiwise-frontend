@@ -1,0 +1,154 @@
+.freeRoom {
+    position: relative;
+}
+
+.freeRooms-bottom {
+    padding: 1% 2% 2%;
+}
+
+.freeRooms-bottom p:nth-child(1) {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.freeRooms-bottom P {
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
+.freeRooms-bottom p span {
+    font-weight: bold;
+}
+
+.red_dot {
+    width: 20px;
+    height: 20px;
+    border: 1px solid white;
+}
+
+
+    /*----------------free rooms container---------------*/
+.free_RoomsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%;
+}
+
+.free_RoomsItem {
+    flex-basis: 30%;
+    gap: 3%;
+    border: 1px solid rgb(211, 211, 211);
+    cursor: pointer;
+    height: fit-content;
+    margin-bottom: 40px;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 3px 3px 5px rgb(231, 231, 231);
+}
+
+.free_RoomsImage {
+    width: 100%;
+}
+
+.free_RoomsImage img {
+    width: 100%;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.free_RoomsData {
+    padding: 2%;
+}
+
+.free_RoomsData p:first-child {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.free_RoomsData p span {
+    font-weight: bold;
+}
+
+
+.NODATA_COMP {
+    width: 100%;
+    height: calc(60vh);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.NODATA_COMP h1 {
+    font-weight: normal;
+    font-size: 24px;
+    text-align: center;
+}
+
+
+
+@media screen and (max-width: 770px){
+    .NODATA_COMP h1 {
+        font-weight: normal;
+        font-size: 20px;
+        width: 80%;
+        line-height: 35px;
+        color: rgb(74, 74, 74);
+    }
+
+    .free_RoomsContainer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        justify-content: space-between;
+    }
+
+    .free_RoomsItem {
+        flex-basis: 48.5%;
+    }
+
+    .small_font {
+        flex-direction: column;
+        align-items: start;
+        gap: 15px;
+        padding: 0 1%;
+    }
+
+    .small_font .input_search {
+        width: 100%;
+    }
+
+    .small_font .input_search input {
+        flex: 1;
+    }
+
+    .small_font .search_icon {
+        padding: 8px;
+    }
+
+    .small_font h1 {
+        font-size: 30px;
+    }
+
+    .free_RoomsData p {
+        font-size: 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        -webkit-box-orient: vertical;
+    }
+
+    .lesson_remaining span {
+        font-size: 14px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        -webkit-box-orient: vertical;
+    }
+}

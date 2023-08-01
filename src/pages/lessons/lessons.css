@@ -1,0 +1,17 @@
+.LESSONS_LEFT {
+    flex-basis: 100%;
+}
+
+.LESSONS_MAIN {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3.5%;
+}
+
+
+
+@media screen and (max-width: 770px) {
+    .LESSONS_MAIN {
+        justify-content: center;
+    }
+}

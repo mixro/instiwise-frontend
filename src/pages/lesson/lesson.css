@@ -1,0 +1,12 @@
+.lesson_desc {
+    padding-top: 20px;
+}
+
+.lesson_desc p {
+    margin: 10px 0;
+}
+
+.lesson_desc p span {
+    font-weight: bold;
+}
+
