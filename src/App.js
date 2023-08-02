@@ -25,7 +25,7 @@ function App() {
     getCourses(dispatch);
     getLessons(dispatch);
   
-    const sse = new EventSource("http://localhost:8800/sse");
+    const sse = new EventSource("https://instiwise-backend.cyclic.app/sse");
 
     sse.onopen = (event) => {
       console.log("SSE connection opened");

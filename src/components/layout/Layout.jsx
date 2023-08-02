@@ -4,7 +4,7 @@ import Topbar from '../topbar/Topbar';
 import Sidebar from '../sidebar/Sidebar';
 import { Link } from 'react-router-dom';
 import { BottomNavigation, BottomNavigationAction, Paper } from '@mui/material'
-import { Home, Person, Handyman, Event, Search, Book, MeetingRoom, EventNote} from "@mui/icons-material";
+import { Home, Person, Book, MeetingRoom, EventNote} from "@mui/icons-material";
 import Footer from '../footer/Footer';
 
 const Layout = ({children}) => {

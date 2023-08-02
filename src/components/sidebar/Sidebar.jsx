@@ -1,4 +1,4 @@
-import { Home, MeetingRoom, EventNote, ChairAlt, TipsAndUpdates, Feedback, Support, Handyman, Book, CalendarMonth, ArrowRight, ArrowUpward, PlayLesson, Groups2Sharp, ArrowCircleUpSharp} from "@mui/icons-material";
+import { Home, MeetingRoom, ChairAlt, TipsAndUpdates, Feedback, Support, Book, PlayLesson, Groups2Sharp, ArrowCircleUpSharp} from "@mui/icons-material";
 import { Link } from 'react-router-dom'
 import './sidebar.css'
 

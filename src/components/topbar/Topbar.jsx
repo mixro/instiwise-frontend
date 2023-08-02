@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Home,Person, MeetingRoom, EventNote, Map, CalendarToday, CalendarMonth, Search, ChairAlt, TipsAndUpdates, Handyman,  Help, Feedback, DensityMedium, Book, ArrowUpward, ArrowRight, Groups2Sharp, PlayLesson, ArrowCircleUpSharp} from "@mui/icons-material";
+import { Home, MeetingRoom, Search, ChairAlt, TipsAndUpdates, Help, Feedback, DensityMedium, Book, Groups2Sharp, PlayLesson, ArrowCircleUpSharp} from "@mui/icons-material";
 import './topbar.css'
 import { Box, Divider, Drawer, ListItem, List, ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
 import { Link } from "react-router-dom";
@@ -230,13 +230,13 @@ const Navbar = () => {
 
             <div className="navbarRight">
                 <div className="topbar_icons">
-                  <p>{currentTime} <span>| {currentDay}</span></p>
+                  <p>{currentTime}<span> | {currentDay}</span></p>
                 </div>
 
                 <Link to='/profile'className='profile_link'>
                     <div className="profile">
-                        <img src="/assets/profile.jpeg" width="35px" height="35px" className="profileImg" />
-                    </div>
+                        <img src="/assets/profile.jpeg" alt="PR" width="35px" height="35px" className="profileImg" />
+                    </div >
                 </Link>
             </div>
         </div>
