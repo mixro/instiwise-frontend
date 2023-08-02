@@ -10,10 +10,17 @@ const Lessons = () => {
   const upcomingLessons = useSelector((state) => state.upcomingLessons.upcomingLessons);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const isLessonOngoing = (start, end) => {
+  const isLessonOngoing = (day, start, end) => {
     const now = new Date();
+    const dayOfWeek = now.toLocaleString('en-us', { weekday: 'long' }).toLowerCase();
+  
+    // Check if the current day matches the specified day
+    if (dayOfWeek !== day.toLowerCase()) {
+      return false;
+    }
     const startTime = new Date(`${now.toDateString()} ${start}`);
     const endTime = new Date(`${now.toDateString()} ${end}`);
+  
     return now >= startTime && now <= endTime;
   };
 

@@ -42,7 +42,7 @@ const UpcomingLessonsComp = () => {
         const minutes = Math.floor((timeUntilStart / 1000 / 60) % 60);
         const hours = Math.floor((timeUntilStart / (1000 * 60 * 60)) % 24);
     
-        return `${hours} hrs ${minutes} mins`;
+        return `${hours} hrs ${minutes} mins to Start`;
     };
 
   return (
@@ -103,7 +103,7 @@ const UpcomingLessonsComp = () => {
                                             <p><span>Class:</span> {lesson.courseId.name}</p>
                                             <p><span>Lecturer:</span> {lesson.lecturer}</p>
                                             <div className="lesson_remaining">
-                                                <p>{calculateTimeUntilStart(lesson.start)} to Start</p>
+                                                <p>{calculateTimeUntilStart(lesson.start)}</p>
                                             </div>
                                         </div>
                                     </div>

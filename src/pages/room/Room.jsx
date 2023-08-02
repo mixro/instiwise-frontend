@@ -31,7 +31,6 @@ const Room = () => {
         getRoom();
         getLessonsForRoom();
     }, [id]);
-    console.log(id);
 
   return (
     <div className="container">

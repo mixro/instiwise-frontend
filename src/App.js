@@ -12,7 +12,6 @@ import FreeRooms from './pages/freeRooms/FreeRooms';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getCourses, getFreeRooms, getInUseRooms, getLessons, getOngoingCourse, getOngoingLessons, getRooms, getUpcomingLessons } from './redux/apiCalls';
-import { io } from "socket.io-client";
 import InuseRooms from './pages/roomsInUse/InuseRooms';
 import OngoingLessonsComp from './pages/ongoingLessons/OngoingLessonsComp';
 import UpcomingLessonsComp from './pages/upcomingLessons/UpcomingLessonsComp';
@@ -25,51 +24,40 @@ function App() {
     getRooms(dispatch);
     getCourses(dispatch);
     getLessons(dispatch);
+  
+    const sse = new EventSource("http://localhost:8800/sse");
 
-    const socket = io('http://localhost:8800');
-    socket.on('connect', () => {
-      console.log('Connected to the Socket.IO server.');
-      socket.emit('requestData');
-    });
+    sse.onopen = (event) => {
+      console.log("SSE connection opened");
+    };
 
-    // Event listener for connection error
-    socket.on('connect_error', (error) => {
-      console.error('Connection failed:', error.message);
-    });
+    sse.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      
+      if (data.freeRooms) {
+        getFreeRooms(dispatch, data.freeRooms);
+      }
 
-    // Event listener for disconnection
-    socket.on('disconnect', (reason) => {
-      console.log('Disconnected:', reason);
-    });
+      if (data.inUseRooms) {
+        getInUseRooms(dispatch, data.inUseRooms);
+      }
 
-    socket.on('freeRoomsData', (data) => {
-      console.log('FREE ROOMS:', data);
-      getFreeRooms(dispatch, data);
-    });
+      if (data.ongoingLessons) {
+        getOngoingLessons(dispatch, data.ongoingLessons);
+      }
 
-    socket.on('InUseRoomsData', (data) => {
-      console.log('INUSE ROOMS:', data);
-      getInUseRooms(dispatch, data);
-    });
+      if (data.upcomingLessons) {
+        getUpcomingLessons(dispatch, data.upcomingLessons);
+      }
 
-    socket.on('ongoingLessonsData', (data) => {
-      console.log('ONGOING LESSONS:', data);
-      getOngoingLessons(dispatch, data);
-    });
-
-    socket.on('upcomingLessonsData', (data) => {
-      console.log('UPCOMING LESSONS:', data);
-      getUpcomingLessons(dispatch, data);
-    });
-
-    socket.on('ongoingCoursesData', (data) => {
-      console.log('ONGOING COURSES:', data);
-      getOngoingCourse(dispatch, data);
-    });
+      if (data.ongoingCourses) {
+        getOngoingCourse(dispatch, data.ongoingCourses);
+      }
+    };
 
     // Clean up the socket on component unmount
     return () => {
-      socket.disconnect();
+      sse.close();
     };
 
   },[dispatch]);

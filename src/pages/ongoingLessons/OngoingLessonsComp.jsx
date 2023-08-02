@@ -43,7 +43,7 @@ const OngoingLessonsComp = () => {
         const minutes = Math.floor((remainingTime / 1000 / 60) % 60);
         const hours = Math.floor((remainingTime / (1000 * 60 * 60)) % 24);
     
-        return `${hours} hrs ${minutes} mins`;
+        return `${hours} hrs ${minutes} mins to End`;
     };
 
   return (
@@ -104,7 +104,7 @@ const OngoingLessonsComp = () => {
                                             <p><span>Class:</span> {lesson.courseId.name}</p>
                                             <p><span>Lecturer:</span> {lesson.lecturer}</p>
                                             <div className="lesson_remaining">
-                                                <p>{calculateRemainingTime(lesson.end)} to End</p>
+                                                <p>{calculateRemainingTime(lesson.end)}</p>
                                             </div>
                                         </div>
                                     </div>
