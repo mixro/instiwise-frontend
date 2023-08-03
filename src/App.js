@@ -25,7 +25,7 @@ function App() {
     getCourses(dispatch);
     getLessons(dispatch);
   
-    const sse = new EventSource("https://instiwise-backend.cyclic.app/sse");
+    const sse = new EventSource("https://instiwise-backend.onrender.com/sse");
 
     sse.onopen = (event) => {
       console.log("SSE connection opened");
