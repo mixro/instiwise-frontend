@@ -166,10 +166,15 @@
         flex-basis: 92%;
     }
 
+    .lesson-bottom {
+        padding: 20px 5px 4px 15px;
+    }
+
     .lesson-container {
         border: 0;
         margin-bottom: 40px;
         width: 100%;
+        border: 1px solid #7f7f7f;
     }
 
     .lesson-left h2 {
@@ -210,7 +215,7 @@
     }
 
     .lesson-bottom p {
-        margin-bottom: 10px;
+        margin-bottom: 0px;
     }
 
     .lesson_remaining {

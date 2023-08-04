@@ -44,20 +44,22 @@ const Rooms = () => {
               </div>
             </div>
           </div>
-          
-          <div className="small_room_header">
-            <h1>Rooms</h1>
-            <div className="input_search">
-              <input type='text'
-                placeholder='Search Lesson'
-                value={searchQuery}
-                onChange={handleSearchInputChange} 
-              />
-              <div className="search_icon">
-                <Search />
-              </div>
-            </div>
-          </div> 
+
+          <div className="SMALLSCREEN">
+            <div className="small_room_header small_font ">
+                <h1>Rooms</h1>
+                <div className="input_search">
+                    <input type='text'
+                        placeholder='Search Lesson'
+                        value={searchQuery}
+                        onChange={handleSearchInputChange} 
+                    />
+                    <div className="search_icon small_search_icon">
+                        <Search />
+                    </div>
+                </div>
+            </div>   
+          </div>  
 
           <div className="rooms_Category">
             <Link to='/freerooms' className='link-main CATER_DEX three_div_item'>
@@ -66,11 +68,13 @@ const Rooms = () => {
                       <p>FREE ROOMS</p>
                       <span>{freeRooms && freeRooms.length}</span>
                   </div>
-                <div className="category_desc">
-                  <p>these are free rooms in real time. Are always changing depending to the lessons ongoing on those rooms.</p>
+                <div className="category_desc small_padding">
+                <p>{window.innerWidth >= 770 ? "These are free rooms at the moment, yet they continually change due to ongoing lessons." : "These are free rooms at the moment"}</p>
                 </div>
-                <div className="details_bottom Category_bottom">
-                    <p>Explore More</p>
+                <div className="center_display">
+                    <div className="details_bottom">
+                        <p>Explore</p>
+                    </div>
                 </div>
               </div>
             </Link>            
@@ -80,11 +84,13 @@ const Rooms = () => {
                       <p>ROOMS IN USE</p>
                       <span>{inUseRooms && inUseRooms.length}</span>
                   </div>
-                <div className="category_desc">
-                  <p>these are free rooms in real time. Are always changing depending to the lessons ongoing on those rooms.</p>
+                <div className="category_desc small_padding">
+                  <p>{window.innerWidth >= 770 ? "These rooms are currently in use, yet they continually change due to ongoing lessons." : "These rooms are currently in use"}</p>
                 </div>
-                <div className="details_bottom Category_bottom">
-                    <p>Explore More</p>
+                <div className="center_display">
+                    <div className="details_bottom">
+                        <p>Explore</p>
+                    </div>
                 </div>
               </div>
             </Link>            
@@ -94,11 +100,13 @@ const Rooms = () => {
                       <p>ALL ROOMS</p>
                       <span>{rooms && rooms.length}</span>
                   </div>
-                <div className="category_desc">
-                  <p>these are free rooms in real time. Are always changing depending to the lessons ongoing on those rooms.</p>
+                <div className="category_desc small_padding">
+                  <p>Explore our institute's thoughtfully designed rooms, tailored to diverse needs, fostering an enriching learning environment</p>
                 </div>
-                <div className="details_bottom Category_bottom">
-                    <p>Explore More</p>
+                <div className="center_display">
+                    <div className="details_bottom">
+                        <p>Explore</p>
+                    </div>
                 </div>
               </div>
             </Link>            

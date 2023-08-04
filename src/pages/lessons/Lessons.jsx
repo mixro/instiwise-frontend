@@ -66,19 +66,21 @@ const Lessons = () => {
             </div>
           </div>
           
-          <div className="small_room_header">
-            <h1>Lessons</h1>
-            <div className="input_search">
-              <input type='text'
-                placeholder='Search Lesson'
-                value={searchQuery}
-                onChange={handleSearchInputChange} 
-              />
-              <div className="search_icon">
-                <Search />
-              </div>
-            </div>
-          </div>
+          <div className="SMALLSCREEN">
+            <div className="small_room_header small_font ">
+                <h1>Lessons</h1>
+                <div className="input_search">
+                    <input type='text'
+                        placeholder='Search Lesson'
+                        value={searchQuery}
+                        onChange={handleSearchInputChange} 
+                    />
+                    <div className="search_icon small_search_icon">
+                        <Search />
+                    </div>
+                </div>
+            </div>   
+          </div>  
 
           <div className="rooms_Category">
             <Link to='/ongoinglessons' className='link-main CATER_DEX three_div_item'>
@@ -87,11 +89,13 @@ const Lessons = () => {
                       <p>ONGOING LESSONS</p>
                       <span>{ongoingLessons && ongoingLessons.length}</span>
                   </div>
-                <div className="category_desc">
-                  <p>these are free rooms in real time. Are always changing depending to the lessons ongoing on those rooms.</p>
+                <div className="category_desc small_padding">
+                  <p>{window.innerWidth >= 770 ? "These are ongoing lessons right now, each with its start and end time. Explore to learn more" : "These are ongoing lessons at the moment"}</p>
                 </div>
-                <div className="details_bottom Category_bottom">
-                    <p>Explore More</p>
+                <div className="center_display">
+                    <div className="details_bottom">
+                        <p>Explore</p>
+                    </div>
                 </div>
               </div>
             </Link>            
@@ -101,11 +105,13 @@ const Lessons = () => {
                       <p>UPCOMING LESSONS</p>
                       <span>{upcomingLessons && upcomingLessons.length}</span>
                   </div>
-                <div className="category_desc">
-                  <p>these are free rooms in real time. Are always changing depending to the lessons ongoing on those rooms.</p>
+                <div className="category_desc small_padding">
+                  <p>{window.innerWidth >= 770 ? "These are today's upcoming lessons, each following its designated start and end times." : "These are upcoming lessons today"}</p>
                 </div>
-                <div className="details_bottom Category_bottom">
-                    <p>Explore More</p>
+                <div className="center_display">
+                    <div className="details_bottom">
+                        <p>Explore</p>
+                    </div>
                 </div>
               </div>
             </Link>            
@@ -116,10 +122,12 @@ const Lessons = () => {
                       <span>{lessons && lessons.length}</span>
                   </div>
                 <div className="category_desc">
-                  <p>these are free rooms in real time. Are always changing depending to the lessons ongoing on those rooms.</p>
+                  <p>Explore a diverse range of institute lessons, designed to inspire and empower learners of all levels</p>
                 </div>
-                <div className="details_bottom Category_bottom">
-                    <p>Explore More</p>
+                <div className="center_display">
+                    <div className="details_bottom">
+                        <p>Explore</p>
+                    </div>
                 </div>
               </div>
             </Link>            

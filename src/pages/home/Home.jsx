@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Details from '../../components/details/Details'
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux'
+import TypeWriterEffect from 'react-typewriter-effect';
 
 
 const Home = () => {
@@ -37,13 +38,31 @@ const Home = () => {
     getCurrentInfo();
 
     return () => clearInterval(interval);
-  }, []);
+  }, []);  
 
   return (
     <div className="home_container">
       <div className="home_header">
         <div className="home_comp_left">
-          <h1>Welcome to InstiWise</h1>
+          <div className="header_autotyping">
+            <TypeWriterEffect
+              textStyle={{
+                fontFamily: 'Poppins, sans-serif',
+                color: 'black',
+                fontWeight: 600,
+                fontSize: '32px',
+                lineHeight: '50px',
+              }}
+              startDelay={700}
+              cursorColor="#ffffff"
+              multiText={[
+                "Seamless Scheduling",
+                "Welcome to InstiWise"           
+              ]}
+              multiTextDelay={2000}
+              typeSpeed={30}
+            />
+          </div>
           <p>Track, manage and Forecast your platform</p>
         </div>
 
@@ -67,6 +86,34 @@ const Home = () => {
         </div>
       </div>
 
+      <div className="SMALLSCREEN">
+        <div className="auto_typing">
+          <div className="autotyping_item">
+            <TypeWriterEffect
+              textStyle={{
+                fontFamily: 'Poppins, sans-serif',
+                color: 'black',
+                fontWeight: 600,
+                fontSize: '30px',
+                lineHeight: '40px',
+              }}
+              startDelay={700}
+              cursorColor="#3F3D56"
+              multiText={[
+                "Enhance Learning Experience",
+                "Institute Seamless Scheduling"            
+              ]}
+              multiTextDelay={2000}
+              typeSpeed={30}
+            />
+          </div>
+
+          <div className="autotyping_item">
+            <img src='/assets/clock.png' alt='CLOCK' />
+          </div>
+        </div>
+      </div>
+
       <div className="home_header_smallScreen">
         <div className="header_div_smallScreen">
           <Link to='/lessons' className='link-main'>
@@ -77,10 +124,12 @@ const Home = () => {
                 <div className="blinking_dot"></div>
               </div>
             </div>
-            {ongoingLessons && ongoingLessons.length > 0 
-              ? <p>These are ongoing lessons in real time</p>
-              : <p>There is no ongoing lesson at this time</p>
-            }
+            <div className="HEADER_P">
+              {ongoingLessons && ongoingLessons.length > 0 
+                ? <p>These are ongoing lessons at the moment</p>
+                : <p>There is no ongoing lesson at the moment</p>
+              }
+            </div>
             <div className="center_dots">
               <p>......</p>
             </div>
@@ -96,10 +145,12 @@ const Home = () => {
                 <div className="blinking_dot"></div>
               </div>
             </div>
-            {freeRooms && freeRooms.length > 0 
-              ? <p>These are free rooms in real time</p>
-              : <p>There is no free room at this time</p>
-            }
+            <div className="HEADER_P">
+              {freeRooms && freeRooms.length > 0 
+                ? <p>These are free rooms in real time</p>
+                : <p>There is no free room at the moment</p>
+              }
+            </div>
             <div className="center_dots">
               <p>......</p>
             </div>
@@ -111,12 +162,12 @@ const Home = () => {
         <div className="home_topInfo">          
           <div className="topInfo_item">
             <Link to='/lessons' className='link-main'>
-            <div className="topInfo_header">
-              <p>Lessons</p>
-              <span>{lessons && lessons.length}</span>
-            </div>
+              <div className="topInfo_header">
+                <p>Lessons</p>
+                <span>{lessons && lessons.length}</span>
+              </div>
               <div className="topInfo_desc">
-                <p>track, manage and forecast your platform</p>
+                <p>{window.innerWidth >= 770 ? "Complete access to all institute lessons" : "Complete access to all lessons"}</p>
                 <div className="topInfo_item_link">
                   <span>Explore more!</span>
                 </div>
@@ -125,12 +176,12 @@ const Home = () => {
           </div>
           <div className="topInfo_item">
             <Link to='/rooms' className='link-main'>
-            <div className="topInfo_header">
-              <p>Rooms</p>
-              <span>{rooms && rooms.length}</span>
-            </div>
+              <div className="topInfo_header">
+                <p>Rooms</p>
+                <span>{rooms && rooms.length}</span>
+              </div>
               <div className="topInfo_desc">
-                <p>track, manage and forecast your platform</p>
+                <p>{window.innerWidth >= 770 ? "Navigate rooms online before entering effortlessly." : "Explore rooms online before entry."}</p>
                 <div className="topInfo_item_link">
                   <span>Explore more!</span>
                 </div>
@@ -139,12 +190,12 @@ const Home = () => {
           </div>
           <div className="topInfo_item">
             <Link to='/courses' className='link-main'>
-            <div className="topInfo_header">
-              <p>Courses</p>
-              <span>{courses && courses.length}</span>
-            </div>
+              <div className="topInfo_header">
+                <p>Courses</p>
+                <span>{courses && courses.length}</span>
+              </div>
               <div className="topInfo_desc">
-                <p>track, manage and forecast your platform</p>
+                <p>{window.innerWidth >= 770 ? "Access all courses with seamless convenience" : "Access all available courses easily"}</p>
                 <div className="topInfo_item_link">
                   <span>Explore more!</span>
                 </div>
@@ -157,12 +208,18 @@ const Home = () => {
               <span>5000+</span>
             </div>
             <div className="topInfo_desc">
-              <p>track, manage and forecast your platform</p>
+              <p>{window.innerWidth >= 770 ? "Institute's total student enrollment count." : "Institute's total student enrollment count."}</p>
               <div className="topInfo_item_link">
                 <span>Explore more!</span>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="SMALLSCREEN">
+        <div className="div_header">
+          <p>Access All</p>
         </div>
       </div>
 

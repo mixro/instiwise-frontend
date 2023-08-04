@@ -79,6 +79,10 @@
     border-radius: 5px;
     padding: 2%;
     background: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
 }
 
 .search_results {
@@ -329,11 +333,13 @@
 
     .Category_item_header p {
         font-size: 16px;
-        font-weight: bold;
+        font-weight: 600;
     }
 
     .LESSONS_HEADER p {
         font-size: 14px;
+        font-weight: 600;
+        white-space: nowrap;
     }
 
     .Category_item_header span {
@@ -347,6 +353,12 @@
 
     .category_desc p {
         font-size: 14px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
     }
 
     .Category_bottom {
@@ -362,7 +374,7 @@
     }
 
     .search_results p {
-        font-weight: bold;
+        font-weight: 600;
         font-size: 18px;
     }
 

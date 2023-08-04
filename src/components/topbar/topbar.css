@@ -117,7 +117,7 @@
 
 .topbar_icons p {
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .topbar_icons p span {
@@ -325,7 +325,7 @@
     .logo-small-screen p {
         font-size: 23px;
         color: black;
-        font-weight: bolder;
+        font-weight: 600;
     }
 
     .logo-small-screen img {

@@ -42,61 +42,69 @@ const Courses = () => {
               </div>
             </div>
           </div>
-          
-          <div className="small_room_header">
-            <h1>Courses</h1>
-            <div className="input_search">
-              <input type='text'
-                placeholder='Search Lesson'
-                value={searchQuery}
-                onChange={handleSearchInputChange} 
-              />
-              <div className="search_icon">
-                <Search />
-              </div>
-            </div>
-          </div>
+
+          <div className="SMALLSCREEN">
+            <div className="small_room_header small_font ">
+                <h1>Courses</h1>
+                <div className="input_search">
+                    <input type='text'
+                        placeholder='Search Lesson'
+                        value={searchQuery}
+                        onChange={handleSearchInputChange} 
+                    />
+                    <div className="search_icon small_search_icon">
+                        <Search />
+                    </div>
+                </div>
+            </div>   
+          </div>  
 
           <div className="rooms_Category">
-            <Link to='/courses' className='link-main CATER_DEX three_div_item'>
-              <div className="Category_item">
-                  <div className="details_item_header Category_item_header LESSONS_HEADER">
-                      <p>ALL COURSES</p>
-                      <span>{courses && courses.length}</span>
-                  </div>
-                <div className="category_desc">
-                  <p>these are free rooms in real time. Are always changing depending to the lessons ongoing on those rooms.</p>
-                </div>
-                <div className="details_bottom Category_bottom">
-                    <p>Explore More</p>
-                </div>
-              </div>
-            </Link>            
             <Link to='/ongoingcourses' className='link-main CATER_DEX three_div_item'>
               <div className="Category_item">
                   <div className="details_item_header Category_item_header LESSONS_HEADER">
                       <p>ONGOING COURSES</p>
                       <span>{ongoingCourses && ongoingCourses.length}</span>
                   </div>
-                <div className="category_desc">
-                  <p>these are free rooms in real time. Are always changing depending to the lessons ongoing on those rooms.</p>
+                <div className="category_desc small_padding">
+                <p>{window.innerWidth >= 770 ? "These courses have ongoing lessons. Explore the schedule and locations where these lessons take place." : "These courses have ongoing lessons"}</p>
                 </div>
-                <div className="details_bottom Category_bottom">
-                    <p>Explore More</p>
+                <div className="center_display">
+                    <div className="details_bottom">
+                        <p>Explore</p>
+                    </div>
                 </div>
               </div>
-            </Link>            
+            </Link> 
+            <Link to='/courses' className='link-main CATER_DEX three_div_item'>
+              <div className="Category_item">
+                  <div className="details_item_header Category_item_header LESSONS_HEADER">
+                      <p>ALL COURSES</p>
+                      <span>{courses && courses.length}</span>
+                  </div>
+                <div className="category_desc small_padding">
+                  <p>{window.innerWidth >= 770 ? "Explore our comprehensive institute courses, tailored to fuel your educational journey with knowledge and growth opportunities." : "Discover all institute courses easily"}</p>
+                </div>
+                <div className="center_display">
+                    <div className="details_bottom">
+                        <p>Explore</p>
+                    </div>
+                </div>
+              </div>
+            </Link>      
             <Link to='/courses' className='link-main CATER_DEX three_div_item NODISPLAY_ONSMALL'>
               <div className="Category_item">
                   <div className="details_item_header Category_item_header LESSONS_HEADER">
                       <p>ALL COURSES</p>
                       <span>{courses && courses.lenght}</span>
                   </div>
-                <div className="category_desc">
+                <div className="category_desc small_padding">
                   <p>these are free rooms in real time. Are always changing depending to the lessons ongoing on those rooms.</p>
                 </div>
-                <div className="details_bottom Category_bottom">
-                    <p>Explore More</p>
+                <div className="center_display">
+                    <div className="details_bottom">
+                        <p>Explore</p>
+                    </div>
                 </div>
               </div>
             </Link>            

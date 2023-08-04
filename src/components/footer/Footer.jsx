@@ -43,7 +43,7 @@ const Footer = () => {
             </div>
         </div>
         <div className="footer_bottom">
-            <p>© 2022 - 2023 InstiWise . All Right Reserved</p>
+            <p>© 2022 - 2023 INSTiWISE . All Right Reserved</p>
             <p>Micep International</p>
         </div>
     </div>
