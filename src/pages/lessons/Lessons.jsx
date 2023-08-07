@@ -155,7 +155,7 @@ const Lessons = () => {
                                       <p><span>Course:</span> {lesson.courseId.name}</p>
                                       <p><span>Lecturer:</span> {lesson.lecturer}</p>
                                       <div className="lesson_remaining">
-                                          <p>{isLessonOngoing(lesson.start, lesson.end) ? 'ongoing' : 'upcoming'}</p>
+                                          <p>{isLessonOngoing(lesson.start, lesson.end) ? 'ongoing' : 'not ongoing'}</p>
                                       </div>
                                   </div>
                               </div>
