@@ -100,7 +100,7 @@ const UpcomingLessonsComp = () => {
 
                                         <div className="lesson-bottom">
                                             <p><span>Day:</span> {lesson.day}</p>
-                                            <p><span>Class:</span> {lesson.courseId.name}</p>
+                                            <p><span>Course:</span> {lesson.courseId.name}</p>
                                             <p><span>Lecturer:</span> {lesson.lecturer}</p>
                                             <div className="lesson_remaining">
                                                 <p>{calculateTimeUntilStart(lesson.start)}</p>
