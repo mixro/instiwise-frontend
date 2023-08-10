@@ -7,19 +7,10 @@ import { useEffect, useState } from 'react';
 const Room = () => {
     const location = useLocation();
     const id = location.pathname.split("/")[2];
-    const [room, setRoom] = useState({});
     const [lessons, setLessons] = useState([]);
+    const room = useSelector((state) => state.rooms.rooms.find((room) => room._id === id));
 
     useEffect(() => {
-        const getRoom = async () => {
-            try {
-                const res = await publicRequest.get('/rooms/find/' + id);
-                setRoom(res.data);
-            } catch(err) {
-                console.log(err);
-            }
-        };
-
         const getLessonsForRoom = async () => {
             try {
               const res = await publicRequest.get('/lessons/room/' + id);
@@ -28,7 +19,6 @@ const Room = () => {
               console.log(err);
             }
         };
-        getRoom();
         getLessonsForRoom();
     }, [id]);
 

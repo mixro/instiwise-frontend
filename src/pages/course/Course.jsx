@@ -1,25 +1,11 @@
 import { useLocation } from 'react-router-dom';
 import './course.css'
 import { Book } from '@mui/icons-material'
-import { useEffect, useState } from 'react';
-import { publicRequest } from '../../requestMethod';
 
 const Course = () => {
     const location = useLocation();
     const id = location.pathname.split("/")[2];
-    const [course, setCourse] = useState({});
-
-    useEffect(() => {
-        const getCourse = async () => {
-            try {
-                const res = await publicRequest.get('/courses/find/' + id);
-                setCourse(res.data);
-            } catch(err) {
-                console.log(err);
-            }
-        };
-        getCourse();
-    }, [id]);
+    const course = useSelector((state) => state.courses.courses.find((course) => course._id === id));
 
   return (
     <div className="course_container">

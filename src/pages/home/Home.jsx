@@ -147,7 +147,7 @@ const Home = () => {
             </div>
             <div className="HEADER_P">
               {freeRooms && freeRooms.length > 0 
-                ? <p>These are free rooms in real time</p>
+                ? <p>These are free rooms at the moment</p>
                 : <p>There is no free room at the moment</p>
               }
             </div>
