@@ -152,7 +152,7 @@ const Lessons = () => {
 
                                   <div className="lesson-bottom">
                                       <p><span>Day:</span> {lesson.day}</p>
-                                      <p><span>Course:</span> {lesson.courseId.name}</p>
+                                      <p><span>Class:</span> {lesson.courseId.name}</p>
                                       <p><span>Lecturer:</span> {lesson.lecturer}</p>
                                       <div className="lesson_remaining">
                                           <p>{isLessonOngoing(lesson.start, lesson.end) ? 'ongoing' : 'upcoming'}</p>

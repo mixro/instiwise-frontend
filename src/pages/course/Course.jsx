@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import './course.css'
+import { useSelector } from 'react-redux';
 import { Book } from '@mui/icons-material'
 
 const Course = () => {

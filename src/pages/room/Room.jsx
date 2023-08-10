@@ -3,6 +3,7 @@ import './room.css'
 import {CalendarMonth, ChairAlt, Light, LocationOn, Person, Wifi, WindPower} from "@mui/icons-material";
 import { publicRequest } from '../../requestMethod';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const Room = () => {
     const location = useLocation();
