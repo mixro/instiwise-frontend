@@ -96,7 +96,7 @@ const Courses = () => {
               <div className="Category_item">
                   <div className="details_item_header Category_item_header LESSONS_HEADER">
                       <p>ALL COURSES</p>
-                      <span>{courses && courses.lenght}</span>
+                      <span>{courses && courses.length}</span>
                   </div>
                 <div className="category_desc small_padding">
                   <p>these are free rooms in real time. Are always changing depending to the lessons ongoing on those rooms.</p>
@@ -128,7 +128,7 @@ const Courses = () => {
                                   <p><span>Class:</span> {course.name}</p>
                                   <p><span>Students:</span> {course.numberOfStudents}</p>
                                   <p><span>Departiment:</span> {course.department}</p>
-                                  <p><span>Final year:</span> 2024</p>
+                                  <p><span>Final year:</span> {course.ending}</p>
                               </div>
                           </div>
                       </Link>

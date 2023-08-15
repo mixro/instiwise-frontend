@@ -1,27 +1,21 @@
 import { Link, useLocation } from 'react-router-dom';
 import './room.css'
-import {CalendarMonth, ChairAlt, Light, LocationOn, Person, Wifi, WindPower} from "@mui/icons-material";
-import { publicRequest } from '../../requestMethod';
-import { useEffect, useState } from 'react';
+import {CalendarMonth, MeetingRoom, ChairAlt, Light, LocationOn, Person, Wifi, WindPower, Build, House} from "@mui/icons-material";
 import { useSelector } from 'react-redux';
 
 const Room = () => {
     const location = useLocation();
-    const id = location.pathname.split("/")[2];
-    const [lessons, setLessons] = useState([]);
-    const room = useSelector((state) => state.rooms.rooms.find((room) => room._id === id));
+    const roomId = location.pathname.split("/")[2];
+    const lessons = useSelector((state) => state.lessons.lessons);
+    const roomLessons = lessons.filter((lesson) => lesson.roomId._id === roomId);
+    const room = useSelector((state) => state.rooms.rooms.find((room) => room._id === roomId));
 
-    useEffect(() => {
-        const getLessonsForRoom = async () => {
-            try {
-              const res = await publicRequest.get('/lessons/room/' + id);
-              setLessons(res.data);
-            } catch (err) {
-              console.log(err);
-            }
-        };
-        getLessonsForRoom();
-    }, [id]);
+    function truncateText(text, maxLength) {
+        if (text.length <= maxLength) {
+            return text;
+        }
+        return text.slice(0, maxLength);
+    }    
 
   return (
     <div className="container">
@@ -32,7 +26,9 @@ const Room = () => {
                         <h1>{room.roomName}</h1>
                         <p className="free">{room.status}</p>
                     </div>
-                    <p className="location"><LocationOn /> Building: {room.building} </p>
+                    <p className="location"><span><LocationOn /> Building:</span> {room.building} </p>
+                    {room.type && <p className="location"> <span><House /> Type:</span> {room.type} </p>}
+                    {room.type === "class" && <p className="location"> <span><ChairAlt /> Seats:</span> {room.seats} </p>}
                     <p className="roomDesc">{room.description}</p>
                 </div>
                 
@@ -70,13 +66,13 @@ const Room = () => {
                         </ul>
 
                         <ul>
-                            <li><WindPower /> 9 fans</li>
-                            <li><Wifi /> 2 wifi</li>
+                            <li><WindPower /> 6 fans</li>
+                            <li><Wifi /> wifi</li>
                         </ul>
 
                         <ul>
-                            <li><Light /> 8 lights</li>
-                            <li><CalendarMonth /> 8 boards</li>
+                            <li><Light /> 12 lights</li>
+                            <li><CalendarMonth /> 2 boards</li>
                         </ul>
                     </div>
                 </div>
@@ -87,11 +83,11 @@ const Room = () => {
                     <h2>Lessons On This Room</h2>
                 </div>
 
-                {lessons.map((lesson) => (
+                {roomLessons.map((lesson) => (
                     <Link to={`/lesson/${lesson._id}`} className='link-main' key={lesson._id}>
                         <div className="lessonMain" key={lesson._id}>
                             <div className="lesson">
-                                <div className="room_profile">LE</div>
+                                <div className="room_profile">{truncateText(lesson.courseId.name, 2)}</div>
                                 <div className="details">
                                     <p>{lesson.name}</p>
                                     <span>{lesson.day}</span>

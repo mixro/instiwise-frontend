@@ -12,7 +12,7 @@
     /*------------------ course left --------------------*/
 
 .course_left {
-    flex-basis: 67%;
+    flex-basis: 72%;
 }
 
 .UPPERCASE {
@@ -50,7 +50,7 @@
     /*------------------ course right --------------------*/
 
 .course_right {
-    flex-basis: 30%;
+    flex-basis: 26%;
 }
 
 .course_right h2 {

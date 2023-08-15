@@ -32,14 +32,22 @@
 }
 
 .location {
+    margin-bottom: 10px;
+    gap: 1%;   
     display: flex;
     align-items: center;
-    gap: 0.5%;
+}
+
+.location span {
+    gap: 10px;   
+    display: flex;
+    align-items: center;
     color: gray;
+    text-transform: uppercase;
 }
 
 .roomDesc {
-    padding-top: 15px;
+    padding-top: 10px;
     color: rgb(70, 69, 69);
     margin-bottom: 10px;
 }
@@ -118,7 +126,7 @@
 }
 
 .room_profile {
-    background: rgb(95, 95, 95);
+    background: rgb(1, 113, 111);
     color: white;
     width: 36px;
     height: 36px;
@@ -126,6 +134,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-transform: uppercase;
 }
 
 .details p {
