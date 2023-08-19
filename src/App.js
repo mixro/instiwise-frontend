@@ -68,36 +68,36 @@ function App() {
   return (
     <>
       <Router>
-      <Routes>
-        {/* Routes without Layout */}
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Routes>
+          {/* Routes without Layout */}
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
 
-        {/* Routes with Layout */}
-        <Route
-          path="*"
-          element={
-            <Layout>
-              <Routes>
-                <Route index element={<Home />} />
-                <Route path="/rooms" element={<Rooms />} />
-                <Route path="/room/:id" element={<Room />} />
-                <Route path="/freerooms" element={<FreeRooms />} />
-                <Route path="/roomsinuse" element={<InuseRooms />} />
-                <Route path="/lessons" element={<Lessons />} />
-                <Route path="/lesson/:id" element={<Lesson />} />
-                <Route path="/upcominglessons" element={<UpcomingLessonsComp />} />
-                <Route path="/ongoinglessons" element={<OngoingLessonsComp />} />
-                <Route path="/courses" element={<Courses />} />
-                <Route path="/course/:id" element={<Course />} />
-                <Route path="/ongoingcourses" element={<OngoingCoursesComp />} />
-                <Route path="/profile" element={<Profile />} />
-              </Routes>
-            </Layout>
-          }
-        />
-      </Routes>
-    </Router>
+          {/* Routes with Layout */}
+          <Route
+            path="*"
+            element={
+              <Layout>
+                <Routes>
+                  <Route index element={<Home />} />
+                  <Route path="/rooms" element={<Rooms />} />
+                  <Route path="/room/:id" element={<Room />} />
+                  <Route path="/freerooms" element={<FreeRooms />} />
+                  <Route path="/roomsinuse" element={<InuseRooms />} />
+                  <Route path="/lessons" element={<Lessons />} />
+                  <Route path="/lesson/:id" element={<Lesson />} />
+                  <Route path="/upcominglessons" element={<UpcomingLessonsComp />} />
+                  <Route path="/ongoinglessons" element={<OngoingLessonsComp />} />
+                  <Route path="/courses" element={<Courses />} />
+                  <Route path="/course/:id" element={<Course />} />
+                  <Route path="/ongoingcourses" element={<OngoingCoursesComp />} />
+                  <Route path="/profile" element={<Profile />} />
+                </Routes>
+              </Layout>
+            }
+          />
+        </Routes>
+      </Router>
     </>
   );
 }
