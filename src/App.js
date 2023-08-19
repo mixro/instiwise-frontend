@@ -10,7 +10,7 @@ import Course from './pages/course/Course';
 import Lesson from './pages/lesson/Lesson';
 import FreeRooms from './pages/freeRooms/FreeRooms';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getCourses, getFreeRooms, getInUseRooms, getLessons, getOngoingCourse, getOngoingLessons, getRooms, getUpcomingLessons } from './redux/apiCalls';
 import InuseRooms from './pages/roomsInUse/InuseRooms';
 import OngoingLessonsComp from './pages/ongoingLessons/OngoingLessonsComp';
