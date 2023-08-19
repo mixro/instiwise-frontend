@@ -252,7 +252,7 @@ const Navbar = () => {
 
                 <Link to='/profile'className='profile_link'>
                     <div className="profile">
-                        <img src="/assets/profile.jpeg" alt="PR" width="35px" height="35px" className="profileImg" />
+                        <img src="/assets/1.png" alt="PR" width="35px" height="35px" className="profileImg" />
                     </div >
                 </Link>
             </div>

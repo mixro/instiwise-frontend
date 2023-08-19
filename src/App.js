@@ -1,7 +1,7 @@
 import './app.css'
 import Home from "./pages/home/Home";
 import Layout from "./components/layout/Layout";
-import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Rooms from "./pages/rooms/Rooms";
 import Room from './pages/room/Room';
 import Lessons from './pages/lessons/Lessons';
@@ -10,7 +10,7 @@ import Course from './pages/course/Course';
 import Lesson from './pages/lesson/Lesson';
 import FreeRooms from './pages/freeRooms/FreeRooms';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getCourses, getFreeRooms, getInUseRooms, getLessons, getOngoingCourse, getOngoingLessons, getRooms, getUpcomingLessons } from './redux/apiCalls';
 import InuseRooms from './pages/roomsInUse/InuseRooms';
 import OngoingLessonsComp from './pages/ongoingLessons/OngoingLessonsComp';
@@ -22,7 +22,6 @@ import Profile from './pages/profile/Profile';
 
 function App() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.currentUser);
 
   useEffect(() => {
     getRooms(dispatch);

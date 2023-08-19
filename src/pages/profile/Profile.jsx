@@ -54,7 +54,7 @@ const Profile = () => {
                     <div className="userShow">
                         <div className="userShowTop">
                             <img
-                                src={user?.img || "https://crowd-literature.eu/wp-content/uploads/2015/01/no-avatar.gif"}
+                                src={user?.img || "/assets/1.png"}
                                 alt=""
                                 className="userShowImg"
                             />
