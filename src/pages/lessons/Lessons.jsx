@@ -24,7 +24,6 @@ const Lessons = () => {
     return now >= startTime && now <= endTime;
   };
 
-
   // Function to handle the search input change
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);

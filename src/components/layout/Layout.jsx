@@ -39,7 +39,7 @@ const Layout = ({children}) => {
                         <BottomNavigationAction component={Link} to="/lessons" label="Lessons" value="search" icon={<EventNote />} />
                         <BottomNavigationAction component={Link} to="/rooms" label="Rooms" value="projects" icon={<MeetingRoom />} />
                         <BottomNavigationAction component={Link} to="/courses" value="events" label="Courses" icon={<Book />} />
-                        <BottomNavigationAction component={Link} to="/" value="profile" label="Profile" icon={<Person />} />
+                        <BottomNavigationAction component={Link} to="/profile" value="profile" label="Profile" icon={<Person />} />
                     </BottomNavigation>
                 </Paper>
             </div>

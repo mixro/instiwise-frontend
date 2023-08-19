@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Home, MeetingRoom, Search, ChairAlt, TipsAndUpdates, Help, Feedback, DensityMedium, Book, Groups2Sharp, PlayLesson, ArrowCircleUpSharp} from "@mui/icons-material";
+import { Home, MeetingRoom, Search, ChairAlt, DensityMedium, Book, Groups2Sharp, PlayLesson, ArrowCircleUpSharp, Person, Login, HowToReg} from "@mui/icons-material";
 import './topbar.css'
 import { Box, Divider, Drawer, ListItem, List, ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
 import { Link } from "react-router-dom";
@@ -94,24 +94,26 @@ const Navbar = () => {
   const belowLiks = [
     {
       id:1,
-      icon:<TipsAndUpdates />,
-      text:"Update",
-      location:"/",
+      icon:<Person />,
+      text:"Profile",
+      location:"/profile",
+    }
+  ]
+
+  const loginLiks = [
+    {
+      id:1,
+      icon:<HowToReg />,
+      text:"Register",
+      location:"/register",
     },
 
     {
       id:2,
-      icon:<Help />,
-      text:"Support",
-      location:"/",
-    },
-
-    {
-      id:3,
-      icon:<Feedback />,
-      text:"Feedback",
-      location:"/",
-    },
+      icon:<Login />,
+      text:"Login",
+      location:"/login",
+    }
   ]
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -169,6 +171,21 @@ const Navbar = () => {
       <Divider />
       <List>
         {belowLiks.map((link) => (
+          <ListItem key={link.id} disablePadding>
+            <Link to={`${link.location}`} className='link-gray'>
+              <ListItemButton >
+                <ListItemIcon>
+                  {link.icon}
+                </ListItemIcon>
+                <ListItemText sx={{fontSize: 14,}}>{link.text}</ListItemText>
+              </ListItemButton>
+            </Link>
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {loginLiks.map((link) => (
           <ListItem key={link.id} disablePadding>
             <Link to={`${link.location}`} className='link-gray'>
               <ListItemButton >

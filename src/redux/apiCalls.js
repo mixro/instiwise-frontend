@@ -1,4 +1,4 @@
-import { publicRequest } from "../requestMethod";
+import { publicRequest, userRequest } from "../requestMethod";
 import { getCoursesFailure, getCoursesStart, getCoursesSuccess } from "./coursesRedux";
 import { getFreeRoomsFailure, getFreeRoomsStart, getFreeRoomsSuccess } from "./freeRooms";
 import { getLessonsFailure, getLessonsStart, getLessonsSuccess } from "./lessonsRedux";
@@ -7,7 +7,60 @@ import { getOngoingLessonsFailure, getOngoingLessonsStart, getOngoingLessonsSucc
 import { getInUseRoomsFailure, getInUseRoomsStart, getInUseRoomsSuccess } from "./roomsInUse";
 import { getRoomsFailure, getRoomsStart, getRoomsSuccess } from "./roomsRedux";
 import { getUpcomingLessonsFailure, getUpcomingLessonsStart, getUpcomingLessonsSuccess } from "./upcomingLessons";
+import { deleteUserFailure, deleteUserStart, deleteUserSuccess, loginFailure, loginStart, loginSuccess, logout, registerStart, registerSuccess, regiterError, updateUserFailure, updateUserStart, updateUserSuccess } from "./userRedux";
 
+
+// USER  LOGIN
+export const login = async (dispatch, user, navigate) => {
+  dispatch(loginStart());
+  try {
+    const res = await publicRequest.post("/auth/login", user);
+    dispatch(loginSuccess(res.data));
+    navigate('/');
+  } catch (err) {
+    dispatch(loginFailure());
+  }
+};
+
+// USER REGISTER
+export const userRegister = async (dispatch, user, navigate) => {
+  dispatch(registerStart());
+  try {
+    const res = await publicRequest.post("/auth/register", user);
+    dispatch(registerSuccess(res.data));
+    navigate('/');
+  } catch(err) {
+    dispatch(regiterError());
+  }
+}
+
+// UPDATE USER
+export const updateUser = async (id, dispatch, user) => {
+  dispatch(updateUserStart());
+  try {
+    const res = await userRequest.put(`/users/${id}`, user);
+    const updatedUser = res.data;
+    dispatch(updateUserSuccess(updatedUser));
+  } catch(err) {
+    dispatch(updateUserFailure());
+  }
+}
+
+//DELETE USER
+export const deleteUser = async (id, dispatch) => {
+  dispatch(deleteUserStart());
+  try {
+    await userRequest.delete(`/users/${id}`);
+    dispatch(deleteUserSuccess());
+  } catch(err) {
+    dispatch(deleteUserFailure());
+  }
+}
+
+// USER  LOGOUT
+export const UserLogout = async (dispatch) => {
+  dispatch(logout());
+};
 
 //ROOMS
 export const getRooms = async (dispatch) => {

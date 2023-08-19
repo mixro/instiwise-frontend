@@ -61,10 +61,13 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    min-height: 110px;
 }
 
 .details_body_image p {
     text-transform: uppercase;
+    font-weight: 500;
+    font-size: 23px;
 }
 
 .ongoing_dot {
@@ -82,11 +85,6 @@
     width: 170px;
     height: 100%;
     border-radius: 5px;
-}
-
-.details_body_image p {
-    font-weight: 600;
-    font-size: 25px;
 }
 
 .details_body_desc h1 {

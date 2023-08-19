@@ -1,0 +1,201 @@
+.registerContainer {
+    padding: 0 2%;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    background: linear-gradient(120deg, rgb(160, 241, 254), royalblue);
+}
+
+.registerBody {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    width: 100%;
+}
+
+    /* --- left ----*/
+
+.registerBody_left {
+    width: 500px;
+    background: white;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.registerBody_left img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px 0px 0px 10px;
+}
+
+
+    /* --- right ----*/
+
+.registerBody_right {
+    flex-basis: 30%;
+    border-radius: 0px 10px 10px 0px;
+    padding: 1% 2% 10px 4%;
+    background: white;
+}
+
+.registerBody_right h1 {
+    text-align: center;
+    margin-bottom: 4%;
+}
+
+.registerBody_item {
+    padding-bottom: 10px;
+}
+
+.registerBody_item h3 {
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.registerBody_item  input {
+    width: 100%;
+    border-radius: 5px;
+    padding: 8px 5px;
+    outline: none;
+    border: 1px solid rgb(68, 68, 68);
+}
+
+.registerButton button {
+    background: blue;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 4%;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    width: 100%;
+    border: 1px solid blue;
+}
+
+.registerText {
+    padding-top: 15px;
+}
+
+.registerText p span {
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.authComp {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 5px;
+}
+
+.authComp_item {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+}
+
+.red {
+    color: white;
+    background: blue;
+}
+
+.LARGESCREEN {
+    display: block;
+}
+
+.SMALLSCREEN {
+    display: none;
+}
+
+
+
+@media screen and (max-width: 770px) {
+    .registerContainer {
+        padding: 12% 4% 4%;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+        gap: 8%;
+        background: linear-gradient(120deg, rgb(160, 241, 254), royalblue);
+    }
+
+    .registerTop {
+        width: 100%;
+    }
+
+    .registerTop_item {
+        width: 100%;
+    }
+
+    .registerTop_item h1 {
+        font-size: 28px;
+        text-align: left;
+        font-weight: 600;
+        margin-bottom: 6%;
+    }
+
+    .registerBody {
+        flex-direction: column;
+        padding: 0 1%;
+        align-items: center;
+    }
+
+    .registerBody_left {
+        display: none;
+    }
+
+    .registerBody_right {
+        border-radius: 5px;
+        padding-top: 5%;
+        padding: 5% 4% 10px;
+        max-width: 400px;
+        width: 100%;
+    }
+
+    .registerBody_right h1 {
+        margin-bottom: 30px;
+        font-weight: 500;
+        font-size: 25px;
+    }
+
+    .registerBody_item {
+        padding-bottom: 18px;
+    }
+
+    .registerButton {
+        padding-top: 2px;
+    }
+
+    .registerBody_item  input {
+        width: 100%;
+        border-radius: 5px;
+        padding: 8px 5px;
+        font-size: 16px;
+        outline: none;
+        border: 1px solid rgb(68, 68, 68);
+    }
+
+    .LARGESCREEN {
+        display: none;
+    }
+    
+    .SMALLSCREEN {
+        display: block;
+    }
+}

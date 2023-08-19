@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import './room.css'
-import {CalendarMonth, MeetingRoom, ChairAlt, Light, LocationOn, Person, Wifi, WindPower, Build, House} from "@mui/icons-material";
+import {CalendarMonth, ChairAlt, Light, LocationOn, Person, Wifi, WindPower, House} from "@mui/icons-material";
 import { useSelector } from 'react-redux';
 
 const Room = () => {

@@ -16,6 +16,8 @@ const Home = () => {
   const lessons = useSelector((state) => state.lessons.lessons);
   const ongoingLessons = useSelector((state) => state.ongoingLessons.ongoingLessons);
   const freeRooms = useSelector((state) => state.freeRooms.freeRooms);
+  const upcomingLessons = useSelector((state) => state.upcomingLessons.upcomingLessons);
+  const inUseRooms = useSelector((state) => state.inUseRooms.inUseRooms);
 
   useEffect(() => {
     const getCurrentInfo = () => {
@@ -116,9 +118,9 @@ const Home = () => {
 
       <div className="home_header_smallScreen">
         <div className="header_div_smallScreen">
-          <Link to='/lessons' className='link-main'>
+          <Link to='/ongoinglessons' className='link-main'>
             <div className="home_header_item">
-              <p className='WHITESPACE'>Ongoing lessons </p>
+              <p className='WHITESPACE'>On lessons </p>
               <div className="header_ongoing_dot">
                 <span>{ongoingLessons && ongoingLessons.length}</span>
                 <div className="blinking_dot"></div>
@@ -149,6 +151,50 @@ const Home = () => {
               {freeRooms && freeRooms.length > 0 
                 ? <p>These are free rooms at the moment</p>
                 : <p>There is no free room at the moment</p>
+              }
+            </div>
+            <div className="center_dots">
+              <p>......</p>
+            </div>
+          </Link>
+        </div>
+      </div>
+
+      <div className="home_header_smallScreen">
+        <div className="header_div_smallScreen">
+          <Link to='/upcominglessons' className='link-main'>
+            <div className="home_header_item">
+              <p className='WHITESPACE'>Up lessons </p>
+              <div className="header_ongoing_dot">
+                <span>{upcomingLessons && upcomingLessons.length}</span>
+                <div className="blinking_dot"></div>
+              </div>
+            </div>
+            <div className="HEADER_P">
+              {upcomingLessons && upcomingLessons.length > 0 
+                ? <p>These are upcoming lessons at today</p>
+                : <p>There is no upcoming lesson at today</p>
+              }
+            </div>
+            <div className="center_dots">
+              <p>......</p>
+            </div>
+          </Link>
+        </div>
+
+        <div className="header_div_smallScreen">
+          <Link to='/roomsinuse' className='link-main'>
+            <div className="home_header_item">
+              <p className='WHITESPACE'>Rooms in Use </p>
+              <div className="header_ongoing_dot">
+                <span>{inUseRooms && inUseRooms.length}</span>
+                <div className="blinking_dot"></div>
+              </div>
+            </div>
+            <div className="HEADER_P">
+              {inUseRooms && inUseRooms.length > 0 
+                ? <p>These are rooms in use at the moment</p>
+                : <p>There is no rooms in use at the moment</p>
               }
             </div>
             <div className="center_dots">

@@ -50,11 +50,11 @@ const Sidebar = () => {
 
                 <div className={"centerSection"}>
                     <ul>
-                        <Link  className="link" to="/">
-                            <li><Support className="side-icons" />Support</li>
+                        <Link  className="link" to="/register">
+                            <li><Support className="side-icons" />Register</li>
                         </Link>
-                        <Link  className="link" to="/">
-                            <li><TipsAndUpdates className="side-icons" />Updates</li>
+                        <Link  className="link" to="/login">
+                            <li><TipsAndUpdates className="side-icons" />Login</li>
                         </Link>
                         <Link  className="link" to="/">
                             <li><Feedback className="side-icons" />Feedback</li>

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const userSlice = createSlice({
-  name: "instiwiseAdmin",
+  name: "user",
   initialState: {
     currentUser: null,
     isFetching: false,
@@ -15,11 +15,60 @@ const userSlice = createSlice({
     loginSuccess: (state, action) => {
       state.isFetching = false;
       state.currentUser = action.payload;
+      state.error = false;
     },
     loginFailure: (state) => {
       state.isFetching = false;
       state.error = true;
     },
+
+      //REGISTER
+    registerStart: (state) => {
+        state.isFetching = true;
+    },
+    registerSuccess: (state, action) => {
+        state.currentUser = action.payload;
+        state.isFetching = false;
+        state.error = false;
+    },
+    regiterError: (state) => {
+        state.error = true;
+    },
+
+      //UPDATE
+    updateUserStart: (state) => {
+        state.isFetching = true;
+        state.error = false;
+    },
+    updateUserSuccess: (state, action) => {
+      return {
+        ...state,
+        isFetching: false,
+        currentUser: action.payload,
+        error: false,
+      };
+    },
+    updateUserFailure: (state) => {
+        state.isFetching = false;
+        state.error = true;
+    },
+
+      // DELETE USER
+    deleteUserStart: (state) => {
+      state.isFetching = true;
+      state.error = false;
+    },
+    deleteUserSuccess: (state) => {
+      state.isFetching = false;
+      state.currentUser = null; 
+      state.error = false;
+    },
+    deleteUserFailure: (state) => {
+      state.isFetching = false;
+      state.error = true;
+    },    
+
+      //LOGOUT
     logout: (state) => {
       state.currentUser = null;
     },
@@ -30,6 +79,15 @@ export const {
   loginStart, 
   loginSuccess, 
   loginFailure, 
-  logout
+  registerSuccess, 
+  regiterError,
+  logout,
+  registerStart,
+  updateUserStart,
+  updateUserSuccess,
+  updateUserFailure,
+  deleteUserStart,
+  deleteUserFailure,
+  deleteUserSuccess
 } = userSlice.actions;
 export default userSlice.reducer;

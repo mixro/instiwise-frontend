@@ -43,10 +43,10 @@ const Details = () => {
     const MAX_LENGTH = 6;
 
     function truncateText(text, maxLength) {
-    if (text.length <= maxLength) {
-        return text;
-    }
-    return text.slice(0, maxLength) + "...";
+        if (text.length <= maxLength) {
+            return text;
+        }
+        return text.slice(0, maxLength) + "..";
     }
 
   return (
@@ -80,7 +80,7 @@ const Details = () => {
                             ))}
                         </div>
 
-                        <Link to='/lessons' className='link-main'>
+                        <Link to='/ongoinglessons' className='link-main'>
                             <div className="center_display">
                                 <div className="details_bottom">
                                     <p>Explore More</p>
@@ -162,7 +162,7 @@ const Details = () => {
                 </div>
 
                 {Array.isArray(ongoingCourses) && ongoingCourses.length > 0 && 
-                    <Link to='/courses' className='link-main'>
+                    <Link to='/ongoingcourses' className='link-main'>
                         <div className="center_display">
                             <div className="details_bottom">
                                 <p>Explore More</p>
@@ -205,7 +205,7 @@ const Details = () => {
                             ))}
                         </div>
 
-                        <Link to='/lessons' className='link-main'>
+                        <Link to='/upcominglessons' className='link-main'>
                             <div className="center_display">
                                 <div className="details_bottom">
                                     <p>Explore More</p>
@@ -248,7 +248,7 @@ const Details = () => {
                             ))}                    
                         </div>
 
-                        <Link to='/freerooms' className='link-main'>
+                        <Link to='/roomsinuse' className='link-main'>
                             <div className="center_display">
                                 <div className="details_bottom">
                                     <p>Explore More</p>
