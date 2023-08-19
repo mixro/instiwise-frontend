@@ -1,7 +1,7 @@
 import './app.css'
 import Home from "./pages/home/Home";
 import Layout from "./components/layout/Layout";
-import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Rooms from "./pages/rooms/Rooms";
 import Room from './pages/room/Room';
 import Lessons from './pages/lessons/Lessons';
@@ -22,8 +22,7 @@ import Profile from './pages/profile/Profile';
 
 function App() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.currentUser);
-
+  
   useEffect(() => {
     getRooms(dispatch);
     getCourses(dispatch);
