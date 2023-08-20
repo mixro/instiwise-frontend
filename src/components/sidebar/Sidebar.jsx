@@ -1,4 +1,4 @@
-import { Home, MeetingRoom, ChairAlt, Feedback, Book, PlayLesson, Groups2Sharp, ArrowCircleUpSharp, HowToReg, Login} from "@mui/icons-material";
+import { Home, MeetingRoom, ChairAlt, Feedback, Book, PlayLesson, Groups2Sharp, ArrowCircleUpSharp, HowToReg, Login, Today} from "@mui/icons-material";
 import { Link } from 'react-router-dom'
 import './sidebar.css'
 
@@ -44,6 +44,9 @@ const Sidebar = () => {
                         </Link>
                         <Link  className="link" to="/upcominglessons">
                             <li><ArrowCircleUpSharp className="side-icons" />Up Lessons</li>
+                        </Link>                        
+                        <Link  className="link" to="/todayslessons">
+                            <li><Today className="side-icons" />Today's Lessons</li>
                         </Link>                        
                     </ul>
                 </div>

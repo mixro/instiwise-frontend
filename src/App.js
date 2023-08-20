@@ -19,6 +19,7 @@ import OngoingCoursesComp from './pages/ongoingCourses/OngoingCoursesComp';
 import Register from './pages/register/Register';
 import Login from './pages/login/Login';
 import Profile from './pages/profile/Profile';
+import TodaysLessons from './pages/todaysLessons/TodaysLessons';
 
 function App() {
   const dispatch = useDispatch();
@@ -85,6 +86,7 @@ function App() {
                   <Route path="/freerooms" element={<FreeRooms />} />
                   <Route path="/roomsinuse" element={<InuseRooms />} />
                   <Route path="/lessons" element={<Lessons />} />
+                  <Route path="/todayslessons" element={<TodaysLessons />} />
                   <Route path="/lesson/:id" element={<Lesson />} />
                   <Route path="/upcominglessons" element={<UpcomingLessonsComp />} />
                   <Route path="/ongoinglessons" element={<OngoingLessonsComp />} />

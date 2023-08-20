@@ -172,8 +172,8 @@ const Home = () => {
             </div>
             <div className="HEADER_P">
               {upcomingLessons && upcomingLessons.length > 0 
-                ? <p>These are upcoming lessons at today</p>
-                : <p>There is no upcoming lesson at today</p>
+                ? <p>These are upcoming lessons today</p>
+                : <p>There is no upcoming lesson today</p>
               }
             </div>
             <div className="center_dots">
@@ -194,7 +194,7 @@ const Home = () => {
             <div className="HEADER_P">
               {inUseRooms && inUseRooms.length > 0 
                 ? <p>These are rooms in use at the moment</p>
-                : <p>There is no rooms in use at the moment</p>
+                : <p>There is no room in use at the moment</p>
               }
             </div>
             <div className="center_dots">

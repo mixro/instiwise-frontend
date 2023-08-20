@@ -87,7 +87,7 @@ const Register = () => {
                 </div>
                 {error && 
                     <div className="error">
-                        <p>Error occured when trying to login, try again !!</p>
+                        <p>Error occured when trying to register, Try again !!</p>
                     </div>
                 }
                 <div className="registerText">

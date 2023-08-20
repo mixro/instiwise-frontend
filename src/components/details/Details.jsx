@@ -1,6 +1,7 @@
 import './details.css'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux';
+import Table from '../table/Table';
 
 const Details = () => {
     const courses = useSelector((state) => state.courses.courses);
@@ -135,6 +136,22 @@ const Details = () => {
                         <p>No Free Rooms</p>
                     </div>
                 }
+            </div>
+        </div>
+
+        <div className="tableContainer">
+            <div className="tableHeader">
+                <h2>TODAY'S LESSONS</h2>
+            </div>
+            <div className="tableMain">
+                <Table />
+            </div>
+            <div className="center_display">
+                <div className="details_bottom">
+                    <Link to='/todayslessons' className='link-main'>
+                        <p>Explore More Lessons</p>
+                    </Link>
+                </div>
             </div>
         </div>
 

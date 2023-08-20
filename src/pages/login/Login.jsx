@@ -6,7 +6,7 @@ import { login } from '../../redux/apiCalls';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Login = () => {
-    const [username, setUsername] = useState(""); 
+    const [email, setEmail] = useState(""); 
     const [password, setPassword] = useState(""); 
     const navigate = useNavigate();
     const { isFetching, error } = useSelector((state) => state.user);
@@ -14,7 +14,7 @@ const Login = () => {
   
     const handleClick = (e) => {
       e.preventDefault();
-      login(dispatch, { username, password }, navigate);
+      login(dispatch, { email, password }, navigate);
     }
 
   return (
@@ -35,12 +35,12 @@ const Login = () => {
                 <div className="loginBody">
                     <div className="registerItems">
                         <div className="registerBody_item">
-                            <h3>Username</h3>
+                            <h3>Email</h3>
                             <input 
                                 className="login_right_item_input" 
                                 type="text" 
                                 placeholder='John' 
-                                onChange={(e) => setUsername(e.target.value)}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div className="registerBody_item">

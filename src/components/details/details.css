@@ -213,6 +213,22 @@
 
 
 
+    /*------------------ TABLE---------------------*/
+.tableContainer {
+    padding-bottom: 4%;
+}
+
+.tableHeader {
+    padding-bottom: 4%;
+}
+
+.tableHeader h2 {
+    font-weight: 500;
+    font-size: 27px;
+}
+
+
+
     /*---------------KEY FRAMES--------------*/
 @keyframes blink {
     0% {
@@ -339,5 +355,24 @@
     
     .noData_courses {
         min-height: 25vh;
+    }
+
+
+        /*------------------ TABLE---------------------*/
+    .tableContainer {
+        padding-bottom: 40px;
+    }
+
+    .tableMain {
+        padding-bottom: 1%;
+    }
+
+    .tableHeader {
+        padding-bottom: 4%;
+    }
+
+    .tableHeader h2 {
+        font-size: 23px;
+        text-align: center;
     }
 }

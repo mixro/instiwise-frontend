@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Home, MeetingRoom, Search, ChairAlt, DensityMedium, Book, Groups2Sharp, PlayLesson, ArrowCircleUpSharp, Person, Login, HowToReg} from "@mui/icons-material";
+import { Home, MeetingRoom, Search, ChairAlt, DensityMedium, Book, Groups2Sharp, PlayLesson, ArrowCircleUpSharp, Person, Login, HowToReg, Today} from "@mui/icons-material";
 import './topbar.css'
 import { Box, Divider, Drawer, ListItem, List, ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
 import { Link } from "react-router-dom";
@@ -88,6 +88,13 @@ const Navbar = () => {
       icon:<ArrowCircleUpSharp />,
       text:"Upcoming Lessons",
       location:"/upcominglessons",
+    },
+
+    {
+      id:5,
+      icon:<Today />,
+      text:"Today's Lessons",
+      location:"/todayslessons",
     }
   ]
 

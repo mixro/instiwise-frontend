@@ -17,10 +17,80 @@
     -webkit-box-orient: vertical;
 }
 
+.LessonFlex {
+    display: none;
+}
+
+
+@keyframes borderAnimation {
+    0% {
+      border-top: 2px solid transparent;
+      border-right: 2px solid transparent;
+      border-bottom: 2px solid transparent;
+      border-left: 2px solid transparent;
+    }
+    25% {
+      border-top: 2px solid red;
+      border-right: 2px solid transparent;
+      border-bottom: 2px solid transparent;
+      border-left: 2px solid transparent;
+    }
+    50% {
+      border-top: 2px solid red;
+      border-right: 2px solid red;
+      border-bottom: 2px solid transparent;
+      border-left: 2px solid transparent;
+    }
+    75% {
+      border-top: 2px solid red;
+      border-right: 2px solid red;
+      border-bottom: 2px solid red;
+      border-left: 2px solid transparent;
+    }
+    100% {
+      border-top: 2px solid red;
+      border-right: 2px solid red;
+      border-bottom: 2px solid red;
+      border-left: 2px solid red;
+    }
+}
+  
+
 
 
 @media screen and (max-width: 770px) {
     .LESSONS_MAIN {
         justify-content: center;
+    }
+
+    .LessonFlex {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .todaysLesson {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 6px;
+        background: blue;
+        color: white;
+        border-radius: 5px;
+    }
+
+    .todaysLesson p {
+        font-weight: 400;
+    }
+
+    .todaysLesson span, .todaysLesson p {
+        font-size: 14px;
+    }
+
+    .greenColor {
+        background: transparent;
+        color: green;
     }
 }

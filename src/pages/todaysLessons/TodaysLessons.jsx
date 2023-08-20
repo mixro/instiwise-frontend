@@ -1,75 +1,74 @@
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
 import { Search } from '@mui/icons-material'
-import './lessons.css'
 import { useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
-const Lessons = () => {
-  const lessons = useSelector((state) => state.lessons.lessons);
-  const ongoingLessons = useSelector((state) => state.ongoingLessons.ongoingLessons);
-  const upcomingLessons = useSelector((state) => state.upcomingLessons.upcomingLessons);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [currentDay, setCurrentDay] = useState('');
-  const todaysLessons = lessons.filter((lesson) => lesson.day === currentDay);
+const TodaysLessons = () => {
+    const lessons = useSelector((state) => state.lessons.lessons);
+    const ongoingLessons = useSelector((state) => state.ongoingLessons.ongoingLessons);
+    const upcomingLessons = useSelector((state) => state.upcomingLessons.upcomingLessons);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [currentDay, setCurrentDay] = useState('');
+    const todaysLessons = lessons.filter((lesson) => lesson.day === currentDay);
 
+    useEffect(() => {
+        const getDay = () => {
+            const now = new Date();
+            const day = now.toLocaleDateString(undefined, { weekday: 'long' });
 
-  useEffect(() => {
-      const getDay = () => {
-          const now = new Date();
-          const day = now.toLocaleDateString(undefined, { weekday: 'long' });
+            setCurrentDay(day);
+        }
 
-          setCurrentDay(day);
-      }
+        const interval = setInterval(getDay, 1000);
+        getDay();
 
-      const interval = setInterval(getDay, 1000);
-      getDay();
+        return () => clearInterval(interval);
+    }, []);
 
-      return () => clearInterval(interval);
-  }, []);
+    const isLessonOngoing = (day, start, end) => {
+        const now = new Date();
+        const dayOfWeek = now.toLocaleString('en-us', { weekday: 'long' }).toLowerCase();
+    
+        // Check if the current day matches the specified day
+        if (dayOfWeek !== day.toLowerCase()) {
+        return false;
+        }
+        const startTime = new Date(`${now.toDateString()} ${start}`);
+        const endTime = new Date(`${now.toDateString()} ${end}`);
+    
+        return now >= startTime && now <= endTime;
+    };
 
-  const isLessonOngoing = (day, start, end) => {
-    const now = new Date();
-    const dayOfWeek = now.toLocaleString('en-us', { weekday: 'long' }).toLowerCase();
-  
-    // Check if the current day matches the specified day
-    if (dayOfWeek !== day.toLowerCase()) {
-      return false;
-    }
-    const startTime = new Date(`${now.toDateString()} ${start}`);
-    const endTime = new Date(`${now.toDateString()} ${end}`);
-  
-    return now >= startTime && now <= endTime;
-  };
+    // Function to handle the search input change
+    const handleSearchInputChange = (event) => {
+        setSearchQuery(event.target.value);
+    };
 
-  // Function to handle the search input change
-  const handleSearchInputChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
+    // Function to filter the lessons based on the search query
+    const filteredLessons = Array.isArray(todaysLessons) && todaysLessons.filter((lesson) => {
+        const lessonName = lesson.name.toLowerCase();
+        const roomName = lesson.roomId.roomName.toLowerCase();
+        const courseName = lesson.courseId.name.toLowerCase();
+        const day = lesson.day.toLowerCase();
+        const lecturer = lesson.lecturer.toLowerCase();
 
-  // Function to filter the lessons based on the search query
-  const filteredLessons = Array.isArray(lessons) && lessons.filter((lesson) => {
-    const lessonName = lesson.name.toLowerCase();
-    const roomName = lesson.roomId.roomName.toLowerCase();
-    const courseName = lesson.courseId.name.toLowerCase();
-    const day = lesson.day.toLowerCase();
-    const lecturer = lesson.lecturer.toLowerCase();
-
-    const query = searchQuery.toLowerCase();
-    return (
-      lessonName.includes(query) ||
-      roomName.includes(query) ||
-      courseName.includes(query) ||
-      day.includes(query) ||
-      lecturer.includes(query)
-    );
-  });
+        const query = searchQuery.toLowerCase();
+        return (
+        lessonName.includes(query) ||
+        roomName.includes(query) ||
+        courseName.includes(query) ||
+        day.includes(query) ||
+        lecturer.includes(query)
+        );
+    });
 
   return (
     <div className="RoomsContainer">
       <div className="room-wrapper">
         <div className="room-left LESSONS_LEFT">
           <div className="room_header">
-            <h1>Institute Lessons</h1>
+            <h1>Today's Lessons ({todaysLessons.length})</h1>
             <div className="input_search">
               <input type='text'
                 placeholder='Search Lesson'
@@ -83,8 +82,8 @@ const Lessons = () => {
           </div>
           
           <div className="SMALLSCREEN">
-            <div className="small_room_header small_font ">
-                <h1>Lessons</h1>
+            <div className="small_room_header small_font smallest_font">
+                <h1>Today's Lessons ({todaysLessons.length})</h1>
                 <div className="input_search">
                     <input type='text'
                         placeholder='Search Lesson'
@@ -109,7 +108,7 @@ const Lessons = () => {
                   <p>{window.innerWidth >= 770 ? "These are ongoing lessons right now, each with its start and end time. Explore to learn more" : "These are ongoing lessons at the moment"}</p>
                 </div>
                 <div className="center_display">
-                    <div className="details_bottom greenColor">
+                    <div className="details_bottom">
                         <p>Explore</p>
                     </div>
                 </div>
@@ -125,17 +124,17 @@ const Lessons = () => {
                   <p>{window.innerWidth >= 770 ? "These are today's upcoming lessons, each following its designated start and end times." : "These are upcoming lessons today"}</p>
                 </div>
                 <div className="center_display">
-                    <div className="details_bottom greenColor">
+                    <div className="details_bottom">
                         <p>Explore</p>
                     </div>
                 </div>
               </div>
             </Link>            
-            <Link to='/todayslessons' className='link-main CATER_DEX three_div_item NODISPLAY_ONSMALL'>
+            <Link to='/lessons' className='link-main CATER_DEX three_div_item NODISPLAY_ONSMALL'>
               <div className="Category_item">
                   <div className="details_item_header Category_item_header LESSONS_HEADER">
-                      <p>TODAY'S LESSONS</p>
-                      <span>{todaysLessons && todaysLessons.length}</span>
+                      <p>ALL LESSONS</p>
+                      <span>{lessons && lessons.length}</span>
                   </div>
                 <div className="category_desc">
                   <p>Explore a diverse range of institute lessons, designed to inspire and empower learners of all levels</p>
@@ -149,18 +148,8 @@ const Lessons = () => {
             </Link>            
           </div>
 
-          <div className="search_results gray_color LARGESCREEN">
+          <div className="search_results gray_color">
             <p>{filteredLessons.length} <span>Search Results</span></p>
-          </div>
-
-          <div className="search_results gray_color LessonFlex">
-            <p>{filteredLessons.length} <span>Results</span></p>
-            <Link to='/todayslessons' className='link-main'>
-              <div className="todaysLesson">
-                <p>Today's Lessons</p>
-                <span> ({todaysLessons.length})</span>
-              </div>
-            </Link>
           </div>
 
           <div className="LESSONS_MAIN">
@@ -188,7 +177,7 @@ const Lessons = () => {
                           </Link>
                       ))
                   :   <div className="NODATA_COMP">
-                          <h1>NO LESSONS</h1>
+                          <h1>NO LESSONS TODAY</h1>
                       </div>
               }
           </div>
@@ -198,4 +187,4 @@ const Lessons = () => {
   )
 }
 
-export default Lessons
+export default TodaysLessons
