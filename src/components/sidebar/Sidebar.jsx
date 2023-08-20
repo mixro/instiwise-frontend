@@ -31,7 +31,7 @@ const Sidebar = () => {
                     </ul>
                 </div>
 
-                <div className={"centerSection"}>
+                <div className="centerSection">
                     <ul>
                         <Link  className="link" to="/freerooms">
                             <li><ChairAlt className="side-icons" />Free rooms</li>
@@ -51,12 +51,12 @@ const Sidebar = () => {
                     </ul>
                 </div>
 
-                <div className={"centerSection"}>
+                <div className="centerSection">
                     <ul>
-                        <Link  className="link" to="/register">
+                        <Link  className="link" to="/login">
                             <li><HowToReg className="side-icons" />Login</li>
                         </Link>
-                        <Link  className="link" to="/login">
+                        <Link  className="link" to="/register">
                             <li><Login className="side-icons" />Register</li>
                         </Link>
                         <Link  className="link" to="/">

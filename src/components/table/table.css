@@ -73,12 +73,17 @@
 
     .datagrid_small {
         display: block;
+        border-radius: 4px;
         overflow-x: scroll;
-        max-height: 100vw;
+        border: 1px solid #b30631;
     }
 
     .datagrid_large_auto {
         height: fit-content;
         padding-right: 0;
+    }
+
+    .productListItem {
+        font-weight: 500;
     }
 }

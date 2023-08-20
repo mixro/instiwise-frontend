@@ -52,7 +52,7 @@
 .centerSection ul li {
     justify-content: flex-start;
     display: flex;
-    gap: 15px;
+    gap: 6px;
     width: 100%;
     margin: 5px;
     padding: 5px 8px;

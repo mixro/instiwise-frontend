@@ -39,7 +39,7 @@ const Login = () => {
                             <input 
                                 className="login_right_item_input" 
                                 type="text" 
-                                placeholder='John' 
+                                placeholder='johndoe32@gmail.com' 
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
