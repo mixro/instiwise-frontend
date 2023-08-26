@@ -10,6 +10,7 @@ import ongoingLessons from "./ongoingLessons";
 import upcomingLessons from "./upcomingLessons";
 import roomsInUse from "./roomsInUse";
 import userRedux from "./userRedux";
+import postsRedux from "./postsRedux";
 
 const persistConfig = {
   key: "root",
@@ -18,12 +19,13 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  courses: coursesRedux,
-  lessons: lessonsRedux,
   user: userRedux,
   rooms: roomsRedux,
   freeRooms: freeRooms,
+  lessons: lessonsRedux,
+  courses: coursesRedux,
   inUseRooms: roomsInUse,
+  posts: postsRedux,
   ongoingCourses: ongoingCourses,
   ongoingLessons: ongoingLessons,
   upcomingLessons: upcomingLessons,

@@ -20,6 +20,9 @@ import Register from './pages/register/Register';
 import Login from './pages/login/Login';
 import Profile from './pages/profile/Profile';
 import TodaysLessons from './pages/todaysLessons/TodaysLessons';
+import Ditso from './pages/ditso/Ditso';
+import NewPost from './pages/newPost/NewPost';
+import EditPost from './pages/editPost/EditPost';
 
 function App() {
   const dispatch = useDispatch();
@@ -94,6 +97,9 @@ function App() {
                   <Route path="/course/:id" element={<Course />} />
                   <Route path="/ongoingcourses" element={<OngoingCoursesComp />} />
                   <Route path="/profile" element={<Profile />} />
+                  <Route path="/ditso" element={<Ditso />} />
+                  <Route path="/newpost" element={<NewPost />} />
+                  <Route path="/post/:id" element={<EditPost />} />
                 </Routes>
               </Layout>
             }

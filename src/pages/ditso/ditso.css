@@ -1,0 +1,400 @@
+.ditsoContainer {
+    width: 100%;
+    padding: 0 0 4%;
+}
+
+.ditsoWrapper {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 4%;
+}
+
+.ditsoLeft {
+    flex-basis: 63%;
+    padding-left: 1%;
+}
+
+.ditsoBackground {
+    width: 100%;
+}
+
+.ditsoBackground img {
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    aspect-ratio: 5/1.1;
+}
+
+.ditsoTop {
+    display: flex;
+    gap: 4%;
+    padding: 0 4%;
+}
+
+.ditsoImage {
+    width: 170px;
+    height: 120px;
+}
+
+.ditsoImage img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: 5px solid white;
+    transform: translateY(-50px);
+}
+
+.ditsoName {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-bottom: 1%;
+}
+
+.ditsoName h1 {
+    font-weight: 600;
+}
+
+.socialIcons {
+    display: flex;
+    align-items: center;
+    gap: 6%;
+}
+
+.socialIcons_Small {
+    display: none;
+}
+
+.socialIcons_item {
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    padding: 3px;
+    border-radius: 5px;
+    border: 2px solid rgb(64, 64, 64);
+}
+
+.socialIcons_item:hover {
+    border: 2px solid red;
+}
+
+.ditsoDesc_Container {
+    display: flex;
+    align-items: flex-end;
+}
+
+.ditsoDesc {
+    padding: 3% 0 0 4%;
+    flex-basis: 80%;
+}
+
+.BOLD {
+    font-weight: 600;
+}
+
+.ditsoButtons_Container {
+    display: flex;
+    align-items: center;
+    gap: 4%;
+    padding-top: 1.5%;
+}
+
+.ditsoDesc_buttons {
+    border: 2px solid black;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.ditsoDesc_buttons:hover {
+    background: gray;
+    color: white;
+}
+
+.ditsoDesc_buttons p {
+    font-size: 15px;
+}
+
+.postCreate_Button {
+    flex-basis: 19%;
+}
+
+.createButton {
+    border: 2px solid transparent;
+    padding: 3px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.createButton:hover {
+    border: 2px solid blue;
+}
+
+.postCreate_Button button {
+    width: 100%;
+    border-radius: 5px;
+    color: white;
+    background: green;
+    padding: 5px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+}
+
+    /* posts */
+.ditsoPost {
+    padding: 5% 0;
+}
+
+.ditsoPost_top {
+    margin-bottom: 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ditsoPost h1 {
+    text-align: center;
+}
+
+.ditsoPost_search {
+    flex-basis: 40%;
+}
+
+.ditsoSearch {
+    display: flex;
+    border: 1px solid red;
+    border-radius: 5px;
+    padding: 2px;
+    padding-left: 3%;
+}
+
+.Search_Icon {
+    background: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 5px;
+    color: white;
+}
+
+.ditsoSearch input {
+    flex: 1;
+    border: 0;
+    outline: none;
+    font-size: 16px;
+}
+
+
+
+
+
+    /* ditso right */
+.ditsoRight {
+    flex-basis: 33%;
+    position: sticky;
+    top: 60px;
+    height: calc(100vh - 60px);
+    margin-top: 2.5%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.ditsoRight::-webkit-scrollbar {
+    display: none;
+}
+
+.ditsoRight_top {
+    padding-bottom: 4%;
+    height: fit-content;
+    position: sticky;
+    top: 0px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ditsoRight_top h1 {
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.announcement {
+    padding-top: 2%;
+    padding-left: 3%;
+}
+
+.announcement_item {
+    border: 1px solid red;
+    border-radius: 5px;
+    padding: 2%;
+    margin-bottom: 15px;
+    background: rgb(242, 242, 242);
+}
+
+
+
+
+
+@media screen and (max-width: 770px) {
+    .ditsoPost {
+        padding: 58px 0 5%;
+    }
+
+    .ditsoBackground img {
+        aspect-ratio: 5/2;
+    }
+
+    .ditsoLeft {
+        padding-left: 0;
+    }
+
+    .ditsoImage {
+        width: 83px;
+        height: 50px;
+    }
+    
+    .ditsoImage img {
+        transform: translateY(-30px);
+    }
+
+    .ditsoName h1 {
+        font-size: 17px;
+    }
+
+    .socialIcons {
+        display: none;
+    }
+
+    .socialIcons_Small {
+        display: flex;
+        align-items: center;
+        gap: 6%;
+        padding-top: 4%;
+    }
+
+    .ditsoDesc {
+        padding: 3% 0 0 0;
+        flex-basis: 100%;
+        width: 100%;
+    }
+
+    .ditsoDesc_Container {
+        padding-top: 3%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .BOLD {
+        margin-bottom: 10px;
+    }
+
+    .ditsoButtons_Container {
+        padding-top: 4%;
+        overflow-x: scroll;
+        scrollbar-width: none;
+        width: 100%;
+        display: none;
+    }
+
+    .ditsoButtons_Container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .ditsoDesc_buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid gray;
+    }
+
+    .ditsoDesc_buttons p {
+        white-space: nowrap;
+    }
+
+        /* ditso wrapper */
+    .ditsoWrapper {
+        flex-direction: column;
+    }
+
+    .postCreate_Button {
+        padding-top: 4%;
+    }
+
+    .ditsoPost_top {
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 3%;
+    }
+
+    .ditsoPostHeader {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .ditsoPost_top h1 {
+        text-align: center;
+        margin-bottom: 4%;
+        font-weight: 500;
+        color: rgb(32, 32, 32);
+    }
+
+    .ditsoPost_search {
+        width: 100%;
+        flex-basis: 100%;
+        display: flex;
+        gap: 2%;
+        justify-content: space-between;
+    }
+
+    .postSortingIcon {
+        border: 1px solid black;
+        background: whitesmoke;
+        border-radius: 5px;
+        padding: 0 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ditsoSearch {
+        width: auto;
+        flex: 1;
+    }
+
+    .Search_Icon {
+        padding: 8px;
+    }
+
+    .socialIcons_item {
+        background: rgb(64, 64, 64);
+    }
+
+    .postCreate_Button {
+        flex-basis: 100%;
+        width: 100%;
+    }
+
+    .postCreate_Button button {
+        padding: 8px;
+    }
+
+    .ditsoSearch input {
+        font-size: 18px;
+    }
+
+    .ditsoRight {
+        display: none;
+    }
+}

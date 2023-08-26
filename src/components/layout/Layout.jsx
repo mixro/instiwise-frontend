@@ -38,7 +38,7 @@ const Layout = ({children}) => {
                         <BottomNavigationAction component={Link} to="/" value="" label="Home" icon={<Home />} />                    
                         <BottomNavigationAction component={Link} to="/lessons" label="Lessons" value="search" icon={<EventNote />} />
                         <BottomNavigationAction component={Link} to="/rooms" label="Rooms" value="projects" icon={<MeetingRoom />} />
-                        <BottomNavigationAction component={Link} to="/courses" value="events" label="Courses" icon={<Book />} />
+                        <BottomNavigationAction component={Link} to="/ditso" value="events" label="Dtso" icon={<Book />} />
                         <BottomNavigationAction component={Link} to="/profile" value="profile" label="Profile" icon={<Person />} />
                     </BottomNavigation>
                 </Paper>

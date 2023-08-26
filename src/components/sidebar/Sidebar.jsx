@@ -59,8 +59,8 @@ const Sidebar = () => {
                         <Link  className="link" to="/register">
                             <li><Login className="side-icons" />Register</li>
                         </Link>
-                        <Link  className="link" to="/">
-                            <li><Feedback className="side-icons" />Feedback</li>
+                        <Link  className="link" to="/ditso">
+                            <li><Feedback className="side-icons" />Ditso</li>
                         </Link>
                     </ul>
                 </div>

@@ -35,7 +35,7 @@ main {
 }
 
 .main-body {
-    padding: 10px 2% 10px 3%;
+    padding: 10px 1.5% 10px;
 }
 
 .children {
@@ -78,6 +78,10 @@ main {
         position: sticky;
         z-index: 999;
         background: rgb(255, 255, 255);
+    }
+
+    .main-body {
+        padding: 10px 2% 10px 3%;
     }
 }
 

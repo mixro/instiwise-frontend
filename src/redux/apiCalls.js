@@ -4,6 +4,7 @@ import { getFreeRoomsFailure, getFreeRoomsStart, getFreeRoomsSuccess } from "./f
 import { getLessonsFailure, getLessonsStart, getLessonsSuccess } from "./lessonsRedux";
 import { getOngoingCoursesFailure, getOngoingCoursesStart, getOngoingCoursesSuccess } from "./ongoingCourses";
 import { getOngoingLessonsFailure, getOngoingLessonsStart, getOngoingLessonsSuccess } from "./ongoingLessons";
+import { addPostFailure, addPostStart, addPostSuccess, deletePostFailure, deletePostStart, deletePostSuccess, getPostFailure, getPostStart, getPostSuccess, updatePostFailure, updatePostStart, updatePostSuccess } from "./postsRedux";
 import { getInUseRoomsFailure, getInUseRoomsStart, getInUseRoomsSuccess } from "./roomsInUse";
 import { getRoomsFailure, getRoomsStart, getRoomsSuccess } from "./roomsRedux";
 import { getUpcomingLessonsFailure, getUpcomingLessonsStart, getUpcomingLessonsSuccess } from "./upcomingLessons";
@@ -142,5 +143,48 @@ export const getUpcomingLessons = async (dispatch, data) => {
     dispatch(getUpcomingLessonsSuccess(data));
   } catch(err) {
     dispatch(getUpcomingLessonsFailure());
+  }
+}
+
+//POSTS
+export const getPosts = async (dispatch) => {
+  dispatch(getPostStart());
+  try {
+    const res = await publicRequest.get("/posts");
+    dispatch(getPostSuccess(res.data));
+  } catch(err) {
+    dispatch(getPostFailure());
+  }
+}
+
+export const deletePost = async (id, dispatch) => {
+  dispatch(deletePostStart());
+  try {
+    console.log(id);
+    await userRequest.delete(`/posts/${id}`);
+    dispatch(deletePostSuccess(id));
+  } catch(err) {
+    dispatch(deletePostFailure());
+  }
+}
+
+export const updatePost = async (id, dispatch, post) => {
+  dispatch(updatePostStart());
+  try {
+    const res = await userRequest.put(`/posts/${id}`, post);
+    const updatedPost = res.data;
+    dispatch(updatePostSuccess({id, updatedPost }));
+  } catch(err) {
+    dispatch(updatePostFailure());
+  }
+}
+
+export const addPost = async (post, dispatch) => {
+  dispatch(addPostStart());
+  try {
+    const res = await userRequest.post(`/posts`, post);
+    dispatch(addPostSuccess(res.data));
+  } catch(err) {
+    dispatch(addPostFailure());
   }
 }

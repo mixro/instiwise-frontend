@@ -212,7 +212,7 @@ const Details = () => {
                                             <p>{lesson.courseId && truncateText(lesson.courseId.name, MAX_LENGTH)}</p>
                                         </div>
                                         <div className="details_body_desc">
-                                            <h1>{lesson.namae}</h1>
+                                            <h1>{lesson.name}</h1>
                                             <p>start: <span>{lesson.start}</span></p>
                                             <p>End: <span>{lesson.end}</span></p>
                                             <p>Time Untill start: <span>{calculateTimeUntilStart(lesson.start)}</span></p>
