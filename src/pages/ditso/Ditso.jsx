@@ -9,6 +9,7 @@ import { getPosts } from '../../redux/apiCalls';
 const Ditso = () => {
     const dispatch = useDispatch();
     const posts = useSelector((state) => state.posts.posts);
+    const admin = useSelector((state) => state.user.currentUser?.isAdmin);
 
     useEffect(() => {
         getPosts(dispatch);
@@ -80,13 +81,15 @@ const Ditso = () => {
                         </div>  
                     </div>   
                 </div>
-                <div className="postCreate_Button">
-                    <div className="createButton">
-                        <Link to="/newpost" className="link-main">
-                            <button>CREATE POST</button>
-                        </Link>
+                {admin && 
+                    <div className="postCreate_Button">
+                        <div className="createButton">
+                            <Link to="/newpost" className="link-main">
+                                <button>CREATE POST</button>
+                            </Link>
+                        </div>
                     </div>
-                </div>
+                }
             </div>
         </div>
         <div className="ditsoWrapper">

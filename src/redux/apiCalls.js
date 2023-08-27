@@ -4,7 +4,7 @@ import { getFreeRoomsFailure, getFreeRoomsStart, getFreeRoomsSuccess } from "./f
 import { getLessonsFailure, getLessonsStart, getLessonsSuccess } from "./lessonsRedux";
 import { getOngoingCoursesFailure, getOngoingCoursesStart, getOngoingCoursesSuccess } from "./ongoingCourses";
 import { getOngoingLessonsFailure, getOngoingLessonsStart, getOngoingLessonsSuccess } from "./ongoingLessons";
-import { addPostFailure, addPostStart, addPostSuccess, deletePostFailure, deletePostStart, deletePostSuccess, getPostFailure, getPostStart, getPostSuccess, updatePostFailure, updatePostStart, updatePostSuccess } from "./postsRedux";
+import { addPostFailure, addPostStart, addPostSuccess, deletePostFailure, deletePostStart, deletePostSuccess, dislikePost, getPostFailure, getPostStart, getPostSuccess, likePost, updatePostFailure, updatePostStart, updatePostSuccess } from "./postsRedux";
 import { getInUseRoomsFailure, getInUseRoomsStart, getInUseRoomsSuccess } from "./roomsInUse";
 import { getRoomsFailure, getRoomsStart, getRoomsSuccess } from "./roomsRedux";
 import { getUpcomingLessonsFailure, getUpcomingLessonsStart, getUpcomingLessonsSuccess } from "./upcomingLessons";
@@ -188,3 +188,23 @@ export const addPost = async (post, dispatch) => {
     dispatch(addPostFailure());
   }
 }
+
+//LIKE POST
+export const addLike = async (userId, postId, dispatch) => {
+  try {
+      dispatch(likePost({ userId, postId })); 
+      await userRequest.put(`/posts/${postId}/like`);
+  } catch (err) {
+      console.log(err);
+  }
+};
+
+//DISLIKE POST
+export const addDislike = async (userId, postId, dispatch) => {
+  try {
+      dispatch(dislikePost({ userId, postId })); 
+      await userRequest.put(`/posts/${postId}/dislike`);
+  } catch (err) {
+      console.log(err);
+  }
+};

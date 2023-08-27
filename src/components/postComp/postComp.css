@@ -99,7 +99,7 @@
 
 @media screen and (max-width: 770px) {
     .postContainer {
-        padding: 4% 1.5%;
+        padding: 4% 1.5% 4% 2%;
     }
 
     .postUser_profile {

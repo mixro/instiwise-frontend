@@ -71,7 +71,53 @@ export const postSlice = createSlice({
             state.posts = [];
             state.isFetching = false;
             state.error = false;
-        }
+        },
+
+        // LIKE
+        likePost: (state, action) => {
+            const postIndex = state.posts.findIndex((item) => item._id === action.payload.postId);
+            if (postIndex !== -1) {
+                const post = state.posts[postIndex];
+                const userIdIndex = post.likes.indexOf(action.payload.userId);
+
+                if (userIdIndex === -1) {
+                    // User hasn't liked the post, so push userId into likes array
+                    post.likes.push(action.payload.userId);
+                } else {
+                    // User has already liked the post, so remove userId from likes array
+                    post.likes.splice(userIdIndex, 1);
+                }
+
+                // Remove userId from dislikes array if it exists
+                const userIdInDislikes = post.dislikes.indexOf(action.payload.userId);
+                if (userIdInDislikes !== -1) {
+                    post.dislikes.splice(userIdInDislikes, 1);
+                }
+            }
+        },
+
+        // DISLIKE
+        dislikePost: (state, action) => {
+            const postIndex = state.posts.findIndex((item) => item._id === action.payload.postId);
+            if (postIndex !== -1) {
+                const post = state.posts[postIndex];
+                const userIdIndex = post.dislikes.indexOf(action.payload.userId);
+
+                if (userIdIndex === -1) {
+                    // User hasn't disliked the post, so push userId into dislikes array
+                    post.dislikes.push(action.payload.userId);
+                } else {
+                    // User has already disliked the post, so remove userId from dislikes array
+                    post.dislikes.splice(userIdIndex, 1);
+                }
+
+                // Remove userId from likes array if it exists
+                const userIdInLikes = post.likes.indexOf(action.payload.userId);
+                if (userIdInLikes !== -1) {
+                    post.likes.splice(userIdInLikes, 1);
+                }
+            }
+        },
     }
 });
 
@@ -88,7 +134,9 @@ export const {
     addPostFailure,
     addPostSuccess,
     addPostStart,
-    clearPosts
+    clearPosts,
+    likePost,
+    dislikePost
 } = postSlice.actions;
 
 export default postSlice.reducer;

@@ -4,14 +4,15 @@ import { useState } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
-import { MoreVert, Share, ThumbDown, ThumbUp, Visibility } from '@mui/icons-material';
-import { deletePost } from '../../redux/apiCalls';
-import { useDispatch } from 'react-redux';
+import { MoreVert, Share, ThumbDown, ThumbDownOutlined, ThumbUp, ThumbUpOutlined, Visibility } from '@mui/icons-material';
+import { addDislike, addLike, deletePost } from '../../redux/apiCalls';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
   
 const ITEM_HEIGHT = 48;
 
 const PostComp = ({ post }) => {
+    const userId = useSelector((state) => state.user.currentUser._id);
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const dispatch = useDispatch();
@@ -27,6 +28,14 @@ const PostComp = ({ post }) => {
     const handleDelete = (id) => {
         deletePost(id, dispatch);
     };
+
+    const handleLike = (postId) => {
+        addLike(userId, postId, dispatch);
+    }
+
+    const handleDislike = (postId) => {
+        addDislike(userId, postId, dispatch);
+    }
 
   return (
     <div className="postContainer">
@@ -91,19 +100,27 @@ const PostComp = ({ post }) => {
             }
             <div className="postReactions">
                 <div className="postReaction_item">
-                    <Visibility sx={{fontSize: 26}} />
+                    <Visibility sx={{fontSize: {xs: 24, sm: 26}}} />
                     <p>{post.views.length} <span>Views</span></p>
                 </div>
                 <div className="postReaction_item">
-                    <ThumbUp sx={{fontSize: 26}} />
+                    {post.likes.includes(userId) ? (
+                        <ThumbUp onClick={() => handleLike(post._id)} sx={{ fontSize: { xs: 24, sm: 26 } }} />
+                    ) : (
+                        <ThumbUpOutlined onClick={() => handleLike(post._id)} sx={{ fontSize: { xs: 24, sm: 26 } }} />
+                    )}
                     <p>{post.likes.length} <span>Likes</span></p>
                 </div>
                 <div className="postReaction_item">
-                    <ThumbDown sx={{fontSize: 26}} />
+                    {post.dislikes.includes(userId) ? (
+                        <ThumbDown onClick={() => handleDislike(post._id)} sx={{ fontSize: { xs: 24, sm: 26 } }} />
+                    ) : (
+                        <ThumbDownOutlined onClick={() => handleDislike(post._id)} sx={{ fontSize: { xs: 24, sm: 26 } }} />
+                    )}
                     <p>{post.dislikes.length} <span>Dislikes</span></p>
                 </div>
                 <div className="postReaction_item">
-                    <Share sx={{fontSize: 26}} />
+                    <Share sx={{fontSize: {xs: 24, sm: 26}}} />
                     <p><span>Share</span></p>
                 </div>
             </div>

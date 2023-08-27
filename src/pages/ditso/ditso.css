@@ -337,7 +337,7 @@
     }
 
     .ditsoPostHeader {
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: space-between;
         width: 100%;
@@ -385,9 +385,17 @@
         flex-basis: 100%;
         width: 100%;
     }
+    .createButton {
+        border: none;
+        padding: 0;
+    }
+    
+    .createButton:hover {
+        border: none;
+    }
 
     .postCreate_Button button {
-        padding: 8px;
+        padding: 10px;
     }
 
     .ditsoSearch input {
