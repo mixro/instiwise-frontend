@@ -352,7 +352,6 @@
 
     .ditsoPost_search {
         width: 100%;
-        flex-basis: 100%;
         display: flex;
         gap: 2%;
         justify-content: space-between;
@@ -378,7 +377,10 @@
     }
 
     .socialIcons_item {
-        background: rgb(64, 64, 64);
+        background: rgb(226, 226, 226);
+        color: black;
+        padding: 5px;
+        border: 1px solid rgb(155, 155, 155);
     }
 
     .postCreate_Button {

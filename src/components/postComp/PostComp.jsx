@@ -41,7 +41,7 @@ const PostComp = ({ post }) => {
     <div className="postContainer">
         <div className="postTop">
             <div className="postUser_profile">
-                <img src='/assets/ditso.png' alt='PR' />
+                <img src='/assets/profile.jpeg' alt='PR' />
             </div>
             <div className="postUser_info">
                 <div className="postUserInfo_item">

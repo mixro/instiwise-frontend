@@ -51,7 +51,7 @@ const Ditso = () => {
             <div className="ditsoDesc_Container">
                 <div className="ditsoDesc">
                     <p className='BOLD'>DT Students Organization</p>
-                    <p className='smallWidth'>This is students orgaziton at Dar es salaam Institute toiortioirtioio roitirtoi of technology, aims to represent students in institute adminstration </p>
+                    <p className='smallWidth'>The DIT student organization fosters student engagement, enhancing academic and social experiences through events, leadership development, and community building.</p>
                     <div className="socialIcons_Small SMALLSCREEN">
                         <div className="socialIcons_item">
                             <Facebook sx={{ fontSize: 24 }} />
