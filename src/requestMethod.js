@@ -13,6 +13,3 @@ export const userRequest = axios.create({
     baseURL: BASE_URL,
     headers: { token: `Bearer ${TOKEN}` },
 })
-
-
-/*url: 1. "http://localhost:8800", "https://instiwise-backend.onrender.com"*/
