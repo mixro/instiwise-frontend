@@ -20,12 +20,12 @@ const Ditso = () => {
         <div className="Above">
             <div className="ditsoProfile">
                 <div className="ditsoBackground">
-                    <img src='/assets/background.jpg' alt='BACKGROUND PROFILE' />
+                    <img src='/assets/cover.jpeg' alt='BACKGROUND PROFILE' />
                 </div>
             </div>
             <div className="ditsoTop">
                 <div className="ditsoImage">
-                    <img src='/assets/ditso.png' alt='DITSO LOGO' />
+                    <img src='/assets/profile.jpeg' alt='DITSO LOGO' />
                 </div>
                 <div className="ditsoName">
                     <h1>DT STUDENTS ORGANIZATION</h1>
@@ -111,11 +111,12 @@ const Ditso = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="postDitsoContainer">
-                        {posts.map((post) => (
-                            <PostComp key={post._id} post={post} />
-                        ))}
-                    </div>    
+                    {posts
+                        .slice() // Create a copy of the array to avoid modifying the original array
+                        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Sort by createdAt in descending order
+                        .map((post) => (
+                        <PostComp key={post._id} post={post} />
+                    ))}
                 </div>
             </div>                                         
             <div className="ditsoRight">
