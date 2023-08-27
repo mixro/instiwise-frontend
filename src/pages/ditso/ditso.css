@@ -370,7 +370,7 @@
 
     .ditsoSearch {
         width: auto;
-        flex: 1;
+        flex: auto;
     }
 
     .Search_Icon {
