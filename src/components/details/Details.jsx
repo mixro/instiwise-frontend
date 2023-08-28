@@ -10,6 +10,8 @@ const Details = () => {
     const ongoingLessons = useSelector((state) => state.ongoingLessons.ongoingLessons);
     const ongoingCourses = useSelector((state) => state.ongoingCourses.ongoingCourses);
     const upcomingLessons = useSelector((state) => state.upcomingLessons.upcomingLessons);
+    
+  const lessons = useSelector((state) => state.lessons.lessons);
 
     const calculateRemainingTime = (end) => {
         const now = new Date();
@@ -139,7 +141,7 @@ const Details = () => {
             </div>
         </div>
 
-        <div className="tableContainer">
+        {Array.isArray(lessons) && <div className="tableContainer">
             <div className="tableHeader">
                 <h2>TODAY'S LESSONS</h2>
             </div>
@@ -153,7 +155,7 @@ const Details = () => {
                     </Link>
                 </div>
             </div>
-        </div>
+        </div>}
 
         <div className="details_grid">
             <div className="grid_left">
