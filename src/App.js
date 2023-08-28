@@ -11,7 +11,7 @@ import Lesson from './pages/lesson/Lesson';
 import FreeRooms from './pages/freeRooms/FreeRooms';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getCourses, getFreeRooms, getInUseRooms, getLessons, getOngoingCourse, getOngoingLessons, getRooms, getUpcomingLessons } from './redux/apiCalls';
+import { getCourses, getFreeRooms, getInUseRooms, getLessons, getOngoingCourse, getOngoingLessons, getPosts, getRooms, getUpcomingLessons } from './redux/apiCalls';
 import InuseRooms from './pages/roomsInUse/InuseRooms';
 import OngoingLessonsComp from './pages/ongoingLessons/OngoingLessonsComp';
 import UpcomingLessonsComp from './pages/upcomingLessons/UpcomingLessonsComp';
@@ -23,6 +23,7 @@ import TodaysLessons from './pages/todaysLessons/TodaysLessons';
 import Ditso from './pages/ditso/Ditso';
 import NewPost from './pages/newPost/NewPost';
 import EditPost from './pages/editPost/EditPost';
+import Posts from './pages/post/Posts';
 
 function App() {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ function App() {
   
     const sse = new EventSource("https://instiwise-backend.onrender.com/sse");
 
-    sse.onopen = (event) => {
+    sse.onopen = () => {
       console.log("SSE connection opened");
     };
 
@@ -60,9 +61,24 @@ function App() {
       if (data.ongoingCourses) {
         getOngoingCourse(dispatch, data.ongoingCourses);
       }
-    };
 
-    // Clean up the socket on component unmount
+      if (data.posts) {
+        getPosts(dispatch, data.posts);
+      }
+
+      if (data.lessons) {
+        getLessons(dispatch, data.lessons)
+      }
+
+      if (data.rooms) {
+        getRooms(dispatch, data.rooms)
+      }
+
+      if (data.courses) {
+        getCourses(dispatch, data.courses)
+      }
+    };
+    
     return () => {
       sse.close();
     };
@@ -100,6 +116,7 @@ function App() {
                   <Route path="/ditso" element={<Ditso />} />
                   <Route path="/newpost" element={<NewPost />} />
                   <Route path="/post/:id" element={<EditPost />} />
+                  <Route path="/posts" element={<Posts />} />
                 </Routes>
               </Layout>
             }

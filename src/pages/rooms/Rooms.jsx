@@ -140,7 +140,7 @@ const Rooms = () => {
                           </div>
                       ))
                   :   <div className="NODATA_COMP">
-                          <h1>NO ROOMS IN USE AT THE MOMENT</h1>
+                          <h1>NO ROOMS FOUND</h1>
                       </div>
               }
           </div>

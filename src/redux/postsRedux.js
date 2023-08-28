@@ -118,6 +118,14 @@ export const postSlice = createSlice({
                 }
             }
         },
+
+        // VIEW
+        viewPost: (state, action) => {
+            const postIndex = state.posts.findIndex((item) => item._id === action.payload.postId);
+            if (postIndex !== -1) {
+                state.posts[postIndex].views.push(action.payload.userId);
+            }
+        },
     }
 });
 
@@ -136,7 +144,8 @@ export const {
     addPostStart,
     clearPosts,
     likePost,
-    dislikePost
+    dislikePost,
+    viewPost
 } = postSlice.actions;
 
 export default postSlice.reducer;

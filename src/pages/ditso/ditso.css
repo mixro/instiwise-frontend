@@ -242,6 +242,10 @@
     background: rgb(242, 242, 242);
 }
 
+.noPost {
+    height: 40vh;
+}
+
 
 
 
@@ -249,6 +253,10 @@
 @media screen and (max-width: 770px) {
     .ditsoPost {
         padding: 58px 0 5%;
+    }
+
+    .postMain_Ditso {
+        padding: 20px 0 5%;
     }
 
     .ditsoBackground img {
@@ -370,7 +378,7 @@
 
     .ditsoSearch {
         width: auto;
-        flex: 1;
+        flex: auto;
     }
 
     .Search_Icon {
@@ -407,5 +415,51 @@
 
     .ditsoRight {
         display: none;
+    }
+
+    .postSearch_Bar {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .postSearchBar {
+        display: flex;
+        align-items: center;
+    }
+
+    .postSearchSort_Icon {
+        width: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgb(194, 194, 194);
+        border-radius: 5px;
+        cursor: pointer;
+        border: 1px solid grey;
+    }
+
+    .searchBar_Icon {
+        padding: 6px;
+        color: white;
+        background: red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+    }
+
+    .postSearchBar {
+        border-radius: 5px;
+        padding: 4px;
+        border: 1px solid red;
+        flex-basis: calc(100% - 48px);
+    }
+
+    .postSearchBar input {
+        border: none;
+        font-size: 18px;
+        flex: 1;
+        padding-left: 1.5%;
     }
 }

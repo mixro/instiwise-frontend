@@ -4,7 +4,7 @@ import { getFreeRoomsFailure, getFreeRoomsStart, getFreeRoomsSuccess } from "./f
 import { getLessonsFailure, getLessonsStart, getLessonsSuccess } from "./lessonsRedux";
 import { getOngoingCoursesFailure, getOngoingCoursesStart, getOngoingCoursesSuccess } from "./ongoingCourses";
 import { getOngoingLessonsFailure, getOngoingLessonsStart, getOngoingLessonsSuccess } from "./ongoingLessons";
-import { addPostFailure, addPostStart, addPostSuccess, deletePostFailure, deletePostStart, deletePostSuccess, dislikePost, getPostFailure, getPostStart, getPostSuccess, likePost, updatePostFailure, updatePostStart, updatePostSuccess } from "./postsRedux";
+import { addPostFailure, addPostStart, addPostSuccess, deletePostFailure, deletePostStart, deletePostSuccess, dislikePost, getPostFailure, getPostStart, getPostSuccess, likePost, updatePostFailure, updatePostStart, updatePostSuccess, viewPost } from "./postsRedux";
 import { getInUseRoomsFailure, getInUseRoomsStart, getInUseRoomsSuccess } from "./roomsInUse";
 import { getRoomsFailure, getRoomsStart, getRoomsSuccess } from "./roomsRedux";
 import { getUpcomingLessonsFailure, getUpcomingLessonsStart, getUpcomingLessonsSuccess } from "./upcomingLessons";
@@ -64,33 +64,30 @@ export const UserLogout = async (dispatch) => {
 };
 
 //ROOMS
-export const getRooms = async (dispatch) => {
+export const getRooms = async (dispatch, data) => {
     dispatch(getRoomsStart());
     try {
-      const res = await publicRequest.get("/rooms");
-      dispatch(getRoomsSuccess(res.data));
+      dispatch(getRoomsSuccess(data));
     } catch(err) {
       dispatch(getRoomsFailure());
     }
 }
 
 //LESSONS
-export const getLessons = async (dispatch) => {
+export const getLessons = async (dispatch, data) => {
     dispatch(getLessonsStart());
     try {
-      const res = await publicRequest.get("/lessons");
-      dispatch(getLessonsSuccess(res.data));
+      dispatch(getLessonsSuccess(data));
     } catch(err) {
       dispatch(getLessonsFailure());
     }
 }
 
 //COURSES
-export const getCourses = async (dispatch) => {
+export const getCourses = async (dispatch, data) => {
     dispatch(getCoursesStart());
     try {
-      const res = await publicRequest.get("/courses");
-      dispatch(getCoursesSuccess(res.data));
+      dispatch(getCoursesSuccess(data));
     } catch(err) {
       dispatch(getCoursesFailure());
     }
@@ -147,11 +144,10 @@ export const getUpcomingLessons = async (dispatch, data) => {
 }
 
 //POSTS
-export const getPosts = async (dispatch) => {
+export const getPosts = async (dispatch, data) => {
   dispatch(getPostStart());
   try {
-    const res = await publicRequest.get("/posts");
-    dispatch(getPostSuccess(res.data));
+    dispatch(getPostSuccess(data));
   } catch(err) {
     dispatch(getPostFailure());
   }
@@ -206,5 +202,16 @@ export const addDislike = async (userId, postId, dispatch) => {
       await userRequest.put(`/posts/${postId}/dislike`);
   } catch (err) {
       console.log(err);
+  }
+};
+
+
+//VIEW POST
+export const addView = async (userId, postId, dispatch) => {
+  try {
+    dispatch(viewPost({userId, postId}));
+    await userRequest.post(`/posts/${postId}/view`);
+  } catch (err) {
+    console.log(err);
   }
 };

@@ -5,11 +5,11 @@ import Table from '../table/Table';
 
 const Details = () => {
     const courses = useSelector((state) => state.courses.courses);
-    const ongoingLessons = useSelector((state) => state.ongoingLessons.ongoingLessons);
     const freeRooms = useSelector((state) => state.freeRooms.freeRooms);
+    const inUseRooms = useSelector((state) => state.inUseRooms.inUseRooms);
+    const ongoingLessons = useSelector((state) => state.ongoingLessons.ongoingLessons);
     const ongoingCourses = useSelector((state) => state.ongoingCourses.ongoingCourses);
     const upcomingLessons = useSelector((state) => state.upcomingLessons.upcomingLessons);
-    const inUseRooms = useSelector((state) => state.inUseRooms.inUseRooms);
 
     const calculateRemainingTime = (end) => {
         const now = new Date();

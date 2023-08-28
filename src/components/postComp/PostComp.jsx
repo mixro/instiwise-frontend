@@ -1,21 +1,28 @@
 import './postComp.css';
 import moment from 'moment';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import { MoreVert, Share, ThumbDown, ThumbDownOutlined, ThumbUp, ThumbUpOutlined, Visibility } from '@mui/icons-material';
-import { addDislike, addLike, deletePost } from '../../redux/apiCalls';
+import { addDislike, addLike, addView, deletePost } from '../../redux/apiCalls';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
   
 const ITEM_HEIGHT = 48;
 
 const PostComp = ({ post }) => {
-    const userId = useSelector((state) => state.user.currentUser._id);
+    const postId = post._id;
+    const user = useSelector((state) => state.user.currentUser);
+    const userId = user._id;
+    const admin = user.isAdmin;
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        addView(userId, postId, dispatch);
+    }, [userId, postId,dispatch]);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -74,14 +81,18 @@ const PostComp = ({ post }) => {
                         },
                         }}
                     >
+                        {admin && 
                         <Link to={`/post/${post._id}`} className='link-main'>
                             <MenuItem  onClick={handleClose}>
                                 Edit
                             </MenuItem>
                         </Link>
+                        }
+                        {admin && 
                         <MenuItem  onClick={() => handleDelete(post._id)}>
                             Delete 
                         </MenuItem>
+                        }
                         <MenuItem  onClick={handleClose}>
                             Share
                         </MenuItem>

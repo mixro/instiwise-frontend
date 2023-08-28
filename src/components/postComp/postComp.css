@@ -118,7 +118,7 @@
     }
 
     .postReaction_item {
-        color: rgb(23, 23, 23);
+        color: rgb(45, 45, 45);
     }
 
     .postReaction_item p span {
@@ -129,6 +129,10 @@
         font-weight: 500;
         line-height: 14px;
         text-transform: inherit;
+    }
+
+    .postUserInfo_item span {
+        color: rgb(75, 75, 75);
     }
 
     .postCaption p {

@@ -10,7 +10,7 @@ const Lessons = () => {
   const upcomingLessons = useSelector((state) => state.upcomingLessons.upcomingLessons);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentDay, setCurrentDay] = useState('');
-  const todaysLessons = lessons.filter((lesson) => lesson.day === currentDay);
+  const todaysLessons = lessons && lessons.filter((lesson) => lesson.day === currentDay);
 
 
   useEffect(() => {
