@@ -20,7 +20,7 @@ const Ditso = () => {
                     </div>
                     <div className="ditsoTop">
                         <div className="ditsoImage">
-                            <img src='/assets/profile.jpeg' alt='DITSO LOGO' />
+                            <img src='/assets/profile.png' alt='DITSO LOGO' />
                         </div>
                         <div className="ditsoName">
                             <h1>DT STUDENTS ORGANIZATION</h1>
@@ -110,7 +110,7 @@ const Ditso = () => {
                                         </div>
                                     </div>
                                     <div className="postSearchSort_Icon">
-                                        <Sort sx={{fontSize: 25}} />
+                                        <Sort sx={{fontSize: 27}} />
                                     </div>
                                 </div>
                             </div>

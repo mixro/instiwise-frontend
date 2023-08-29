@@ -1,10 +1,16 @@
 import { useState } from 'react';
 import './newPost.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { addPost } from '../../redux/apiCalls';
+import firebaseApp from '../../firebase';
+
+
 const NewPost = () => {
     const [inputs, setInputs] =  useState({});
+    const [file, setFile] = useState(null);
     const dispatch = useDispatch();
+    const [perc, setPerc] = useState(0);
     const { isFetching, error } = useSelector((state) => state.posts);
     const userId = useSelector((state) => state.user?.currentUser._id)
 
@@ -16,7 +22,41 @@ const NewPost = () => {
     
     const handleClick = (e) => {
         e.preventDefault();
-        addPost({ ...inputs, userId }, dispatch);
+        if(file !== null) {
+            const fileName = new Date().getTime() + file.name;
+            const storage = getStorage(firebaseApp);
+            const storageRef = ref(storage, fileName);
+            const uploadTask = uploadBytesResumable(storageRef, file);
+        
+            uploadTask.on('state_changed', 
+                (snapshot) => {
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log('Upload is ' + progress + '% done');
+                setPerc(progress);
+                switch (snapshot.state) {
+                    case 'paused':
+                        console.log('Upload is paused');
+                    break;
+                    case 'running':
+                        console.log('Upload is running');
+                    break;
+                    default:
+                        console.log("Upload is in progress");
+                }
+                }, 
+                (error) => {
+                }, 
+                () => {
+                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                    const post = {...inputs, img: downloadURL, userId};
+                    addPost(post, dispatch);
+                });
+                }
+            );
+        } else {
+            const post = {...inputs, userId};
+            addPost(post, dispatch);
+        }
     }
 
   return (
@@ -37,11 +77,11 @@ const NewPost = () => {
                     <div className="newPost_item postBody_Item">
                         <p>Post Image</p>
                         <div className="newPost_Input">
-                            <input id='file' type='file' style={{ display: "none" }}  placeholder='post header' />
+                            <input id='file' type='file' onChange={(e) => setFile(e.target.files[0])} style={{ display: "none" }}  placeholder='post header' />
                             <label htmlFor='file'>
-                                    <div className="inputFile">
-                                        <span>SELECT IMAGE</span>
-                                    </div>
+                                <div className="inputFile">
+                                    <span>SELECT IMAGE {perc > 1 && Math.floor(perc) + "%"}</span>
+                                </div>
                             </label>
                         </div>
                     </div>

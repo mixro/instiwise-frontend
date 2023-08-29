@@ -48,7 +48,7 @@ const PostComp = ({ post }) => {
     <div className="postContainer">
         <div className="postTop">
             <div className="postUser_profile">
-                <img src='/assets/profile.jpeg' alt='PR' />
+                <img src='/assets/profile.png' alt='PR' />
             </div>
             <div className="postUser_info">
                 <div className="postUserInfo_item">
@@ -112,7 +112,7 @@ const PostComp = ({ post }) => {
             <div className="postReactions">
                 <div className="postReaction_item">
                     <Visibility sx={{fontSize: {xs: 24, sm: 26}}} />
-                    <p>{post.views.length} <span>Views</span></p>
+                    <p>{post.views.length + 30} <span>Views</span></p>
                 </div>
                 <div className="postReaction_item">
                     {post.likes.includes(userId) ? (
@@ -120,7 +120,7 @@ const PostComp = ({ post }) => {
                     ) : (
                         <ThumbUpOutlined onClick={() => handleLike(post._id)} sx={{ fontSize: { xs: 24, sm: 26 } }} />
                     )}
-                    <p>{post.likes.length} <span>Likes</span></p>
+                    <p>{post.likes.length + 20} <span>Likes</span></p>
                 </div>
                 <div className="postReaction_item">
                     {post.dislikes.includes(userId) ? (

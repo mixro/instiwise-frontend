@@ -252,7 +252,7 @@
 
 @media screen and (max-width: 770px) {
     .ditsoPost {
-        padding: 58px 0 5%;
+        padding: 28px 0 5%;
     }
 
     .postMain_Ditso {
@@ -418,13 +418,9 @@
 
     .postSearch_Bar {
         display: flex;
-        justify-content: space-between;
         padding-top: 10px;
-    }
-
-    .postSearchBar {
-        display: flex;
-        align-items: center;
+        width: 100%;
+        justify-content: space-between;
     }
 
     .postSearchSort_Icon {
@@ -435,7 +431,7 @@
         background: rgb(249, 249, 249);
         border-radius: 5px;
         cursor: pointer;
-        border: 1px solid grey;
+        border: 1px solid black;
     }
 
     .searchBar_Icon {
@@ -453,6 +449,9 @@
         padding: 4px;
         border: 1px solid red;
         flex-basis: calc(100% - 48px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
     .postSearchBar input {
@@ -460,6 +459,6 @@
         font-size: 18px;
         padding-left: 1.5%;
         outline: none;
-        flex: 1;
+        width: 90%;
     }
 }

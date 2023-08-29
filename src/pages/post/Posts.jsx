@@ -21,7 +21,7 @@ const Posts = () => {
                     </div>
                 </div>
                 <div className="postSearchSort_Icon">
-                    <Sort sx={{fontSize: 25}} />
+                    <Sort sx={{fontSize: 27}} />
                 </div>
             </div>
             {admin && 
@@ -58,7 +58,7 @@ const Posts = () => {
                         <PostComp key={post._id} post={post} />
                     ))
                 :
-                    <div className="noUser noPost">
+                    <div className="noUser">
                         <div className="noUserButtons">
                             <div className="noUserButton">
                                 <Link to="/login" className='link-main'>
