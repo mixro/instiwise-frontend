@@ -2,30 +2,14 @@ import { Link } from 'react-router-dom'
 import { Search } from '@mui/icons-material'
 import './lessons.css'
 import { useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 const Lessons = () => {
   const lessons = useSelector((state) => state.lessons.lessons);
   const ongoingLessons = useSelector((state) => state.ongoingLessons.ongoingLessons);
   const upcomingLessons = useSelector((state) => state.upcomingLessons.upcomingLessons);
   const [searchQuery, setSearchQuery] = useState('');
-  const [currentDay, setCurrentDay] = useState('');
-  const todaysLessons = lessons && lessons.filter((lesson) => lesson.day === currentDay);
-
-
-  useEffect(() => {
-      const getDay = () => {
-          const now = new Date();
-          const day = now.toLocaleDateString(undefined, { weekday: 'long' });
-
-          setCurrentDay(day);
-      }
-
-      const interval = setInterval(getDay, 1000);
-      getDay();
-
-      return () => clearInterval(interval);
-  }, []);
+  const todaysLessons = useSelector((state) => state.todaysLessons.todaysLessons);
 
   const isLessonOngoing = (day, start, end) => {
     const now = new Date();

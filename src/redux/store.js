@@ -11,6 +11,7 @@ import upcomingLessons from "./upcomingLessons";
 import roomsInUse from "./roomsInUse";
 import userRedux from "./userRedux";
 import postsRedux from "./postsRedux";
+import todaysLessons from "./todaysLessons";
 
 const persistConfig = {
   key: "root",
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   ongoingCourses: ongoingCourses,
   ongoingLessons: ongoingLessons,
   upcomingLessons: upcomingLessons,
+  todaysLessons: todaysLessons,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -38,7 +38,8 @@ const EditPost = () => {
       <div className="productTop">
           <div className="productTopLeft">
             <div className="roomImagee">
-              <img src={post.img || "/assets/room-1.jpg"} alt="post" />
+              <img src={post.img || "/assets/room-1.jpg"} alt="post" className='LARGESCREEN' />
+              {post.img && <img src={post.img || "/assets/room-1.jpg"} className='SMALLSCREEN' alt="post" />}
             </div>
           </div>
           <div className="productTopRight">
@@ -75,11 +76,11 @@ const EditPost = () => {
           </div>
           <div className="editPost_item">
             <p>Header</p>
-            <textarea name='header' onChange={handleChange} defaultValue={post.header}></textarea>
+            <textarea name='header' onChange={handleChange}>{post.header}</textarea>
           </div>
-          <div className="editPost_item h">
+          <div className="editPost_item maxHeight">
             <p>Caption</p>
-            <textarea name='desc' onChange={handleChange} defaultValue={post.desc}></textarea>
+            <textarea name='desc' onChange={handleChange}>{post.desc}</textarea>
           </div>
           <div className="EditButton_Container">
             <div className="EditPost_Button">

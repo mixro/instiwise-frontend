@@ -27,7 +27,7 @@
 }
 
 .newPost_Input_text input {
-    padding: 6px 8px;
+    padding: 8px;
     border-radius: 5px;
     font-size: 17px;
     border: 1px solid gray;
@@ -78,7 +78,7 @@
 
 @media screen and (max-width: 770px) {
     .newPost {
-        padding: 6% 0;
+        padding: 2% 0 6%;
     }
 
     .postBodyTop {
@@ -89,7 +89,7 @@
     .newPost_header h1 {
         font-size: 28px;
         font-weight: 600;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
     }
 
     .postBody_Item {
@@ -121,4 +121,7 @@
         color: black;
     }
     
+    .newPost_Input textarea {
+        min-height: 42vh;
+    }
 }

@@ -256,7 +256,7 @@
     }
 
     .postMain_Ditso {
-        padding: 20px 0 5%;
+        padding: 5px 0 5%;
     }
 
     .ditsoBackground img {
@@ -417,9 +417,9 @@
     }
 
     .postSearch_Bar {
-        width: 100%;
         display: flex;
         justify-content: space-between;
+        padding-top: 10px;
     }
 
     .postSearchBar {
@@ -432,7 +432,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: rgb(194, 194, 194);
+        background: rgb(249, 249, 249);
         border-radius: 5px;
         cursor: pointer;
         border: 1px solid grey;
@@ -458,7 +458,8 @@
     .postSearchBar input {
         border: none;
         font-size: 18px;
-        flex: 1;
         padding-left: 1.5%;
+        outline: none;
+        flex: 1;
     }
 }

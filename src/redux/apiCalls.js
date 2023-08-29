@@ -7,6 +7,7 @@ import { getOngoingLessonsFailure, getOngoingLessonsStart, getOngoingLessonsSucc
 import { addPostFailure, addPostStart, addPostSuccess, deletePostFailure, deletePostStart, deletePostSuccess, dislikePost, getPostFailure, getPostStart, getPostSuccess, likePost, updatePostFailure, updatePostStart, updatePostSuccess, viewPost } from "./postsRedux";
 import { getInUseRoomsFailure, getInUseRoomsStart, getInUseRoomsSuccess } from "./roomsInUse";
 import { getRoomsFailure, getRoomsStart, getRoomsSuccess } from "./roomsRedux";
+import { getTodaysLessonsFailure, getTodaysLessonsStart, getTodaysLessonsSuccess } from "./todaysLessons";
 import { getUpcomingLessonsFailure, getUpcomingLessonsStart, getUpcomingLessonsSuccess } from "./upcomingLessons";
 import { deleteUserFailure, deleteUserStart, deleteUserSuccess, loginFailure, loginStart, loginSuccess, logout, registerStart, registerSuccess, regiterError, updateUserFailure, updateUserStart, updateUserSuccess } from "./userRedux";
 
@@ -140,6 +141,16 @@ export const getUpcomingLessons = async (dispatch, data) => {
     dispatch(getUpcomingLessonsSuccess(data));
   } catch(err) {
     dispatch(getUpcomingLessonsFailure());
+  }
+}
+
+//UPCOMING LESSONS
+export const getTodaysLessons = async (dispatch, data) => {
+  dispatch(getTodaysLessonsStart());
+  try {
+    dispatch(getTodaysLessonsSuccess(data));
+  } catch(err) {
+    dispatch(getTodaysLessonsFailure());
   }
 }
 

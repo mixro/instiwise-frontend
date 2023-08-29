@@ -7,10 +7,33 @@ import { useSelector } from 'react-redux';
 const Posts = () => {
     const posts = useSelector((state) => state.posts.posts);
     const user = useSelector((state) => state.user.currentUser);
+    const admin = useSelector((state) => state.user.currentUser?.isAdmin);
 
 
   return (
     <div className='postMainContainer'>
+        <div className="SMALLSCREEN">
+            <div className="postSearch_Bar">
+                <div className="postSearchBar">
+                    <input type='text' placeholder='Search post...' />
+                    <div className="searchBar_Icon">
+                        <Search />
+                    </div>
+                </div>
+                <div className="postSearchSort_Icon">
+                    <Sort sx={{fontSize: 25}} />
+                </div>
+            </div>
+            {admin && 
+                <div className="postCreate_Button">
+                    <div className="createButton">
+                        <Link to="/newpost" className="link-main">
+                            <button>CREATE POST</button>
+                        </Link>
+                    </div>
+                </div>
+            }
+        </div>
         <div className="ditsoWrapper postMainWrapper">
             <div className="ditsoLeft">
                 <div className="ditsoPost postMain_Ditso">
@@ -24,17 +47,6 @@ const Posts = () => {
                                 <div className="Search_Icon">
                                     <Search />
                                 </div>
-                            </div>
-                        </div>
-                        <div className="postSearch_Bar SMALLSCREEN">
-                            <div className="postSearchBar">
-                                <input type='text' placeholder='Search post...' />
-                                <div className="searchBar_Icon">
-                                    <Search />
-                                </div>
-                            </div>
-                            <div className="postSearchSort_Icon">
-                                <Sort sx={{fontSize: 25}} />
                             </div>
                         </div>
                     </div>

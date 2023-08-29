@@ -2,26 +2,9 @@ import './table.css';
 import { useSelector } from 'react-redux';
 import { DataGrid } from '@mui/x-data-grid';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 
 const Table = () => {
-    const lessons = useSelector((state) => state.lessons.lessons);
-    const [currentDay, setCurrentDay] = useState('');
-    const todaysLessons = lessons.filter((lesson) => lesson.day === currentDay);
-
-    useEffect(() => {
-        const getDay = () => {
-            const now = new Date();
-            const day = now.toLocaleDateString(undefined, { weekday: 'long' });
-
-            setCurrentDay(day);
-        }
-
-        const interval = setInterval(getDay, 1000);
-        getDay();
-
-        return () => clearInterval(interval);
-    }, []);
+    const todaysLessons = useSelector((state) => state.todaysLessons.todaysLessons);
   
     const columns = [
       {

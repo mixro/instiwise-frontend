@@ -11,7 +11,7 @@ import Lesson from './pages/lesson/Lesson';
 import FreeRooms from './pages/freeRooms/FreeRooms';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getCourses, getFreeRooms, getInUseRooms, getLessons, getOngoingCourse, getOngoingLessons, getPosts, getRooms, getUpcomingLessons } from './redux/apiCalls';
+import { getCourses, getFreeRooms, getInUseRooms, getLessons, getOngoingCourse, getOngoingLessons, getPosts, getRooms, getTodaysLessons, getUpcomingLessons } from './redux/apiCalls';
 import InuseRooms from './pages/roomsInUse/InuseRooms';
 import OngoingLessonsComp from './pages/ongoingLessons/OngoingLessonsComp';
 import UpcomingLessonsComp from './pages/upcomingLessons/UpcomingLessonsComp';
@@ -64,6 +64,10 @@ function App() {
 
       if (data.posts) {
         getPosts(dispatch, data.posts);
+      }
+
+      if (data.todaysLessons) {
+        getTodaysLessons(dispatch, data.todaysLessons)
       }
 
       if (data.lessons) {
