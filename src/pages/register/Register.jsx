@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import "./register.css";
 import { Link, useNavigate } from 'react-router-dom';
-import { userRegister } from '../../redux/apiCalls';
+import { googleLogin, userRegister } from '../../redux/apiCalls';
 import { useDispatch, useSelector } from 'react-redux';
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import jwt_decode from "jwt-decode";
 
 const Register = () => {
     const [username, setUsername] = useState("");
@@ -23,6 +25,14 @@ const Register = () => {
             userRegister(dispatch, {username, password, email}, navigate);
         }
     }
+
+    const handleGoogleAuth = (details) => {
+        const email = details.email;
+        const username = details.name;
+         
+        googleLogin(dispatch, {username, email}, navigate);
+    }
+
 
   return (
     <div className="registerContainer">
@@ -83,11 +93,24 @@ const Register = () => {
                     </div>
                 }
                 <div className="registerButton">
+                    <GoogleOAuthProvider clientId="870325701611-71prlkdqkh3ufs268scgvj9c53v1svn1.apps.googleusercontent.com">
+                        <GoogleLogin id="google" className="google_button"
+                            onSuccess={credentialResponse => {
+                                const details= jwt_decode(credentialResponse.credential);
+                                
+                                handleGoogleAuth(details);
+                            }}
+                            onError={() => {
+                                console.log('Login Failed');
+                            }}
+                        />
+                    </GoogleOAuthProvider>
+
                     <button onClick={handleClick}>{isFetching ? "Loading.." : "Register"}</button>
                 </div>
                 {error && 
                     <div className="error">
-                        <p>Error occured when trying to register, Try again !!</p>
+                        <p>Error while registering, Try again !!</p>
                     </div>
                 }
                 <div className="registerText">

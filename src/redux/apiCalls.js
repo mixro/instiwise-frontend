@@ -9,7 +9,7 @@ import { getInUseRoomsFailure, getInUseRoomsStart, getInUseRoomsSuccess } from "
 import { getRoomsFailure, getRoomsStart, getRoomsSuccess } from "./roomsRedux";
 import { getTodaysLessonsFailure, getTodaysLessonsStart, getTodaysLessonsSuccess } from "./todaysLessons";
 import { getUpcomingLessonsFailure, getUpcomingLessonsStart, getUpcomingLessonsSuccess } from "./upcomingLessons";
-import { deleteUserFailure, deleteUserStart, deleteUserSuccess, loginFailure, loginStart, loginSuccess, logout, registerStart, registerSuccess, regiterError, updateUserFailure, updateUserStart, updateUserSuccess } from "./userRedux";
+import { deleteUserFailure, deleteUserStart, deleteUserSuccess, googleLoginFailure, googleLoginStart, googleLoginSuccess, loginFailure, loginStart, loginSuccess, logout, registerStart, registerSuccess, regiterError, updateUserFailure, updateUserStart, updateUserSuccess } from "./userRedux";
 
 
 // USER  LOGIN
@@ -33,6 +33,18 @@ export const userRegister = async (dispatch, user, navigate) => {
     navigate('/');
   } catch(err) {
     dispatch(regiterError());
+  }
+}
+
+//GOOGLE AUTH
+export const googleLogin = async (dispatch, user, navigate) => {
+  dispatch(googleLoginStart());
+  try {
+    const res = await publicRequest.post("/auth/google", user);
+    dispatch(googleLoginSuccess(res.data));
+    navigate('/');
+  } catch(error) {
+    dispatch(googleLoginFailure());
   }
 }
 

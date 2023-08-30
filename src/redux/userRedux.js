@@ -22,6 +22,20 @@ const userSlice = createSlice({
       state.error = true;
     },
 
+      //
+    googleLoginStart: (state) => {
+      state.isFetching = true;
+    },
+    googleLoginSuccess: (state, action) => {
+      state.isFetching = false;
+      state.currentUser = action.payload;
+      state.error = true;
+    },
+    googleLoginFailure: (state) => {
+      state.isFetching = false;
+      state.error = true;
+    },
+
       //REGISTER
     registerStart: (state) => {
         state.isFetching = true;
@@ -88,6 +102,9 @@ export const {
   updateUserFailure,
   deleteUserStart,
   deleteUserFailure,
-  deleteUserSuccess
+  deleteUserSuccess,
+  googleLoginFailure,
+  googleLoginSuccess,
+  googleLoginStart
 } = userSlice.actions;
 export default userSlice.reducer;

@@ -45,6 +45,10 @@
     margin-bottom: 4%;
 }
 
+.google_button {
+    width: 100%;
+}
+
 .registerBody_item {
     padding-bottom: 10px;
 }

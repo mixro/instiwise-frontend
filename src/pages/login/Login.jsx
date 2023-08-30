@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import './login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { Facebook, Google } from '@mui/icons-material';
-import { login } from '../../redux/apiCalls';
+import { googleLogin, login } from '../../redux/apiCalls';
 import { useDispatch, useSelector } from 'react-redux';
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import jwt_decode from "jwt-decode";
 
 const Login = () => {
     const [email, setEmail] = useState(""); 
@@ -17,6 +19,14 @@ const Login = () => {
       login(dispatch, { email, password }, navigate);
     }
 
+    const handleGoogleAuth = (details) => {
+        const email = details.email;
+        const username = details.name;
+         
+        googleLogin(dispatch, {username, email}, navigate);
+    }
+
+
   return (
     <div className="registerContainer">
         <div className="registerTop">
@@ -27,7 +37,7 @@ const Login = () => {
         </div>
         <div className="registerBody">
             <div className="registerBody_left">
-                <img src='/assets/institute.jpeg' alt='INSTIWISE' />
+                <img src='/assets/institute.jpeg' alt='INSTIWISE' />                
             </div>
 
             <div className="registerBody_right spaceRound marginBottom">
@@ -65,6 +75,18 @@ const Login = () => {
                         </div>
                     </div>
                     <div className="registerButton highMargin">
+                        <GoogleOAuthProvider clientId="870325701611-71prlkdqkh3ufs268scgvj9c53v1svn1.apps.googleusercontent.com">
+                            <GoogleLogin
+                                onSuccess={credentialResponse => {
+                                    const details= jwt_decode(credentialResponse.credential);
+                                    
+                                    handleGoogleAuth(details);
+                                }}
+                                onError={() => {
+                                    console.log('Login Failed');
+                                }}
+                            />
+                        </GoogleOAuthProvider>
                         <button onClick={handleClick}>{isFetching ? "Loading.." : "login"}</button>
                     </div>
                     {error && 
