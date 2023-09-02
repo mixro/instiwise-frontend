@@ -32,6 +32,10 @@
     padding: 0 4%;
 }
 
+.DitsoPost_Padding {
+    padding-bottom: 5%;
+}
+
 .ditsoImage {
     width: 170px;
     height: 120px;
@@ -153,7 +157,7 @@
 }
 
 .ditsoPost_top {
-    margin-bottom: 6%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -167,12 +171,17 @@
     flex-basis: 40%;
 }
 
+.ditsoPost_searcH {
+    flex-basis: 50%;
+}
+
 .ditsoSearch {
     display: flex;
     border: 1px solid red;
     border-radius: 5px;
     padding: 2px;
     padding-left: 3%;
+    justify-content: space-between;
 }
 
 .Search_Icon {
@@ -186,11 +195,13 @@
 }
 
 .ditsoSearch input {
-    flex: 1;
     border: 0;
     outline: none;
     font-size: 16px;
+    width: 90%;
 }
+
+
 
 
 

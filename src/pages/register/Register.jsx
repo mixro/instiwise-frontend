@@ -3,7 +3,7 @@ import "./register.css";
 import { Link, useNavigate } from 'react-router-dom';
 import { googleLogin, userRegister } from '../../redux/apiCalls';
 import { useDispatch, useSelector } from 'react-redux';
-import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
 
 const Register = () => {
@@ -29,28 +29,27 @@ const Register = () => {
     const handleGoogleAuth = (details) => {
         const email = details.email;
         const username = details.name;
-         
-        googleLogin(dispatch, {username, email}, navigate);
-    }
+        const img = details.picture;
+
+        googleLogin(dispatch, { username, email, img }, navigate);
+    }   
 
 
   return (
     <div className="registerContainer">
         <div className="registerTop">
             <div className="registerTop_item">
-                <h1 className='LARGESCREEN'>WELCOME TO INSTiWISE</h1>
-                <h1 className='SMALLSCREEN'>INSTiWISE</h1>
+                <div className="registerTop_Image">
+                    <img src="/assets/register.png" className='registerImage_Logo' alt='PR' />
+                    <p className="LARGESCREEN">INSTiWISE</p>
+                </div>
             </div>
         </div>
         <div className="registerBody">
-            <div className="registerBody_left">
-                <img src='/assets/institute.jpeg' alt='INSTIWISE' />
-            </div>
-
             <div className="registerBody_right">
                 <h1>REGISTER</h1>
                 <div className="registerItems">
-                    <div className="registerBody_item">
+                    <div className="registerBody_item smallPaddingButton">
                         <h3>Username</h3>
                         <input 
                             className="login_right_item_input" 
@@ -59,7 +58,7 @@ const Register = () => {
                             onChange={(e) => setUsername(e.target.value)}
                         />
                     </div>
-                    <div className="registerBody_item">
+                    <div className="registerBody_item smallPaddingButton">
                         <h3>Email</h3>
                         <input 
                             className="login_right_item_input" 
@@ -68,7 +67,7 @@ const Register = () => {
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
-                    <div className="registerBody_item">
+                    <div className="registerBody_item smallPaddingButton">
                         <h3>Password</h3>
                         <input 
                             className="login_right_item_input" 
@@ -77,7 +76,7 @@ const Register = () => {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
-                    <div className="registerBody_item">
+                    <div className="registerBody_item smallPaddingButton">
                         <h3>Verify Password</h3>
                         <input 
                             className="login_right_item_input" 
@@ -92,27 +91,31 @@ const Register = () => {
                         <p>Passwords do not match, Repeat</p>
                     </div>
                 }
-                <div className="registerButton">
-                    <GoogleOAuthProvider clientId="870325701611-71prlkdqkh3ufs268scgvj9c53v1svn1.apps.googleusercontent.com">
+                <div className="registerButton googleAuth smallButtonPading">
+                    <button onClick={handleClick}>{isFetching ? "Loading.." : "Register"}</button>
+                    {error && 
+                        <div className="error">
+                            <p>Error while registering, Try again !!</p>
+                        </div>
+                    }
+                    <div className="registerOr">
+                        <p>OR</p>
+                    </div>
+                    <div className="GoogleLogin_Special">
                         <GoogleLogin id="google" className="google_button"
                             onSuccess={credentialResponse => {
                                 const details= jwt_decode(credentialResponse.credential);
-                                
                                 handleGoogleAuth(details);
                             }}
                             onError={() => {
                                 console.log('Login Failed');
                             }}
+                            shape='square'
+                            text='signup_with'
+                            type='standard'
                         />
-                    </GoogleOAuthProvider>
-
-                    <button onClick={handleClick}>{isFetching ? "Loading.." : "Register"}</button>
-                </div>
-                {error && 
-                    <div className="error">
-                        <p>Error while registering, Try again !!</p>
                     </div>
-                }
+                </div>
                 <div className="registerText">
                     <p>Already a member? 
                         <Link to="/login" className='link-main'>

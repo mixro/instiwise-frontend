@@ -23,7 +23,7 @@ import TodaysLessons from './pages/todaysLessons/TodaysLessons';
 import Ditso from './pages/ditso/Ditso';
 import NewPost from './pages/newPost/NewPost';
 import EditPost from './pages/editPost/EditPost';
-import Posts from './pages/post/Posts';
+import Posts from './pages/posts/Posts';
 
 function App() {
   const dispatch = useDispatch();

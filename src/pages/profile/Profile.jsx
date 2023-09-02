@@ -151,6 +151,7 @@ const Profile = () => {
                                     <select onChange={handleChange} className="newUserSelect" name="gender" id="active">
                                         <option value="male">male</option>
                                         <option value="female">female</option>
+                                        <option value="female">others</option>
                                     </select>
                                 </div>
                             </div>

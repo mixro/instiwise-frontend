@@ -12,11 +12,12 @@ import { Link } from 'react-router-dom';
 const ITEM_HEIGHT = 48;
 
 const PostComp = ({ post }) => {
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [loading, setLoading] = useState(true);
     const postId = post._id;
     const user = useSelector((state) => state.user.currentUser);
     const userId = user._id;
     const admin = user.isAdmin;
-    const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const dispatch = useDispatch();
 
@@ -43,6 +44,10 @@ const PostComp = ({ post }) => {
     const handleDislike = (postId) => {
         addDislike(userId, postId, dispatch);
     }
+
+    const handleLoad = () => {
+        setLoading(false);
+    };
 
   return (
     <div className="postContainer">
@@ -82,16 +87,16 @@ const PostComp = ({ post }) => {
                         }}
                     >
                         {admin && 
-                        <Link to={`/post/${post._id}`} className='link-main'>
-                            <MenuItem  onClick={handleClose}>
-                                Edit
-                            </MenuItem>
-                        </Link>
+                            <Link to={`/post/${post._id}`} className='link-main'>
+                                <MenuItem  onClick={handleClose}>
+                                    Edit
+                                </MenuItem>
+                            </Link>
                         }
                         {admin && 
-                        <MenuItem  onClick={() => handleDelete(post._id)}>
-                            Delete 
-                        </MenuItem>
+                            <MenuItem  onClick={() => handleDelete(post._id)}>
+                                Delete 
+                            </MenuItem>
                         }
                         <MenuItem  onClick={handleClose}>
                             Share
@@ -106,7 +111,12 @@ const PostComp = ({ post }) => {
             </div>
             {post.img && 
                 <div className="postImage">
-                    <img src={post?.img} alt='POST' />
+                    <img src={post?.img} style={{display: loading ? "none" : "block"}} onLoad={handleLoad} alt='POST' />
+                    <div style={{display: loading ? "block" : "none"}}>
+                        <div className="noPostImage">
+                            <div className="loader"></div>
+                        </div>
+                    </div>
                 </div>
             }
             <div className="postReactions">

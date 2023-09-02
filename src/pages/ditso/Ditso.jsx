@@ -3,11 +3,26 @@ import './ditso.css';
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Announcement, Facebook, Instagram, Search, Sort, Twitter, WhatsApp, YouTube } from '@mui/icons-material';
+import { useState } from 'react';
 
 const Ditso = () => {
+    const [searchQuery, setSearchQuery] = useState('');
     const posts = useSelector((state) => state.posts.posts);
-    const admin = useSelector((state) => state.user.currentUser?.isAdmin);
     const user = useSelector((state) => state.user.currentUser);
+    const admin = useSelector((state) => state.user.currentUser?.isAdmin);
+
+    const handleSearchInputChange = (event) => {
+        setSearchQuery(event.target.value);
+    };
+
+    const filteredPosts = Array.isArray(posts) && posts.filter((post) => {
+        const header = post.header.toLowerCase();
+        const query = searchQuery.toLowerCase();
+
+        return (
+            header.includes(query)
+        );
+    })
     
   return (
     <div className="ditsoOver_Container">
@@ -90,32 +105,49 @@ const Ditso = () => {
                 <div className="ditsoWrapper">
                     <div className="ditsoLeft">
                         <div className="ditsoPost">
-                            <div className="ditsoPost_top">
-                                <div className="ditsoPostHeader">
-                                    <h1>DTSO POSTS</h1>
-                                </div>
-                                <div className="ditsoPost_search LARGESCREEN">
-                                    <div className="ditsoSearch">
-                                        <input type='text' placeholder='Search post...' />
-                                        <div className="Search_Icon">
-                                            <Search />
+                            <div className="DitsoPost_Padding">
+                                <div className="LARGESCREEN">
+                                    <div className="ditsoPost_top">
+                                        <div className="ditsoPostHeader">
+                                            <h1>POSTS</h1>
+                                        </div>
+                                        <div className="ditsoPost_searcH">
+                                            <div className="ditsoSearch">
+                                                <input type='text' value={searchQuery} onChange={handleSearchInputChange} placeholder='Search post...' />
+                                                <div className="Search_Icon">
+                                                    <Search />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    {searchQuery && 
+                                        <div className="PostsSearch_result largeFont_results">
+                                            <p><span>{filteredPosts.length}</span> Search results</p>
+                                        </div>
+                                    }
                                 </div>
-                                <div className="postSearch_Bar SMALLSCREEN">
-                                    <div className="postSearchBar">
-                                        <input type='text' placeholder='Search post...' />
-                                        <div className="searchBar_Icon">
-                                            <Search />
+
+                                <div className="SMALLSCREEN">
+                                    <div className="postSearch_Bar">
+                                        <div className="postSearchBar">
+                                            <input type='text' value={searchQuery} onChange={handleSearchInputChange} placeholder='Search post...' />
+                                            <div className="searchBar_Icon">
+                                                <Search />
+                                            </div>
+                                        </div>
+                                        <div className="postSearchSort_Icon">
+                                            <Sort sx={{fontSize: 27}} />
                                         </div>
                                     </div>
-                                    <div className="postSearchSort_Icon">
-                                        <Sort sx={{fontSize: 27}} />
-                                    </div>
+                                    {searchQuery && 
+                                        <div className="PostsSearch_result">
+                                            <p><span>{filteredPosts.length}</span> Search results</p>
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         {user ?
-                            posts
+                            filteredPosts
                                 .slice() 
                                 .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) 
                                 .map((post) => (

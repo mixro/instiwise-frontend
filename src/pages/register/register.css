@@ -6,7 +6,26 @@
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
-    background: linear-gradient(120deg, rgb(160, 241, 254), royalblue);
+    background: rgb(216, 218, 223);
+}
+
+.registerTop {
+    width: 100%
+}
+
+.registerTop_Image {
+    display: flex;
+    align-items: center;
+    gap: 1%;
+}
+
+.registerImage_Logo {
+    width: 55px;
+}
+
+.registerTop_Image p {
+    font-size: 26px;
+    font-weight: 600;
 }
 
 .registerBody {
@@ -14,6 +33,12 @@
     justify-content: center;
     gap: 0;
     width: 100%;
+}
+
+.registerTop_item p {
+    padding-left: 0.1%;
+    font-weight: 600;
+    font-size: 23px;
 }
 
     /* --- left ----*/
@@ -35,9 +60,9 @@
 
 .registerBody_right {
     flex-basis: 30%;
-    border-radius: 0px 10px 10px 0px;
-    padding: 1% 2% 10px 4%;
-    background: white;
+    padding: 1% 2% 10px;
+    border-radius: 10px;
+    backdrop-filter: 0.5;
 }
 
 .registerBody_right h1 {
@@ -60,10 +85,12 @@
 }
 
 .registerBody_item  input {
+    min-width: 380px;
     width: 100%;
     border-radius: 5px;
-    padding: 8px 5px;
+    padding: 9px 5px;
     outline: none;
+    font-size: 16px;
     border: 1px solid rgb(68, 68, 68);
 }
 
@@ -80,7 +107,21 @@
     font-weight: 600;
     color: white;
     width: 100%;
-    border: 1px solid blue;
+    border: 2px solid blue;
+}
+
+.googleAuth button:last-child {
+    margin-top: 2%;
+    border: 1px solid rgb(159, 159, 159);
+    background: rgb(229, 229, 229);
+    color: blue;
+    padding: 5px;
+    -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+}
+
+.registerButton span {
+    font-size: 25px;
 }
 
 .registerText {
@@ -90,6 +131,13 @@
 .registerText p span {
     font-weight: 600;
     cursor: pointer;
+}
+
+.registerhighPadding {
+    padding: 6% 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .authComp {
@@ -124,6 +172,29 @@
     display: none;
 }
 
+.registerOr {
+    padding-top: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.registerOr p, .registerhighPadding p {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.GoogleLogin_Special {
+    margin-top: 4%;
+    border: 1px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: white;
+    border-radius: 5px;
+    overflow-x: hidden;
+}
 
 
 @media screen and (max-width: 770px) {
@@ -133,14 +204,31 @@
         min-height: 100vh;
         display: flex;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: space-around;
         flex-direction: column;
         gap: 8%;
         background: linear-gradient(120deg, rgb(160, 241, 254), royalblue);
     }
 
+    .registerTop_item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .registerTop_Image p {
+        padding-left: 3%;
+        gap: 0;
+        width: fit-content;
+    }
+
+    .registerImage_Logo {
+        width: 60px;
+    }
+
     .registerTop {
         width: 100%;
+        padding-left: 0;
     }
 
     .registerTop_item {
@@ -167,9 +255,18 @@
     .registerBody_right {
         border-radius: 5px;
         padding-top: 5%;
-        padding: 5% 4% 10px;
+        padding: 5% 3% 10px;
         max-width: 400px;
         width: 100%;
+    }
+
+    .registerButton button {
+        padding: 10px;
+    }
+
+    .smallButtonPading button {
+        padding: 8px;
+        margin-bottom: 3%;
     }
 
     .registerBody_right h1 {
@@ -189,10 +286,15 @@
     .registerBody_item  input {
         width: 100%;
         border-radius: 5px;
-        padding: 8px 5px;
+        padding: 11px 5px;
         font-size: 16px;
+        min-width: 50px;
         outline: none;
         border: 1px solid rgb(68, 68, 68);
+    }
+
+    .smallPaddingButton input {
+        padding: 9px 5px; 
     }
 
     .LARGESCREEN {

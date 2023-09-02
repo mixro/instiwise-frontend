@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import './login.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { Facebook, Google } from '@mui/icons-material';
-import { googleLogin, login } from '../../redux/apiCalls';
+import { login } from '../../redux/apiCalls';
 import { useDispatch, useSelector } from 'react-redux';
-import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
 
 const Login = () => {
@@ -26,20 +25,29 @@ const Login = () => {
         googleLogin(dispatch, {username, email}, navigate);
     }
 
+    const googleLogin = useGoogleLogin({
+        onSuccess: credentialResponse => {
+            const details= jwt_decode(credentialResponse.credential);
+            
+            handleGoogleAuth(details);
+        },
+        onError: () => {
+            console.log('Login Failed');
+        }
+    });
+
 
   return (
     <div className="registerContainer">
         <div className="registerTop">
             <div className="registerTop_item">
-                <h1 className='LARGESCREEN'>WELCOME TO INSTiWISE</h1>
-                <h1 className='SMALLSCREEN'>INSTiWISE</h1>
+                <div className="registerTop_Image">
+                    <img src="/assets/register.png" className='registerImage_Logo' alt='PR' />
+                    <p className="LARGESCREEN">INSTiWISE</p>
+                </div>
             </div>
         </div>
         <div className="registerBody">
-            <div className="registerBody_left">
-                <img src='/assets/institute.jpeg' alt='INSTIWISE' />                
-            </div>
-
             <div className="registerBody_right spaceRound marginBottom">
                 <h1>LOGIN</h1>
                 <div className="loginBody">
@@ -63,37 +71,32 @@ const Login = () => {
                             />
                         </div>
                     </div>
-                    <div className="registerBody_item">
-                        <h3>Login with</h3>
-                        <div className="authComp">
-                            <div className="authComp_item">
-                                <Google />
+                    <div className="registerButton highMargin googleAuth">
+                        <button onClick={handleClick}>{isFetching ? "Loading.." : "login"}</button>
+                        {!error && 
+                            <div className="error">
+                                <p>Wrong credentials!!, Try again !!</p>
                             </div>
-                            <div className="authComp_item red">
-                                <Facebook />
-                            </div>
+                        }
+                        <div className="registerhighPadding">
+                            <p>OR</p>
                         </div>
-                    </div>
-                    <div className="registerButton highMargin">
-                        <GoogleOAuthProvider clientId="870325701611-71prlkdqkh3ufs268scgvj9c53v1svn1.apps.googleusercontent.com">
-                            <GoogleLogin
+                        <div className="GoogleLogin_Special">
+                            <GoogleLogin id="google" className="google_button"
                                 onSuccess={credentialResponse => {
                                     const details= jwt_decode(credentialResponse.credential);
-                                    
                                     handleGoogleAuth(details);
                                 }}
                                 onError={() => {
                                     console.log('Login Failed');
                                 }}
+                                theme="outline"
+                                shape='square'
+                                text='signup_with'
+                                type='standard'
                             />
-                        </GoogleOAuthProvider>
-                        <button onClick={handleClick}>{isFetching ? "Loading.." : "login"}</button>
-                    </div>
-                    {error && 
-                        <div className="error">
-                            <p>Wrong credentials!!, Try again !!</p>
                         </div>
-                    }
+                    </div>
                     <div className="registerText">
                         <p>You're new member? 
                             <Link to="/register" className='link-main'>

@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "instiwise-logo.png",
+      "src": "profile.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "word.png",
+      "src": "test.png",
       "type": "image/png",
       "sizes": "512x512"
     }

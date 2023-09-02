@@ -228,7 +228,6 @@ export const addDislike = async (userId, postId, dispatch) => {
   }
 };
 
-
 //VIEW POST
 export const addView = async (userId, postId, dispatch) => {
   try {
