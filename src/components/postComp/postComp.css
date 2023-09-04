@@ -34,6 +34,13 @@
     flex: 1;
 }
 
+.noProfileImage {
+    width: 100%;
+    height: 100%;
+    background: blue;
+    border-radius: 50%;
+}
+
 .postUserInfo_item p {
     font-weight: 600;
     line-height: 15px;

@@ -119,7 +119,7 @@
 @media screen and (max-width: 770px){
     .home_container {
         padding-top: 0;
-        background: rgb(254, 249, 249);
+        /* background: rgb(254, 249, 249); */
     }
 
     .home_header {

@@ -10,7 +10,7 @@ const Table = () => {
       {
         field: "name",
         headerName: "Lesson",
-        width: window.innerWidth >= 768 ? 290 : 200,
+        width: window.innerWidth >= 768 ? 350 : 200,
         renderCell: (params) => {
           return (
             <div className="productListItem">
@@ -46,11 +46,11 @@ const Table = () => {
         },
       },
       { field: "lecturer", headerName: "Lecturer", width: 150 },
-      { field: "day", headerName: "Day", width: 100 },
+      { field: "day", headerName: "Day", width: 130 },
       {
         field: "action",
         headerName: "Action",
-        width: 150,
+        width: 90,
         renderCell: (params) => {
           return (
             <>

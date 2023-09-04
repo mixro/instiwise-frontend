@@ -14,6 +14,7 @@ const ITEM_HEIGHT = 48;
 const PostComp = ({ post }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [profileLoading, setProfileLoading] = useState(true);
     const postId = post._id;
     const user = useSelector((state) => state.user.currentUser);
     const userId = user._id;
@@ -49,11 +50,17 @@ const PostComp = ({ post }) => {
         setLoading(false);
     };
 
+    const handleProfileLoad = () => {
+        setProfileLoading(false);
+    };
+
   return (
     <div className="postContainer">
         <div className="postTop">
             <div className="postUser_profile">
-                <img src='/assets/profile.png' alt='PR' />
+                <img src='/assets/profile.png' style={{display: profileLoading ? "none" : "block"}} onLoad={handleProfileLoad} alt='PR' />
+                <div className="noProfileImage" style={{display: profileLoading ? "block" : "none"}}>
+                </div>
             </div>
             <div className="postUser_info">
                 <div className="postUserInfo_item">

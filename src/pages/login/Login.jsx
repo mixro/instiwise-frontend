@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './login.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { login } from '../../redux/apiCalls';
+import { googleLogin, login } from '../../redux/apiCalls';
 import { useDispatch, useSelector } from 'react-redux';
-import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
 
 const Login = () => {
@@ -21,21 +21,10 @@ const Login = () => {
     const handleGoogleAuth = (details) => {
         const email = details.email;
         const username = details.name;
+        const img = details.picture;
          
-        googleLogin(dispatch, {username, email}, navigate);
+        googleLogin(dispatch, {username, email, img}, navigate);
     }
-
-    const googleLogin = useGoogleLogin({
-        onSuccess: credentialResponse => {
-            const details= jwt_decode(credentialResponse.credential);
-            
-            handleGoogleAuth(details);
-        },
-        onError: () => {
-            console.log('Login Failed');
-        }
-    });
-
 
   return (
     <div className="registerContainer">
@@ -90,9 +79,8 @@ const Login = () => {
                                 onError={() => {
                                     console.log('Login Failed');
                                 }}
-                                theme="outline"
                                 shape='square'
-                                text='signup_with'
+                                text='signin'
                                 type='standard'
                             />
                         </div>

@@ -1,12 +1,12 @@
 .registerContainer {
-    padding: 0 2%;
+    padding: 1% 2% 0;
     width: 100%;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
-    background: rgb(216, 218, 223);
+    background: linear-gradient(120deg, rgb(160, 241, 254), royalblue);
 }
 
 .registerTop {
@@ -194,6 +194,15 @@
     background: white;
     border-radius: 5px;
     overflow-x: hidden;
+    height: fit-content;
+    overflow: hidden;
+    padding: 0;
+}
+
+.GoogleLogin_Special span {
+    font-family: 'Poppins', sans serif;
+    font-size: 17px;
+    font-weight: normal;
 }
 
 
