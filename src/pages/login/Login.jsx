@@ -62,7 +62,7 @@ const Login = () => {
                     </div>
                     <div className="registerButton highMargin googleAuth">
                         <button onClick={handleClick}>{isFetching ? "Loading.." : "login"}</button>
-                        {!error && 
+                        {error && 
                             <div className="error">
                                 <p>Wrong credentials!!, Try again !!</p>
                             </div>
