@@ -263,6 +263,17 @@ const Home = () => {
         </div>
       </div>
 
+      <div className="homeNews_container">
+        <div className="homeNews_item">
+          <span>Get informed like never before!</span>
+          <h1 className='LARGESCREEN'>Stay updated with <br /> your SO's timeline news</h1>
+          <h1 className='SMALLSCREEN'>Stay updated with your SO's timeline news</h1>
+          <Link to="/posts" className='link-main'>
+            <button>EXPLORE MORE</button>
+          </Link>
+        </div> 
+      </div>
+
       <div className="SMALLSCREEN">
         <div className="div_header">
           <p>Access All</p>

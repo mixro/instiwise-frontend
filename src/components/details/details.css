@@ -227,6 +227,45 @@
     font-size: 27px;
 }
 
+    /*-------------------- TODAYS QUOTE ----------------------------*/
+.todaysQuote {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 50px;
+    padding: 2%;
+    cursor: pointer;
+    background: linear-gradient(270deg, rgb(3, 227, 148), rgb(5, 146, 159));
+}
+
+.todaysQuote p {
+    font-size: 25px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.todaysQuote h2 {
+    font-weight: normal;
+    width: 80%;
+    text-align: center;
+}
+
+.todaysQuote button {
+    margin-top: 3%;
+    padding: 5px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 1px solid white;
+    font-size: 14px;
+    background: transparent;
+}
+
+.todaysQuote button:hover {
+    background: rgb(230, 230, 230);
+}
+
 
 
     /*---------------KEY FRAMES--------------*/
@@ -382,5 +421,40 @@
     .tableHeader h2 {
         font-size: 23px;
         text-align: center;
+    }
+
+       /*-------------------- TODAYS QUOTE ----------------------------*/
+    .todaysQuote {
+        margin-bottom: 50px;
+        padding: 20px 2%;
+    }
+
+    .todaysQuote p {
+        font-size: 20px;
+        margin-bottom: 15px;
+        font-weight: 500;
+    }
+
+    .todaysQuote h2 {
+        width: 95%;
+        font-size: 17px;
+        font-weight: normal;
+        text-align: center;
+    }
+
+    .quoteDot {
+        padding-top: 10px;
+    }
+
+    .quoteDot span {
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .todaysQuote button {
+        margin-top: 10px;
+        border: none;
+        font-size: 12px;
+        background: rgb(125, 247, 229);
     }
 }

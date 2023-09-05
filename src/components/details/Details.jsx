@@ -155,6 +155,15 @@ const Details = () => {
             </div>
         </div>
 
+        <div className="todaysQuote">
+            <p>Today's Quote</p>
+            <h2>"Engineering is the art of turning dreams into reality, one innovation at a time. Embrace the challenges, for they are the stepping stones to progress"</h2>
+            <div className="quoteDot SMALLSCREEN">
+                <span>...</span>
+            </div>
+            <button>EXPLORE MORE QUOTES</button>
+        </div>
+
         <div className="details_grid">
             <div className="grid_left">
                 <div className="details_item_header">

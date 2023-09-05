@@ -113,6 +113,36 @@
 }
 
 
+    /*----------HOME NEWS----------*/
+.homeNews_container {
+    margin-bottom: 50px;
+    padding: 4% 2% 3% 2% ;
+    color: white;
+    background: linear-gradient(120deg, rgb(0, 128, 62), royalblue);
+}
+
+.home_container h1 {
+    font-size: 50px;
+    font-weight: 800;
+    margin-top: 15px;
+    line-height: 60px;
+}
+
+.homeNews_item button {
+    padding: 6px 15px;
+    margin-top: 50px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    color: black;
+    font-size: 17px;
+    background: gainsboro;
+}
+
+.homeNews_item button:hover {
+    background: royalblue;
+    color: white;
+}
 
 
 
@@ -290,5 +320,28 @@
         -webkit-line-clamp: 2;
         line-clamp: 2;
         -webkit-box-orient: vertical;
+    }
+
+        /*----------HOME NEWS----------*/
+    .homeNews_container {
+        padding: 20px 2%;
+        margin-bottom: 25px;
+    }
+
+    .home_container h1 {
+        font-size: 30px;
+        font-weight: 800;
+        margin-top: 15px;
+        line-height: normal;
+    }
+
+    .homeNews_item button {
+        padding: 6px 12px;
+        margin-top: 20px;
+        font-size: 13px;
+    }
+
+    .homeNews_item button:hover {
+        background: rgb(231, 45, 45);
     }
 }
