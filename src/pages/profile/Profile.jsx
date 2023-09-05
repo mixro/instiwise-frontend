@@ -18,6 +18,8 @@ const Profile = () => {
     const { isFetching, error } = useSelector((state) => state.user);
     const user = useSelector((state) => state.user.currentUser);
     const userId = user?._id;
+
+    console.log(user);
   
     const handleChange = (e) => {
       setInputs((prev) => {

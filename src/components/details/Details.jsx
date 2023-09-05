@@ -74,7 +74,7 @@ const Details = () => {
                                             <h1>{lesson.name}</h1>
                                             <p>start: <span> {lesson.start}</span></p>
                                             <p>End: <span> {lesson.end}</span></p>
-                                            <p>Remainging:<span> {calculateRemainingTime(lesson.end)}</span></p>
+                                            <p>Remaining:<span> {calculateRemainingTime(lesson.end)}</span></p>
                                         </div>
                                     </div>
                                 </Link>
