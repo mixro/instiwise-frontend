@@ -53,6 +53,8 @@
 
 .free_RoomsImage img {
     width: 100%;
+    aspect-ratio: 1/0.6;
+    object-fit: cover;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
 }

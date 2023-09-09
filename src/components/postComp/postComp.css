@@ -182,4 +182,9 @@
     .noPostImage {
         aspect-ratio: 1/1;
     }
+
+    .smallLoader {
+        width: 38px;
+        height: 38px;
+    }
 }
