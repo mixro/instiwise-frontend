@@ -435,6 +435,11 @@
         display: none;
     }
 
+    .freeRoom_NoRoom {
+        width: 100%;
+        aspect-ratio: 1/0.7;
+    }
+
     .NODISPLAY_ONSMALL {
         display: none;
     }

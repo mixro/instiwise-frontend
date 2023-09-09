@@ -116,6 +116,10 @@
         font-size: 16px;
     }
 
+    .free_RoomsImage img {
+        aspect-ratio: 1/0.7;
+    }
+
     .free_RoomsItem {
         flex-basis: 48.5%;
     }
