@@ -28,12 +28,17 @@ import { getCourses, getFreeRooms, getInUseRooms, getLessons, getOngoingCourse, 
 function App() {
   const dispatch = useDispatch();
 
+<<<<<<< HEAD
   useEffect(() => {
     getRooms(dispatch);
     getCourses(dispatch);
     getLessons(dispatch);
   
     const sse = new EventSource("http://localhost:8800/sse");
+=======
+  useEffect(() => {  
+    const sse = new EventSource("https://instiwise-backend.onrender.com/sse");
+>>>>>>> c25b8339b7029ae75aba8fc20d5322a2feb973a7
 
     sse.onopen = () => {
       console.log("SSE connection opened");
