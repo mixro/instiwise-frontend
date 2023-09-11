@@ -28,11 +28,7 @@ import Posts from './pages/posts/Posts';
 function App() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    getRooms(dispatch);
-    getCourses(dispatch);
-    getLessons(dispatch);
-  
+  useEffect(() => {  
     const sse = new EventSource("https://instiwise-backend.onrender.com/sse");
 
     sse.onopen = () => {
