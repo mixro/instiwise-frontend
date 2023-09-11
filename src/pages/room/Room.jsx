@@ -29,27 +29,30 @@ const Room = () => {
                     <p className="location"><span><LocationOn /> Building:</span> {room.building} </p>
                     {room.type && <p className="location"> <span><House /> Type:</span> {room.type} </p>}
                     {room.type === "class" && <p className="location"> <span><ChairAlt /> Seats:</span> {room.seats} </p>}
+                    <div className="roomImage_Cont SMALLSCREEN">
+                        <img src={room.img} alt='room' />
+                    </div>
                     <p className="roomDesc">{room.description}</p>
                 </div>
                 
                 <div className="room_images">
                     <div className="room_image">
-                        <img src="/assets/room-1.jpg" className="room-item" alt='ROOM' />
+                        <img src={room.img} className="room-item" alt='ROOM' />
                     </div>
                     <div className="room_image">
-                        <img src="/assets/room-1.jpg" className="room-item" alt='ROOM' />
+                        <img src={room.img} className="room-item" alt='ROOM' />
                     </div>
                     <div className="room_image">
-                        <img src="/assets/room-1.jpg" className="room-item" alt='ROOM' />
+                        <img src={room.img} className="room-item" alt='ROOM' />
                     </div>
                     <div className="room_image">
-                        <img src="/assets/room-1.jpg" className="room-item" alt='ROOM' />
+                        <img src={room.img} className="room-item" alt='ROOM' />
                     </div>
                     <div className="room_image">
-                        <img src="/assets/room-1.jpg" className="room-item" alt='ROOM' />
+                        <img src={room.img} className="room-item" alt='ROOM' />
                     </div>
                     <div className="room_image">
-                        <img src="/assets/room-1.jpg" className="room-item" alt='ROOM' />
+                        <img src={room.img} className="room-item" alt='ROOM' />
                     </div>
                 </div>
                 

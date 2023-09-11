@@ -256,4 +256,15 @@
     .contents {
         margin-bottom: 50px;
     }
+
+    .roomImage_Cont {
+        width: 100%;
+        padding-top: 15px;
+    }
+
+    .roomImage_Cont img {
+        width: 100%;
+        aspect-ratio: 1/0.7;
+        border-radius: 5px;
+    }
 }

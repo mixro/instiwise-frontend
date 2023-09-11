@@ -110,9 +110,9 @@ const Courses = () => {
             </Link>            
           </div>
 
-          <div className="search_results gray_color">
+          {searchQuery && <div className="search_results gray_color">
             <p>{filteredCourses.length} <span>Search Results</span></p>
-          </div>
+          </div>}
 
           <div className="LESSONS_MAIN">
             {Array.isArray(filteredCourses) && filteredCourses.length > 0
@@ -121,7 +121,7 @@ const Courses = () => {
                           <div className="lesson-container">
                               <div className="lesson_top COURSE_TOP">
                                   <h1>{course.name}</h1>
-                                  <p>{course.description}</p>
+                                  <p>{course.courseName} Engineering</p>
                               </div>
 
                               <div className="lesson-bottom">

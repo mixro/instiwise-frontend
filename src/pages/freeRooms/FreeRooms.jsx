@@ -5,8 +5,9 @@ import { Search } from '@mui/icons-material';
 import { useState } from 'react';
 
 const FreeRooms = () => {
-    const freeRooms = useSelector((state) => state.freeRooms.freeRooms);
+    const [loading, setLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState('');
+    const freeRooms = useSelector((state) => state.freeRooms.freeRooms);
 
     // Function to handle the search input change
     const handleSearchInputChange = (event) => {
@@ -25,6 +26,10 @@ const FreeRooms = () => {
         );
     });
 
+    const handleLoad = () => {
+        setLoading(false);
+    };
+
   return (
     <div className="container">
         <div className="SMALLSCREEN">
@@ -41,9 +46,11 @@ const FreeRooms = () => {
                     </div>
                 </div>
             </div>   
-            <div className="search_results gray_color">
-                <p>{filteredRooms && filteredRooms.length} <span>Search Results</span></p>
-            </div>
+            {searchQuery && 
+                <div className="search_results gray_color">
+                    <p>{filteredRooms && filteredRooms.length} <span>Search Results</span></p>
+                </div>
+            }
         </div>  
 
         <div className="room_header">
@@ -59,9 +66,11 @@ const FreeRooms = () => {
                 </div>
             </div>
         </div> 
-        <div className="search_results LARGESCREENS gray_color">
-            <p>{filteredRooms && filteredRooms.length} <span>Search Results</span></p>
-        </div>  
+        {searchQuery && 
+            <div className="search_results LARGESCREENS gray_color">
+                <p>{filteredRooms && filteredRooms.length} <span>Search Results</span></p>
+            </div> 
+        } 
 
         <div className="lesson-wrapper">
             <div className="lesson-left">
@@ -72,14 +81,19 @@ const FreeRooms = () => {
                                     <Link to={`/room/${room._id}`} className='link-main'>
                                         <div className="free_RoomsChildren">
                                             <div className="free_RoomsImage">
-                                                <img src='/assets/room-1.jpg' alt='ROOM' />
+                                                <img src={room.img} style={{display: loading ? "none" : "block"}} onLoad={handleLoad} alt='ROOM' />
+                                                <div style={{display: loading ? "block" : "none"}} className="freeRoom_NoRoom">
+                                                    <div className="freeRoom_loader">
+                                                    <div className="loader smallLoader"></div>
+                                                    </div>
+                                                </div>
                                             </div>
         
                                             <div className="free_RoomsData">
                                                 <p>{room.roomName}</p>
                                                 <p>Seats: {room.seats}</p>
                                                 <p>Building: {room.building}</p>
-                                                <p>Free Till: <span>2323</span></p>
+                                                <p>Type: <span style={{textTransform: "capitalize"}}>{room.type}</span></p>
                                                 <div className="lesson_remaining">
                                                     <span>free</span>
                                                 </div>

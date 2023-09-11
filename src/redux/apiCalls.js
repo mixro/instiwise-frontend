@@ -77,30 +77,33 @@ export const UserLogout = async (dispatch) => {
 };
 
 //ROOMS
-export const getRooms = async (dispatch, data) => {
+export const getRooms = async (dispatch) => {
     dispatch(getRoomsStart());
     try {
-      dispatch(getRoomsSuccess(data));
+      const res = await publicRequest.get("/rooms");
+      dispatch(getRoomsSuccess(res.data));
     } catch(err) {
       dispatch(getRoomsFailure());
     }
 }
 
 //LESSONS
-export const getLessons = async (dispatch, data) => {
+export const getLessons = async (dispatch) => {
     dispatch(getLessonsStart());
     try {
-      dispatch(getLessonsSuccess(data));
+      const res = await publicRequest.get("/lessons");
+      dispatch(getLessonsSuccess(res.data));
     } catch(err) {
       dispatch(getLessonsFailure());
     }
 }
 
 //COURSES
-export const getCourses = async (dispatch, data) => {
+export const getCourses = async (dispatch) => {
     dispatch(getCoursesStart());
     try {
-      dispatch(getCoursesSuccess(data));
+      const res = await publicRequest.get("/courses");
+      dispatch(getCoursesSuccess(res.data));
     } catch(err) {
       dispatch(getCoursesFailure());
     }

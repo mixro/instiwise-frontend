@@ -1,7 +1,7 @@
 import './app.css'
 import Home from "./pages/home/Home";
 import Layout from "./components/layout/Layout";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Posts from './pages/posts/Posts';
 import Rooms from "./pages/rooms/Rooms";
 import Room from './pages/room/Room';
 import Lessons from './pages/lessons/Lessons';
@@ -9,21 +9,21 @@ import Courses from './pages/courses/Courses';
 import Course from './pages/course/Course';
 import Lesson from './pages/lesson/Lesson';
 import FreeRooms from './pages/freeRooms/FreeRooms';
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getCourses, getFreeRooms, getInUseRooms, getLessons, getOngoingCourse, getOngoingLessons, getPosts, getRooms, getTodaysLessons, getUpcomingLessons } from './redux/apiCalls';
-import InuseRooms from './pages/roomsInUse/InuseRooms';
-import OngoingLessonsComp from './pages/ongoingLessons/OngoingLessonsComp';
-import UpcomingLessonsComp from './pages/upcomingLessons/UpcomingLessonsComp';
-import OngoingCoursesComp from './pages/ongoingCourses/OngoingCoursesComp';
+import { useEffect } from 'react';
 import Register from './pages/register/Register';
 import Login from './pages/login/Login';
 import Profile from './pages/profile/Profile';
-import TodaysLessons from './pages/todaysLessons/TodaysLessons';
 import Ditso from './pages/ditso/Ditso';
 import NewPost from './pages/newPost/NewPost';
 import EditPost from './pages/editPost/EditPost';
-import Posts from './pages/posts/Posts';
+import InuseRooms from './pages/roomsInUse/InuseRooms';
+import TodaysLessons from './pages/todaysLessons/TodaysLessons';
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import OngoingLessonsComp from './pages/ongoingLessons/OngoingLessonsComp';
+import OngoingCoursesComp from './pages/ongoingCourses/OngoingCoursesComp';
+import UpcomingLessonsComp from './pages/upcomingLessons/UpcomingLessonsComp';
+import { getCourses, getFreeRooms, getInUseRooms, getLessons, getOngoingCourse, getOngoingLessons, getPosts, getRooms, getTodaysLessons, getUpcomingLessons } from './redux/apiCalls';
 
 function App() {
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ function App() {
     getCourses(dispatch);
     getLessons(dispatch);
   
-    const sse = new EventSource("https://instiwise-backend.onrender.com/sse");
+    const sse = new EventSource("http://localhost:8800/sse");
 
     sse.onopen = () => {
       console.log("SSE connection opened");
@@ -68,18 +68,6 @@ function App() {
 
       if (data.todaysLessons) {
         getTodaysLessons(dispatch, data.todaysLessons)
-      }
-
-      if (data.lessons) {
-        getLessons(dispatch, data.lessons)
-      }
-
-      if (data.rooms) {
-        getRooms(dispatch, data.rooms)
-      }
-
-      if (data.courses) {
-        getCourses(dispatch, data.courses)
       }
     };
     
