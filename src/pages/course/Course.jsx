@@ -10,10 +10,24 @@ const Course = () => {
     const lessons = useSelector((state) => state.lessons.lessons);
     const courseLessons = lessons.filter((lesson) => lesson.courseId._id === roomId);
 
+    const isLessonOngoing = (day, start, end) => {
+        const now = new Date();
+        const dayOfWeek = now.toLocaleString('en-us', { weekday: 'long' }).toLowerCase();
+      
+        // Check if the current day matches the specified day
+        if (dayOfWeek !== day.toLowerCase()) {
+          return false;
+        }
+        const startTime = new Date(`${now.toDateString()} ${start}`);
+        const endTime = new Date(`${now.toDateString()} ${end}`);
+      
+        return now >= startTime && now <= endTime;
+    };
+
   return (
     <div className="course_container">
         <div className="course_header">
-            <h1>{course.name} Course</h1>
+            <h1>{course.name}</h1>
         </div>
         <div className="counter_body">
             <div className="course_left">
@@ -45,6 +59,9 @@ const Course = () => {
                                                 <p><span>Day:</span> {lesson.day}</p>
                                                 <p><span>Course:</span> {lesson.courseId.name}</p>
                                                 <p><span>Lecturer:</span> {lesson.lecturer}</p>
+                                                <div className="lesson_remaining">
+                                                    <p>{isLessonOngoing(lesson.start, lesson.end) ? 'ongoing' : 'upcoming'}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </Link>
@@ -57,11 +74,11 @@ const Course = () => {
                 </div>
                 <div className="course_desc">
                     <h2>Courses Description:</h2>
-                    <p>This course learn and deal with electrical enginering and power generationThis course learn and deal with electrical enginering and power generationThis course learn and deal with electrical enginering and power generationThis course learn and deal with electrical enginering and power generationThis course learn and deal with electrical enginering and power generationThis course learn and deal with electrical enginering and power generation</p>
+                    <p>{course.description}</p>
                 </div>
                 <div className="course_desc">
                     <h2>Courses Overview:</h2>
-                    <p>This course learn and deal with electrical enginering and power generationThis course learn and deal with electrical enginering and power generationThis course learn and deal with electrical enginering and power generationThis course learn and deal with electrical enginering and power generationThis course learn and deal with electrical enginering and power generationThis course learn and deal with electrical enginering and power generation</p>
+                    <p>"Explore this comprehensive course offerings designed to provide you with the knowledge and skills you need to succeed. This courses cover a wide range of subjects, from foundational to advanced topics, ensuring you receive a well-rounded education. Taught by experienced instructors, This courses blend theory with practical applications, preparing you for a successful future in your chosen field."</p>
                 </div>
             </div>
 
@@ -69,7 +86,7 @@ const Course = () => {
                 <h2>Course Info</h2>
                 <div className="course_info">
                     <p>Total students: <span>{course.numberOfStudents}</span></p>
-                    <p>Academic Year: <span>2023-2022</span></p>
+                    <p>Started: <span>2023-2022</span></p>
                     <p>Starting year: <span>{course.starting}</span></p>
                     <p>Final year: <span>{course.ending}</span></p>
                     <p>{course.description}</p>

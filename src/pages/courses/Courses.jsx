@@ -114,7 +114,7 @@ const Courses = () => {
             <p>{filteredCourses.length} <span>Search Results</span></p>
           </div>}
 
-          <div className="LESSONS_MAIN">
+          <div className="LESSONS_MAIN NoSmallDisplay">
             {Array.isArray(filteredCourses) && filteredCourses.length > 0
               ?   filteredCourses.map((course) => (
                       <Link to={`/course/${course._id}`} key={course._id} className='link-main DIVITEM_COMP'>
@@ -130,6 +130,33 @@ const Courses = () => {
                                   <p><span>Departiment:</span> {course.department}</p>
                                   <p><span>Final year:</span> {course.ending}</p>
                               </div>
+                          </div>
+                      </Link>
+                    ))
+                :   <div className="NODATA_COMP">
+                        <h1>NO LESSONS</h1>
+                    </div>
+              }
+          </div>
+
+          <div className="LESSONS_MAIN SMALLSCREEN">
+            {Array.isArray(filteredCourses) && filteredCourses.length > 0
+              ?   filteredCourses.map((course) => (
+                      <Link to={`/course/${course._id}`} key={course._id} className='link-main DIVITEM_COMP'>
+                          <div className="Course_SmallContainer">
+                            <div className="Course_SmallHeader">
+                              <h1>{course.name}</h1>
+                              <p>{course.courseName}</p>
+                              <div className="Course_Status">
+                                <p><span>Status:</span> Ongoing</p>
+                              </div>
+                            </div>
+
+                            <div className="course_SmallBottom">
+                              <p><span>Students:</span> {course.numberOfStudents}</p>
+                              <p><span>Program Duration:</span> {course.starting} to {course.ending}</p>
+                              <p><span>Department:</span> {course.department}</p>
+                            </div>
                           </div>
                       </Link>
                     ))

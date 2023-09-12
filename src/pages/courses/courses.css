@@ -98,4 +98,60 @@
         width: 80%;
         text-align: center;
     }
+
+    
+        /*   ------------ Course_SmallContainer -------------    */
+    
+    .Course_SmallContainer {
+        border-radius: 5px;
+        border: 1px solid gray;
+        margin-bottom: 25px;
+    }
+
+    .NoSmallDisplay {
+        display: none;
+    }
+
+    .Course_SmallHeader {
+        background: rgb(197, 197, 197);
+        padding: 10px 10px 5px;
+    }
+
+    .Course_SmallContainer h1 {
+        font-weight: 600;
+        color: rgb(45, 45, 45);
+        font-size: 23px;
+        line-height: 28px;
+    }
+
+    .Course_SmallHeader p {
+        font-size: 15px;
+    }
+
+    .course_SmallBottom {
+        padding: 15px 10px;
+    }
+
+    .course_SmallBottom p {
+        font-size: 15px;
+    }
+
+    .course_SmallBottom span {
+        font-weight: 600;
+        color: rgb(21, 21, 21);
+    }
+
+    .Course_Status {
+        padding: 15px 0 4px;
+    }
+
+    .Course_Status span {
+        font-weight: 500;
+        color: black;
+    }
+
+    .Course_Status p {
+        color: green;
+        font-weight: 600;
+    }
 }

@@ -43,8 +43,9 @@
 }
 
 .course_desc h2 {
-    margin-bottom: 10px;
+    margin-bottom: 25px;
     font-size: 25px;
+    text-transform: uppercase;
 }
 
     /*------------------ course right --------------------*/
@@ -86,6 +87,11 @@
 
 
 @media screen and (max-width: 770px) {
+    .course_header h1 {
+        font-size: 27px;
+        font-weight: 600;
+    }
+
     .counter_body {
         flex-direction: column;
     }
@@ -93,9 +99,14 @@
     .course_desc h2 {
         margin-bottom: 15px;
         font-size: 22px;
+        font-weight: 600;
     }
 
     .course_right {
         display: none;
+    }
+
+    .UPPERCASE {
+        font-size: 14px;
     }
 }
