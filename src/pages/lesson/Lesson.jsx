@@ -48,7 +48,7 @@ const Lesson = () => {
         </div>
         <div className="counter_body">
             <div className="course_left">
-                <p className="location UPPERCASE"><Book /> {lesson.courseId && lesson.courseId.name} LESSON, GENERAL STUDY</p>
+                <p className="location UPPERCASE"><Book /> {lesson.courseId && lesson.courseId.name}, {lesson.courseId.courseName}</p>
                 <div className="lesson_desc">
                     <div className="lessonStatus">
                         <p>Status: <span>{isLessonOngoing(lesson.day, lesson.start, lesson.end) ? 'Ongoing' : 'Upcoming'}</span></p>
@@ -86,7 +86,8 @@ const Lesson = () => {
             <div className="course_right">
                 <h2>Class Info</h2>
                 <div className="course_info">
-                    <p>Total studentss: <span>{lesson.courseId.numberOfStudents}</span></p>
+                    <p>Name: <span>{lesson.courseId.name}</span></p>
+                    <p>Total students: <span>{lesson.courseId.numberOfStudents}</span></p>
                     <p>Academic Year: <span>2023-2024</span></p>
                     <p>Starting year: <span>{lesson.courseId.starting}</span></p>
                     <p>Final year: <span>{lesson.courseId.ending}</span></p>

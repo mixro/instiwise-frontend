@@ -17,3 +17,7 @@
 .lessonStatus p span {
     color: green;
 }
+
+.course_header h1 {
+    text-transform: capitalize;
+}
