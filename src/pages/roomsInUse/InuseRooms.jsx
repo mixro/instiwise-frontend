@@ -7,7 +7,6 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 const InuseRooms = () => {
     const inUseRooms = useSelector((state) => state.inUseRooms.inUseRooms);
     const [searchQuery, setSearchQuery] = useState('');
-    const [loading, setLoading] = useState(true);
 
     // Function to handle the search input change
     const handleSearchInputChange = (event) => {
@@ -25,10 +24,6 @@ const InuseRooms = () => {
         buildingName.includes(query)
         );
     });
-
-    const handleLoad = () => {
-        setLoading(false);
-    };
 
   return (
     <div className="container">
