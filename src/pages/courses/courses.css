@@ -104,7 +104,7 @@
     
     .Course_SmallContainer {
         border-radius: 5px;
-        border: 1px solid gray;
+        border: 1px solid #d0cfcf;
         margin-bottom: 25px;
     }
 
@@ -113,7 +113,7 @@
     }
 
     .Course_SmallHeader {
-        background: rgb(197, 197, 197);
+        background: #e0e0e0;
         padding: 10px 10px 5px;
     }
 

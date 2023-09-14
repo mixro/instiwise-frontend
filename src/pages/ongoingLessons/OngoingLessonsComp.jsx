@@ -62,9 +62,11 @@ const OngoingLessonsComp = () => {
                     </div>
                 </div>
             </div>   
-            <div className="search_results gray_color">
-                <p>{filteredLessons && filteredLessons.length} <span>Search Results</span></p>
-            </div>
+            {searchQuery && 
+                <div className="search_results gray_color">
+                    <p>{filteredLessons && filteredLessons.length} <span>Search Results</span></p>
+                </div>
+            }
         </div>  
 
         <div className="room_header">
@@ -80,9 +82,11 @@ const OngoingLessonsComp = () => {
                 </div>
             </div>
         </div> 
-        <div className="search_results LARGESCREENS gray_color">
-            <p>{filteredLessons && filteredLessons.length} <span>Search Results</span></p>
-        </div>
+        {searchQuery && 
+            <div className="search_results LARGESCREENS gray_color">
+                <p>{filteredLessons && filteredLessons.length} <span>Search Results</span></p>
+            </div>
+        }
         
         <div className="lesson-wrapper">
             <div className="lesson-left">

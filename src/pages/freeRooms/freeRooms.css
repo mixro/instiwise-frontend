@@ -49,6 +49,11 @@
 
 .free_RoomsImage {
     width: 100%;
+    position: relative;
+    aspect-ratio: 1/0.6;
+    background: rgb(162, 162, 162);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 }
 
 .free_RoomsImage img {

@@ -17,6 +17,20 @@ const Room = () => {
         return text.slice(0, maxLength);
     }    
 
+    const isLessonOngoing = (day, start, end) => {
+        const now = new Date();
+        const dayOfWeek = now.toLocaleString('en-us', { weekday: 'long' }).toLowerCase();
+      
+        // Check if the current day matches the specified day
+        if (dayOfWeek !== day.toLowerCase()) {
+          return false;
+        }
+        const startTime = new Date(`${now.toDateString()} ${start}`);
+        const endTime = new Date(`${now.toDateString()} ${end}`);
+      
+        return now >= startTime && now <= endTime;
+    };
+
   return (
     <div className="container">
         <div className="room_wrapper">
@@ -58,7 +72,7 @@ const Room = () => {
                 
                 <div className="room_description">
                     <h2>Room Description</h2>
-                    <p>This room found on the fifth floor in TT(teaching tower) ,it good for learning and studying , So far its good for meeting an seminars. room found on the fifth floor in TT(teaching tower) ,it good for learning and studying , So far its good for meeting an seminars.  </p>
+                    <p>"Welcome to our Institute's Classroom, where learning meets inspiration! Our classrooms are designed to foster an environment of knowledge-sharing and growth. Equipped with state-of-the-art technology, comfortable seating, and a dedicated faculty, we provide the ideal space for students to immerse themselves in the world of education. With interactive whiteboards, multimedia tools, and ample natural light, our classrooms offer an engaging and dynamic learning experience. Join us on this educational journey, where every seat is a front-row seat to your future success!"</p>
                 </div>
                 <div className="contents">
                     <h2>Room Contents</h2>
@@ -95,6 +109,7 @@ const Room = () => {
                                     <p>{lesson.name}</p>
                                     <span>{lesson.day}</span>
                                 </div>
+                                {isLessonOngoing(lesson.day, lesson.start, lesson.end) && <div className="RoomLesson_Dot"></div>}
                             </div>                
                             <div className="info">
                                 <p>Lecturer: <b>{lesson.lecturer}</b></p>

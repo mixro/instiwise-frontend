@@ -158,14 +158,14 @@ const Lessons = () => {
                                       <p><span>Room:</span>{lesson.roomId.roomName}</p>
                                   </div>
 
-                                  {isLessonOngoing(lesson.start, lesson.end) && <div className="lesson_dot"></div>}
+                                  {isLessonOngoing(lesson.day, lesson.start, lesson.end) && <div className="lesson_dot"></div>}
 
                                   <div className="lesson-bottom">
                                       <p><span>Day:</span> {lesson.day}</p>
                                       <p><span>Class:</span> {lesson.courseId.name}</p>
                                       <p><span>Lecturer:</span> {lesson.lecturer}</p>
                                       <div className="lesson_remaining">
-                                          <p>{isLessonOngoing(lesson.start, lesson.end) ? 'ongoing' : 'upcoming'}</p>
+                                          <p>{isLessonOngoing(lesson.day, lesson.start, lesson.end) ? 'ongoing' : 'upcoming'}</p>
                                       </div>
                                   </div>
                               </div>

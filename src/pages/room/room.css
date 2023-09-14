@@ -123,6 +123,7 @@
 .lesson {
     display: flex;
     gap: 6px;
+    position: relative;
 }
 
 .room_profile {
@@ -186,6 +187,17 @@
 .room_description h2, .contents h2 {
     color: rgb(29, 28, 28);
     font-weight: normal;
+}
+
+.RoomLesson_Dot {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: blue;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    animation: dot 2s ease-in-out infinite;
 }
 
 

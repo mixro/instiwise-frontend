@@ -3,9 +3,9 @@ import './freeRooms.css'
 import { useSelector } from 'react-redux';
 import { Search } from '@mui/icons-material';
 import { useState } from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const FreeRooms = () => {
-    const [loading, setLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState('');
     const freeRooms = useSelector((state) => state.freeRooms.freeRooms);
 
@@ -25,10 +25,6 @@ const FreeRooms = () => {
         buildingName.includes(query)
         );
     });
-
-    const handleLoad = () => {
-        setLoading(false);
-    };
 
   return (
     <div className="container">
@@ -81,12 +77,11 @@ const FreeRooms = () => {
                                     <Link to={`/room/${room._id}`} className='link-main'>
                                         <div className="free_RoomsChildren">
                                             <div className="free_RoomsImage">
-                                                <img src={room.img} style={{display: loading ? "none" : "block"}} onLoad={handleLoad} alt='ROOM' />
-                                                <div style={{display: loading ? "block" : "none"}} className="freeRoom_NoRoom">
-                                                    <div className="freeRoom_loader">
-                                                    <div className="loader smallLoader"></div>
-                                                    </div>
-                                                </div>
+                                                <LazyLoadImage
+                                                    alt={room.roomName}
+                                                    src={room.img}
+                                                    style={{display: "block"}}
+                                                />
                                             </div>
         
                                             <div className="free_RoomsData">

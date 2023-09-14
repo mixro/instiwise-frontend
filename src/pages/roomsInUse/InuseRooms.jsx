@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import { Search } from '@mui/icons-material';
 import { useState } from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const InuseRooms = () => {
     const inUseRooms = useSelector((state) => state.inUseRooms.inUseRooms);
@@ -80,12 +81,11 @@ const InuseRooms = () => {
                                     <Link to={`/room/${room._id}`} className='link-main'>
                                         <div className="free_RoomsChildren">
                                             <div className="free_RoomsImage">
-                                                <img src={room.img} style={{display: loading ? "none" : "block"}} onLoad={handleLoad} alt='ROOM' />
-                                                <div style={{display: loading ? "block" : "none"}} className="freeRoom_NoRoom">
-                                                    <div className="freeRoom_loader">
-                                                    <div className="loader smallLoader"></div>
-                                                    </div>
-                                                </div>
+                                                <LazyLoadImage
+                                                    alt={room.roomName}
+                                                    src={room.img}
+                                                    style={{display: "block"}}
+                                                />
                                             </div>
         
                                             <div className="free_RoomsData">
