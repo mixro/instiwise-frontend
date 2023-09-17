@@ -8,7 +8,9 @@
 .details_item {
     flex-basis: 49%;
     padding: 2%;
-    border: 1px solid #b30631;
+    -webkit-box-shadow: 2px 2px 5px 4px rgba(214,214,214,1);
+    -moz-box-shadow: 2px 2px 5px 4px rgba(214,214,214,1);
+    box-shadow: 2px 2px 5px 4px rgba(214,214,214,1);
     border-radius: 5px;
     padding-bottom: 10px;
     overflow: hidden;
@@ -229,15 +231,17 @@
 
     /*-------------------- TODAYS QUOTE ----------------------------*/
 .todaysQuote {
-    text-align: center;
+    padding: 2%;
     display: flex;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
     align-items: center;
+    margin-bottom: 50px;
     justify-content: center;
     flex-direction: column;
-    margin-bottom: 50px;
-    padding: 2%;
-    cursor: pointer;
-    background: linear-gradient(270deg, rgb(3, 227, 148), rgb(5, 146, 159));
+    background: linear-gradient(120deg, rgb(0, 128, 62), royalblue);
 }
 
 .todaysQuote p {

@@ -75,7 +75,11 @@
         display: block;
         border-radius: 4px;
         overflow-x: scroll;
-        border: 1px solid #b30631;
+        border: 1px solid gray;
+
+        -webkit-box-shadow: 2px 2px 5px 4px rgba(214,214,214,1);
+        -moz-box-shadow: 2px 2px 5px 4px rgba(214,214,214,1);
+        box-shadow: 2px 2px 5px 4px rgba(214,214,214,1);
     }
 
     .datagrid_large_auto {
