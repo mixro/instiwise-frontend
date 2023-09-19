@@ -65,7 +65,7 @@
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid rgb(255, 0, 162);
+  border: 1px solid rgb(26, 26, 26);
   padding: 2px;
 }
 
@@ -301,13 +301,19 @@
     overflow-x: hidden;
   }
 
+  .userShowImg {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+
   .userShow {
     flex: auto;
     padding: 20px 3% 5px;
     border: none;
-    border-bottom: 1px solid rgb(205, 205, 205);
-    border-radius: 0 0 5px 5px;
-    background: linear-gradient(white, 50%, #F4F5FA);
+    border: 1px solid rgb(233, 233, 233);
+    border-radius: 5px;
+    background: #fcfdff;
   }
 
   .userUpdateLeft {
