@@ -1,6 +1,6 @@
 import './lesson.css'
 import { Book } from '@mui/icons-material'
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const Lesson = () => {
@@ -53,9 +53,9 @@ const Lesson = () => {
                     <div className="lessonStatus">
                         <p>Status: <span>{isLessonOngoing(lesson.day, lesson.start, lesson.end) ? 'Ongoing' : 'Upcoming'}</span></p>
                     </div>
-                    <p>Class: <span>{lesson.courseId && lesson.courseId.name}</span></p>
-                    <p>Room: <span>{lesson.roomId && lesson.roomId.roomName}</span></p>
-                    <p>Day: <span>{lesson.day}</span></p>
+                    <p>Class: <Link to={`/course/${lesson.courseId._id}`} className='link-main'><span className='hoverBorder'>{lesson.courseId && lesson.courseId.name}</span></Link></p>
+                    <p>Room: <Link to={`/room/${lesson.roomId._id}`} className='link-main'><span className='hoverBorder'>{lesson.roomId && lesson.roomId.roomName}</span></Link></p>
+                    <p>Day: {isLessonOngoing(lesson.day, lesson.start, lesson.end) ? <Link to={`/todayslessons`} className='link-main'><span className='hoverBorder'>{lesson.day}</span></Link> : <span>{lesson.day}</span>}</p>
                     <p>Starting time: <span>{lesson.start}</span></p>
                     <p>Ending time: <span>{lesson.end}</span></p>
                     <p>Lesson duration: <span>{calculateLessonDuration(lesson.start, lesson.end)}</span></p>

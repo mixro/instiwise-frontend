@@ -21,3 +21,9 @@
 .course_header h1 {
     text-transform: capitalize;
 }
+
+.hoverBorder {
+    border: 1px solid rgb(220, 220, 220);
+    padding: 0.5px 3px;
+    border-radius: 5px;
+}

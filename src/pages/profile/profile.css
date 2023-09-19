@@ -30,16 +30,17 @@
 
 .userContainer {
   display: flex;
-  margin-top: 20px;
+  padding-top: 40px;
 }
 
 .userShow {
   flex: 1;
-  padding: 20px;
+  padding: 15px 20px 15px 20px;
   -webkit-box-shadow: 0px 0px 15px -10px black;
   box-shadow: 0px 0px 15px -10px black;
   border: 1px solid gray;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .userUpdate {
@@ -55,11 +56,13 @@
 .userShowTop {
   display: flex;
   align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .userShowImg {
-  width: 43px;
-  height: 43px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid rgb(255, 0, 162);
@@ -69,7 +72,9 @@
 .userShowTopTitle {
   display: flex;
   flex-direction: column;
-  margin-left: 20px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 6px;
 }
 
 .userShowUsername {
@@ -86,16 +91,15 @@
 }
 
 .userShowTitle {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
-  color: rgb(93, 93, 93);
-  text-decoration: underline;
+  color: black;
 }
 
 .userShowInfo{
     display: flex;
     align-items: center;
-    margin: 20px 0px;
+    margin: 20px 0px 20px 10px;
     color: #444;
 }
 
@@ -282,12 +286,13 @@
 
   .user {
     overflow-x: hidden;
-    padding: 20px 2% 20px;
+    padding: 20px 0 20px;
   }
 
   .userTitle {
     font-size: 23px;
     margin-bottom: 5%;
+    display: none;
   }
 
   .userContainer {
@@ -299,9 +304,10 @@
   .userShow {
     flex: auto;
     padding: 20px 3% 5px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    background: #F4F5FA;
+    border: none;
+    border-bottom: 1px solid rgb(205, 205, 205);
+    border-radius: 0 0 5px 5px;
+    background: linear-gradient(white, 50%, #F4F5FA);
   }
 
   .userUpdateLeft {
@@ -360,6 +366,11 @@
 
   .newUserSelect {
     padding: 10px 5px;
+  }
+
+  .userContainer {
+    display: flex;
+    padding-top: 0;
   }
 
   .userShowIcon{

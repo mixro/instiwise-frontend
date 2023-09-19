@@ -110,7 +110,7 @@ const Details = () => {
                                 <Link to={`room/${room._id}`} key={room._id} className='link-main'>
                                     <div className="details_body_item">
                                         <div className="details_body_image roomImage">
-                                            <img src='/assets/room-1.jpg' alt='ROOM' />
+                                            <img src={room.img} alt='ROOM' />
                                         </div>
                                         <div className="details_body_desc freeRoomDesc">
                                             <h1>{room.roomName}</h1>
@@ -261,7 +261,7 @@ const Details = () => {
                                 <Link to={`room/${room._id}`} key={room._id} className='link-main'>
                                     <div className="details_body_item">
                                         <div className="details_body_image roomImage">
-                                            <img src='/assets/room-1.jpg' alt='ROOM' />
+                                            <img src={room.img} alt='ROOM' />
                                         </div>
                                         <div className="details_body_desc freeRoomDesc">
                                             <h1>{room.roomName}</h1>

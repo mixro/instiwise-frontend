@@ -10,19 +10,21 @@ const Course = () => {
     const lessons = useSelector((state) => state.lessons.lessons);
     const courseLessons = lessons.filter((lesson) => lesson.courseId._id === roomId);
 
-    const isLessonOngoing = (day, start, end) => {
+    const isLessonOngoing = (lesson) => {
         const now = new Date();
         const dayOfWeek = now.toLocaleString('en-us', { weekday: 'long' }).toLowerCase();
       
         // Check if the current day matches the specified day
-        if (dayOfWeek !== day.toLowerCase()) {
+        if (dayOfWeek !== lesson.day.toLowerCase()) {
           return false;
         }
-        const startTime = new Date(`${now.toDateString()} ${start}`);
-        const endTime = new Date(`${now.toDateString()} ${end}`);
+        const startTime = new Date(`${now.toDateString()} ${lesson.start}`);
+        const endTime = new Date(`${now.toDateString()} ${lesson.end}`);
       
         return now >= startTime && now <= endTime;
     };
+
+    const hasOngoingLesson = courseLessons.some(isLessonOngoing);
 
   return (
     <div className="course_container">
@@ -34,6 +36,9 @@ const Course = () => {
                 <p className="location UPPERCASE"><Book /> {course.department}, DEPARTIMENT </p>
 
                 <div className="lesson_desc">
+                    <div className="lessonStatus">
+                            <p>Status: <span>{hasOngoingLesson ? 'Ongoing' : 'Not Ongoing'}</span></p>
+                    </div>
                     <p>Name: <span>{course.name}</span></p>
                     <p>Starting year: <span> {course.starting}</span></p>
                     <p>Final year: <span> {course.ending}</span></p>
@@ -60,7 +65,7 @@ const Course = () => {
                                                 <p><span>Course:</span> {lesson.courseId.name}</p>
                                                 <p><span>Lecturer:</span> {lesson.lecturer}</p>
                                                 <div className="lesson_remaining">
-                                                    <p>{isLessonOngoing(lesson.start, lesson.end) ? 'ongoing' : 'upcoming'}</p>
+                                                    <p>{isLessonOngoing(lesson) ? 'ongoing' : 'upcoming'}</p>
                                                 </div>
                                             </div>
                                         </div>
