@@ -311,9 +311,13 @@
     flex: auto;
     padding: 20px 3% 5px;
     border: none;
-    border: 1px solid rgb(233, 233, 233);
+    border: 1px solid rgb(180, 180, 180);
     border-radius: 5px;
     background: #fcfdff;
+  }
+
+  .userUpdate {
+    border: 1px solid rgb(180, 180, 180);
   }
 
   .userUpdateLeft {
