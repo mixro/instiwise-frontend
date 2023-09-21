@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Announcement, Facebook, Instagram, Search, Sort, Twitter, WhatsApp, YouTube } from '@mui/icons-material';
 import { useState } from 'react';
+import { AnnouncementData } from '../../dummyData';
 
 const Ditso = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -179,21 +180,14 @@ const Ditso = () => {
                             <h1>Pinned Announcements </h1>
                             <Announcement />
                         </div>
-                        <div className="announcement">
-                            <div className="announcement_item">
-                                <p>This is students orgaziton at Dar es salaam Institute toiortioirtioio roitirtoi of technology</p>
+                        {AnnouncementData.map((announcement) => (
+                            <div className="announcement" id={announcement.id}>
+                                <h1>{announcement.header}</h1>
+                                <div className="announcement_item">
+                                    <p>{announcement.desc}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div className="announcement">
-                            <div className="announcement_item">
-                                <p>This is students orgaziton at Dar es salaam Institute toiortioirtioio roitirtoi of technology</p>
-                            </div>
-                        </div>
-                        <div className="announcement">
-                            <div className="announcement_item">
-                                <p>This is students orgaziton at Dar es salaam Institute toiortioirtioio roitirtoi of technology</p>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>

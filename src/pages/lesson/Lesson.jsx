@@ -88,9 +88,10 @@ const Lesson = () => {
                 <div className="course_info">
                     <p>Name: <span>{lesson.courseId.name}</span></p>
                     <p>Total students: <span>{lesson.courseId.numberOfStudents}</span></p>
-                    <p>Academic Year: <span>2023-2024</span></p>
+                    <p>Total years: <span>{lesson.courseId.ending - lesson.courseId.starting}</span></p>
                     <p>Starting year: <span>{lesson.courseId.starting}</span></p>
                     <p>Final year: <span>{lesson.courseId.ending}</span></p>
+                    <p>Academic Year: <span>2023-2024</span></p>
                     <p>Join us for this enlightening lesson and take a significant step forward in your quest for knowledge and mastery of {lesson.name}.</p>
                 </div>
                 <div className="course_image">

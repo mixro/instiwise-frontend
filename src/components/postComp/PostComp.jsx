@@ -8,6 +8,7 @@ import { MoreVert, Share, ThumbDown, ThumbDownOutlined, ThumbUp, ThumbUpOutlined
 import { addDislike, addLike, addView, deletePost } from '../../redux/apiCalls';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
   
 const ITEM_HEIGHT = 48;
 
@@ -118,12 +119,11 @@ const PostComp = ({ post }) => {
             </div>
             {post.img && 
                 <div className="postImage">
-                    <img src={post?.img} style={{display: loading ? "none" : "block"}} onLoad={handleLoad} alt='POST' />
-                    <div style={{display: loading ? "block" : "none"}}>
-                        <div className="noPostImage">
-                            <div className="loader"></div>
-                        </div>
-                    </div>
+                    <LazyLoadImage
+                        alt="Post"
+                        src={post?.img}
+                        style={{display: "block"}}
+                    />
                 </div>
             }
             <div className="postReactions">

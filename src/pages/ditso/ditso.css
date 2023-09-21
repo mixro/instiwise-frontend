@@ -223,7 +223,7 @@
 }
 
 .ditsoRight_top {
-    padding-bottom: 4%;
+    padding-bottom: 25px;
     height: fit-content;
     position: sticky;
     top: 0px;
@@ -234,23 +234,34 @@
 }
 
 .ditsoRight_top h1 {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
     text-align: center;
     text-transform: uppercase;
 }
 
 .announcement {
-    padding-top: 2%;
-    padding-left: 3%;
+    padding: 2%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    background: linear-gradient(120deg, rgb(238, 238, 238), 70%, gray);
+}
+
+.announcement h1 {
+    font-weight: 600;
+    font-size: 19px;
+    margin-bottom: 10px;
+    color: rgb(44, 44, 44);
 }
 
 .announcement_item {
-    border: 1px solid red;
-    border-radius: 5px;
     padding: 2%;
-    margin-bottom: 15px;
-    background: rgb(242, 242, 242);
+}
+
+.announcement_item p {
+    font-size: 15px;
 }
 
 .noPost {

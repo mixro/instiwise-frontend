@@ -4,6 +4,7 @@ import { Announcement, Search, Sort } from '@mui/icons-material'
 import PostComp from '../../components/postComp/PostComp';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
+import { AnnouncementData } from '../../dummyData';
 
 const Posts = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -53,7 +54,7 @@ const Posts = () => {
                 </div>
             }
         </div>
-        <div className="ditsoWrapper postMainWrapper">
+        <div className="postMainWrapper">
             <div className="ditsoLeft">
                 <div className="ditsoPost postMain_Ditso">
                     <div className="SearchTop_Padding LARGESCREEN">
@@ -109,21 +110,14 @@ const Posts = () => {
                     <h1>Pinned Announcements </h1>
                     <Announcement />
                 </div>
-                <div className="announcement">
-                    <div className="announcement_item">
-                        <p>This is students orgaziton at Dar es salaam Institute toiortioirtioio roitirtoi of technology</p>
+                {AnnouncementData.map((announcement) => (
+                    <div className="announcement" id={announcement.id}>
+                        <h1>{announcement.header}</h1>
+                        <div className="announcement_item">
+                            <p>{announcement.desc}</p>
+                        </div>
                     </div>
-                </div>
-                <div className="announcement">
-                    <div className="announcement_item">
-                        <p>This is students orgaziton at Dar es salaam Institute toiortioirtioio roitirtoi of technology</p>
-                    </div>
-                </div>
-                <div className="announcement">
-                    <div className="announcement_item">
-                        <p>This is students orgaziton at Dar es salaam Institute toiortioirtioio roitirtoi of technology</p>
-                    </div>
-                </div>
+                ))}
             </div>
         </div>
     </div>
