@@ -14,7 +14,6 @@ const ITEM_HEIGHT = 48;
 
 const PostComp = ({ post }) => {
     const [anchorEl, setAnchorEl] = useState(null);
-    const [loading, setLoading] = useState(true);
     const [profileLoading, setProfileLoading] = useState(true);
     const postId = post._id;
     const user = useSelector((state) => state.user.currentUser);
@@ -46,10 +45,6 @@ const PostComp = ({ post }) => {
     const handleDislike = (postId) => {
         addDislike(userId, postId, dispatch);
     }
-
-    const handleLoad = () => {
-        setLoading(false);
-    };
 
     const handleProfileLoad = () => {
         setProfileLoading(false);
