@@ -68,14 +68,13 @@ const Details = () => {
                                     <div className="details_body_item">
                                         <div className="details_body_image">
                                             <p>{lesson.courseId && truncateText(lesson.courseId.name, MAX_LENGTH)}</p>
-                                            
+                                            <div className="ongoing_dot"></div>                                            
                                         </div>
                                         <div className="details_body_desc">
                                             <h1>{lesson.name}</h1>
                                             <p>start: <span> {lesson.start}</span></p>
                                             <p>End: <span> {lesson.end}</span></p>
                                             <p>Remaining:<span> {calculateRemainingTime(lesson.end)}</span></p>
-                                            <div className="ongoing_dot"></div>
                                         </div>
                                     </div>
                                 </Link>
@@ -167,7 +166,7 @@ const Details = () => {
 
         <div className="details_grid">
             <div className="grid_left">
-                <div className="details_item_header">
+                <div className="details_item_header courseDetails-border">
                     <p>ONGOING COURSES</p>
                     <span>{ongoingCourses && ongoingCourses.length}</span>
                 </div>
@@ -323,7 +322,7 @@ const Details = () => {
 
         <div className="details_grid flex-inverse">
             <div className="grid_left">
-                <div className="details_item_header">
+                <div className="details_item_header courseDetails-border">
                     <p>COURSES</p>
                     <span>{courses && courses.length}</span>
                 </div>

@@ -473,6 +473,12 @@
         margin-bottom: 20px;
     }
 
+    .courseDetails-border {
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 0.5px solid rgb(246, 246, 246);
+    }
+
     .courseDetails_left {
         background: royalblue;
         width: 60px;
@@ -481,6 +487,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        color: white;
     }
 
     .courseDetails_right {
