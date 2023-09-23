@@ -89,6 +89,11 @@
     border-radius: 5px;
 }
 
+.details_body_desc {
+    position: relative;
+    flex: 1;
+}
+
 .details_body_desc h1 {
     font-weight: 500;
     font-size: 20px;
@@ -138,8 +143,6 @@
 
     /* ---------------- details grid -------------------- */
 .details_grid {
-    display: flex;
-    justify-content: space-between;
     padding-bottom: 50px;
 }
 
@@ -148,10 +151,10 @@
 }
 
 .grid_left {
-    flex-basis: 75%;
+    width: 100%;
     background: rgb(240, 137, 171);
     border-radius: 5px;
-    padding: 2%;
+    padding: 2% 2% 0.5%;
 }
 
 .grid_more {
@@ -160,15 +163,24 @@
 
 .coursesBody {
     display: flex;
-    overflow-x: hidden;
+    overflow-x: scroll;
     flex-wrap: nowrap;
     width: 100%;
-    gap: 4%;
+    gap: 2%;
+    scrollbar-width: 0;
+}
+
+.coursesBody::-webkit-scrollbar {
+    display: none;
+}
+
+.courseExplore {
+    color: green;
 }
 
 .course_item {
-    flex-basis: 20%;
-    height: 150px;
+    min-width: 170px;
+    min-height: 150px;
     border-radius: 5px;
     background: paleturquoise;
     display: flex;
@@ -180,16 +192,6 @@
     font-weight: 500;
     font-size: 20px;
     text-transform: uppercase;
-}
-
-.grid_right {
-    flex-basis: 23%;
-    background: paleturquoise;
-    border-radius: 5px;
-    padding: 2%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .flex-inverse {
@@ -263,11 +265,11 @@
     cursor: pointer;
     border: 1px solid white;
     font-size: 14px;
-    background: transparent;
+    background: rgb(230, 230, 230);
 }
 
 .todaysQuote button:hover {
-    background: rgb(230, 230, 230);
+    border: 1px solid gray;
 }
 
 
@@ -381,6 +383,7 @@
 
     .grid_left {
         padding-top: 15px;
+        padding: 15px 2% 2%;
     }
 
     .coursesBody {
@@ -460,5 +463,58 @@
         border: none;
         font-size: 12px;
         background: rgb(125, 247, 229);
+    }
+
+
+        /*---------------------------- course details -------------------------*/
+    .courseDetails {
+        display: flex;
+        gap: 4%;
+        margin-bottom: 20px;
+    }
+
+    .courseDetails_left {
+        background: royalblue;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .courseDetails_right {
+        flex: 1;
+        color: rgb(23, 23, 23);
+        display: flex;
+        margin-right: 2%;
+        justify-content: space-between;
+    }
+
+    .courseDetails_right h2 {
+        font-weight: 600;
+        font-size: 17px;
+        line-height: 17px;
+    }
+
+    .courseDetails_desc p:nth-child(1) {
+        font-size: 13px;
+    }
+
+    .courseDetails_desc p:nth-child(2) {
+        font-size: 15px;
+        line-height: 17px;
+    }
+
+    .courseDetails_Dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: blue;
+    }
+    
+    .greenBackground {
+        animation: blink 1s infinite;
+        background: green;
     }
 }

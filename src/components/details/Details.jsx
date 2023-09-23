@@ -63,18 +63,19 @@ const Details = () => {
                     ? 
                     <div className="parent_body">
                         <div className="details_item_body">
-                            {ongoingLessons.slice(0, 3).map((lesson) => (
+                            {ongoingLessons.slice(0, window.innerWidth >= 770 ? 3 : 4).map((lesson) => (
                                 <Link to={`lesson/${lesson._id}`} key={lesson._id} className='link-main'>
                                     <div className="details_body_item">
                                         <div className="details_body_image">
                                             <p>{lesson.courseId && truncateText(lesson.courseId.name, MAX_LENGTH)}</p>
-                                            <div className="ongoing_dot"></div>
+                                            
                                         </div>
                                         <div className="details_body_desc">
                                             <h1>{lesson.name}</h1>
                                             <p>start: <span> {lesson.start}</span></p>
                                             <p>End: <span> {lesson.end}</span></p>
                                             <p>Remaining:<span> {calculateRemainingTime(lesson.end)}</span></p>
+                                            <div className="ongoing_dot"></div>
                                         </div>
                                     </div>
                                 </Link>
@@ -106,7 +107,7 @@ const Details = () => {
                     ? 
                     <div className="parent_body">
                         <div className="details_item_body">
-                            {freeRooms.slice(0, 3).map((room) => (
+                            {freeRooms.slice(0, window.innerWidth >= 770 ? 3 : 4).map((room) => (
                                 <Link to={`room/${room._id}`} key={room._id} className='link-main'>
                                     <div className="details_body_item">
                                         <div className="details_body_image roomImage">
@@ -171,20 +172,54 @@ const Details = () => {
                     <span>{ongoingCourses && ongoingCourses.length}</span>
                 </div>
                 
-                <div className="coursesBody">
-                    {Array.isArray(ongoingCourses) && ongoingCourses.length > 0 
-                        ? ongoingCourses.slice(0, window.innerWidth >= 768 ? 5 : 4).map((course) => (
-                                <div className="course_item" key={course._id}>
-                                    <Link to={`/course/${course._id}`} className='link-main'>
-                                        <p>{truncateText(course.name, MAX_LENGTH)}</p>
+                <div className="LARGESCREEN">
+                    <div className="coursesBody">
+                        {Array.isArray(ongoingCourses) && ongoingCourses.length > 0 
+                            ? ongoingCourses.slice(0, window.innerWidth >= 768 ? 5 : 4).map((course) => (
+                                    <div className="course_item" key={course._id}>
+                                        <Link to={`/course/${course._id}`} className='link-main'>
+                                            <p>{course.name}</p>
+                                        </Link>
+                                    </div>
+                                ))
+                                : (
+                            <div className="noData_courses">
+                                <p>NO ONGOING COURSES</p>
+                            </div>
+                        )}
+                    </div>
+                </div>
+
+                <div className="SMALLSCREEN">
+                    <div className="courseDetails_Container">
+                        {Array.isArray(ongoingCourses) && ongoingCourses.length > 0
+                            ? ongoingCourses.slice(0, window.innerWidth >= 770 ? 20 : 6).map((course) => (
+                                    <Link to={`course/${course._id}`} className="link-main">
+                                        <div className="courseDetails" key={course._id}>
+                                            <div className="courseDetails_left">
+                                                <p>OD</p>
+                                            </div>
+
+                                            <div className="courseDetails_right">
+                                                <div className="courseDetailsRight_item">
+                                                    <h2>{course.name}</h2>
+                                                    <div className="courseDetails_desc">
+                                                        <p>{course.starting} to {course.ending}</p>
+                                                        <p>{course.department}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="courseDetailsRight_item">
+                                                    <div className="courseDetails_Dot greenBackground"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </Link>
-                                </div>
-                            ))
-                            : (
-                        <div className="noData_courses">
-                            <p>NO ONGOING COURSES</p>
-                        </div>
-                    )}
+                                ))
+                            : <div className="noData_courses">
+                                <p>NO COURSES</p>
+                            </div>
+                        }
+                    </div>
                 </div>
 
                 {Array.isArray(ongoingCourses) && ongoingCourses.length > 0 && 
@@ -196,10 +231,6 @@ const Details = () => {
                         </div>
                     </Link>
                 }
-            </div>
-
-            <div className="grid_right">
-                <h1>InstiWise</h1>
             </div>
         </div>
 
@@ -214,7 +245,7 @@ const Details = () => {
                     ? 
                     <div className="parent_body">
                         <div className="details_item_body">
-                            {upcomingLessons.slice(0, 3).map((lesson) => (
+                            {upcomingLessons.slice(0, window.innerWidth >= 770 ? 3 : 4).map((lesson) => (
                                 <Link to={`lesson/${lesson._id}`} className='link-main' key={lesson._id}>
                                     <div className="details_body_item">
                                         <div className="details_body_image">
@@ -257,7 +288,7 @@ const Details = () => {
                     ? 
                     <div className="parent_body">
                         <div className="details_item_body">
-                            {inUseRooms.slice(0, 3).map((room) => (
+                            {inUseRooms.slice(0, window.innerWidth >= 770 ? 3 : 4).map((room) => (
                                 <Link to={`room/${room._id}`} key={room._id} className='link-main'>
                                     <div className="details_body_item">
                                         <div className="details_body_image roomImage">
@@ -297,34 +328,64 @@ const Details = () => {
                     <span>{courses && courses.length}</span>
                 </div>
 
-                <div className="coursesBody">
-                    {Array.isArray(courses) && courses.length > 0
-                        ? courses.slice(0, window.innerWidth >= 770 ? 5 : 4).map((course) => (
-                            <div className="course_item" key={course._id}>
-                                <Link to={`course/${course._id}`} className="link-main">
-                                    <p>{truncateText(course.name, MAX_LENGTH)}</p>
-                                </Link>
+                <div className="LARGESCREEN">
+                    <div className="coursesBody">
+                        {Array.isArray(courses) && courses.length > 0
+                            ? courses.slice(0, window.innerWidth >= 770 ? 20 : 4).map((course) => (
+                                <div className="course_item" key={course._id}>
+                                    <Link to={`course/${course._id}`} className="link-main">
+                                        <p>{course.name}</p>
+                                    </Link>
+                                </div>
+                                ))
+                            : <div className="noData_courses">
+                                <p>NO COURSES</p>
                             </div>
-                            ))
-                        : <div className="noData_courses">
-                            <p>NO COURSES</p>
-                        </div>
-                    }
+                        }
+                    </div>
+                </div>
+                
+                <div className="SMALLSCREEN">
+                    <div className="courseDetails_Container">
+                        {Array.isArray(courses) && courses.length > 0
+                            ? courses.slice(0, window.innerWidth >= 770 ? 20 : 6).map((course) => (
+                                    <Link to={`course/${course._id}`} className="link-main">
+                                        <div className="courseDetails" key={course._id}>
+                                            <div className="courseDetails_left">
+                                                <p>OD</p>
+                                            </div>
+
+                                            <div className="courseDetails_right">
+                                                <div className="courseDetailsRight_item">
+                                                    <h2>{course.name}</h2>
+                                                    <div className="courseDetails_desc">
+                                                        <p>{course.starting} to {course.ending}</p>
+                                                        <p>{course.department}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="courseDetailsRight_item">
+                                                    <div className="courseDetails_Dot"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))
+                            : <div className="noData_courses">
+                                <p>NO COURSES</p>
+                            </div>
+                        }
+                    </div>
                 </div>
 
                 {Array.isArray(courses) && courses.length > 0 && 
                     <Link to='/courses' className='link-main'>
                         <div className="center_display">
-                            <div className="details_bottom">
+                            <div className="details_bottom courseExplore">
                                 <p>Explore More</p>
                             </div>
                         </div>
                     </Link>
                 }
-            </div>
-
-            <div className="grid_right">
-                <h1>InstiWise</h1>
             </div>
         </div>
     </div>

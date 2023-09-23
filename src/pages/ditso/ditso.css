@@ -246,7 +246,7 @@
     border-radius: 5px;
     margin-bottom: 25px;
     cursor: pointer;
-    background: linear-gradient(120deg, rgb(238, 238, 238), 70%, gray);
+    background: linear-gradient(120deg, rgb(238, 238, 238), 70%, rgb(229, 239, 231));
 }
 
 .announcement h1 {
