@@ -40,6 +40,7 @@
 .input_search input {
     font-size: 17px;
     outline: none;
+    background: transparent;
 }
 
 .input_search input::placeholder {

@@ -2,6 +2,7 @@
     width: 100%;
     padding: 7px 1.5%;
     cursor: pointer;
+    background: var(--main-color);
 }
 
 .wrapper {
@@ -237,7 +238,6 @@
     /*----------------MEDIA QUERYING---------------*/
 @media screen and (max-width: 770px) {
     .navbarComponent {
-        background: #ffffff;
         padding: 10px 3% 0;
         cursor: pointer;
         overflow-x: hidden;
@@ -357,7 +357,6 @@
 
 @media screen and (min-width: 771px) {
     .navbarComponent {
-        background: #ffffff;
         padding: 7px 1.5%;
         cursor: pointer;
         overflow-x: hidden;

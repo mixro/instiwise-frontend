@@ -64,6 +64,7 @@
 }
 
 .topInfo_item {
+    background: #fcfcff;
     flex-basis: 24%;
     border-radius: 5px;
     padding: 1%;
@@ -167,7 +168,6 @@
         /* -------------- home header small screen ------------------ */
     .home_header_smallScreen {
         display: flex;
-        align-items: center;
         justify-content: space-between;
         padding: 4.5% 0 0;
     }
@@ -176,8 +176,7 @@
         flex-basis: 48%;
         padding: 5px 1% 5px;
         border-radius: 5px;
-        background: rgb(255, 190, 212);
-        border: 1px solid #959595;
+        background: var(--minor-color);
     }
 
     .WHITESPACE {
@@ -211,7 +210,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: blue;
+        background: var(--blue-color);
         color: white;
         border-radius: 50%;
         height: 22px;
@@ -282,7 +281,7 @@
 
     .topInfo_item {
         flex-basis: 48%;
-        margin-bottom: 4%;
+        margin-bottom: 5%;
     }
 
     .topInfo_header p {

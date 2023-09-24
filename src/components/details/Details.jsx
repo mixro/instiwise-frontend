@@ -143,14 +143,16 @@ const Details = () => {
             <div className="tableHeader">
                 <h2>TODAY'S LESSONS</h2>
             </div>
-            <div className="tableMain">
-                <Table />
-            </div>
-            <div className="center_display">
-                <div className="details_bottom">
-                    <Link to='/todayslessons' className='link-main'>
-                        <p>Explore More Lessons</p>
-                    </Link>
+            <div className="Details-TableBody">
+                <div className="tableMain">
+                    <Table />
+                </div>
+                <div className="center_display">
+                    <div className="details_bottom">
+                        <Link to='/todayslessons' className='link-main'>
+                            <p>Explore More Lessons</p>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
@@ -330,7 +332,7 @@ const Details = () => {
                 <div className="LARGESCREEN">
                     <div className="coursesBody">
                         {Array.isArray(courses) && courses.length > 0
-                            ? courses.slice(0, window.innerWidth >= 770 ? 20 : 4).map((course) => (
+                            ? courses.slice(0, window.innerWidth >= 770 ? 30 : 4).map((course) => (
                                 <div className="course_item" key={course._id}>
                                     <Link to={`course/${course._id}`} className="link-main">
                                         <p>{course.name}</p>
@@ -347,7 +349,7 @@ const Details = () => {
                 <div className="SMALLSCREEN">
                     <div className="courseDetails_Container">
                         {Array.isArray(courses) && courses.length > 0
-                            ? courses.slice(0, window.innerWidth >= 770 ? 20 : 6).map((course) => (
+                            ? courses.slice(0, window.innerWidth >= 770 ? 20 : 5).map((course) => (
                                     <Link to={`course/${course._id}`} className="link-main">
                                         <div className="courseDetails" key={course._id}>
                                             <div className="courseDetails_left">

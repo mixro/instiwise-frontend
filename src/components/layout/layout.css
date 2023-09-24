@@ -1,3 +1,15 @@
+:root {
+    --main-color: #F4F5FA;
+    --primary-color: #fcfcff;
+    --secondary-color: #f795b6;
+    --minor-color: #f99dbb;
+    --blue-color: #0000ff;
+    --explore-button: #4169e1;
+}
+
+
+
+
 .layoutContainer  {
     display: flex;
     justify-content: space-between;
@@ -36,6 +48,7 @@ main {
 
 .main-body {
     padding: 10px 1.5% 10px;
+    background: var(--main-color);
 }
 
 .children {
