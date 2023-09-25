@@ -325,6 +325,12 @@
         -webkit-box-orient: vertical;
     }
 
+    .noClockImage {
+        width: 100%;
+        background: transparent;
+        aspect-ratio: 1/1;
+    }
+
         /*----------HOME NEWS----------*/
     .homeNews_container {
         padding: 20px 2%;

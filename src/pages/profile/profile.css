@@ -148,6 +148,7 @@
     height: 30px;
     border-bottom: 1px solid gray;
     outline: none;
+    background: var(--primary-color);
 }
 
 .userUpdateRight{
@@ -189,6 +190,7 @@
 
 .newUserSelect {
   padding: 5px 10px;
+  background: var(--primary-color);
 }
 
 .logoutContainer {
@@ -285,7 +287,6 @@
   }
 
   .user {
-    overflow-x: hidden;
     padding: 20px 0 20px;
   }
 
@@ -298,7 +299,6 @@
   .userContainer {
     flex-direction: column;
     width: 100%;
-    overflow-x: hidden;
   }
 
   .userShowImg {
@@ -313,11 +313,11 @@
     border: none;
     border: 1px solid rgb(180, 180, 180);
     border-radius: 5px;
-    background: #fcfdff;
-  }
+    background: var(--primary-color);
 
-  .userUpdate {
-    border: 1px solid rgb(180, 180, 180);
+    -webkit-box-shadow: 2px 2px 5px 4px rgba(214,214,214,1);
+    -moz-box-shadow: 2px 2px 5px 4px rgba(214,214,214,1);
+    box-shadow: 2px 2px 5px 4px rgba(214,214,214,1);
   }
 
   .userUpdateLeft {
@@ -331,6 +331,11 @@
     margin-left: 0;
     margin-top: 40px;
     max-width: 100%;
+    border: 1px solid rgb(180, 180, 180);
+
+    -webkit-box-shadow: 2px 2px 5px 4px rgba(214,214,214,1);
+    -moz-box-shadow: 2px 2px 5px 4px rgba(214,214,214,1);
+    box-shadow: 2px 2px 5px 4px rgba(214,214,214,1);
   }
 
   .userShowInfo {

@@ -11,6 +11,7 @@ const Home = () => {
   const [currentDay, setCurrentDay] = useState('');
   const [currentDate, setCurrentDate] = useState('');
   const [currentWeekNumber, setCurrentWeekNumber] = useState('');
+  const [profileLoading, setProfileLoading] = useState(true);
   const rooms = useSelector((state) => state.rooms.rooms);
   const courses = useSelector((state) => state.courses.courses);
   const lessons = useSelector((state) => state.lessons.lessons);
@@ -41,6 +42,10 @@ const Home = () => {
 
     return () => clearInterval(interval);
   }, []);  
+
+  const handleProfileLoad = () => {
+    setProfileLoading(false);
+  };
 
   return (
     <div className="home_container">
@@ -111,7 +116,9 @@ const Home = () => {
           </div>
 
           <div className="autotyping_item">
-            <img src='/assets/clock.png' alt='CLOCK' />
+            <img src='/assets/clock.png' style={{display: profileLoading ? "none" : "block"}} onLoad={handleProfileLoad} alt='CLOCK' />
+            <div className="noClockImage" style={{display: profileLoading ? "block" : "none"}}>              
+            </div>
           </div>
         </div>
       </div>
@@ -185,7 +192,7 @@ const Home = () => {
         <div className="header_div_smallScreen">
           <Link to='/roomsinuse' className='link-main'>
             <div className="home_header_item">
-              <p className='WHITESPACE'>Rooms in Use </p>
+              <p className='WHITESPACE'>Rooms in use </p>
               <div className="header_ongoing_dot">
                 <span>{inUseRooms && inUseRooms.length}</span>
                 <div className="blinking_dot"></div>

@@ -8,11 +8,12 @@ import {
     Wc,
 } from "@mui/icons-material";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
 import { UserLogout, deleteUser, updateUser } from '../../redux/apiCalls';
 
 const Profile = () => {
+    const [buttonClicked, setButtonClicked] = useState(false);
     const [inputs, setInputs] = useState({});
     const dispatch = useDispatch();
     const { isFetching, error } = useSelector((state) => state.user);
@@ -27,6 +28,7 @@ const Profile = () => {
   
     const handleClick = (e) => {
       e.preventDefault();
+      setButtonClicked(true);
       const id = userId;
       const user = { ...inputs };
       updateUser(id, dispatch, user);
@@ -158,7 +160,7 @@ const Profile = () => {
                             <div className="userUpdateRight">
                                 <div className="productButton-container">
                                     <button onClick={handleClick} className="userUpdateButton">{isFetching ? "Updating.." : "Update"}</button>
-                                    {error && <p style={{color: "red"}}>error occurred</p>}
+                                    {buttonClicked && error && <p style={{color: "red"}}>error occurred</p>}
                                 </div>
                             </div>
                         </form>

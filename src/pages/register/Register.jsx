@@ -7,10 +7,11 @@ import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
 
 const Register = () => {
+    const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [buttonClicked, setButtonClicked] = useState(false);
     const [verifiedPassword, setVerifiedPassword] = useState("");
-    const [email, setEmail] = useState("");
 
     // Add state to track input validity
     const [usernameValid, setUsernameValid] = useState(true);
@@ -39,6 +40,7 @@ const Register = () => {
 
         // Check if all input fields are valid before proceeding
         if (isUsernameValid && isEmailValid && isPasswordValid && isVerifiedPasswordValid) {
+            setButtonClicked(true);
             userRegister(dispatch, { username, password, email }, navigate);
         }
     }
@@ -108,8 +110,8 @@ const Register = () => {
                     </div>
                 </div>
                 <div className="registerButton googleAuth smallButtonPading">
-                    <button onClick={handleClick}>{isFetching ? "Loading.." : "Register"}</button>
-                    {error && 
+                    <button onClick={handleClick}>{buttonClicked ? (isFetching ? "Loading.." : "Register") : "Register"}</button>
+                    {buttonClicked && error && 
                         <div className="error">
                             <p>Error while registering, Try again !!</p>
                         </div>

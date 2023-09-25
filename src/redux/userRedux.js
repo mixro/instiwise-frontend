@@ -58,10 +58,13 @@ const userSlice = createSlice({
       return {
         ...state,
         isFetching: false,
-        currentUser: action.payload,
+        currentUser: {
+          ...state.currentUser, // Preserve existing user data
+          ...action.payload,    // Update with new user data
+        },
         error: false,
       };
-    },
+    },   
     updateUserFailure: (state) => {
         state.isFetching = false;
         state.error = true;
