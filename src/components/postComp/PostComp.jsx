@@ -54,9 +54,11 @@ const PostComp = ({ post }) => {
     <div className="postContainer">
         <div className="postTop">
             <div className="postUser_profile">
-                <img src='/assets/profile.png' style={{display: profileLoading ? "none" : "block"}} onLoad={handleProfileLoad} alt='PR' />
-                <div className="noProfileImage" style={{display: profileLoading ? "block" : "none"}}>
-                </div>
+                <Link to="/ditso" className='link-main'>
+                    <img src='/assets/profile.png' style={{display: profileLoading ? "none" : "block"}} onLoad={handleProfileLoad} alt='PR' />
+                    <div className="noProfileImage" style={{display: profileLoading ? "block" : "none"}}>
+                    </div>
+                </Link>
             </div>
             <div className="postUser_info">
                 <div className="postUserInfo_item">

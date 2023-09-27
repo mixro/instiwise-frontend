@@ -47,7 +47,7 @@
     object-fit: cover;
     aspect-ratio: 1/1;
     border-radius: 50%;
-    border: 5px solid white;
+    border: 5px solid var(--main-color);
     transform: translateY(-50px);
 }
 
@@ -450,7 +450,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: rgb(249, 249, 249);
+        background: var(--main-color);
         border-radius: 5px;
         cursor: pointer;
         border: 1px solid black;
