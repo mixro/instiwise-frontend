@@ -22,7 +22,7 @@ const Profile = ({children}) => {
     const userId = user?._id;
 
     useEffect(() => {
-        getUserProjects(userId, dispatch)
+        getUserProjects(userId, dispatch);
     }, [dispatch, userId]);
 
     const handleProfileLoad = () => {

@@ -229,6 +229,7 @@
 
     .personItem_profileUsername p:nth-child(1) {
         font-size: 17px;
+        color: rgb(21, 21, 21);
     }
     
     .personItem_profileUsername p:nth-child(2) {
@@ -238,7 +239,7 @@
 
     .personItem_ConnectButton button {
         padding: 5px 10px;
-        font-size: 15px;
+        font-size: 14px;
     }
 
     .personItem_Details {
@@ -252,6 +253,10 @@
 
     .personDetails_Item span {
         font-size: 15px;
+    }
+
+    .connectPeople_Item {
+        background: rgb(234, 234, 234);
     }
 
     

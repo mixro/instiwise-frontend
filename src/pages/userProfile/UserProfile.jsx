@@ -56,7 +56,7 @@ const UserProfile = ({children}) => {
                             <span>{searchedUser?.bio}</span>
                         </div>
                         <div className="userProfile_Connections">
-                            <Link to={`/user-profile/${searchedUser._id}`} className='link-main'>
+                            <Link to={`/user-profile/${searchedUserId}`} className='link-main'>
                                 <div className="userProfile-FollowItem">
                                     <p>Projects</p>
                                     <span>{searchedUser.projects.length || 0}</span>

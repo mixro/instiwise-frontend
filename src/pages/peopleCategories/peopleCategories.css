@@ -57,4 +57,8 @@
         margin-bottom: 35px;
         flex-basis: 100%;
     }
+
+    .peopleCategories_Item {
+        background: rgb(234, 234, 234);
+    }
 }

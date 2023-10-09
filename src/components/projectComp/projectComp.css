@@ -45,6 +45,7 @@
 .projectComp_userInfo p {
     font-size: 18px;
     font-weight: 500;
+    text-transform: capitalize;
 }
 
 .projectUserInfo_Details {
@@ -68,7 +69,8 @@
 
 .projectUserInfo_DetailsItem span {
     font-weight: 600;
-    font-size: 16px;
+    color: rgb(26, 26, 26);
+    font-size: 15px;
 }
 
 .projectLikeIcons {
