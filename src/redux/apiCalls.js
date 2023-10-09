@@ -5,11 +5,16 @@ import { getLessonsFailure, getLessonsStart, getLessonsSuccess } from "./lessons
 import { getOngoingCoursesFailure, getOngoingCoursesStart, getOngoingCoursesSuccess } from "./ongoingCourses";
 import { getOngoingLessonsFailure, getOngoingLessonsStart, getOngoingLessonsSuccess } from "./ongoingLessons";
 import { addPostFailure, addPostStart, addPostSuccess, deletePostFailure, deletePostStart, deletePostSuccess, dislikePost, getPostFailure, getPostStart, getPostSuccess, likePost, updatePostFailure, updatePostStart, updatePostSuccess, viewPost } from "./postsRedux";
+import { addProjectFailure, addProjectStart, addProjectSuccess, deleteProjectFailure, deleteProjectStart, deleteProjectSuccess, getProjectFailure, getProjectStart, getProjectSuccess, likeProject, updateProjectFailure, updateProjectStart, updateProjectSuccess } from "./projectsRedux";
 import { getInUseRoomsFailure, getInUseRoomsStart, getInUseRoomsSuccess } from "./roomsInUse";
 import { getRoomsFailure, getRoomsStart, getRoomsSuccess } from "./roomsRedux";
+import { connectWithUser, getUserFailure, getUserStart, getUserSuccess } from "./searchedUser";
+import { getSearchedUserProjectsFailure, getSearchedUserProjectsStart, getSearchedUserProjectsSuccess, likeSearchedUserProject } from "./searchedUserProjects";
 import { getTodaysLessonsFailure, getTodaysLessonsStart, getTodaysLessonsSuccess } from "./todaysLessons";
 import { getUpcomingLessonsFailure, getUpcomingLessonsStart, getUpcomingLessonsSuccess } from "./upcomingLessons";
+import { getUserProjectsFailure, getUserProjectsStart, getUserProjectsSuccess, likeUserProject } from "./userProjects";
 import { deleteUserFailure, deleteUserStart, deleteUserSuccess, googleLoginFailure, googleLoginStart, googleLoginSuccess, loginFailure, loginStart, loginSuccess, logout, registerStart, registerSuccess, regiterError, updateUserFailure, updateUserStart, updateUserSuccess } from "./userRedux";
+import { connectWithAnotherUser, getUsersFailure, getUsersStart, getUsersSuccess } from "./usersRedux";
 
 
 // USER  LOGIN
@@ -76,6 +81,77 @@ export const UserLogout = async (dispatch) => {
   dispatch(logout());
 };
 
+// GET CURRENT USER PROJECTS
+export const getUserProjects = async (userId, dispatch) => {
+  dispatch(getUserProjectsStart());
+    try {
+      const res = await userRequest.get(`/projects/user/${userId}`);
+      dispatch(getUserProjectsSuccess(res.data));
+    } catch(err) {
+      dispatch(getUserProjectsFailure());
+    }
+}
+
+//USERS
+export const getUsers = async (dispatch) => {
+    dispatch(getUsersStart());
+    try {
+      const res = await userRequest.get("/users");
+      dispatch(getUsersSuccess(res.data));
+    } catch(err) {
+      dispatch(getUsersFailure());
+    }
+}
+
+//SEARCHED USER
+export const searchUser = async (searchedUserId, dispatch) => {
+  dispatch(getUserStart());
+  try {
+    const foundUser = await userRequest.get(`/users/find/${searchedUserId}`);
+    dispatch(getUserSuccess(foundUser.data));
+  } catch(err) {
+    dispatch(getUserFailure());
+  }
+}
+
+// GET SEARCHED USER PROJECTS
+export const getSearchedUserProjects = async (searchedUserId, dispatch) => {
+  dispatch(getSearchedUserProjectsStart());
+    try {
+      const res = await userRequest.get(`/projects/user/${searchedUserId}`);
+      dispatch(getSearchedUserProjectsSuccess(res.data));
+    } catch(err) {
+      dispatch(getSearchedUserProjectsFailure());
+    }
+}
+
+//CONNECT WITH SEARCHED USER
+export const connectWithSearchedUser = async (currentUserId, searchedUserId, dispatch) => {
+  try {
+      dispatch(connectWithUser({ currentUserId })); 
+      await userRequest.put(`/users/${searchedUserId}/connect`);
+  } catch (err) {
+      console.log(err);
+  }
+};
+
+
+//CONNECT WITH OTHER USER
+export const connectWithOtherUser = async (currentUserId, anotherUserId, dispatch) => {
+  try {
+      dispatch(connectWithAnotherUser({ currentUserId,  anotherUserId})); 
+      await userRequest.put(`/users/${anotherUserId}/connect`);
+  } catch (err) {
+      console.log(err);
+  }
+};
+
+
+
+
+//--------------------------------------------- BASIC DATA-------------------------------------------------------
+
+
 //ROOMS
 export const getRooms = async (dispatch) => {
     dispatch(getRoomsStart());
@@ -108,6 +184,10 @@ export const getCourses = async (dispatch) => {
       dispatch(getCoursesFailure());
     }
 }
+
+
+
+//--------------------------------------------- REAL TIME DATA-------------------------------------------------------
 
 //FREE ROOMS
 export const getFreeRooms = async (dispatch, data) => {
@@ -169,11 +249,15 @@ export const getTodaysLessons = async (dispatch, data) => {
   }
 }
 
-//POSTS
-export const getPosts = async (dispatch, data) => {
+
+
+//---------------------------------------------POST SIDE-------------------------------------------------------
+
+export const getPosts = async (dispatch) => {
   dispatch(getPostStart());
   try {
-    dispatch(getPostSuccess(data));
+    const res = await userRequest.get("/posts");
+    dispatch(getPostSuccess(res.data));
   } catch(err) {
     dispatch(getPostFailure());
   }
@@ -182,7 +266,6 @@ export const getPosts = async (dispatch, data) => {
 export const deletePost = async (id, dispatch) => {
   dispatch(deletePostStart());
   try {
-    console.log(id);
     await userRequest.delete(`/posts/${id}`);
     dispatch(deletePostSuccess(id));
   } catch(err) {
@@ -238,5 +321,80 @@ export const addView = async (userId, postId, dispatch) => {
     await userRequest.post(`/posts/${postId}/view`);
   } catch (err) {
     console.log(err);
+  }
+};
+
+
+
+//---------------------------------------------PROJECTS SIDE-------------------------------------------------------
+
+export const getProjects = async (dispatch) => {
+  dispatch(getProjectStart());
+  try {
+    const res = await publicRequest.get("/projects");
+    dispatch(getProjectSuccess(res.data));
+  } catch(err) {
+    dispatch(getProjectFailure());
+  }
+}
+
+export const deleteProject = async (id, dispatch) => {
+  dispatch(deleteProjectStart());
+  try {
+    await userRequest.delete(`/projects/${id}`);
+    dispatch(deleteProjectSuccess(id));
+  } catch(err) {
+    dispatch(deleteProjectFailure());
+  }
+}
+
+export const updateProject = async (id, dispatch, project) => {
+  dispatch(updateProjectStart());
+  try {
+    const res = await userRequest.put(`/projects/${id}`, project);
+    const updatedProject = res.data;
+    dispatch(updateProjectSuccess({id, updatedProject }));
+  } catch(err) {
+    dispatch(updateProjectFailure());
+  }
+}
+
+export const addProject = async (project, dispatch) => {
+  dispatch(addProjectStart());
+  try {
+    const res = await userRequest.post(`/projects`, project);
+    dispatch(addProjectSuccess(res.data));
+  } catch(err) {
+    dispatch(addProjectFailure());
+  }
+}
+
+//LIKE PROJECT
+export const addlikeForProject = async (userId, projectId, dispatch) => {
+  try {
+      dispatch(likeProject({ userId, projectId })); 
+      await userRequest.put(`/projects/${projectId}/like`);
+  } catch (err) {
+      console.log(err);
+  }
+};
+
+//LIKE USER PROJECT
+export const AddlikeForUserProject = async (userId, projectId, dispatch) => {
+  try {
+      dispatch(likeUserProject({ userId, projectId })); 
+      await userRequest.put(`/projects/${projectId}/like`);
+  } catch (err) {
+      console.log(err);
+  }
+};
+
+//LIKE USER PROJECT
+export const AddlikeForSearchedUserProject = async (userId, projectId, dispatch) => {
+  try {
+      dispatch(likeSearchedUserProject({ userId, projectId })); 
+      await userRequest.put(`/projects/${projectId}/like`);
+  } catch (err) {
+      console.log(err);
   }
 };

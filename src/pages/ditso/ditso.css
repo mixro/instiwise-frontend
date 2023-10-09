@@ -177,7 +177,7 @@
 
 .ditsoSearch {
     display: flex;
-    border: 1px solid red;
+    border: 2px solid red;
     border-radius: 5px;
     padding: 2px;
     padding-left: 3%;
@@ -216,7 +216,7 @@
     height: calc(100vh - 60px);
     margin-top: 2.5%;
     overflow-y: scroll;
-    scrollbar-width: none;
+    scrollbar-width: 0;
 }
 
 .ditsoRight::-webkit-scrollbar {
@@ -231,6 +231,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background: var(--main-color);
 }
 
 .ditsoRight_top h1 {
@@ -400,6 +401,7 @@
 
     .ditsoSearch {
         width: auto;
+        border: 1.4px solid red;
     }
 
     .Search_Icon {

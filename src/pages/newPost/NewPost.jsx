@@ -77,7 +77,7 @@ const NewPost = () => {
                     <div className="newPost_item postBody_Item">
                         <p>Post Image</p>
                         <div className="newPost_Input">
-                            <input id='file' type='file' onChange={(e) => setFile(e.target.files[0])} style={{ display: "none" }}  placeholder='post header' />
+                            <input id='file' type='file' onChange={(e) => setFile(e.target.files[0])} style={{ display: "none" }}  placeholder='post img' />
                             <label htmlFor='file'>
                                 <div className="inputFile">
                                     <span>SELECT IMAGE {perc > 1 && Math.floor(perc) + "%"}</span>

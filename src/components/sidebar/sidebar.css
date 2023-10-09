@@ -38,6 +38,16 @@
     height: 100%;
     align-items: left;
     padding-top: 20px;
+    overflow-y: scroll;
+    scrollbar-width: 0;
+}
+
+.centerSectio_Margin {
+    margin-bottom: 35px;
+}
+
+.sidebarCenter::-webkit-scrollbar {
+    display: none;
 }
 
 .centerSection  ul {

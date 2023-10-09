@@ -1,0 +1,10 @@
+.awardsWrapper {
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.awardsWrapper p {
+    text-transform: capitalize;
+}

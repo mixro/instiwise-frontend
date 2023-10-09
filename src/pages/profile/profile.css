@@ -1,441 +1,462 @@
-.profileContainer {
-  min-height: calc(100vh - 55px);
+.userProfile {
+    padding: 2% 0 4%;
+    min-height: calc(100vh - 60px);
 }
 
-.user {
-  flex: 4;
-  padding: 20px;
+.userProfile_Wrapper {
+    display: flex;
+    justify-content: space-between;
 }
 
-.userTitleContainer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+
+
+    /*---------------- left ---------------------*/
+.userProfile_Left {
+    flex-basis: 71%;
 }
 
-.userTitle {
-  font-weight: 500;
+.userProfile_cover {
+    width: 100%;
 }
 
-.userAddButton {
-  width: 80px;
-  border: none;
-  padding: 5px;
-  background-color: teal;
-  border-radius: 5px;
-  cursor: pointer;
-  color: white;
-  font-size: 16px;
+.userProfile_cover img {
+    width: 100%;
+    border-radius: 5px;
+    aspect-ratio: 1/0.23;
+    object-fit: cover;
 }
 
-.userContainer {
-  display: flex;
-  padding-top: 40px;
+.noProfileCover {
+    width: 100%;
+    aspect-ratio: 1/0.23;
+    background: grey;
+    border-radius: 5px;
 }
 
-.userShow {
-  flex: 1;
-  padding: 15px 20px 15px 20px;
-  -webkit-box-shadow: 0px 0px 15px -10px black;
-  box-shadow: 0px 0px 15px -10px black;
-  border: 1px solid gray;
-  border-radius: 5px;
-  cursor: pointer;
+.userProfile_Images {
+    padding-bottom: 60px;
+    border-bottom: 1px solid gray;
 }
 
-.userUpdate {
-  flex: 2;
-  padding: 20px;
-  -webkit-box-shadow: 0px 0px 15px -10px black;
-  box-shadow: 0px 0px 15px -10px black;
-  margin-left: 20px;
-  border: 1px solid gray;
-  border-radius: 5px;
-}
-
-.userShowTop {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.userShowImg {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1px solid rgb(26, 26, 26);
-  padding: 2px;
-}
-
-.userShowTopTitle {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 6px;
-}
-
-.userShowUsername {
-  font-weight: 600;
-  text-transform: capitalize;
-}
-
-.userShowUserTitle {
-  font-weight: 300;
-}
-
-.userShowBottom{
-    margin-top: 20px;
-}
-
-.userShowTitle {
-  font-size: 16px;
-  font-weight: 600;
-  color: black;
-}
-
-.userShowInfo{
+.userProfile_Self {
     display: flex;
     align-items: center;
-    margin: 20px 0px 20px 10px;
-    color: #444;
+    justify-content: center;
+    flex-direction: column;
 }
 
-.userShowIcon{
-    font-size: 16px !important;
+.userProfile_SmallImage {
+    height:  80px;
+    width: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.userShowInfoTitle{
-    margin-left: 10px;
+.userProfile_SmallImage img {
+    border-radius: 50%;
+    height: 130px;
+    aspect-ratio: 1/1;
+    border: 5px solid var(--main-color);
+    object-fit: cover;
+    transform: translateY(-30px);
 }
-  
-.Capitalize {
+
+.noProjectProfile {
+    border-radius: 50%;
+    width: 100%;
+    aspect-ratio: 1/1;
+    border: 5px solid var(--main-color);
+    background: grey;
+    transform: translateY(-30px);
+}
+
+.ProjectProfile_IMAGE {
+    transform: translateY(0);
+    border: 2px solid var(--main-color);
+}
+
+.userProfile_name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.userProfile_name p {
+    font-weight: 600;
+    font-size: 17px;
     text-transform: capitalize;
 }
 
-.userUpdateTitle{
-    font-size: 24px;
-    font-weight: 600;
+.userProfile_name span {
+    text-align: center;
 }
 
-.userUpdateForm{
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-  align-items: flex-end;
-}
-
-.userUpdateLeft {
-  flex-basis: 50%;
-}
-
-.userUpdateItem{
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-}
-
-.userUpdateItem>label{
-    margin-bottom: 5px;
-    font-size: 14px;
-}
-
-.userUpdateInput{
-    border: none;
-    width: 100%;
-    height: 30px;
-    border-bottom: 1px solid gray;
-    outline: none;
-    background: var(--primary-color);
-}
-
-.userUpdateRight{
-    display: flex;
-    flex-direction: column;
-    justify-content: baseline;
-    height: 100%;
-}
-
-.userUpdateUpload{
+.userProfile_Connections {
     display: flex;
     align-items: center;
-}
-
-.userUpdateImg{
-    width: 100px;
-    height: 100px;
-    border-radius: 10px;
-    object-fit: cover;
-    margin-right: 20px;
-}
-
-.userUpdateIcon{
-    cursor: pointer;
-}
-
-.userUpdateButton{
-    border-radius: 5px;
-    border: none;
-    padding: 5px;
-    cursor: pointer;
-    background-color: darkblue;
-    color: white;
+    justify-content: center;
+    gap: 5%;
+    padding: 15px 0 0;
     width: 100%;
-    min-width: 130px;
+}
+
+.userProfile-FollowItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: 2px 10px;
+    border-radius: 5px;
+    background: rgb(223, 223, 223);
+}
+
+.userProfile-FollowItem:hover {
+    border: 1px solid gray;
+}
+
+.userProfile-FollowItem p {
+    font-weight: 600;
+    font-size: 17px;
+    text-transform: uppercase;
+}
+
+.userProfile-FollowItem span {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.userProfile-details {
+    padding-top: 2.5%;
+}
+
+.userProfile_Buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3%;
+    width: 100%;
+    padding-top: 3%;
+}
+
+.userProfile-ButtonItem {
+    flex-basis: 20%;
+    min-width: 200px;
+    border-radius: 5px;
+    padding: 3px;
+    border: 1.5px solid transparent;
+}
+
+.userProfile-ButtonItem:hover {
+    border: 1.5px solid green;
+}
+
+.userProfile-ButtonItem button {
+    background: green;
+    cursor: pointer;
+    color: white;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 5px;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.Profile_paddingTop {
+    padding-top: 50px;
+}
+
+.ProfielUpdate-SmallButton {
+    display: none;
+}
+
+
+    /*---------------- right ---------------------*/
+.userProfile_Right {
+    flex-basis: 27%;
+}
+
+.userProfile_Right h2 {
     font-weight: 600;
 }
 
-
-.newUserSelect {
-  padding: 5px 10px;
-  background: var(--primary-color);
+.userProfile_Update {
+    padding-top: 6%;
+    width: 100%;
 }
 
-.logoutContainer {
-  padding-top: 5%;
+.userProfile_UpdateItem {
+    padding-bottom: 15px;
+}
+
+.userProfile_UpdateItem input {
+    width: 100%;
+    padding: 5px 3px;
+    margin-top: 6px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    outline: none;
+}
+
+.userProfile_UpdateItem select {
+    width: 100%;
+    padding: 5px 3px;
+    margin-top: 6px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.Profile_UploadButton {
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(0, 64, 255);
+    color: white;
+    margin-top: 6px;
+    font-size: 15px;
+    padding: 4.5px;
+    cursor: pointer;
+}
+
+.userProfile-UpdateButton {
+    width: 100%;
+    padding-top: 30px;
+}
+
+.userProfile-UpdateButton button {
+    width: 100%;
+    background: green;
+    border-radius: 5px;
+    padding: 6px;
+    font-size: 18px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+    /*------------------ logout ---------------------*/
+.Profile_LogoutPart {
+    padding-top: 40px;
+    margin-top: 60px;
+    border-top: 1px solid gray;
+}
+
+.Profile_LogoutPart h1 {
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 15px;
 }
 
 .logout {
-  display: flex;
-  align-items: center;
-  padding-top: 2%;
-  gap: 5%;
+    display: flex;
+    flex-direction: column;
 }
 
 .logoutButton {
-  border: 2px solid transparent;
-  padding: 2px;
-  border-radius: 5px;
+    flex-basis: 100%;
 }
 
 .logoutButton button {
-  padding: 5px 15px;
-  font-size: 17px;
-  cursor: pointer;
-  background: rgb(255, 183, 0);
-  border: 1px solid transparent;
-  border-radius: 5px;
-}
-
-.logoutButton:hover {
-  border: 2px solid blue;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    background: orange;
+    width: 100%;
+    border: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 6px;
+    font-size: 16px;
 }
 
 .delete button {
-  background: red;
-  color: white;
+    color: white;
+    background: red;
 }
 
-.logoutWarning {
-  margin-top: 2%;
-  font-style: italic;
-  color: red;
-}
 
+    /*---------------- no user ------------------*/
 .noUser {
-  width: 100%;
-  height: calc(100vh - 120px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 5%;
-}
-
-.noUserButtons {
-  display: flex;
-  align-items: center;
-  gap: 10%;
-}
-
-.noUserButton {
-  padding: 3px;
-  border-radius: 5px;
-  border: 2px solid transparent;
-  cursor: pointer;
-}
-
-.noUserButton:hover {
-  border: 2px solid blue;
-}
-
-.noUserButton button {
-  padding: 6px 20px;
-  border-radius: 5px;
-  border: 4px solid transparent;
-  font-size: 18px;
-  background: green;
-  color: white;
-  cursor: pointer;
-}
-
-.loginText {
-  width: 40%;
-  text-align: center;
-  line-height: 25px;
-}
-
-
-
-
-@media screen and (max-width: 770px){ 
-  .profileContainer {
     width: 100%;
-    padding-bottom: 10%;
-  }
-
-  .user {
-    padding: 20px 0 20px;
-  }
-
-  .userTitle {
-    font-size: 23px;
-    margin-bottom: 5%;
-    display: none;
-  }
-
-  .userContainer {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .userShowImg {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 10px;
-  }
-
-  .userShow {
-    flex: auto;
-    padding: 20px 3% 5px;
-    border: none;
-    border: 1px solid rgb(180, 180, 180);
-    border-radius: 5px;
-    background: var(--primary-color);
-
-    -webkit-box-shadow: 2px 2px 5px 4px rgba(214,214,214,1);
-    -moz-box-shadow: 2px 2px 5px 4px rgba(214,214,214,1);
-    box-shadow: 2px 2px 5px 4px rgba(214,214,214,1);
-  }
-
-  .userUpdateLeft {
-    flex-basis: 100%;
-    width: 100%;
-  }
-
-  .userUpdate {
-    flex: auto;
-    padding: 10px;
-    margin-left: 0;
-    margin-top: 40px;
-    max-width: 100%;
-    border: 1px solid rgb(180, 180, 180);
-
-    -webkit-box-shadow: 2px 2px 5px 4px rgba(214,214,214,1);
-    -moz-box-shadow: 2px 2px 5px 4px rgba(214,214,214,1);
-    box-shadow: 2px 2px 5px 4px rgba(214,214,214,1);
-  }
-
-  .userShowInfo {
-    padding-left: 3%;
-  }
-
-  .userUpdateForm{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+    height: calc(100vh - 120px);
     display: flex;
     align-items: center;
-  }
-
-  .userUpdateUpload {
-    display: none;
-  }
-
-  .productButton-container {
-    margin-top: 25px;
-  }
-
-  .productButton-container button{
-    padding: 10px;
-    font-size: 17px;
-  }
-
-  .userUpdateForm{
-    display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: column;
-  }
-
-  .userUpdateInput{
-    border: none;
-    width: 100%;
-    height: 30px;
-    padding: 20px 5px;
-    border-radius: 5px;
-    border: 1px solid gray;
-    color: black;
-  }
-
-  .newUserSelect {
-    padding: 10px 5px;
-  }
-
-  .userContainer {
+    gap: 5%;
+}
+    
+.noUserButtons {
     display: flex;
-    padding-top: 0;
-  }
-
-  .userShowIcon{
-    font-size: 22px !important;
-  }
-
-  .userShowUserTitle {
-    font-weight: 400;
-    font-size: 17px;
-  }
-
-  .userShowInfoTitle {
-    font-weight: 400;
-  }
-
-  .userUpdateItem>label{
-    margin-bottom: 10px;
-    font-size: 16px;
-  }
-
-  .userUpdateInput {
-    font-size: 16px;
-  }
-
-  .userUpdateRight {
-    width: 100%;
-    padding-top: 20px;
-  }
-
-  .userUpdateButton {
-    margin-bottom: 5px;
-  }
-
-  .logoutContainer {
-    padding-top: 60px;
-  }
-
-  .logoutButton button {
-    padding: 8px 15px;
-  }
-
-  .logoutWarning {
-    margin-top: 30px;
-    font-style: italic;
-    color: red;
-  }
-
-  .loginText {
-    width: 90%;
+    align-items: center;
+    gap: 10%;
+}
+    
+.noUserButton {
+    padding: 3px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+    
+.noUserButton:hover {
+    border: 2px solid blue;
+}
+    
+.noUserButton button {
+    padding: 6px 20px;
+    border-radius: 5px;
+    border: 4px solid transparent;
+    font-size: 18px;
+    background: green;
+    color: white;
+    cursor: pointer;
+}
+    
+.loginText {
+    width: 40%;
     text-align: center;
     line-height: 25px;
-  }
+}
+
+
+    /*-------------- no projects found --------------*/
+.noProjects_Found {
+    width: 100%;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.noProjects_Found button {
+    padding: 6px;
+    width: 200px;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    background: green;
+}
+
+
+
+
+@media screen and (max-width: 770px) {
+    .userProfile_Wrapper {
+        flex-direction: column;
+    }
+
+    .userProfile_Left {
+        flex-basis: 100%;
+    }
+
+    .userProfile_Right {
+        display: none;
+    }
+
+    .userProfile_cover img {
+        aspect-ratio: 1/0.4;
+    }
+
+    .noProfileCover {
+        aspect-ratio: 1/0.4;
+    }
+
+    .userProfile_name span {
+        line-height: 20px;
+        margin-top: 4px;
+    }
+
+    .userProfile_SmallImage {
+        height:  70px;
+        width: 110px;
+    }
+
+    .userProfile_SmallImage img {
+        height: 105px;
+        aspect-ratio: 1/1;
+    }
+
+    .userProfile_Buttons {
+        gap: 2%;
+        padding-top: 20px;
+        justify-content: space-between;
+    }
+
+    .userProfile-ButtonItem {
+        flex-basis: 49%;
+        min-width: fit-content;
+        border: none;
+        padding: 0;
+    }
+
+    .userProfile-ButtonItem:hover {
+        border: none;
+    }
+
+    .userProfile-ButtonItem button {
+        background: green;
+        cursor: pointer;
+        color: white;
+        font-size: 16px;
+        font-weight: normal;
+        padding: 7px;
+        border: none;
+        width: 100%;
+        border-radius: 5px;
+    }
+
+    .ProfielUpdate-SmallButton {
+        width: 100%;
+        padding-top: 8px;
+        display: block;
+    }
+
+    .ProfielUpdate-SmallButton button {
+        width: 100%;
+        padding: 7px;
+        border-radius: 5px;
+        border: none;
+        background: var(--royalblue-color);
+        color: white;
+        font-size: 16px;
+    }
+
+    .logoutContainer {
+        padding-top: 60px;
+                         }
+
+    .logoutButton button {
+        padding: 8px 15px;
+    }
+
+    .loginText {
+        width: 90%;
+        text-align: center;
+        line-height: 25px;
+    }
+    
+    .Profile_UploadButtons {
+        padding: 8px;
+    }
+
+    .Profile_LogoutPart {
+        width: 100%;
+    }
+
+    .ProjectProfile_IMAGE {
+        transform: translateY(0);
+        border: 0;
+    }
 }

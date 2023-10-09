@@ -22,7 +22,7 @@ const userSlice = createSlice({
       state.error = true;
     },
 
-      //
+      //GOOGLE
     googleLoginStart: (state) => {
       state.isFetching = true;
     },

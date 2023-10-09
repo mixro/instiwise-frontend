@@ -1,0 +1,203 @@
+.newProject_Container {
+    min-height: calc(100vh - 60px);
+}
+
+.newProject_Wrapper {
+    padding: 1.6% 0 3%;
+}
+
+.newProject_Header h2 {
+    font-weight: 600;
+}
+
+.newProject_Body {
+    padding-top: 2%;
+}
+
+.newProject_Left {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4%;
+}
+
+.newProject_Item {
+    flex-basis: 48%;
+    padding-bottom: 15px;
+}
+
+.newProject_Item p {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.newProject_point p {
+    margin-bottom: 0;
+}
+
+.newProject_Item p span {
+    font-weight: 600;
+    font-size: 13px;
+    margin-left: 6px;
+    color: gray;
+}
+
+.newProject_Item input {
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+    outline: none;
+    font-size: 15px;
+}
+
+.newProject_Item textarea {
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+    outline: none;
+    font-size: 15px;
+}
+
+.newProject_Item select {
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+    outline: none;
+    font-size: 15px;
+}
+
+.newProject_Array {
+    display: flex;
+    justify-content: space-between;
+    gap: 7px;
+}
+
+.newProject-ArrayButton {
+    background: blue;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.newProject_ArrayPoints {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 10px;   
+}
+
+.newProject_point {
+    background: rgb(193, 193, 193);
+    border-radius: 50px;
+    padding: 5px 5px 5px 14px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+}
+
+.newProject_DeleteIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.newProject_Create {
+    padding-top: 15px;
+}
+
+.newProject_Item button {
+    width: 100%;
+    padding: 7px;
+    background: green;
+    color: white;
+    border: none;
+    font-size: 17px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.newProject_UploadButton {
+    padding: 5px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: blue;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+}
+
+
+
+@media screen and (max-width: 770px) {
+    .newProject_Wrapper {
+        padding: 20px 0 30px;
+    }
+
+    .newProject_Left {
+        flex-direction: column;
+    }
+    
+    .newProject_Body {
+        padding-top: 25px;
+    }
+
+    .newProject_Item {
+        padding-bottom: 20px;
+        
+    }
+
+    .newProject_Item p {
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+    
+    .newProject_point p {
+        margin-bottom: 0;
+    }
+
+    .newProject_Item select {
+        padding: 6px;
+        font-size: 16px;
+    }
+
+    .newProject_Item button {
+        padding: 8px;
+    }
+
+    .newProject_Image button {
+        font-size: 17px;
+        padding: 6px;
+    }
+
+    .newProject_Item input {
+        padding: 7px;
+        font-size: 16px;
+    }
+
+    .newProject_UploadButton {
+        padding: 8px;
+    }
+
+    .newProject_Item textarea {
+        min-height: 100px;
+        border-radius: 5px 5px 0 5px;
+        max-width: 100vw;
+    }
+}

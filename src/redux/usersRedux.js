@@ -1,14 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit";
 
 export const usersSlice = createSlice({
-    name: "instiwiseUsers",
+    name: "users",
     initialState: {
         users: [],
         isFetching: false,
         error: false,
     },
     reducers: {
-        //GET ALL
         getUsersStart: (state) => {
             state.isFetching = true;
             state.error = false;
@@ -18,77 +17,32 @@ export const usersSlice = createSlice({
             state.users = action.payload;
         },
         getUsersFailure: (state) => {
-            state.isFetching = false;
-            state.error = true;
-        },
-
-        //DELETE
-        deleteUsersStart: (state) => {
             state.isFetching = true;
-            state.error = false;
-        },
-        deleteUsersSuccess: (state, action) => {
-            state.isFetching = false;
-            state.users.splice(
-                state.users.findIndex((item) => item._id === action.payload),
-            );
-        },
-        deleteUsersFailure: (state) => {
-            state.isFetching = false;
             state.error = true;
         },
 
-        //UPDATE
-        updateUsersStart: (state) => {
-            state.isFetching = true;
-            state.error = false;
-        },
-        updateUsersSuccess: (state, action) => {
-            state.isFetching = false;
-            state.users[state.users.findIndex((item) => item._id === action.payload._id)] = action.payload.user; 
-        },
-        updateUsersFailure: (state) => {
-            state.isFetching = false;
-            state.error = true;
-        },
+        //CONNECT USER
+        connectWithAnotherUser: (state, action) => {
+            const userIndex = state.users.findIndex((item) => item._id === action.payload.anotherUserId)
+            if (userIndex !== -1) {
+                const userToBeConnected = state.users[userIndex];
+                const currentUserIdIndex = userToBeConnected.connections.indexOf(action.payload.currentUserId);
 
-        //ADD
-        addUsersStart: (state) => {
-            state.isFetching = true;
-            state.error = false;
+                if (currentUserIdIndex === -1) {
+                    userToBeConnected.connections.push(action.payload.currentUserId);
+                } else {
+                    userToBeConnected.connections.splice(currentUserIdIndex, 1);
+                }
+            }   
         },
-        addUsersSuccess: (state, action) => {
-            state.isFetching = false;
-            state.users.push(action.payload);
-        },
-        addUsersFailure: (state) => {
-            state.isFetching = false;
-            state.error = true;
-        },
-
-        //CLEAR
-        clearUsers: (state) => {
-            state.users = [];
-            state.isFetching = false;
-            state.error = false;
-        }
     }
 });
 
-export const { 
-    getUsersFailure, 
-    getUsersStart, 
-    getUsersSuccess, 
-    deleteUsersFailure, 
-    deleteUsersStart, 
-    deleteUsersSuccess,
-    updateUsersFailure, 
-    updateUsersStart, 
-    updateUsersSuccess,
-    addUsersFailure, 
-    addUsersStart, 
-    addUsersSuccess,
-    clearUsers
+export const {
+    getUsersFailure,
+    getUsersStart,
+    getUsersSuccess,
+    connectWithAnotherUser,
 } = usersSlice.actions;
 
 export default usersSlice.reducer;

@@ -1,0 +1,103 @@
+.userProfile-Connect {
+    padding-top: 4%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.userProfile-Connect button {
+    width: 40%;
+    max-width: 400px;
+    border-radius: 5px;
+    padding: 4px;
+    font-size: 17px;
+    border: none;
+    background: blue;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.userProfile_Right {
+    height: calc(100vh - 60px);
+    top: 60px;
+    position: sticky;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    padding: 0;
+}
+
+.userProfile_Right::-webkit-scrollbar {
+    display: none;
+}
+
+.userProfile_Nosticky {
+    height: fit-content;
+    top: 0;
+    position: relative;
+    overflow-y: auto;
+}
+
+.userProfile_RightHeader {
+    height: fit-content;
+    top: 0;
+    position: sticky;
+    background: var(--main-color);
+    z-index: 7;
+}
+
+.userProfile_People {
+    padding: 25px 3px 3px;
+}
+
+.userProfile_PeopleItem {
+    display: flex;
+    align-items: center;
+    gap: 3%;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 20px;
+
+    -webkit-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+}
+
+.userProfile_PeopleImage {
+    width: 45px;
+    background: gray;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+
+.userProfile_PeopleImage img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.userProfile_PeopleDesc p {
+    font-weight: 500;
+    line-height: 15px;
+}
+
+.userProfile_PeopleDesc span {
+    font-size: 14px;
+    color: rgb(66, 66, 66);
+}
+
+
+@media screen and (max-width: 770px) {
+    .userProfile-Connect {
+        padding-top: 30px;
+    }
+
+    .userProfile-Connect button {
+        width: 100%;
+        padding: 8px;
+    }
+}

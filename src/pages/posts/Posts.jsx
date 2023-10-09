@@ -2,15 +2,21 @@ import { Link } from 'react-router-dom';
 import './posts.css';
 import { Announcement, Search, Sort } from '@mui/icons-material'
 import PostComp from '../../components/postComp/PostComp';
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 import { AnnouncementData } from '../../dummyData';
+import { getPosts } from '../../redux/apiCalls';
 
 const Posts = () => {
+    const dispatch = useDispatch();
     const [searchQuery, setSearchQuery] = useState('');
     const posts = useSelector((state) => state.posts.posts);
     const user = useSelector((state) => state.user.currentUser);
     const admin = useSelector((state) => state.user.currentUser?.isAdmin);
+
+    useEffect(() => {
+        getPosts(dispatch);
+    }, [dispatch]);
 
     const handleSearchInputChange = (event) => {
         setSearchQuery(event.target.value);

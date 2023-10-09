@@ -1,0 +1,262 @@
+.peopleContainer {
+    min-height: calc(100vh - 60px);
+}
+
+.peopleWrapper {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2%;
+}
+
+
+    /*-------------------- people left -------------------*/
+.peopleLeft {
+    flex-basis: 48%;
+}
+
+.peopleSearch {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 25px;
+}
+
+.peopleSearch h1 {
+    font-weight: 600;
+    font-size: 26px;
+}
+
+.peopleSearch_Item {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.peopleSearch_Input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1.6px solid red;
+    border-radius: 5px;
+    padding: 3px;
+    flex: 1;
+}
+
+.peopleSearch_Input input {
+    background: transparent;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    width: 95%;
+}
+
+.peopleSearch_InputIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: red;
+    border-radius: 5px;
+    color: white;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.peoplesearch_Sort {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    background: red;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.peopleTop_header h1 {
+    font-weight: 600;
+    font-size: 27px;
+}
+
+.connectPeople_Container {
+    padding-top: 2%;
+}
+
+.connectPeople_Item {
+    border-radius: 5px;
+    padding: 8px;
+    margin-bottom: 25px;
+    -webkit-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+}
+
+.connectPeople_ItemTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.personItem_profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-radius: 50%;
+}
+
+.personItem_ProfileImage {
+    width: 60px;
+    aspect-ratio: 1/1;
+    background: rgb(158, 158, 158);
+    border-radius: 50%;
+}
+
+.personItem_ProfileImage img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgb(170, 170, 170);
+}
+
+.personItem_profileUsername p:nth-child(1) {
+    font-size: 19px;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: rgb(26, 26, 26);
+}
+
+.personItem_profileUsername p:nth-child(2) {
+    line-height: 15px;
+    color: rgb(70, 70, 70);
+}
+
+.personItem_ConnectButton button {
+    padding: 7px 14px;
+    border: none;
+    background: blue;
+    color: white;
+    font-weight: 500;
+    font-size: 17px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.personItem_Details {
+    display: flex;
+    align-items: center;
+    gap: 12%;
+    padding: 15px 0 0 60px;
+    width: 100%;
+}
+
+.personDetails_Item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.personDetails_Item p {
+    font-size: 25px;
+    font-weight: 600;
+    color: rgb(26, 26, 26);
+}
+
+
+    /*-------------------- people right -------------------*/
+.peopleRight {
+    flex-basis: 44%;
+}
+
+.peopleRight_Item {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid gray;
+}
+
+.peopleRight_Item h2 {
+    font-weight: 600;
+    font-size: 26px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    color: rgb(34, 34, 34);
+}
+
+.peopleRight_ListItem {
+    padding: 6px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+}
+
+.peopleRigthImage {
+    width: 45px;
+}
+
+.modified-Button button {
+    border-radius: 5px;
+    font-size: 15px;
+    padding: 4px 10px;
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 770px) {
+    .peopleWrapper {
+        flex-direction: column;
+    }    
+
+        /*----------------------- left ------------------------*/
+    .peopleSearch h1 {
+        display: none;
+    }
+
+    .personItem_profile {
+        gap: 10px;
+        align-items: start;
+    }
+
+    .personItem_ProfileImage {
+        width: 48px;
+    }
+
+    .personItem_profileUsername p:nth-child(1) {
+        font-size: 17px;
+    }
+    
+    .personItem_profileUsername p:nth-child(2) {
+        line-height: 16px;
+        font-size: 15px;
+    }
+
+    .personItem_ConnectButton button {
+        padding: 5px 10px;
+        font-size: 15px;
+    }
+
+    .personItem_Details {
+        padding: 15px 0 0 48px;
+    }
+
+    .personDetails_Item p {
+        font-size: 22px;
+        font-weight: 600;
+    }
+
+    .personDetails_Item span {
+        font-size: 15px;
+    }
+
+    
+        /*----------------------- right ------------------------*/
+    .peopleRight {
+        display: none;
+    }
+}

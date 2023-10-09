@@ -12,6 +12,11 @@ import roomsInUse from "./roomsInUse";
 import userRedux from "./userRedux";
 import postsRedux from "./postsRedux";
 import todaysLessons from "./todaysLessons";
+import projectsRedux from "./projectsRedux";
+import userProjects from "./userProjects";
+import usersRedux from "./usersRedux";
+import searchedUser from "./searchedUser";
+import searchedUserProjects from "./searchedUserProjects";
 
 const persistConfig = {
   key: "root",
@@ -27,10 +32,15 @@ const rootReducer = combineReducers({
   courses: coursesRedux,
   inUseRooms: roomsInUse,
   posts: postsRedux,
+  projects: projectsRedux,
   ongoingCourses: ongoingCourses,
   ongoingLessons: ongoingLessons,
   upcomingLessons: upcomingLessons,
   todaysLessons: todaysLessons,
+  userProjects: userProjects,
+  users: usersRedux,
+  searchedUser: searchedUser,
+  searchedUserProjects: searchedUserProjects,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

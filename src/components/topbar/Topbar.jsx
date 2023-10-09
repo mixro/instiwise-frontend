@@ -1,18 +1,37 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Home, MeetingRoom, Search, ChairAlt, DensityMedium, Book, Groups2Sharp, PlayLesson, ArrowCircleUpSharp, Person, Login, HowToReg, Today, AdminPanelSettings} from "@mui/icons-material";
+import { Home, MeetingRoom, Search, ChairAlt, DensityMedium, Book, Groups2Sharp, PlayLesson, ArrowCircleUpSharp, Person, Login, HowToReg, Today, AdminPanelSettings, RssFeed, Handyman, Person2, Logout, People} from "@mui/icons-material";
 import './topbar.css'
-import { Box, Divider, Drawer, ListItem, List, ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
+import { Box, Divider, Drawer, ListItem, List, ListItemButton, ListItemIcon, ListItemText, Menu, MenuItem} from "@mui/material";
 import { Link } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { UserLogout } from '../../redux/apiCalls';
 
+const ITEM_HEIGHT = 48;
 
 const Navbar = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
   const [currentTime, setCurrentTime] = useState('');
   const [currentDay, setCurrentDay] = useState('');
   const [state, setState] = useState({ top: false, left: false, bottom: false, right: false,});
   const freeRooms = useSelector((state) => state.freeRooms.freeRooms);
+  const open = Boolean(anchorEl);
+  const dispatch = useDispatch();
   const ongoingLessons = useSelector((state) => state.ongoingLessons.ongoingLessons);
+  const user = useSelector((state) => state.user.currentUser);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    UserLogout(dispatch);
+  }
 
   useEffect(() => {
     const getCurrentInfo = () => {
@@ -58,6 +77,27 @@ const Navbar = () => {
       icon:<Groups2Sharp />,
       text:"Courses",
       location:"/courses",
+    },
+
+    {
+      id:5,
+      icon:<RssFeed />,
+      text:"News",
+      location:"/posts",
+    },
+
+    {
+      id:6,
+      icon:<Handyman />,
+      text:"Projects",
+      location:"/projects",
+    },
+
+    {
+      id:7,
+      icon:<People />,
+      text:"People",
+      location:"/people",
     },
   ];
 
@@ -264,11 +304,56 @@ const Navbar = () => {
                   <p>{currentTime}<span> | {currentDay}</span></p>
                 </div>
 
-                <Link to='/profile'className='profile_link'>
-                    <div className="profile">
-                        <img src="/assets/1.png" alt="PR" className="profileImg" />
-                    </div >
-                </Link>
+                <div className="profile">
+                    <img src={user?.img || "/assets/1.png"} onClick={handleClick} alt="PR" className="profileImg" />
+                </div > 
+                <Menu
+                  id="long-menu"
+                  MenuListProps={{
+                  'aria-labelledby': 'long-button',
+                  }}
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  PaperProps={{
+                  style: {
+                      maxHeight: ITEM_HEIGHT * 4.5,
+                      width: '17ch',
+                  },
+                  }}
+                > 
+                  <Link to="/register" className='link-main'>
+                      <MenuItem  onClick={handleClose}>
+                          <div className="menuIconItem">
+                            <HowToReg sx={{fontSize: 22,}} /> Register
+                          </div>
+                      </MenuItem>
+                  </Link>
+
+                  <Link to="/login" className='link-main'>
+                      <MenuItem  onClick={handleClose}>
+                          <div className="menuIconItem">
+                            <Login sx={{fontSize: 22,}} /> Login
+                          </div>
+                      </MenuItem>
+                  </Link>                  
+
+                  <Link to="/profile" className='link-main'>
+                      <MenuItem  onClick={handleClose}>
+                          <div className="menuIconItem">
+                            <Person2 sx={{fontSize: 22,}} /> Profile
+                          </div>
+                      </MenuItem>
+                  </Link>                  
+
+                  {user && 
+                    <MenuItem  onClick={handleLogout}>
+                        <div className="menuIconItem">
+                          <Logout sx={{fontSize: 22,}} /> Logout
+                        </div>
+                    </MenuItem>
+                  }
+                </Menu>
             </div>
         </div>
     </div>

@@ -217,6 +217,15 @@
     text-align: center;
 }
 
+.menuIconItem {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 10px;
+    width: 100%;
+    color: rgb(51, 51, 51);
+}
+
 
 
 

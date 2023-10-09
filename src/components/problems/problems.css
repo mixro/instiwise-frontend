@@ -1,0 +1,52 @@
+.problemsWrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 60px;
+}
+
+.problemsHeader h1 {
+    font-size: 28px;
+    margin-bottom: 40px;
+    width: fit-content;
+    border-bottom: 1.8px solid rgb(37, 37, 37);
+}
+
+.problemsItem {
+    margin-bottom: 35px;
+}
+
+.problemsItem h2 {
+    font-size: 19px;
+    margin-bottom: 7px;
+    color: rgb(33, 33, 33);
+}
+
+.problemsItem span {
+    margin-right: 6px;
+}
+
+
+.problemsDiv_Item {
+    flex-basis: 48%;
+}
+
+
+
+
+
+@media screen and (max-width: 770px) {
+    .problemsWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 60px;
+    }
+
+    .problemsHeader h1 {
+        font-size: 26px;
+    }
+
+    .problemsDiv_Item {
+        padding-bottom: 30px;
+    }
+}

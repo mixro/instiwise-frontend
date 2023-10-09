@@ -1,0 +1,283 @@
+.projectPage {
+    min-height: calc(100vh - 60px);
+}
+
+.projectWrapper {
+    padding-top: 3%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+    /*------------------- left -----------------------*/
+.projectLeft_Side {
+    flex-basis: 73%;
+    padding-bottom: 5%;
+}
+
+.projectTitle {
+    padding-bottom: 15px;
+}
+
+.projectTitle h1 {
+    font-size: 28px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.projectTitle_Details {
+    display: flex;
+    align-items: center;
+    gap: 2%;
+}
+
+.projectStatus {
+    padding: 0 10px;
+    border-radius: 50px;
+    font-size: 15px;
+    width: fit-content;
+    margin-top: 5px;
+    background: green;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.projectTitle_type {
+    border-left: 2px solid rgb(157, 157, 157);
+    padding-left: 2%;
+}
+
+.projectUser_Update {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.projectUser_Details {
+    padding: 2% 0 1%;
+    display: flex;
+    align-items: center;
+    gap: 2%;
+    flex: 1;
+}
+
+.projectUpdate_BUTTON button {
+    padding: 8px 20px;
+    border-radius: 5px;
+    background: blue;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+}
+
+.projectUser_Profile {
+    width: 70px;
+    height: 70px;
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: 3px;
+}
+
+.projectUser_Profile img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.noProjectProfile {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background: gray;
+}
+
+.projectUser_Info p {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.projectUser_Position {
+    background: gainsboro;
+    padding: 0 8px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.projectUser_Position p {
+    font-weight: normal;
+    font-size: 14px;
+}
+
+
+.projectShort_Desc {
+    padding: 2% 0 ;
+}
+
+.projectImages {
+    width: 100%;
+    aspect-ratio: 1/0.5;
+    background: grey;
+    border-radius: 5px;
+}
+
+.projectImages img {
+    width: 100%;
+    border-radius: 5px;
+    aspect-ratio: 1/0.5;
+    object-fit: cover;
+}
+
+.projectDescription {
+    padding-top: 3%;
+}
+
+.projectDescription h1 {
+    font-weight: 600;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.projectDescription ul {
+    padding-left: 4%;
+}
+
+.projectDescription ul li {
+    margin-bottom: 10px;
+}
+
+
+
+
+    /*------------------- rigth -----------------------*/
+.projectRight_Side {
+    flex-basis: 25%;
+    height: calc(100vh - 60px);
+    top: 60px;
+    position: sticky;
+    overflow-y: scroll;
+    scrollbar-width: 0;
+}
+
+.projectRight_Side::-webkit-scrollbar {
+    display: none;
+}
+
+.projectRight_Details h2 {
+    font-weight: 600;
+    font-size: 23px;
+    margin-bottom: 4%;
+}
+
+.projectDetails_Items p {
+    color: rgb(15, 15, 15);
+    margin-bottom: 5px;
+}
+
+.projectDetails_Items span {
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+
+
+
+
+@media screen and (max-width: 770px) {
+    .projectWrapper {
+        flex-direction: column;
+    }
+
+    .projectTitle {
+        padding-bottom: 20px;
+    }
+
+    .projectTitle h1 {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+
+    .projectUser_Profile {
+        width: 60px;
+        padding: 3px;
+        height: 60px;
+        border-radius: 50%;
+        border: 1px solid rgb(43, 43, 43);
+    }
+
+    .projectUser_Update {
+        width: 100%;
+    } 
+
+    .projectUser_Details {
+        width: 100%;
+    }
+
+    .projectUpdate_BUTTON {
+        width: 100%;
+        padding-top: 15px;
+    }
+
+    .projectUpdate_BUTTON button {
+        width: 100%;
+        padding: 7px;
+        font-size: 16px;
+        font-weight: 500;
+        background: rgb(4, 57, 247);
+    }
+
+    .projectUser_Info p {
+        color: rgb(18, 18, 18);
+    }
+
+    .projectSmall_Details {
+        padding-top: 25px;
+    }
+
+    .projectSmall_Details h2 {
+        font-weight: 500;
+        font-size: 20px;
+        margin-bottom: 6px;
+        text-decoration: underline;
+        display: none;
+    }
+
+    .projectSmall_DetailsItem p {
+        margin-bottom: 4px;
+    }
+
+    .projectSmall_DetailsItem span {
+        font-weight: 600;
+        margin-right: 5px;
+    }
+
+    .projectShort_Desc {
+        padding: 12px 0 20px;
+    }
+
+    .projectImages {
+        margin-bottom: 25px;
+    }
+
+    .projectImages img {
+        aspect-ratio: 1/0.6;
+    }
+
+    .projectDescription ul {
+        padding-left: 20px;
+    }
+
+    .projectLeft_Side {
+        padding-bottom: 60px;
+    }
+
+    .projectRight_Side {
+        display: none;
+    }
+}
