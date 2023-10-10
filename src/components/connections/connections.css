@@ -1,3 +1,9 @@
 .connectionsList {
     padding-top: 20px;
 }
+
+@media screen and (max-width: 770px) {
+    .connectionsList {
+        padding-bottom: 50px;
+    }
+}

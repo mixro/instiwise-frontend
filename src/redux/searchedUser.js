@@ -40,6 +40,11 @@ const searchedUserSlice = createSlice({
             state.searchedUser.connections.push(currentUserId);
         }
     },
+
+    //LOGOUT
+    clearUser: (state) => {
+        state.searchedUser = null;
+    },
   },
 });
 
@@ -48,5 +53,6 @@ export const {
     getUserSuccess,
     getUserStart,
     connectWithUser,
+    clearUser,
 } = searchedUserSlice.actions;
 export default searchedUserSlice.reducer;

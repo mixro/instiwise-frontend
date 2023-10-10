@@ -8,7 +8,7 @@ import { addPostFailure, addPostStart, addPostSuccess, deletePostFailure, delete
 import { addProjectFailure, addProjectStart, addProjectSuccess, deleteProjectFailure, deleteProjectStart, deleteProjectSuccess, getProjectFailure, getProjectStart, getProjectSuccess, likeProject, updateProjectFailure, updateProjectStart, updateProjectSuccess } from "./projectsRedux";
 import { getInUseRoomsFailure, getInUseRoomsStart, getInUseRoomsSuccess } from "./roomsInUse";
 import { getRoomsFailure, getRoomsStart, getRoomsSuccess } from "./roomsRedux";
-import { connectWithUser, getUserFailure, getUserStart, getUserSuccess } from "./searchedUser";
+import { clearUser, connectWithUser, getUserFailure, getUserStart, getUserSuccess } from "./searchedUser";
 import { getSearchedUserProjectsFailure, getSearchedUserProjectsStart, getSearchedUserProjectsSuccess, likeSearchedUserProject } from "./searchedUserProjects";
 import { getTodaysLessonsFailure, getTodaysLessonsStart, getTodaysLessonsSuccess } from "./todaysLessons";
 import { getUpcomingLessonsFailure, getUpcomingLessonsStart, getUpcomingLessonsSuccess } from "./upcomingLessons";
@@ -79,6 +79,10 @@ export const deleteUser = async (id, dispatch) => {
 // USER  LOGOUT
 export const UserLogout = async (dispatch) => {
   dispatch(logout());
+};
+
+export const ClearSearchedUser = async (dispatch) => {
+  dispatch(clearUser());
 };
 
 // GET CURRENT USER PROJECTS

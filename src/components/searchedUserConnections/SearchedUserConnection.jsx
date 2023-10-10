@@ -21,7 +21,7 @@ const SearchedUserConnection = () => {
   };
 
   const filteredConnections = Array.isArray(userConnections) && userConnections.filter((user) => {
-    const username = user.username.toLowerCase();
+    const username = user?.username.toLowerCase();
 
     const query = searchQuery.toLowerCase();
     return (
@@ -36,7 +36,7 @@ const SearchedUserConnection = () => {
         <div className="connectionsWrapper_List">
           <div className="connectionDiv">
             <div className="projectLeft_Top">
-              <h1>YOUR PROJECT</h1>
+              <h1>CONNECTIONS</h1>
               <div className="projectsSearch">
                   <div className="ditsoSearch projectSearchItem">
                       <input 

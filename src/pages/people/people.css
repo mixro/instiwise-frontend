@@ -132,12 +132,12 @@
 }
 
 .personItem_ConnectButton button {
-    padding: 7px 14px;
+    padding: 6px 12px;
     border: none;
     background: blue;
     color: white;
     font-weight: 500;
-    font-size: 17px;
+    font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
 }

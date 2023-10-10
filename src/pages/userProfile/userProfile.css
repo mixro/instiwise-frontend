@@ -91,6 +91,128 @@
 }
 
 
+
+    /*-------------------LOADING SKELETON --------------------*/
+.loadingUser_wrapper {
+    min-height: calc(100vh - 60px);
+    display: flex;
+    justify-content: space-between;
+}
+
+.loadingUser_Left {
+    flex-basis: 71%;
+    height: 100%;
+    height: calc(100vh - 60px);
+}
+
+.loadingUser_Cover {
+    width: 100%;
+    aspect-ratio: 1/0.23;
+    background: #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    animation: loading 2s infinite;
+}
+
+.loadingUser_Self {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.loadingUser_ImgDiv {
+    width: 130px;
+    height: 100px;
+}
+
+.loadingUser_Image {
+    width: 130px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background: #ddd;
+    border: 5px solid var(--main-color);
+    transform: translateY(-40px);
+}
+
+.loadingUser_username {
+    width: 30%;
+    background: #ddd;
+    border-radius: 5px;
+    height: 30px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    animation: loading 2s infinite;
+}
+
+.loadingUser_Desc {
+    width: 45%;
+    height: 30px;
+    border-radius: 5px;
+    background: #ddd;
+    animation: loading 2s infinite;
+}
+
+.loadingUser_Connections {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7%;
+    width: 100%;
+    padding-top: 30px;
+}
+
+.loadingConnection_Item {
+    width: 24%;
+    aspect-ratio: 1/0.62;
+    background: #ddd;
+    border-radius: 5px;
+    animation: loading 2s infinite;
+}
+
+.loadingUser_Projects {
+    padding-top: 60px;
+    width: 100%;
+}
+
+.loadingUser_Header {
+    width: 100%;
+    height: 40px;
+    background: #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    animation: loading 2s infinite;
+}
+
+.loadingUser_ProjectsList {
+    width: 100%;
+    aspect-ratio: 1/0.6;
+    background: #ddd;
+    border-radius: 5px;
+    animation: loading 2s infinite;
+}
+
+.loadingUser_Right {
+    flex-basis: 27%;
+    background: #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    height: calc(100vh - 60px);
+}
+  
+
+@keyframes loading {
+    0% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+
 @media screen and (max-width: 770px) {
     .userProfile-Connect {
         padding-top: 30px;
@@ -99,5 +221,56 @@
     .userProfile-Connect button {
         width: 100%;
         padding: 8px;
+    }
+
+    .loadingUser_wrapper {
+        flex-direction: column;
+    }
+
+    .loadingUser_Cover {
+        aspect-ratio: 1/0.4;
+    }
+
+    .loadingUser_ImgDiv {
+        width: 105px;
+        height: 76px;
+    }
+
+    .loadingUser_Image {
+        width: 105px;
+    }
+
+    .loadingUser_username {
+        width: 35%;
+        height: 25px;
+        margin-bottom: 10px;
+    }
+
+    .loadingUser_Connections {
+        justify-content: space-between;
+        width: 100%;
+        gap: 0;
+        padding-top: 30px;
+    }
+
+    .loadingConnection_Item {
+        width: 30%;
+    }
+
+    .loadingUser_Projects {
+        padding-top: 40px;
+    }
+
+    .loadingUser_Desc {
+        width: 55%;
+        height: 25px;
+    }
+
+    .loadingUser_ProjectsList {
+        height: 60vh;
+    }
+
+    .loadingUser_Right {
+        display: none;
     }
 }
