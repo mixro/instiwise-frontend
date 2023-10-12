@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './projects.css';
-import { Handyman, Task, TrendingUp } from '@mui/icons-material';
+import { Handyman, Info, Science } from '@mui/icons-material';
 import { getProjects } from '../../redux/apiCalls';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -52,20 +52,20 @@ const Projects = ({children}) => {
                       <div className="projectItem_Inner">
                         <div className="projectItem_icon">
                           <p>Problems</p>
-                          <TrendingUp sx={{fontSize: {xs: 24, sm: 30}}} />
+                          <Info sx={{fontSize: {xs: 24, sm: 30}}} />
                         </div>
-                        <span>312</span>
+                        <span>10</span>
                       </div>
                     </Link>
                   </div>
                   <div className="projectTopHeader_Item">
-                    <Link to="/projects" className='link-main'>
+                    <Link to="./researches" className='link-main'>
                       <div className="projectItem_Inner">
                         <div className="projectItem_icon">
                           <p>Researches</p>
-                          <Task sx={{fontSize: {xs: 24, sm: 30}}} />
+                          <Science sx={{fontSize: {xs: 24, sm: 30}}} />
                         </div>
-                        <span>912</span>
+                        <span>8</span>
                       </div>
                     </Link>
                   </div>
@@ -92,7 +92,7 @@ const Projects = ({children}) => {
                 </div>
             </div>
             <div className="loginText">
-                Register if you are a new member or log in if you are an existing member to access and view different projects for free.
+                Register or login to view projects
             </div>
           </div> 
         }

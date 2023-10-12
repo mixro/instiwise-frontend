@@ -12,7 +12,6 @@ import moment from 'moment';
 const ITEM_HEIGHT = 48;
 
 const ProjectComp = ({project, currentUserId, isCurrentUserProfile, isSearchedUserProfile }) => {
-    const [profileLoading, setProfileLoading] = useState(true);
     const dispatch = useDispatch();
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -23,10 +22,6 @@ const ProjectComp = ({project, currentUserId, isCurrentUserProfile, isSearchedUs
 
     const handleClose = () => {
         setAnchorEl(null);
-    };
-
-    const handleProfileLoad = () => {
-        setProfileLoading(false);
     };
 
     const handleLike = (projectId) => {
@@ -64,8 +59,12 @@ const ProjectComp = ({project, currentUserId, isCurrentUserProfile, isSearchedUs
             <div className="projectCompDesc_top">
                 <div className="projectComp_Profile">
                     <Link to={currentUserId === project.userId?._id ? '/profile' : `/user-profile/${project.userId?._id}`} className='link-main'>
-                        <img src={project.userId?.img || '/assets/1.png'} style={{display: profileLoading ? "none" : "block"}} onLoad={handleProfileLoad} alt='PR' />
-                        <div className="noProfileComp" style={{display: profileLoading ? "block" : "none"}}>
+                        <div className="projectComp_ProfileImage">
+                            <LazyLoadImage 
+                                alt='.'
+                                src={project.userId?.img || '/assets/1.png'}
+                                style={{display: "block"}}
+                            />
                         </div>
                     </Link>
                 </div>

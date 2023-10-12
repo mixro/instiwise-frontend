@@ -8,12 +8,11 @@ import { addPostFailure, addPostStart, addPostSuccess, deletePostFailure, delete
 import { addProjectFailure, addProjectStart, addProjectSuccess, deleteProjectFailure, deleteProjectStart, deleteProjectSuccess, getProjectFailure, getProjectStart, getProjectSuccess, likeProject, updateProjectFailure, updateProjectStart, updateProjectSuccess } from "./projectsRedux";
 import { getInUseRoomsFailure, getInUseRoomsStart, getInUseRoomsSuccess } from "./roomsInUse";
 import { getRoomsFailure, getRoomsStart, getRoomsSuccess } from "./roomsRedux";
-import { clearUser, connectWithUser, getUserFailure, getUserStart, getUserSuccess } from "./searchedUser";
-import { getSearchedUserProjectsFailure, getSearchedUserProjectsStart, getSearchedUserProjectsSuccess, likeSearchedUserProject } from "./searchedUserProjects";
+import { clearUser, connectWithUser, connectWithUsersConnections, getUserFailure, getUserStart, getUserSuccess, likeSearchedUserProjects } from "./searchedUser";
 import { getTodaysLessonsFailure, getTodaysLessonsStart, getTodaysLessonsSuccess } from "./todaysLessons";
 import { getUpcomingLessonsFailure, getUpcomingLessonsStart, getUpcomingLessonsSuccess } from "./upcomingLessons";
 import { getUserProjectsFailure, getUserProjectsStart, getUserProjectsSuccess, likeUserProject } from "./userProjects";
-import { deleteUserFailure, deleteUserStart, deleteUserSuccess, googleLoginFailure, googleLoginStart, googleLoginSuccess, loginFailure, loginStart, loginSuccess, logout, registerStart, registerSuccess, regiterError, updateUserFailure, updateUserStart, updateUserSuccess } from "./userRedux";
+import { connectWithCurrentUserConnection, deleteUserFailure, deleteUserStart, deleteUserSuccess, googleLoginFailure, googleLoginStart, googleLoginSuccess, loginFailure, loginStart, loginSuccess, logout, registerStart, registerSuccess, regiterError, updateUserFailure, updateUserStart, updateUserSuccess } from "./userRedux";
 import { connectWithAnotherUser, getUsersFailure, getUsersStart, getUsersSuccess } from "./usersRedux";
 
 
@@ -118,21 +117,10 @@ export const searchUser = async (searchedUserId, dispatch) => {
   }
 }
 
-// GET SEARCHED USER PROJECTS
-export const getSearchedUserProjects = async (searchedUserId, dispatch) => {
-  dispatch(getSearchedUserProjectsStart());
-    try {
-      const res = await userRequest.get(`/projects/user/${searchedUserId}`);
-      dispatch(getSearchedUserProjectsSuccess(res.data));
-    } catch(err) {
-      dispatch(getSearchedUserProjectsFailure());
-    }
-}
-
 //CONNECT WITH SEARCHED USER
-export const connectWithSearchedUser = async (currentUserId, searchedUserId, dispatch) => {
+export const connectWithSearchedUser = async (currentUser, searchedUserId, dispatch) => {
   try {
-      dispatch(connectWithUser({ currentUserId })); 
+      dispatch(connectWithUser({ currentUser })); 
       await userRequest.put(`/users/${searchedUserId}/connect`);
   } catch (err) {
       console.log(err);
@@ -145,6 +133,28 @@ export const connectWithOtherUser = async (currentUserId, anotherUserId, dispatc
   try {
       dispatch(connectWithAnotherUser({ currentUserId,  anotherUserId})); 
       await userRequest.put(`/users/${anotherUserId}/connect`);
+  } catch (err) {
+      console.log(err);
+  }
+};
+
+
+//CONNECT USER FROM SEARCHED USER CONNECTIONS
+export const connectWithCurrentUsersConnection = async (currentUserId, otherUserId, dispatch) => {
+  try {
+      dispatch(connectWithCurrentUserConnection({ currentUserId,  otherUserId})); 
+      await userRequest.put(`/users/${otherUserId}/connect`);
+  } catch (err) {
+      console.log(err);
+  }
+};
+
+
+//CONNECT USER FROM SEARCHED USER CONNECTIONS
+export const connectWithUsersConnection = async (currentUserId, otherUserId, dispatch) => {
+  try {
+      dispatch(connectWithUsersConnections({ currentUserId,  otherUserId})); 
+      await userRequest.put(`/users/${otherUserId}/connect`);
   } catch (err) {
       console.log(err);
   }
@@ -393,10 +403,11 @@ export const AddlikeForUserProject = async (userId, projectId, dispatch) => {
   }
 };
 
-//LIKE USER PROJECT
-export const AddlikeForSearchedUserProject = async (userId, projectId, dispatch) => {
+//LIKE SEARCHED USER PROJECTS
+export const AddlikeForSearchedUserProject = async (currentUserId, projectId, dispatch) => {
   try {
-      dispatch(likeSearchedUserProject({ userId, projectId })); 
+      console.log(currentUserId);
+      dispatch(likeSearchedUserProjects({ currentUserId, projectId })); 
       await userRequest.put(`/projects/${projectId}/like`);
   } catch (err) {
       console.log(err);

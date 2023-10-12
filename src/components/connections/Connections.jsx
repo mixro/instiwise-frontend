@@ -4,7 +4,7 @@ import { Search, Sort } from '@mui/icons-material';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { connectWithOtherUser } from '../../redux/apiCalls';
+import { connectWithCurrentUsersConnection } from '../../redux/apiCalls';
 
 const Connections = () => {
   const dispatch = useDispatch();
@@ -13,8 +13,8 @@ const Connections = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
   const currentUserId = currentUser._id;
  
-  const handleConnect = (anotherUserId) => {
-    connectWithOtherUser(currentUserId, anotherUserId, dispatch);
+  const handleConnect = (otherUserId) => {
+    connectWithCurrentUsersConnection(currentUserId, otherUserId, dispatch);
   }
 
   const handleSearchInputChange = (event) => {
@@ -37,7 +37,7 @@ const Connections = () => {
         <div className="connectionsWrapper_List">
           <div className="connectionDiv">
             <div className="projectLeft_Top">
-              <h1>YOUR PROJECT</h1>
+              <h1>CONNECTIONS</h1>
               <div className="projectsSearch">
                   <div className="ditsoSearch projectSearchItem">
                       <input 

@@ -1,3 +1,5 @@
+import { Home, MeetingRoom, ChairAlt, Book, Groups2Sharp, PlayLesson, ArrowCircleUpSharp, Person, Login, HowToReg, Today, AdminPanelSettings, RssFeed, Handyman, People} from "@mui/icons-material";
+
 export const AnnouncementData = [
     {
         id: 1,
@@ -161,3 +163,128 @@ export const UsersData = [
         connections: 120,
     },
 ];
+
+
+
+
+    /*----------------- topabr item --------------*/
+export const topbarLinks = [
+    {
+        id:1,
+        icon:<Home />,
+        text:"Home",
+        location:"/",
+    },
+    
+    {
+        id:2,
+        icon:<Book />,
+        text:"Lessons",
+        location:"/lessons",
+    },
+
+    {
+        id:3,
+        icon:<MeetingRoom />,
+        text:"Rooms",
+        location:"/rooms",
+    },
+
+    {
+        id:4,
+        icon:<Groups2Sharp />,
+        text:"Courses",
+        location:"/courses",
+    },
+
+    {
+        id:5,
+        icon:<RssFeed />,
+        text:"News",
+        location:"/posts",
+    },
+
+    {
+        id:6,
+        icon:<Handyman />,
+        text:"Projects",
+        location:"/projects",
+    },
+
+    {
+        id:7,
+        icon:<People />,
+        text:"People",
+        location:"/people",
+    },
+];
+
+
+export const centerLinks = [
+    {
+      id:1,
+      icon:<ChairAlt />,
+      text:"Free Rooms",
+      location:"/freerooms",
+    },
+
+    {
+      id:2,
+      icon:<MeetingRoom />,
+      text:"Rooms in use",
+      location:"/roomsinuse",
+    },
+
+    {
+      id:3,
+      icon:<PlayLesson />,
+      text:"Ongoing Lessons",
+      location:"/ongoinglessons",
+    },
+
+    {
+      id:4,
+      icon:<ArrowCircleUpSharp />,
+      text:"Upcoming Lessons",
+      location:"/upcominglessons",
+    },
+
+    {
+      id:5,
+      icon:<Today />,
+      text:"Today's Lessons",
+      location:"/todayslessons",
+    }
+]
+
+export const belowLiks = [
+    {
+      id:1,
+      icon:<Person />,
+      text:"Profile",
+      location:"/profile",
+    }
+]
+
+export const loginLiks = [
+    {
+        id:1,
+        icon:<HowToReg />,
+        text:"Register",
+        location:"/register",
+    },
+
+    {
+        id:2,
+        icon:<Login />,
+        text:"Login",
+        location:"/login",
+    },
+
+    {
+        id:3,
+        icon:<AdminPanelSettings />,
+        text:"Ditso",
+        location:"/ditso",
+    }
+]

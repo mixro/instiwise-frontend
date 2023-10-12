@@ -40,6 +40,7 @@ import Connections from './components/connections/Connections';
 import Awards from './components/awards/Awards';
 import SearchedUserProjects from './components/searchedUserProjects/SearchedUserProjects';
 import SearchedUserConnection from './components/searchedUserConnections/SearchedUserConnection';
+import Researches from './components/researches/Researches';
 
 function App() {
   const dispatch = useDispatch();
@@ -158,6 +159,7 @@ function App() {
                         <Routes>
                           <Route index element={<ProjectsList />} />
                           <Route path="/problems" element={<Problems />} />
+                          <Route path="/researches" element={<Researches />} />
                         </Routes>
                       </Projects>
                     } 

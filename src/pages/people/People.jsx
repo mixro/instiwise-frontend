@@ -66,7 +66,7 @@ const People = () => {
                                 <div className="connectPeople_Item" key={person._id}>
                                     <div className="connectPeople_ItemTop">
                                         <div className="personItem_profile">
-                                            <Link to={`/user-profile/${person._id}`} className='link-main'>
+                                            <Link to={currentUserId === person._id ? "/profile" : `/user-profile/${person._id}`} className='link-main'>
                                                 <div className="personItem_ProfileImage">
                                                     <LazyLoadImage
                                                         alt='PR'
@@ -76,12 +76,14 @@ const People = () => {
                                                 </div>
                                             </Link>
                                             <div className="personItem_profileUsername">
+                                            <Link to={currentUserId === person._id ? "/profile" : `/user-profile/${person._id}`} className='link-main'>
                                                 <p>{person.username}</p>
                                                 <p>{person.course} engineer</p>
+                                            </Link>
                                             </div>
                                         </div>
                                         <div className="personItem_ConnectButton">
-                                            <button onClick={() => handleConnect(person._id)}>{person.connections.includes(currentUserId) ? "DISCONNECT" : "CONNECT"}</button>
+                                            {currentUserId !== person._id && <button onClick={() => handleConnect(person._id)}>{person.connections.includes(currentUserId) ? "DISCONNECT" : "CONNECT"}</button>}
                                         </div>
                                     </div>
                                     <div className="personItem_Details">
@@ -132,7 +134,7 @@ const People = () => {
                                             </div>
                                         </div>
                                         <div className="personItem_ConnectButton modified-Button">
-                                            <button onClick={() => handleConnect(person._id)}>{person.connections.includes(currentUserId) ? "DISCONNECT" : "CONNECT"}</button>
+                                            {currentUserId !== person._id && <button onClick={() => handleConnect(person._id)}>{person.connections.includes(currentUserId) ? "DISCONNECT" : "CONNECT"}</button>}
                                         </div>
                                     </div>
                                 </div>
@@ -163,7 +165,7 @@ const People = () => {
                                             </div>
                                         </div>
                                         <div className="personItem_ConnectButton modified-Button">
-                                            <button onClick={() => handleConnect(person._id)}>{person.connections.includes(currentUserId) ? "DISCONNECT" : "CONNECT"}</button>
+                                            {currentUserId !== person._id && <button onClick={() => handleConnect(person._id)}>{person.connections.includes(currentUserId) ? "DISCONNECT" : "CONNECT"}</button>}
                                         </div>
                                     </div>
                                 </div>
@@ -194,7 +196,7 @@ const People = () => {
                                             </div>
                                         </div>
                                         <div className="personItem_ConnectButton modified-Button">
-                                            <button onClick={() => handleConnect(person._id)}>{person.connections.includes(currentUserId) ? "DISCONNECT" : "CONNECT"}</button>
+                                            {currentUserId !== person._id && <button onClick={() => handleConnect(person._id)}>{person.connections.includes(currentUserId) ? "DISCONNECT" : "CONNECT"}</button>}
                                         </div>
                                     </div>
                                 </div>

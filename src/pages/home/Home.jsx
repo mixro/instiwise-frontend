@@ -4,6 +4,7 @@ import Details from '../../components/details/Details'
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux'
 import TypeWriterEffect from 'react-typewriter-effect';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
   const freeRooms = useSelector((state) => state.freeRooms.freeRooms);
   const upcomingLessons = useSelector((state) => state.upcomingLessons.upcomingLessons);
   const inUseRooms = useSelector((state) => state.inUseRooms.inUseRooms);
+  const ongoingCourses = useSelector((state) => state.ongoingCourses.ongoingCourses);
 
   useEffect(() => {
     const getCurrentInfo = () => {
@@ -64,7 +66,7 @@ const Home = () => {
               cursorColor="#ffffff"
               multiText={[
                 "Seamless Scheduling",
-                "Welcome to InstiWise"           
+                "WELCOME TO INSTIWISE"           
               ]}
               multiTextDelay={2000}
               typeSpeed={30}
@@ -270,20 +272,150 @@ const Home = () => {
         </div>
       </div>
 
+      <div className="project_PeopleDiv">
+        <div className="projectPeople_Item">
+          <div className="projectPeople_Header">
+            <h2>Explore Projects</h2>
+          </div>
+          <div className="peopleProject_Body">
+            <div className="peopleProject_MovingImg">
+              <img src='/assets/project.jpg' alt='pr' />
+            </div>
+          </div>
+          <div className="projectPeople_Button">
+            <Link to='/projects' className="link-main">
+              <button>EXPLORE</button>
+            </Link>
+          </div>
+        </div>
+
+        <div className="projectPeople_Item">
+          <div className="projectPeople_Header">
+            <h2>Connect with people</h2>
+          </div>
+          <div className="peopleProject_Body">
+            <div className="peopleProject_Image">
+              <LazyLoadImage
+                alt='pr'
+                src='/assets/people.png'
+                style={{display: "block"}}
+              />
+            </div>
+          </div>
+          <div className="projectPeople_Button">
+            <Link to='/people' className="link-main">
+              <button>CONNECT</button>
+            </Link>
+          </div>
+        </div>
+      </div>
+
       <div className="homeNews_container">
         <div className="homeNews_item">
           <span>Get informed like never before!</span>
           <h1 className='LARGESCREEN'>Stay updated with <br /> your SO's timeline news</h1>
           <h1 className='SMALLSCREEN'>Stay updated with <br /> SO's timeline news</h1>
           <Link to="/posts" className='link-main'>
-            <button>EXPLORE MORE</button>
+            <button>EXPLORE NEWS</button>
           </Link>
         </div> 
       </div>
 
+      <div className="LARGESCREEN">
+        <div className="home_body">
+          <div className="home_topInfo">          
+            <div className="topInfo_item">
+              <Link to='/ongoinglessons' className='link-main'>
+                <div className="topInfo_header">
+                  <p>On lessons</p>
+                  <span>{ongoingLessons && ongoingLessons.length}</span>
+                </div>
+                <div className="topInfo_desc">
+                  <p>{window.innerWidth >= 770 ? "Complete access to all institute lessons" : "Complete access to all lessons"}</p>
+                  <div className="topInfo_item_link">
+                    <span>Explore more!</span>
+                  </div>
+                </div>
+              </Link>
+            </div>
+            <div className="topInfo_item">
+              <Link to='/upcominglessons' className='link-main'>
+                <div className="topInfo_header">
+                  <p>Up lessons</p>
+                  <span>{upcomingLessons && upcomingLessons.length}</span>
+                </div>
+                <div className="topInfo_desc">
+                  <p>{window.innerWidth >= 770 ? "Navigate rooms online before entering effortlessly." : "Explore rooms online before entry."}</p>
+                  <div className="topInfo_item_link">
+                    <span>Explore more!</span>
+                  </div>
+                </div>
+              </Link>
+            </div>
+            <div className="topInfo_item">
+              <Link to='/freerooms' className='link-main'>
+                <div className="topInfo_header">
+                  <p>Free rooms</p>
+                  <span>{freeRooms && freeRooms.length}</span>
+                </div>
+                <div className="topInfo_desc">
+                  <p>{window.innerWidth >= 770 ? "Access all courses with seamless convenience" : "Access all available courses easily"}</p>
+                  <div className="topInfo_item_link">
+                    <span>Explore more!</span>
+                  </div>
+                </div>
+              </Link>
+            </div>
+            <div className="topInfo_item">
+              <Link to='/roomsinuse' className='link-main'>
+                <div className="topInfo_header">
+                  <p>Rooms in use</p>
+                  <span>{inUseRooms && inUseRooms.length}</span>
+                </div>
+                <div className="topInfo_desc">
+                  <p>{window.innerWidth >= 770 ? "Access all courses with seamless convenience" : "Access all available courses easily"}</p>
+                  <div className="topInfo_item_link">
+                    <span>Explore more!</span>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="SMALLSCREEN">
-        <div className="div_header">
-          <p>Access All</p>
+        <div className="home_body">
+          <div className="home_topInfo">          
+            <div className="topInfo_item">
+              <Link to='/ongoingcourses' className='link-main'>
+                <div className="topInfo_header">
+                  <p>On course</p>
+                  <span>{ongoingCourses && ongoingCourses.length}</span>
+                </div>
+                <div className="topInfo_desc">
+                  <p>{window.innerWidth >= 770 ? "Complete access to all institute lessons" : "Complete access to all lessons"}</p>
+                  <div className="topInfo_item_link">
+                    <span>Explore more!</span>
+                  </div>
+                </div>
+              </Link>
+            </div>
+            <div className="topInfo_item">
+              <Link to='/ongoinglessons' className='link-main'>
+                <div className="topInfo_header">
+                  <p>On lessons</p>
+                  <span>{ongoingLessons && ongoingLessons.length}</span>
+                </div>
+                <div className="topInfo_desc">
+                  <p>{window.innerWidth >= 770 ? "Navigate rooms online before entering effortlessly." : "Explore rooms online before entry."}</p>
+                  <div className="topInfo_item_link">
+                    <span>Explore more!</span>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
 

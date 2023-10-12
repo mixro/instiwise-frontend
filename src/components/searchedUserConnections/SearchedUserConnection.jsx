@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { connectWithOtherUser } from '../../redux/apiCalls';
+import { connectWithUsersConnection } from '../../redux/apiCalls';
 import { Search, Sort } from '@mui/icons-material';
 
 const SearchedUserConnection = () => {
@@ -12,8 +12,8 @@ const SearchedUserConnection = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
   const currentUserId = currentUser._id;
 
-  const handleConnect = (anotherUserId) => {
-    connectWithOtherUser(currentUserId, anotherUserId, dispatch);
+  const handleConnect = (otherUserId) => {
+    connectWithUsersConnection(currentUserId, otherUserId, dispatch);
   }
 
   const handleSearchInputChange = (event) => {
@@ -61,7 +61,7 @@ const SearchedUserConnection = () => {
             
           {filteredConnections.length > 0 
             ?
-              <div className="connectionsList">
+              <div className="connectionsList" style={{paddingTop: 40}}>
                 {filteredConnections
                   .map((person) => (
                     <div className="peopleCategory_Item" key={person._id}>

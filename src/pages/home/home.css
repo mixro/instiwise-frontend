@@ -69,10 +69,11 @@
     border-radius: 5px;
     padding: 1%;
     cursor: pointer;
+    border: 1px solid transparent;
 
-    -webkit-box-shadow: 0px 0px 8px 2px rgb(55, 49, 49);
-    -moz-box-shadow: 0px 0px 8px 2px rgba(214,214,214,1);
-    box-shadow: 0px 0px 8px 2px rgba(214,214,214,1);
+    -webkit-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
 }
 
 .topInfo_item:hover {
@@ -119,11 +120,25 @@
 
     /*----------HOME NEWS----------*/
 .homeNews_container {
-    margin-bottom: 50px;
+    margin-bottom: 0px;
     padding: 4% 2% 3% 2% ;
     color: white;
-    background: linear-gradient(120deg, rgb(0, 128, 62), royalblue);
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(120deg, rgb(64, 157, 163), rgb(42, 159, 142));
+    -webkit-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+}
+
+.homeNews_item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .homeNews_container h1 {
@@ -131,6 +146,7 @@
     font-weight: 800;
     margin-top: 15px;
     line-height: 60px;
+    text-align: center;
 }
 
 .homeNews_item button {
@@ -147,6 +163,96 @@
 .homeNews_item button:hover {
     background: rgb(91, 184, 241);
     color: white;
+}
+
+
+    /*-------------------- people & projects -------------------*/
+
+.project_PeopleDiv {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 50px;
+}
+
+.projectPeople_Item {
+    flex-basis: 49.3%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    background: #fcfcff;
+    border-radius: 5px;
+    padding: 20px 5px 20px;
+
+    -webkit-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+}
+
+.projectPeople_Header h2 {
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.projectPeople_Button {
+    padding: 3px;
+    border: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-bottom: 6px;
+}
+
+.projectPeople_Button:hover {
+    border: 2px solid #ff4e7a;
+}
+
+.projectPeople_Button button {
+    padding: 3px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    font-size: 15px;
+    background: royalblue;
+    color: white;
+}
+
+.peopleProject_Body {
+    padding: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.peopleProject_Image {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1.581/1;
+    background: transparent;
+}
+
+.peopleProject_Image img {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 1.581/1;
+}
+
+.peopleProject_MovingImg {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+
+.peopleProject_MovingImg img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    aspect-ratio: 1/0.6;
 }
 
 
@@ -333,16 +439,16 @@
 
         /*----------HOME NEWS----------*/
     .homeNews_container {
-        padding: 20px 2%;
-        margin-bottom: 25px;
+        padding: 25px 2%;
+        margin-bottom: 18px;
     }
 
     .homeNews_container span {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .homeNews_container h1 {
-        font-size: 28px;
+        font-size: 35px;
         font-weight: 800;
         margin-top: 15px;
         line-height: normal;
@@ -356,5 +462,21 @@
 
     .homeNews_item button:hover {
         background: rgb(231, 45, 45);
+    }
+
+
+        /*----------------------- people & projects -----------------------*/
+    .project_PeopleDiv {
+        flex-direction: column-reverse;
+        width: 100%;
+        gap: 40px;
+    }
+
+    .peopleProject_MovingImg {
+        width: 85%;
+    }
+
+    .peopleProject_Image {
+        width: 80%;
     }
 }

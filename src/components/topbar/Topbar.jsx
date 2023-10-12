@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Home, MeetingRoom, Search, ChairAlt, DensityMedium, Book, Groups2Sharp, PlayLesson, ArrowCircleUpSharp, Person, Login, HowToReg, Today, AdminPanelSettings, RssFeed, Handyman, Person2, Logout, People} from "@mui/icons-material";
+import { Search, DensityMedium, Login, HowToReg, Person2, Logout } from "@mui/icons-material";
 import './topbar.css'
 import { Box, Divider, Drawer, ListItem, List, ListItemButton, ListItemIcon, ListItemText, Menu, MenuItem} from "@mui/material";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { UserLogout } from '../../redux/apiCalls';
+import { belowLiks, centerLinks, loginLiks, topbarLinks } from '../../dummyData';
 
 const ITEM_HEIGHT = 48;
 
@@ -50,126 +51,6 @@ const Navbar = () => {
   }, []);
   
 
-  const links = [
-    {
-      id:1,
-      icon:<Home />,
-      text:"Home",
-      location:"/",
-    },
-    
-    {
-      id:2,
-      icon:<Book />,
-      text:"Lessons",
-      location:"/lessons",
-    },
-
-    {
-      id:3,
-      icon:<MeetingRoom />,
-      text:"Rooms",
-      location:"/rooms",
-    },
-
-    {
-      id:4,
-      icon:<Groups2Sharp />,
-      text:"Courses",
-      location:"/courses",
-    },
-
-    {
-      id:5,
-      icon:<RssFeed />,
-      text:"News",
-      location:"/posts",
-    },
-
-    {
-      id:6,
-      icon:<Handyman />,
-      text:"Projects",
-      location:"/projects",
-    },
-
-    {
-      id:7,
-      icon:<People />,
-      text:"People",
-      location:"/people",
-    },
-  ];
-
-  const centerLinks = [
-    {
-      id:1,
-      icon:<ChairAlt />,
-      text:"Free Rooms",
-      location:"/freerooms",
-    },
-
-    {
-      id:2,
-      icon:<MeetingRoom />,
-      text:"Rooms in use",
-      location:"/roomsinuse",
-    },
-
-    {
-      id:3,
-      icon:<PlayLesson />,
-      text:"Ongoing Lessons",
-      location:"/ongoinglessons",
-    },
-
-    {
-      id:4,
-      icon:<ArrowCircleUpSharp />,
-      text:"Upcoming Lessons",
-      location:"/upcominglessons",
-    },
-
-    {
-      id:5,
-      icon:<Today />,
-      text:"Today's Lessons",
-      location:"/todayslessons",
-    }
-  ]
-
-  const belowLiks = [
-    {
-      id:1,
-      icon:<Person />,
-      text:"Profile",
-      location:"/profile",
-    }
-  ]
-
-  const loginLiks = [
-    {
-      id:1,
-      icon:<HowToReg />,
-      text:"Register",
-      location:"/register",
-    },
-
-    {
-      id:2,
-      icon:<Login />,
-      text:"Login",
-      location:"/login",
-    },
-
-    {
-      id:3,
-      icon:<AdminPanelSettings />,
-      text:"Ditso",
-      location:"/ditso",
-    }
-  ]
-
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
@@ -194,7 +75,7 @@ const Navbar = () => {
       <Divider />
 
       <List>
-        {links.map((link) => (
+        {topbarLinks.map((link) => (
           <ListItem key={link.id}  disablePadding>
             <Link to={`${link.location}`} className='link-gray'>
               <ListItemButton >
@@ -294,7 +175,6 @@ const Navbar = () => {
 
             <Link to='/' style={{textDecoration: "none"}}>
               <div className="logo-small-screen">
-                  {/* <img src="/assets/small-logo.png" /> */}
                   <p>INSTiWISE</p>
               </div>
             </Link>

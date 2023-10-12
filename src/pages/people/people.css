@@ -121,7 +121,7 @@
 
 .personItem_profileUsername p:nth-child(1) {
     font-size: 19px;
-    font-weight: 600;
+    font-weight: 500;
     text-transform: capitalize;
     color: rgb(26, 26, 26);
 }

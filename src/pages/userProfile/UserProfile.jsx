@@ -4,7 +4,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { connectWithSearchedUser, getSearchedUserProjects, getUsers, searchUser } from '../../redux/apiCalls';
+import { connectWithSearchedUser, getUsers, searchUser } from '../../redux/apiCalls';
 
 const UserProfile = ({children}) => {
     const location = useLocation();
@@ -19,12 +19,11 @@ const UserProfile = ({children}) => {
 
     useEffect(() => {
         searchUser(searchedUserId, dispatch);
-        getSearchedUserProjects(searchedUserId, dispatch);
         getUsers(dispatch);
     }, [searchedUserId, dispatch]);
 
     const handleConnect = () => {
-        connectWithSearchedUser(currentUserId, searchedUserId, dispatch);
+        connectWithSearchedUser(currentUser, searchedUserId, dispatch);
     }
 
     const handleProfileLoad = () => {
@@ -76,9 +75,9 @@ const UserProfile = ({children}) => {
                                     </div>
                                 </Link>
                             </div>
-                            <div className="userProfile-Connect">
-                                <button onClick={handleConnect}>{searchedUser.connections.includes(currentUserId) ? "DISCONNECT" : "CONNECT"}</button>
-                            </div>
+                            {currentUserId !== searchedUser._id && <div className="userProfile-Connect">
+                                <button onClick={handleConnect}>{searchedUser.connections.some((user) => user._id === currentUserId) ? "DISCONNECT" : "CONNECT"}</button>
+                            </div>}
                         </div>
                     </div>
 

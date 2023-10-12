@@ -85,6 +85,21 @@ const userSlice = createSlice({
       state.error = true;
     },    
 
+    // CONNECT WITH CURRENT USER CONNECTION
+    connectWithCurrentUserConnection: (state, action) => {
+      const userIndex = state.currentUser.connections.findIndex((item) => item._id === action.payload.otherUserId);
+      if (userIndex !== -1) {
+          const userToBeConnected = state.currentUser.connections[userIndex];
+          const currentUserIdIndex = userToBeConnected.connections.indexOf(action.payload.currentUserId);
+
+          if (currentUserIdIndex === -1) {
+              userToBeConnected.connections.push(action.payload.currentUserId);
+          } else {
+              userToBeConnected.connections.splice(currentUserIdIndex, 1);
+          }
+      }
+    },
+
       //LOGOUT
     logout: (state) => {
       state.currentUser = null;
@@ -108,6 +123,7 @@ export const {
   deleteUserSuccess,
   googleLoginFailure,
   googleLoginSuccess,
-  googleLoginStart
+  googleLoginStart,
+  connectWithCurrentUserConnection
 } = userSlice.actions;
 export default userSlice.reducer;

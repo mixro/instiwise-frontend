@@ -25,19 +25,58 @@ const searchedUserSlice = createSlice({
 
     //CONNECT USER
     connectWithUser: (state, action) => {
-        const currentUserId = action.payload.currentUserId;
-    
-        const isConnected = state.searchedUser.connections.includes(currentUserId);
-    
-        // Update the connections array based on the current state
-        if (isConnected) {
+        const currentUser = action.payload.currentUser;
+
+        // Check if the currentUser is already in the connections
+        const isAlreadyConnected = state.searchedUser.connections.some(
+            (user) => user._id === currentUser._id
+        );
+
+        // Create a copy of the searchedUser and update the connections array
+        const updatedSearchedUser = { ...state.searchedUser };
+
+        if (isAlreadyConnected) {
             // If the current user is already connected, disconnect
-            state.searchedUser.connections = state.searchedUser.connections.filter(
-            (userId) => userId !== currentUserId
+            updatedSearchedUser.connections = updatedSearchedUser.connections.filter(
+                (user) => user._id !== currentUser._id
             );
         } else {
             // If the current user is not connected, connect
-            state.searchedUser.connections.push(currentUserId);
+            updatedSearchedUser.connections.push(currentUser);
+        }
+
+        // Update the state with the modified searchedUser
+        state.searchedUser = updatedSearchedUser;
+    },
+
+    //CONNECT WITH USERS CONNECTIONS
+    connectWithUsersConnections: (state, action) => {
+        const userIndex = state.searchedUser.connections.findIndex((item) => item._id === action.payload.otherUserId);
+        if (userIndex !== -1) {
+            const userToBeConnected = state.searchedUser.connections[userIndex];
+            const currentUserIdIndex = userToBeConnected.connections.indexOf(action.payload.currentUserId);
+
+            if (currentUserIdIndex === -1) {
+                userToBeConnected.connections.push(action.payload.currentUserId);
+            } else {
+                userToBeConnected.connections.splice(currentUserIdIndex, 1);
+            }
+        }
+    },
+
+    //LIKE SEARCHED USER PROJECTS
+    likeSearchedUserProjects: (state, action) => {
+        const projectIndex = state.searchedUser.projects.findIndex((item) => item._id === action.payload.projectId);
+
+        if(projectIndex !== -1) {
+            const project = state.searchedUser.projects[projectIndex];
+            const userIndex = project.likes.indexOf(action.payload.currentUserId);
+
+            if (userIndex === -1) {
+                project.likes.push(action.payload.currentUserId);
+            } else {
+                project.likes.splice(projectIndex, 1);
+            }
         }
     },
 
@@ -54,5 +93,7 @@ export const {
     getUserStart,
     connectWithUser,
     clearUser,
+    connectWithUsersConnections,
+    likeSearchedUserProjects
 } = searchedUserSlice.actions;
 export default searchedUserSlice.reducer;

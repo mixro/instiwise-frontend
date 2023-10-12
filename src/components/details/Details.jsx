@@ -4,11 +4,9 @@ import { useSelector } from 'react-redux';
 import Table from '../table/Table';
 
 const Details = () => {
-    const courses = useSelector((state) => state.courses.courses);
     const freeRooms = useSelector((state) => state.freeRooms.freeRooms);
     const inUseRooms = useSelector((state) => state.inUseRooms.inUseRooms);
     const ongoingLessons = useSelector((state) => state.ongoingLessons.ongoingLessons);
-    const ongoingCourses = useSelector((state) => state.ongoingCourses.ongoingCourses);
     const upcomingLessons = useSelector((state) => state.upcomingLessons.upcomingLessons);
 
     const calculateRemainingTime = (end) => {
@@ -157,81 +155,27 @@ const Details = () => {
             </div>
         </div>
 
-        <div className="todaysQuote">
-            <p>Today's Quote</p>
-            <h2>"Engineering is the art of turning dreams into reality, one innovation at a time. Embrace the challenges, for they are the stepping stones to progress"</h2>
-            <div className="quoteDot SMALLSCREEN">
-                <span>...</span>
+        <div className="quoteDiv_Container">
+            <div className="quote_Item">
+                <div className="todaysQuote">
+                    <p>TODAY'S QUOTE</p>
+                    <h2>"Engineering is the art of turning dreams into reality, one innovation at a time. Embrace the challenges, for they are the stepping stones to progress"</h2>
+                    <div className="quoteDot SMALLSCREEN">
+                        <span>...</span>
+                    </div>
+                    <button>MORE QUOTES</button>
+                </div>
             </div>
-            <button>EXPLORE MORE QUOTES</button>
-        </div>
 
-        <div className="details_grid">
-            <div className="grid_left">
-                <div className="details_item_header courseDetails-border">
-                    <p>ONGOING COURSES</p>
-                    <span>{ongoingCourses && ongoingCourses.length}</span>
-                </div>
-                
-                <div className="LARGESCREEN">
-                    <div className="coursesBody">
-                        {Array.isArray(ongoingCourses) && ongoingCourses.length > 0 
-                            ? ongoingCourses.slice(0, window.innerWidth >= 768 ? 5 : 4).map((course) => (
-                                    <div className="course_item" key={course._id}>
-                                        <Link to={`/course/${course._id}`} className='link-main'>
-                                            <p>{course.name}</p>
-                                        </Link>
-                                    </div>
-                                ))
-                                : (
-                            <div className="noData_courses">
-                                <p>NO ONGOING COURSES</p>
-                            </div>
-                        )}
+            <div className="quote_Item">
+                <div className="todaysQuote">
+                    <p>TODAY'S FACT</p>
+                    <h2>"Engineering is the art of turning dreams into reality, one innovation at a time. Embrace the challenges, for they are the stepping stones to progress"</h2>
+                    <div className="quoteDot SMALLSCREEN">
+                        <span>...</span>
                     </div>
+                    <button>MORE FACT</button>
                 </div>
-
-                <div className="SMALLSCREEN">
-                    <div className="courseDetails_Container">
-                        {Array.isArray(ongoingCourses) && ongoingCourses.length > 0
-                            ? ongoingCourses.slice(0, window.innerWidth >= 770 ? 20 : 6).map((course) => (
-                                    <Link to={`course/${course._id}`} className="link-main">
-                                        <div className="courseDetails" key={course._id}>
-                                            <div className="courseDetails_left">
-                                                <p>OD</p>
-                                            </div>
-
-                                            <div className="courseDetails_right">
-                                                <div className="courseDetailsRight_item">
-                                                    <h2>{course.name}</h2>
-                                                    <div className="courseDetails_desc">
-                                                        <p>{course.starting} to {course.ending}</p>
-                                                        <p>{course.department}</p>
-                                                    </div>
-                                                </div>
-                                                <div className="courseDetailsRight_item">
-                                                    <div className="courseDetails_Dot greenBackground"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </Link>
-                                ))
-                            : <div className="noData_courses">
-                                <p>NO COURSES</p>
-                            </div>
-                        }
-                    </div>
-                </div>
-
-                {Array.isArray(ongoingCourses) && ongoingCourses.length > 0 && 
-                    <Link to='/ongoingcourses' className='link-main'>
-                        <div className="center_display">
-                            <div className="details_bottom">
-                                <p>Explore More</p>
-                            </div>
-                        </div>
-                    </Link>
-                }
             </div>
         </div>
 
@@ -318,74 +262,6 @@ const Details = () => {
                     <div className="noData_loading">
                         <p>No Rooms In Use</p>
                     </div>
-                }
-            </div>
-        </div>
-
-        <div className="details_grid flex-inverse">
-            <div className="grid_left">
-                <div className="details_item_header courseDetails-border">
-                    <p>COURSES</p>
-                    <span>{courses && courses.length}</span>
-                </div>
-
-                <div className="LARGESCREEN">
-                    <div className="coursesBody">
-                        {Array.isArray(courses) && courses.length > 0
-                            ? courses.slice(0, window.innerWidth >= 770 ? 30 : 4).map((course) => (
-                                <div className="course_item" key={course._id}>
-                                    <Link to={`course/${course._id}`} className="link-main">
-                                        <p>{course.name}</p>
-                                    </Link>
-                                </div>
-                                ))
-                            : <div className="noData_courses">
-                                <p>NO COURSES</p>
-                            </div>
-                        }
-                    </div>
-                </div>
-                
-                <div className="SMALLSCREEN">
-                    <div className="courseDetails_Container">
-                        {Array.isArray(courses) && courses.length > 0
-                            ? courses.slice(0, window.innerWidth >= 770 ? 20 : 5).map((course) => (
-                                    <Link to={`course/${course._id}`} className="link-main">
-                                        <div className="courseDetails" key={course._id}>
-                                            <div className="courseDetails_left">
-                                                <p>OD</p>
-                                            </div>
-
-                                            <div className="courseDetails_right">
-                                                <div className="courseDetailsRight_item">
-                                                    <h2>{course.name}</h2>
-                                                    <div className="courseDetails_desc">
-                                                        <p>{course.starting} to {course.ending}</p>
-                                                        <p>{course.department}</p>
-                                                    </div>
-                                                </div>
-                                                <div className="courseDetailsRight_item">
-                                                    <div className="courseDetails_Dot"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </Link>
-                                ))
-                            : <div className="noData_courses">
-                                <p>NO COURSES</p>
-                            </div>
-                        }
-                    </div>
-                </div>
-
-                {Array.isArray(courses) && courses.length > 0 && 
-                    <Link to='/courses' className='link-main'>
-                        <div className="center_display">
-                            <div className="details_bottom courseExplore">
-                                <p>Explore More</p>
-                            </div>
-                        </div>
-                    </Link>
                 }
             </div>
         </div>

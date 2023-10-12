@@ -7,7 +7,8 @@ const SearchedUserProjects = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const currentUser = useSelector((state) => state.user.currentUser);
   const currentUserId = currentUser._id;
-  const searchedUserProjects = useSelector((state) => state.searchedUserProjects.projects);
+  const searchedUserProjects = useSelector((state) => state.searchedUser.searchedUser.projects);
+  
 
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);

@@ -6,7 +6,7 @@
 }
 
 .details_item {
-    flex-basis: 49%;
+    flex-basis: 49.3%;
     border-radius: 5px;
     padding-bottom: 10px;
     overflow: hidden;
@@ -15,9 +15,9 @@
     padding: 2%;
     background: var(--primary-color);
 
-    -webkit-box-shadow: 2px 2px 5px 4px rgba(214,214,214,1);
-    -moz-box-shadow: 2px 2px 5px 4px rgba(214,214,214,1);
-    box-shadow: 2px 2px 5px 4px rgba(214,214,214,1);
+    -webkit-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
 }
 
 .parent_body {
@@ -221,7 +221,7 @@
 
     /*------------------ TABLE---------------------*/
 .tableContainer {
-    padding-bottom: 4%;
+    padding-bottom: 50px;
 }
 
 .tableHeader {
@@ -244,18 +244,33 @@
 }
 
     /*-------------------- TODAYS QUOTE ----------------------------*/
+.quoteDiv_Container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 50px;
+    padding: 0;
+}
+
+.quote_Item {
+    flex-basis: 49.3%;
+}
+
 .todaysQuote {
-    padding: 2%;
+    padding: 20px 10px;
     display: flex;
     color: white;
     cursor: pointer;
     text-align: center;
     border-radius: 5px;
     align-items: center;
-    margin-bottom: 50px;
     justify-content: center;
     flex-direction: column;
-    background: linear-gradient(120deg, rgb(0, 128, 62), royalblue);
+    background: linear-gradient(120deg, rgb(64, 157, 163), rgb(42, 159, 142));
+
+    -webkit-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
 }
 
 .todaysQuote p {
@@ -271,7 +286,7 @@
 }
 
 .todaysQuote button {
-    margin-top: 3%;
+    margin-top: 8%;
     padding: 5px 20px;
     border-radius: 50px;
     cursor: pointer;
@@ -446,8 +461,19 @@
     }
 
        /*-------------------- TODAYS QUOTE ----------------------------*/
+    .quoteDiv_Container {
+        flex-direction: column;
+        width: 100%;
+        gap: 45px;
+    }
+
+    .quote_Item {
+        height: fit-content;
+        padding: 0;
+        margin: 0;
+    }
+
     .todaysQuote {
-        margin-bottom: 50px;
         padding: 20px 2%;
     }
 
@@ -539,4 +565,5 @@
         animation: blink 1s infinite;
         background: green;
     }
+
 }

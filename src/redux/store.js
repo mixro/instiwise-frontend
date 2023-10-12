@@ -16,7 +16,6 @@ import projectsRedux from "./projectsRedux";
 import userProjects from "./userProjects";
 import usersRedux from "./usersRedux";
 import searchedUser from "./searchedUser";
-import searchedUserProjects from "./searchedUserProjects";
 
 const persistConfig = {
   key: "root",
@@ -40,7 +39,6 @@ const rootReducer = combineReducers({
   userProjects: userProjects,
   users: usersRedux,
   searchedUser: searchedUser,
-  searchedUserProjects: searchedUserProjects,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
