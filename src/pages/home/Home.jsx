@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux'
 import TypeWriterEffect from 'react-typewriter-effect';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import ImageGallery from 'react-image-gallery';
+import 'react-image-gallery/styles/css/image-gallery.css';
 
 
 const Home = () => {
@@ -48,6 +50,18 @@ const Home = () => {
   const handleProfileLoad = () => {
     setProfileLoading(false);
   };
+
+  const images = [
+    {
+      original: '/assets/project.jpg',
+    },
+    {
+      original: '/assets/project-1.jpg',
+    },
+    {
+      original: '/assets/project-2.jpg',
+    }
+  ];
 
   return (
     <div className="home_container">
@@ -279,7 +293,17 @@ const Home = () => {
           </div>
           <div className="peopleProject_Body">
             <div className="peopleProject_MovingImg">
-              <img src='/assets/project.jpg' alt='pr' />
+              <ImageGallery 
+                items={images} 
+                className={"imageGallery"} 
+                autoPlay={true}
+                slideInterval={3000} 
+                stopPropagation={true} 
+                showNav={false}
+                showBullets={false}
+                showPlayButton={false}
+                showFullscreenButton={false}
+              />
             </div>
           </div>
           <div className="projectPeople_Button">
@@ -331,7 +355,7 @@ const Home = () => {
                   <span>{ongoingLessons && ongoingLessons.length}</span>
                 </div>
                 <div className="topInfo_desc">
-                  <p>{window.innerWidth >= 770 ? "Complete access to all institute lessons" : "Complete access to all lessons"}</p>
+                  <p>{window.innerWidth >= 770 ? "These are ongoing lessons at the moment" : "These are ongoing lessons at the moment"}</p>
                   <div className="topInfo_item_link">
                     <span>Explore more!</span>
                   </div>
@@ -345,7 +369,7 @@ const Home = () => {
                   <span>{upcomingLessons && upcomingLessons.length}</span>
                 </div>
                 <div className="topInfo_desc">
-                  <p>{window.innerWidth >= 770 ? "Navigate rooms online before entering effortlessly." : "Explore rooms online before entry."}</p>
+                  <p>{window.innerWidth >= 770 ? "These are upcoming lessons for today." : "These are upcoming lessons for today."}</p>
                   <div className="topInfo_item_link">
                     <span>Explore more!</span>
                   </div>
@@ -359,7 +383,7 @@ const Home = () => {
                   <span>{freeRooms && freeRooms.length}</span>
                 </div>
                 <div className="topInfo_desc">
-                  <p>{window.innerWidth >= 770 ? "Access all courses with seamless convenience" : "Access all available courses easily"}</p>
+                  <p>{window.innerWidth >= 770 ? "These are free rooms at the moment" : "These are free rooms at the moment"}</p>
                   <div className="topInfo_item_link">
                     <span>Explore more!</span>
                   </div>
@@ -373,7 +397,7 @@ const Home = () => {
                   <span>{inUseRooms && inUseRooms.length}</span>
                 </div>
                 <div className="topInfo_desc">
-                  <p>{window.innerWidth >= 770 ? "Access all courses with seamless convenience" : "Access all available courses easily"}</p>
+                  <p>{window.innerWidth >= 770 ? "These rooms are on use at the moment" : "These rooms are on use at the moment"}</p>
                   <div className="topInfo_item_link">
                     <span>Explore more!</span>
                   </div>

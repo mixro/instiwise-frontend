@@ -246,6 +246,7 @@
     align-items: center;
     justify-content: center;
     width: 80%;
+    object-fit: cover;
 }
 
 .peopleProject_MovingImg img {
@@ -253,8 +254,14 @@
     object-fit: cover;
     border-radius: 5px;
     aspect-ratio: 1/0.6;
+    margin-right: 4px;
 }
 
+.imageGallery {
+    background: red;
+    object-fit: cover;
+    width: 100%;
+}
 
 
 @media screen and (max-width: 770px){
@@ -283,6 +290,10 @@
         padding: 5px 1% 5px;
         border-radius: 5px;
         background: var(--minor-color);
+
+        -webkit-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+        -moz-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+        box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
     }
 
     .WHITESPACE {

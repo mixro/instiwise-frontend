@@ -1,4 +1,4 @@
-import { SocietalProblems } from '../../dummyData';
+import { EngineeringTechnologies, SocietalProblems } from '../../dummyData';
 import './problems.css';
 
 const Problems = () => {
@@ -23,10 +23,10 @@ const Problems = () => {
                     <h1>TRENDING TECHNOLOGIES</h1>
                 </div>
                 <div className="problemsItems_Container">
-                    {SocietalProblems.map((problem) => (
+                    {EngineeringTechnologies.map((technology) => (
                         <div className="problemsItem">
-                            <h2><span>{problem.id}.</span>{problem.issue}</h2>
-                            <p>{problem.description}</p>
+                            <h2><span>{technology.id}.</span>{technology.technology}</h2>
+                            <p>{technology.description}</p>
                         </div>
                     ))}
                 </div>

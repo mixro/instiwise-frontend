@@ -264,8 +264,9 @@
     text-align: center;
     border-radius: 5px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
+    height: 100%;
     background: linear-gradient(120deg, rgb(64, 157, 163), rgb(42, 159, 142));
 
     -webkit-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
@@ -299,6 +300,9 @@
     border: 1px solid gray;
 }
 
+.nOMARGIN {
+    margin-bottom: 8%;
+}
 
 
     /*---------------KEY FRAMES--------------*/

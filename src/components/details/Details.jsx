@@ -167,10 +167,10 @@ const Details = () => {
                 </div>
             </div>
 
-            <div className="quote_Item">
+            <div className="quote_Item LARGESCREEN">
                 <div className="todaysQuote">
                     <p>TODAY'S FACT</p>
-                    <h2>"Engineering is the art of turning dreams into reality, one innovation at a time. Embrace the challenges, for they are the stepping stones to progress"</h2>
+                    <h2>"Engineering is the symphony of innovation, a dance of logic and creativity, harmonizing complexity to construct a brighter future through ingenuity's kaleidoscope."</h2>
                     <div className="quoteDot SMALLSCREEN">
                         <span>...</span>
                     </div>
@@ -220,6 +220,21 @@ const Details = () => {
                         <p>No Ongoing Lessons</p>
                     </div>
                 }
+            </div>
+
+            <div className="SMALLSCREEN">
+                <div className="quoteDiv_Container nOMARGIN">
+                    <div className="quote_Item SMALLSCREEN">
+                        <div className="todaysQuote">
+                            <p>TODAY'S FACT</p>
+                            <h2>"Engineering is the symphony of innovation, a dance of logic and creativity, harmonizing complexity to construct a brighter future through ingenuity's kaleidoscope."</h2>
+                            <div className="quoteDot SMALLSCREEN">
+                                <span>...</span>
+                            </div>
+                            <button>MORE FACT</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div className="details_item">

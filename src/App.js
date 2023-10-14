@@ -28,7 +28,6 @@ import Project from './pages/project/Project';
 import NewProject from './pages/newProject/NewProject';
 import UserUpdate from './pages/userUpdate/UserUpdate';
 import Profile from './pages/profile/Profile';
-import UserProfile from './pages/userProfile/UserProfile';
 import UpdateProject from './pages/updateProject/UpdateProject';
 import People from './pages/people/People';
 import PeopleLayout from './components/peopleLayout/PeopleLayout';
@@ -41,6 +40,7 @@ import Awards from './components/awards/Awards';
 import SearchedUserProjects from './components/searchedUserProjects/SearchedUserProjects';
 import SearchedUserConnection from './components/searchedUserConnections/SearchedUserConnection';
 import Researches from './components/researches/Researches';
+import SearchedUserPage from './pages/searchedUser/SearchedUserPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -136,13 +136,13 @@ function App() {
                   <Route 
                     path="/user-profile/:id/*" 
                     element={
-                      <UserProfile>
+                      <SearchedUserPage>
                         <Routes>
                           <Route index element={<SearchedUserProjects />} />
                           <Route path='/connections' element={<SearchedUserConnection />} />
                           <Route path='/awards' element={<Awards />} />
                         </Routes>
-                      </UserProfile>
+                      </SearchedUserPage>
                     } 
                   />
                   <Route path="/user/:id" element={<UserUpdate />} />

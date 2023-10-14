@@ -1,4 +1,4 @@
-import { SocietalProblems } from '../../dummyData';
+import { CompletedResearches, OngoingResearches } from '../../dummyData';
 import './researches.css';
 
 const Researches = () => {
@@ -10,10 +10,10 @@ const Researches = () => {
                     <h1>ONGOING RESEARCHES</h1>
                 </div>
                 <div className="problemsItems_Container">
-                    {SocietalProblems.map((problem) => (
+                    {OngoingResearches.map((research) => (
                         <div className="problemsItem">
-                            <h2><span>{problem.id}.</span>{problem.issue}</h2>
-                            <p>{problem.description}</p>
+                            <h2><span>{research.id}.</span>{research.research}</h2>
+                            <p>{research.description}</p>
                         </div>
                     ))}
                 </div>
@@ -23,10 +23,10 @@ const Researches = () => {
                     <h1>COMPLETED RESEARCHES</h1>
                 </div>
                 <div className="problemsItems_Container">
-                    {SocietalProblems.map((problem) => (
+                    {CompletedResearches.map((research) => (
                         <div className="problemsItem">
-                            <h2><span>{problem.id}.</span>{problem.issue}</h2>
-                            <p>{problem.description}</p>
+                            <h2><span>{research.id}.</span>{research.research}</h2>
+                            <p>{research.description}</p>
                         </div>
                     ))}
                 </div>

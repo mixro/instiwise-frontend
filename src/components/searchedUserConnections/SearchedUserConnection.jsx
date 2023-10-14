@@ -82,9 +82,11 @@ const SearchedUserConnection = () => {
                             </Link>
                         </div>
                       </div>
-                      <div className="personItem_ConnectButton">
+                      {person._id !== currentUserId && 
+                        <div className="personItem_ConnectButton">
                           <button onClick={() => handleConnect(person._id)}>{person.connections.includes(currentUserId) ? "DISCONNECT" : "CONNECT"}</button>
-                      </div>
+                        </div>
+                      }
                     </div>
                   ))
                 }
@@ -97,12 +99,7 @@ const SearchedUserConnection = () => {
         </div>
         :
         <div className="noProjects_Found">
-          <p>Your connections will appear here</p>
-          <div className="noProjects_CreateButton">
-              <Link to="/people" className='link-main'>
-                  <button>CONNECT</button>
-              </Link>
-          </div>
+          <p>This user has no connections!!</p>
         </div>
       }
     </div>
