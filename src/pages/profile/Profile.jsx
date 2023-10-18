@@ -2,10 +2,12 @@ import './profile.css'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteUser, getUserProjects, updateUser } from '../../redux/apiCalls';
+import { deleteUser, fetchUsernames, getUserProjects, updateUser } from '../../redux/apiCalls';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import firebaseApp from '../../firebase';
 import { useEffect } from 'react';
+import { Cancel, CheckCircle } from '@mui/icons-material';
+
 
 const Profile = ({children}) => {
     const [buttonClicked, setButtonClicked] = useState(false);
@@ -16,13 +18,19 @@ const Profile = ({children}) => {
     const [coverPerc, setCoverPerc] = useState(0);
     const [profilePicture, setProfilePicture] = useState(null);
     const [profilePicturePerc, setProfilePicturePerc] = useState(0);
+    const [updatedUsername, setUpdatedUsername] = useState('');
+    const [usernameValid, setUsernameValid] = useState(true);
+    const [isUsernameAvailable, setIsUsernameAvailable] = useState(true);
     const dispatch = useDispatch();
     const { isFetching, error } = useSelector((state) => state.user);
+    const userProjects = useSelector((state) => state.userProjects.projects);
+    const existingUsernames = useSelector((state) => state.usernames.usernames);
     const user = useSelector((state) => state.user.currentUser);
     const userId = user?._id;
 
     useEffect(() => {
         getUserProjects(userId, dispatch);
+        fetchUsernames(dispatch);
     }, [dispatch, userId]);
 
     const handleProfileLoad = () => {
@@ -39,9 +47,27 @@ const Profile = ({children}) => {
         });
     };
 
+    const handleChangeUsername = (e) => {
+        const newUsername = e.target.value;
+        setUpdatedUsername(newUsername);
+        const isUsernameValid = newUsername.length >= 4;
+        setUsernameValid(isUsernameValid);
+    
+        // Normalize the case for comparison
+        const newUsernameNormalized = newUsername.replace(/\s+/g, '').toLowerCase();
+
+        const existingUsernamesNormalized = existingUsernames.map(username => username.replace(/\s+/g, '').toLowerCase());
+
+        if (existingUsernamesNormalized.includes(newUsernameNormalized)) {
+            setIsUsernameAvailable(false);
+        } else {
+            setIsUsernameAvailable(true);
+        }
+    };         
+
     const handleClick = (e) => {
         e.preventDefault();
-        if (cover !== null || profilePicture !== null) {
+        if (cover !== null || profilePicture !== null || updatedUsername !== null) {
             if (cover !== null) {
                 const coverName = new Date().getTime() + cover.name;
                 const storage = getStorage(firebaseApp);
@@ -68,7 +94,7 @@ const Profile = ({children}) => {
                         }, 
                         () => {
                         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                            const user = {...inputs, cover: downloadURL};
+                            const user = {...inputs,  cover: downloadURL};
                             const id = userId;
                             updateUser(id, dispatch, user);
                         });
@@ -109,6 +135,13 @@ const Profile = ({children}) => {
                     }
                 )
             }
+
+            if (updatedUsername !== null) {
+                setButtonClicked(true);
+                const id = userId;
+                const user = { ...inputs, username: updatedUsername };
+                updateUser(id, dispatch, user);
+            }
         } else {
             setButtonClicked(true);
             const id = userId;
@@ -142,13 +175,13 @@ const Profile = ({children}) => {
                             </div>
                             <div className="userProfile_name">
                                 <p>{user?.username}</p>
-                                <span>{user?.bio || "Powering innovation through electrical engineering expertise."}</span>
+                                <span>{user?.bio || "Your bio will appear here. Update your info"}</span>
                             </div>
                             <div className="userProfile_Connections">
                                 <Link to='/profile' className='link-main'>
                                     <div className="userProfile-FollowItem">
                                         <p>Projects</p>
-                                        <span>{user.projects.length}</span>
+                                        <span>{userProjects.length}</span>
                                     </div>
                                 </Link>
                                 <Link to='./connections' className='link-main'>
@@ -192,16 +225,24 @@ const Profile = ({children}) => {
                 <div className="userProfile_Right userProfile_Nosticky">
                     <h2>Update your info</h2>
                     <div className="userProfile_Update">
-                        <div className="userProfile_UpdateItem">
+                        <div className="userProfile_UpdateItem no_PaddingBottom">
                             <p>Username</p>
                             <input 
                                 type="text"
                                 name="username"
                                 placeholder={user?.username}
                                 className="userUpdateInput"
-                                onChange={handleChange}
+                                onChange={handleChangeUsername}
                             />
                         </div>
+                        {updatedUsername && 
+                            <div className="userProfile_UpdateUsernames">
+                                {usernameValid && isUsernameAvailable ? <p>Username available</p> : <p style={{color: "red"}}>Username not available</p>}
+                                <div className="usernameComparison-Icon">
+                                    {usernameValid && isUsernameAvailable ? <CheckCircle sx={{color: "green", fontSize: 18}} /> : <Cancel sx={{color: "red", fontSize: 18}} />}
+                                </div>
+                            </div>
+                        }
                         <div className="userProfile_UpdateItem">
                             <p>Bio</p>
                             <input 
@@ -279,7 +320,7 @@ const Profile = ({children}) => {
                             </select>
                         </div>
                         <div className="userProfile-UpdateButton">
-                            <button onClick={handleClick}>{isFetching ? "UPDATING..." : "UPDATE"}</button>
+                            <button onClick={handleClick} style={{cursor: !isUsernameAvailable ? "not-allowed" : "pointer"}}>{isFetching ? "UPDATING..." : "UPDATE"}</button>
                             {buttonClicked && error && <p style={{color: "red"}}>error occurred</p>}
                         </div>
 

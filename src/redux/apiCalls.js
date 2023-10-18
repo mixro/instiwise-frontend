@@ -1,5 +1,6 @@
 import { publicRequest, userRequest } from "../requestMethod";
 import { getCoursesFailure, getCoursesStart, getCoursesSuccess } from "./coursesRedux";
+import { getUsernameFailure, getUsernameRoomsStart, getUsernameSuccess } from "./existingUsernames";
 import { getFreeRoomsFailure, getFreeRoomsStart, getFreeRoomsSuccess } from "./freeRooms";
 import { getLessonsFailure, getLessonsStart, getLessonsSuccess } from "./lessonsRedux";
 import { getOngoingCoursesFailure, getOngoingCoursesStart, getOngoingCoursesSuccess } from "./ongoingCourses";
@@ -12,7 +13,7 @@ import { clearUser, connectWithUser, connectWithUsersConnections, getUserFailure
 import { getTodaysLessonsFailure, getTodaysLessonsStart, getTodaysLessonsSuccess } from "./todaysLessons";
 import { getUpcomingLessonsFailure, getUpcomingLessonsStart, getUpcomingLessonsSuccess } from "./upcomingLessons";
 import { getUserProjectsFailure, getUserProjectsStart, getUserProjectsSuccess, likeUserProject } from "./userProjects";
-import { connectWithCurrentUserConnection, deleteUserFailure, deleteUserStart, deleteUserSuccess, googleLoginFailure, googleLoginStart, googleLoginSuccess, loginFailure, loginStart, loginSuccess, logout, registerStart, registerSuccess, regiterError, updateUserFailure, updateUserStart, updateUserSuccess } from "./userRedux";
+import { connectWithCurrentUserConnection, deleteUserFailure, deleteUserStart, deleteUserSuccess, getCurrentUserFailure, getCurrentUserStart, getCurrentUserSuccess, googleLoginFailure, googleLoginStart, googleLoginSuccess, googleRegisterFailure, googleRegisterStart, googleRegisterSuccess, loginFailure, loginStart, loginSuccess, logout, registerStart, registerSuccess, regiterError, updateUserFailure, updateUserStart, updateUserSuccess } from "./userRedux";
 import { connectWithAnotherUser, getUsersFailure, getUsersStart, getUsersSuccess } from "./usersRedux";
 
 
@@ -23,6 +24,7 @@ export const login = async (dispatch, user, navigate) => {
     const res = await publicRequest.post("/auth/login", user);
     dispatch(loginSuccess(res.data));
     navigate('/');
+    window.location.reload();
   } catch (err) {
     dispatch(loginFailure());
   }
@@ -35,20 +37,35 @@ export const userRegister = async (dispatch, user, navigate) => {
     const res = await publicRequest.post("/auth/register", user);
     dispatch(registerSuccess(res.data));
     navigate('/');
+    window.location.reload();
   } catch(err) {
     dispatch(regiterError());
   }
 }
 
-//GOOGLE AUTH
+//GOOGLE LOGIN
 export const googleLogin = async (dispatch, user, navigate) => {
   dispatch(googleLoginStart());
   try {
-    const res = await publicRequest.post("/auth/google", user);
+    const res = await publicRequest.post("/auth/google-login", user);
     dispatch(googleLoginSuccess(res.data));
     navigate('/');
+    window.location.reload();
   } catch(error) {
     dispatch(googleLoginFailure());
+  }
+}
+
+//GOOGLE REGISTER
+export const googleRegister = async (dispatch, user, navigate) => {
+  dispatch(googleRegisterStart());
+  try {
+    const res = await publicRequest.post("/auth/google-register", user);
+    dispatch(googleRegisterSuccess(res.data));
+    navigate('/set-username');
+    window.location.reload();
+  } catch(error) {
+    dispatch(googleRegisterFailure());
   }
 }
 
@@ -59,6 +76,19 @@ export const updateUser = async (id, dispatch, user) => {
     const res = await userRequest.put(`/users/${id}`, user);
     const updatedUser = res.data;
     dispatch(updateUserSuccess(updatedUser));
+  } catch(err) {
+    dispatch(updateUserFailure());
+  }
+}
+
+// UPDATE USERNAME
+export const updateUsername = async (id, dispatch, user, navigate) => {
+  dispatch(updateUserStart());
+  try {
+    const res = await userRequest.put(`/users/${id}`, user);
+    const updatedUser = res.data;
+    dispatch(updateUserSuccess(updatedUser));
+    navigate('/');
   } catch(err) {
     dispatch(updateUserFailure());
   }
@@ -104,6 +134,17 @@ export const getUsers = async (dispatch) => {
     } catch(err) {
       dispatch(getUsersFailure());
     }
+}
+
+//SEARCHED CURRENT USER
+export const searchCurrentUser = async (userId, dispatch) => {
+  dispatch(getCurrentUserStart());
+  try {
+    const foundUser = await userRequest.get(`/users/find/${userId}`);
+    dispatch(getCurrentUserSuccess(foundUser.data));
+  } catch(err) {
+    dispatch(getCurrentUserFailure());
+  }
 }
 
 //SEARCHED USER
@@ -157,6 +198,18 @@ export const connectWithUsersConnection = async (currentUserId, otherUserId, dis
       await userRequest.put(`/users/${otherUserId}/connect`);
   } catch (err) {
       console.log(err);
+  }
+};
+
+
+//CONNECT USER FROM SEARCHED USER CONNECTIONS
+export const fetchUsernames = async (dispatch) => {
+  dispatch(getUsernameRoomsStart());
+  try {
+      const res = await publicRequest.get(`/users/existing-usernames`);
+      dispatch(getUsernameSuccess(res.data));
+  } catch (err) {
+      dispatch(getUsernameFailure());
   }
 };
 

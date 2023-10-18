@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import './userUpdate.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import firebaseApp from '../../firebase';
-import { deleteUser, updateUser } from '../../redux/apiCalls';
+import { deleteUser, fetchUsernames, updateUser } from '../../redux/apiCalls';
+import { Cancel, CheckCircle } from '@mui/icons-material';
 
 const UserUpdate = () => {
     const [buttonClicked, setButtonClicked] = useState(false);
@@ -12,10 +13,18 @@ const UserUpdate = () => {
     const [coverPerc, setCoverPerc] = useState(0);
     const [profilePicture, setProfilePicture] = useState(null);
     const [profilePicturePerc, setProfilePicturePerc] = useState(0);
+    const [updatedUsername, setUpdatedUsername] = useState('');
+    const [usernameValid, setUsernameValid] = useState(true);
+    const [isUsernameAvailable, setIsUsernameAvailable] = useState(true);
     const dispatch = useDispatch();
     const { isFetching, error } = useSelector((state) => state.user);
+    const existingUsernames = useSelector((state) => state.usernames.usernames);
     const user = useSelector((state) => state.user.currentUser);
     const userId = user?._id;
+
+    useEffect(() => {
+        fetchUsernames(dispatch);
+    }, [dispatch]);
 
     const handleChange = (e) => {
         setInputs((prev) => {
@@ -94,13 +103,39 @@ const UserUpdate = () => {
                     }
                 )
             }
+
+            if (updatedUsername !== null) {
+                setButtonClicked(true);
+                const id = userId;
+                const user = { ...inputs, username: updatedUsername };
+                updateUser(id, dispatch, user);
+            }
         } else {
             setButtonClicked(true);
             const id = userId;
-            const user = { ...inputs };
+            const user = { ...inputs, username: updatedUsername };
             updateUser(id, dispatch, user);
         }
     } 
+    
+    const handleChangeUsername = (e) => {
+        const newUsername = e.target.value;
+        setUpdatedUsername(newUsername);
+        const isUsernameValid = newUsername.length >= 4;
+        setUsernameValid(isUsernameValid);
+    
+        // Normalize the case for comparison
+        const newUsernameNormalized = newUsername.replace(/\s+/g, '').toLowerCase();
+
+        const existingUsernamesNormalized = existingUsernames.map(username => username.replace(/\s+/g, '').toLowerCase());
+
+        if (existingUsernamesNormalized.includes(newUsernameNormalized)) {
+            setIsUsernameAvailable(false);
+        } else {
+            setIsUsernameAvailable(true);
+        }
+    };         
+
 
     const handleDelete = (e) => {
         e.preventDefault();
@@ -121,9 +156,17 @@ const UserUpdate = () => {
                         name="username"
                         placeholder={user?.username}
                         className="userUpdateInput"
-                        onChange={handleChange}
+                        onChange={handleChangeUsername}
                     />
                 </div>
+                {updatedUsername && 
+                    <div className="userProfile_UpdateUsernames">
+                        {usernameValid && isUsernameAvailable ? <p>Username available</p> : <p style={{color: "red"}}>Username not available</p>}
+                        <div className="usernameComparison-Icon">
+                            {usernameValid && isUsernameAvailable ? <CheckCircle sx={{color: "green", fontSize: 18}} /> : <Cancel sx={{color: "red", fontSize: 18}} />}
+                        </div>
+                    </div>
+                }
                 <div className="userUpdate_Item">
                     <p>Bio</p>
                     <input 
@@ -208,7 +251,7 @@ const UserUpdate = () => {
                     </select>
                 </div>
                 <div className="userUpdate_Button">
-                    <button onClick={handleClick}>{isFetching ? "UPDATING..." : "UPDATE"}</button>
+                    <button onClick={handleClick} style={{cursor: !isUsernameAvailable ? "not-allowed" : "pointer"}}>{isFetching ? "UPDATING..." : "UPDATE"}</button>
                     {buttonClicked && error && <p style={{color: "red"}}>error occurred</p>}
                 </div>
             </div>

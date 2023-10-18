@@ -9,23 +9,24 @@ import jwt_decode from "jwt-decode";
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [buttonClicked, setButtonClicked] = useState(false); // State to track button click
+    const [logginButtonClicked, setLogginButtonClicked] = useState(false); 
+    const [googleButtonClicked, setgoogleButtonClicked] = useState(false); 
     const navigate = useNavigate();
     const { isFetching, error } = useSelector((state) => state.user);
     const dispatch = useDispatch();
 
     const handleClick = (e) => {
         e.preventDefault();
-        setButtonClicked(true); // Set the state to true when the button is clicked
+        setLogginButtonClicked(true); // Set the state to true when the button is clicked
         login(dispatch, { email, password }, navigate);
     }
 
     const handleGoogleAuth = (details) => {
         const email = details.email;
         const username = details.name;
-        const img = details.picture;
 
-        googleLogin(dispatch, { username, email, img }, navigate);
+        setgoogleButtonClicked(true);
+        googleLogin(dispatch, { username, email }, navigate);
     }
 
     return (
@@ -63,8 +64,8 @@ const Login = () => {
                             </div>
                         </div>
                         <div className="registerButton highMargin googleAuth">
-                            <button onClick={handleClick}>{buttonClicked ? (isFetching ? "Loading.." : "Login") : "Login"}</button>
-                            {buttonClicked && error && // Display error only after button click
+                            <button onClick={handleClick}>{logginButtonClicked ? (isFetching ? "Loading.." : "Login") : "Login"}</button>
+                            {logginButtonClicked && error && // Display error only after button click
                                 <div className="error">
                                     <p>Wrong credentials!!, Try again !!</p>
                                 </div>
@@ -86,6 +87,11 @@ const Login = () => {
                                     type='standard'
                                 />
                             </div>
+                            {googleButtonClicked && error && // Display error only after button click
+                                <div className="error">
+                                    <p>Error while logging in, Try again !!</p>
+                                </div>
+                            }
                         </div>
                         <div className="registerText">
                             <p>You're a new member?

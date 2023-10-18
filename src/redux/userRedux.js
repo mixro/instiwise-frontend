@@ -22,7 +22,7 @@ const userSlice = createSlice({
       state.error = true;
     },
 
-      //GOOGLE
+      //GOOGLE LOGIN
     googleLoginStart: (state) => {
       state.isFetching = true;
     },
@@ -32,6 +32,20 @@ const userSlice = createSlice({
       state.error = true;
     },
     googleLoginFailure: (state) => {
+      state.isFetching = false;
+      state.error = true;
+    },
+
+      //GOOGLE REGISTER
+    googleRegisterStart: (state) => {
+      state.isFetching = true;
+    },
+    googleRegisterSuccess: (state, action) => {
+      state.isFetching = false;
+      state.currentUser = action.payload;
+      state.error = true;
+    },
+    googleRegisterFailure: (state) => {
       state.isFetching = false;
       state.error = true;
     },
@@ -47,6 +61,21 @@ const userSlice = createSlice({
     },
     regiterError: (state) => {
         state.error = true;
+    },
+
+      //GET CURRENT USER
+    getCurrentUserStart: (state) => {
+        state.isFetching = true;
+        state.error = false;
+    },
+    getCurrentUserSuccess: (state, action) => {
+        state.isFetching = false;
+        state.error = false;
+        state.currentUser = action.payload;
+    },
+    getCurrentUserFailure: (state) => {
+        state.error = true;
+        state.isFetching = false;
     },
 
       //UPDATE
@@ -124,6 +153,12 @@ export const {
   googleLoginFailure,
   googleLoginSuccess,
   googleLoginStart,
+  googleRegisterFailure,
+  googleRegisterSuccess,
+  googleRegisterStart,
+  getCurrentUserFailure,
+  getCurrentUserSuccess,
+  getCurrentUserStart,
   connectWithCurrentUserConnection
 } = userSlice.actions;
 export default userSlice.reducer;

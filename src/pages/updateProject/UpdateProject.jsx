@@ -10,8 +10,12 @@ import firebaseApp from '../../firebase';
 const UpdateProject = () => {
   const location = useLocation();
   const paramsId = location.pathname.split("/")[2];
-  const project = useSelector((state) => state.projects.projects.find((project) => project._id === paramsId));
-  const id = project._id;
+  const projects = [
+    ...useSelector((state) => state.projects.projects),
+    ...useSelector((state) => state.userProjects.projects),
+  ];
+  const project = projects.find((project) => project._id === paramsId);
+  const id = paramsId;
   const dispatch = useDispatch();
   const [inputs, setInputs] =  useState({});
   const [buttonClicked, setButtonClicked] = useState(false);

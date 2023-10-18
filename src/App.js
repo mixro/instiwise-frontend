@@ -41,6 +41,7 @@ import SearchedUserProjects from './components/searchedUserProjects/SearchedUser
 import SearchedUserConnection from './components/searchedUserConnections/SearchedUserConnection';
 import Researches from './components/researches/Researches';
 import SearchedUserPage from './pages/searchedUser/SearchedUserPage';
+import SetUsername from './pages/setUsername/SetUsername';
 
 function App() {
   const dispatch = useDispatch();
@@ -97,6 +98,7 @@ function App() {
           {/* Routes without Layout */}
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path='/set-username' element={<SetUsername />} />
 
           {/* Routes with Layout */}
           <Route
