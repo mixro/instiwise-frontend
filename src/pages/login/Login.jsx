@@ -103,6 +103,16 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+            {googleButtonClicked && !error && isFetching &&
+                <div className="register_loader">
+                    <div class="lds-ring">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            }
         </div>
     )
 }
