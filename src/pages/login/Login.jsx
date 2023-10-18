@@ -64,7 +64,7 @@ const Login = () => {
                             </div>
                         </div>
                         <div className="registerButton highMargin googleAuth">
-                            <button onClick={handleClick}>{logginButtonClicked ? (isFetching ? "Loading.." : "Login") : "Login"}</button>
+                            <button onClick={handleClick}>{logginButtonClicked ? (isFetching && logginButtonClicked ? "Loading.." : "Login") : "Login"}</button>
                             {logginButtonClicked && error && // Display error only after button click
                                 <div className="error">
                                     <p>Wrong credentials!!, Try again !!</p>

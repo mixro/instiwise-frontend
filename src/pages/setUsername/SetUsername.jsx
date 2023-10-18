@@ -94,7 +94,7 @@ const SetUsername = () => {
                     }
                 </div>
                 <div className="setUsername_Rules">
-                    <p>username should have atleast 4 letters, but not more than 30 letters</p>
+                    <p>Username must consist of a minimum of 4 characters and maximum of 30 characters</p>
                 </div>
                 <div className="setUsername_Button">
                     <button onClick={handleUpdate} style={{cursor: usernameValid && isUsernameAvailable ? "pointer" : "not-allowed"}}>{buttonClicked && isFetching ? "SETTING USERNAME..." : "SET USERNAME"}</button>

@@ -320,7 +320,7 @@ const Profile = ({children}) => {
                             </select>
                         </div>
                         <div className="userProfile-UpdateButton">
-                            <button onClick={handleClick} style={{cursor: !isUsernameAvailable ? "not-allowed" : "pointer"}}>{isFetching ? "UPDATING..." : "UPDATE"}</button>
+                            <button onClick={handleClick} style={{cursor: !isUsernameAvailable ? "not-allowed" : "pointer"}}>{isFetching && buttonClicked ? "UPDATING..." : "UPDATE"}</button>
                             {buttonClicked && error && <p style={{color: "red"}}>error occurred</p>}
                         </div>
 

@@ -144,7 +144,7 @@ const Register = () => {
                     </div>
                 </div>
                 <div className="registerButton googleAuth smallButtonPading">
-                    <button onClick={handleClick} style={{cursor: !isUsernameAvailable ? "not-allowed" : "pointer"}}>{buttonClicked ? (isFetching ? "Loading.." : "Register") : "Register"}</button>
+                    <button onClick={handleClick} style={{cursor: !isUsernameAvailable ? "not-allowed" : "pointer"}}>{buttonClicked && isFetching ? "Loading.." : "Register"}</button>
                     {buttonClicked && error && 
                         <div className="error">
                             <p>Error while registering, Try again !!</p>

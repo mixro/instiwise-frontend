@@ -251,7 +251,7 @@ const UserUpdate = () => {
                     </select>
                 </div>
                 <div className="userUpdate_Button">
-                    <button onClick={handleClick} style={{cursor: !isUsernameAvailable ? "not-allowed" : "pointer"}}>{isFetching ? "UPDATING..." : "UPDATE"}</button>
+                    <button onClick={handleClick} style={{cursor: !isUsernameAvailable ? "not-allowed" : "pointer"}}>{isFetching && buttonClicked ? "UPDATING..." : "UPDATE"}</button>
                     {buttonClicked && error && <p style={{color: "red"}}>error occurred</p>}
                 </div>
             </div>
