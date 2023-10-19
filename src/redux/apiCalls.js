@@ -136,7 +136,7 @@ export const getUsers = async (dispatch) => {
     }
 }
 
-//SEARCHED CURRENT USER
+//GET CURRENT USER
 export const searchCurrentUser = async (userId, dispatch) => {
   dispatch(getCurrentUserStart());
   try {
@@ -149,6 +149,7 @@ export const searchCurrentUser = async (userId, dispatch) => {
 
 //SEARCHED USER
 export const searchUser = async (searchedUserId, dispatch) => {
+  dispatch(clearUser());
   dispatch(getUserStart());
   try {
     const foundUser = await userRequest.get(`/users/find/${searchedUserId}`);

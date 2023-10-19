@@ -76,10 +76,10 @@ const People = () => {
                                                 </div>
                                             </Link>
                                             <div className="personItem_profileUsername">
-                                            <Link to={currentUserId === person._id ? "/profile" : `/user-profile/${person._id}`} className='link-main'>
-                                                <p>{person.username}</p>
-                                                <p>{person.course} engineer</p>
-                                            </Link>
+                                                <Link to={currentUserId === person._id ? "/profile" : `/user-profile/${person._id}`} className='link-main'>
+                                                    <p className='searcheduser_username'>{person?.username.toLowerCase()}</p>
+                                                    <p>{person.course} engineer</p>
+                                                </Link>
                                             </div>
                                         </div>
                                         <div className="personItem_ConnectButton">
@@ -128,7 +128,7 @@ const People = () => {
                                             </Link>
                                             <div className="personItem_profileUsername">
                                                 <Link to={`/user-profile/${person._id}`} className='link-main'>
-                                                    <p>{person.username}</p>
+                                                    <p>{person?.username.toLowerCase()}</p>
                                                     <p>{person.connections.length} connections</p>
                                                 </Link>
                                             </div>
@@ -159,7 +159,7 @@ const People = () => {
                                             </Link>
                                             <div className="personItem_profileUsername">
                                                 <Link to={`/user-profile/${person._id}`} className='link-main'>
-                                                    <p>{person.username}</p>
+                                                    <p>{person?.username.toLowerCase()}</p>
                                                     <p>{person.projects.length} projects</p>
                                                 </Link>
                                             </div>
@@ -190,7 +190,7 @@ const People = () => {
                                             </Link>
                                             <div className="personItem_profileUsername">
                                                 <Link to={`/user-profile/${person._id}`} className='link-main'>
-                                                    <p>{person.username}</p>
+                                                    <p>{person?.username.toLowerCase()}</p>
                                                     <p>Joined {moment(person.createdAt).fromNow()}</p>
                                                 </Link>
                                             </div>

@@ -242,19 +242,49 @@
 
 .userProfile-UpdateButton {
     width: 100%;
-    padding-top: 30px;
+    padding-top: 35px;
+}
+
+.userProfile-bottonUpdating {
+    width: 100%;
+    padding-top: 35px;
 }
 
 .userProfile-UpdateButton button {
     width: 100%;
-    background: green;
     border-radius: 5px;
     padding: 6px;
     font-size: 18px;
     color: white;
     border: none;
     cursor: pointer;
+    background: green;
+    border: 1px solid transparent;
 }
+
+.userProfile-bottonUpdating button {
+    width: 100%;
+    border-radius: 5px;
+    padding: 6px;
+    font-size: 18px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border: 1px solid green;
+    background: rgb(0, 221, 151);
+    transition: background-color 0.3s;
+    background-image: linear-gradient(to right, green,50%, transparent 50%);
+    background-size: 200% 100%;
+    animation: progress 3s linear infinite;
+}
+
+
+@keyframes progress {
+    to {
+        background-position: -200% 0;
+    }
+}
+
 
     /*------------------ logout ---------------------*/
 .Profile_LogoutPart {
@@ -363,6 +393,19 @@
     font-size: 16px;
     cursor: pointer;
     background: green;
+}
+
+
+
+@keyframes movingBackground {
+    0% {
+        background: red;
+        background-position: left;
+    }
+
+    100% {
+        background: blue;
+    }
 }
 
 

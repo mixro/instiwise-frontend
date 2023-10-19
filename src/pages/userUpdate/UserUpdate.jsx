@@ -14,13 +14,14 @@ const UserUpdate = () => {
     const [coverPerc, setCoverPerc] = useState(0);
     const [profilePicture, setProfilePicture] = useState(null);
     const [profilePicturePerc, setProfilePicturePerc] = useState(0);
-    const [updatedUsername, setUpdatedUsername] = useState('');
+    const user = useSelector((state) => state.user.currentUser);
+    const [updatedUsername, setUpdatedUsername] = useState(user.username);
     const [usernameValid, setUsernameValid] = useState(true);
+    const [isChanging, setIsChanging] = useState(false);
     const [isUsernameAvailable, setIsUsernameAvailable] = useState(true);
     const dispatch = useDispatch();
     const { isFetching, error } = useSelector((state) => state.user);
     const existingUsernames = useSelector((state) => state.usernames.usernames);
-    const user = useSelector((state) => state.user.currentUser);
     const userId = user?._id;
 
     useEffect(() => {
@@ -129,6 +130,7 @@ const UserUpdate = () => {
     
     const handleChangeUsername = (e) => {
         const newUsername = e.target.value;
+        setIsChanging(true);
         setUpdatedUsername(newUsername);
         const isUsernameValid = newUsername.length >= 4;
         setUsernameValid(isUsernameValid);
@@ -169,7 +171,7 @@ const UserUpdate = () => {
                         onChange={handleChangeUsername}
                     />
                 </div>
-                {updatedUsername && 
+                {isChanging && updatedUsername && 
                     <div className="userProfile_UpdateUsernames">
                         {usernameValid && isUsernameAvailable ? <p>Username available</p> : <p style={{color: "red"}}>Username not available</p>}
                         <div className="usernameComparison-Icon">
@@ -260,8 +262,13 @@ const UserUpdate = () => {
                         <option value="female">others</option>
                     </select>
                 </div>
-                <div className="userUpdate_Button">
-                    <button onClick={handleClick} style={{cursor: !isUsernameAvailable ? "not-allowed" : "pointer"}}>{isFetching && buttonClicked ? "UPDATING..." : "UPDATE"}</button>
+                <div className={(coverPerc > 0 && coverPerc < 100) || (profilePicturePerc > 0 && profilePicturePerc < 100) ? "userUpdate_UpdatingButton" : "userUpdate_Button"}>
+                    <button 
+                        onClick={handleClick} 
+                        style={{cursor: !isUsernameAvailable ? "not-allowed" : "pointer"}}
+                    >
+                        {isFetching && buttonClicked ? "UPDATING..." : "UPDATE"}
+                    </button>
                     {buttonClicked && error && <p style={{color: "red"}}>error occurred</p>}
                 </div>
             </div>

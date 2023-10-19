@@ -93,8 +93,13 @@
 
 
     /*-------------------LOADING SKELETON --------------------*/
+.LoadingUser {
+    height: fit-content;
+}
+
 .loadingUser_wrapper {
     min-height: calc(100vh - 60px);
+    height: fit-content;
     display: flex;
     justify-content: space-between;
 }
@@ -102,7 +107,7 @@
 .loadingUser_Left {
     flex-basis: 71%;
     height: 100%;
-    height: calc(100vh - 60px);
+    min-height: calc(100vh - 60px);
 }
 
 .loadingUser_Cover {
@@ -198,7 +203,8 @@
     background: #ddd;
     border-radius: 5px;
     cursor: pointer;
-    height: calc(100vh - 60px);
+    min-height: calc(100vh - 60px);
+    animation: loading 2s infinite;
 }
   
 

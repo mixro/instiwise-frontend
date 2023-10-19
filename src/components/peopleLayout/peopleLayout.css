@@ -11,13 +11,14 @@
 }
 
 .peopleLayout_TopbarItem {
-    background: rgb(168, 168, 168);
+    background: rgb(211, 211, 211);
     padding: 6px 10px;
     border-radius: 5px;
     display: flex;
     align-items: center;
     cursor: pointer;
     gap: 7px;
+    border: 1px solid rgb(139, 139, 139);
 }
 
 .peopleLayout_TopbarItem p {

@@ -19,14 +19,15 @@ const Profile = ({children}) => {
     const [coverPerc, setCoverPerc] = useState(0);
     const [profilePicture, setProfilePicture] = useState(null);
     const [profilePicturePerc, setProfilePicturePerc] = useState(0);
-    const [updatedUsername, setUpdatedUsername] = useState('');
+    const user = useSelector((state) => state.user.currentUser);
+    const [isChanging, setIsChanging] = useState(false);
+    const [updatedUsername, setUpdatedUsername] = useState(user.username);
     const [usernameValid, setUsernameValid] = useState(true);
     const [isUsernameAvailable, setIsUsernameAvailable] = useState(true);
     const dispatch = useDispatch();
     const { isFetching, error } = useSelector((state) => state.user);
     const userProjects = useSelector((state) => state.userProjects.projects);
     const existingUsernames = useSelector((state) => state.usernames.usernames);
-    const user = useSelector((state) => state.user.currentUser);
     const userId = user?._id;
 
     useEffect(() => {
@@ -50,6 +51,7 @@ const Profile = ({children}) => {
 
     const handleChangeUsername = (e) => {
         const newUsername = e.target.value;
+        setIsChanging(true);
         setUpdatedUsername(newUsername);
         const isUsernameValid = newUsername.length >= 4;
         setUsernameValid(isUsernameValid);
@@ -68,98 +70,125 @@ const Profile = ({children}) => {
 
     const handleClick = (e) => {
         e.preventDefault();
-
+      
         // Create an object to accumulate changes
         const updatedFields = {};
-
+      
         if (cover !== null) {
-            const coverName = new Date().getTime() + cover.name;
-            const storage = getStorage(firebaseApp);
-            const storageRef = ref(storage, coverName);
-            const uploadTask = uploadBytesResumable(storageRef, cover);
-        
-            uploadTask.on('state_changed', 
-                (snapshot) => {
-                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    console.log('Upload is ' + progress + '% done');
-                    setCoverPerc(progress);
-                    switch (snapshot.state) {
-                        case 'paused':
-                            console.log('Upload is paused');
-                        break;
-                        case 'running':
-                            console.log('Upload is running');
-                        break;
-                        default:
-                            console.log("Upload is in progress");
-                    }
-                    }, 
-                    (error) => {
-                    }, 
-                    () => {
-                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                        const user = {...inputs, cover: downloadURL};
-                        const id = userId;
-                        updateUser(id, dispatch, user);
-                    });
+          const coverName = new Date().getTime() + cover.name;
+          const storage = getStorage(firebaseApp);
+          const storageRef = ref(storage, coverName);
+          const uploadTask = uploadBytesResumable(storageRef, cover);
+      
+          uploadTask.on('state_changed', 
+            (snapshot) => {
+              const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              console.log('Upload is ' + progress + '% done');
+              setCoverPerc(progress);
+              switch (snapshot.state) {
+                case 'paused':
+                  console.log('Upload is paused');
+                  break;
+                case 'running':
+                  console.log('Upload is running');
+                  break;
+                default:
+                  console.log('Upload is in progress');
+              }
+            }, 
+            (error) => {
+            }, 
+            () => {
+              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                updatedFields.cover = downloadURL;
+      
+                // Check if 'username' is updated and not null
+                if (updatedUsername !== null) {
+                  updatedFields.username = updatedUsername;
                 }
-            )
-        }
-
-        if (profilePicture !== null) {
-            const profilePictureName = new Date().getTime() + profilePicture.name;
-            const storage = getStorage(firebaseApp);
-            const storageRef = ref(storage, profilePictureName);
-            const uploadTask = uploadBytesResumable(storageRef, profilePicture);
-        
-            uploadTask.on('state_changed', 
-                (snapshot) => {
-                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    console.log('Upload is ' + progress + '% done');
-                    setProfilePicturePerc(progress);
-                    switch (snapshot.state) {
-                        case 'paused':
-                            console.log('Upload is paused');
-                        break;
-                        case 'running':
-                            console.log('Upload is running');
-                        break;
-                        default:
-                            console.log("Upload is in progress");
-                    }
-                    }, 
-                    (error) => {
-                    }, 
-                    () => {
-                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                        const user = {...inputs, img: downloadURL};
-                        const id = userId;
-                        updateUser(id, dispatch, user);
-                        setButtonClicked(true);
-                    });
+      
+                // Check if any updates were made
+                if (Object.keys(updatedFields).length > 0) {
+                  // Combine all updates into a single user object
+                  const updatedUser = { ...inputs, ...updatedFields };
+                  updateUser(userId, dispatch, updatedUser);
+                } else {
+                  // No updates were made, just update with the existing 'inputs'
+                  setButtonClicked(true);
+                  updateUser(userId, dispatch, inputs);
                 }
-            )
-        }
-
-        if (updatedUsername !== null) {
-            // If updatedUsername is not null, update the 'username' field in updatedFields
-            updatedFields.username = updatedUsername;
-        }
-
-        // Check if any updates were made
-        if (Object.keys(updatedFields).length > 0) {
+              });
+            }
+          );
+        } else if (profilePicture !== null) {
+          // Handle profile picture update
+          const profilePictureName = new Date().getTime() + profilePicture.name;
+          const storage = getStorage(firebaseApp);
+          const storageRef = ref(storage, profilePictureName);
+          const uploadTask = uploadBytesResumable(storageRef, profilePicture);
+      
+          uploadTask.on('state_changed', 
+            (snapshot) => {
+              const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              console.log('Upload is ' + progress + '% done');
+              setProfilePicturePerc(progress);
+              switch (snapshot.state) {
+                case 'paused':
+                  console.log('Upload is paused');
+                  break;
+                case 'running':
+                  console.log('Upload is running');
+                  break;
+                default:
+                  console.log('Upload is in progress');
+              }
+            }, 
+            (error) => {
+            }, 
+            () => {
+              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                updatedFields.img = downloadURL;
+      
+                // Check if 'username' is updated and not null
+                if (updatedUsername !== null) {
+                  updatedFields.username = updatedUsername;
+                }
+      
+                // Check if any updates were made
+                if (Object.keys(updatedFields).length > 0) {
+                  // Combine all updates into a single user object
+                  const updatedUser = { ...inputs, ...updatedFields };
+                  updateUser(userId, dispatch, updatedUser);
+                } else {
+                  // No updates were made, just update with the existing 'inputs'
+                  setButtonClicked(true);
+                  updateUser(userId, dispatch, inputs);
+                }
+              });
+            }
+          );
+        } else if (updatedUsername !== null) {
+          // Handle username update
+          setButtonClicked(true);
+          updatedFields.username = updatedUsername;
+      
+          // Check if any updates were made
+          if (Object.keys(updatedFields).length > 0) {
             // Combine all updates into a single user object
             const updatedUser = { ...inputs, ...updatedFields };
-
-            // Update the user with the accumulated changes
             updateUser(userId, dispatch, updatedUser);
-        } else {
+          } else {
             // No updates were made, just update with the existing 'inputs'
             setButtonClicked(true);
             updateUser(userId, dispatch, inputs);
+          }
+        } else {
+          // No updates were made, just update with the existing 'inputs'
+          setButtonClicked(true);
+          updateUser(userId, dispatch, inputs);
         }
     };
-
+      
     const handleDelete = (e) => {
         e.preventDefault();
         const id = userId;
@@ -246,7 +275,7 @@ const Profile = ({children}) => {
                                 onChange={handleChangeUsername}
                             />
                         </div>
-                        {updatedUsername && 
+                        {isChanging && updatedUsername && 
                             <div className="userProfile_UpdateUsernames">
                                 {usernameValid && isUsernameAvailable ? <p>Username available</p> : <p style={{color: "red"}}>Username not available</p>}
                                 <div className="usernameComparison-Icon">
@@ -309,7 +338,7 @@ const Profile = ({children}) => {
                             <input type='file' id='profile-picture' accept='.jpeg, .jpg, .png' onChange={(e) => setProfilePicture(e.target.files[0])} style={{ display: "none" }} placeholder='cover' />
                             <label htmlFor="profile-picture">
                                 <div className="Profile_UploadButton">
-                                    <span>{profilePicturePerc > 0 && profilePicturePerc <100 ? "UPLOADING..." : "UPLOAD PROFILE PICTURE"}</span>
+                                    <span>{profilePicturePerc > 0 && profilePicturePerc < 100 ? "UPLOADING..." : "UPLOAD PROFILE PICTURE"}</span>
                                 </div>
                             </label>
                         </div>                  
@@ -318,7 +347,7 @@ const Profile = ({children}) => {
                             <input type='file' id='profile-cover' accept='.jpeg, .jpg, .png' onChange={(e) => setCover(e.target.files[0])}  style={{ display: "none" }} placeholder='cover' />
                             <label htmlFor="profile-cover">
                                 <div className="Profile_UploadButton">
-                                    <span>{coverPerc > 0 && coverPerc <100 ? "UPLOADING..." : "UPLOAD COVER"}</span>
+                                    <span>{coverPerc > 0 && coverPerc < 100 ? "UPLOADING..." : "UPLOAD COVER"}</span>
                                 </div>
                             </label>
                         </div>
@@ -330,8 +359,14 @@ const Profile = ({children}) => {
                                 <option value="female">others</option>
                             </select>
                         </div>
-                        <div className="userProfile-UpdateButton">
-                            <button onClick={handleClick} style={{cursor: !isUsernameAvailable ? "not-allowed" : "pointer"}}>{isFetching && buttonClicked ? "UPDATING..." : "UPDATE"}</button>
+                        <div className={(coverPerc > 0 && coverPerc < 100) || (profilePicturePerc > 0 && profilePicturePerc < 100) ? "userProfile-bottonUpdating" : "userProfile-UpdateButton"}>
+                            <button 
+                                onClick={handleClick} 
+                                style={{cursor: !isUsernameAvailable ? "not-allowed" : "pointer"}}
+                                className='updating'
+                            >
+                                {isFetching && buttonClicked ? "UPDATING..." : "UPDATE"}
+                            </button>
                             {buttonClicked && error && <p style={{color: "red"}}>error occurred</p>}
                         </div>
 
