@@ -190,13 +190,6 @@ const UserUpdate = () => {
                     />
                 </div>
                 <div className="userUpdate_Item">
-                    <p>Name</p>
-                    <input 
-                        type='text'
-                        placeholder='Norrasco'
-                    />
-                </div>
-                <div className="userUpdate_Item">
                     <p>Password</p>
                     <input 
                         type="password"
