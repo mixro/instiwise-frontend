@@ -22,7 +22,7 @@ const Connections = () => {
   };
 
   const filteredConnections = Array.isArray(userConnections) && userConnections.filter((user) => {
-    const username = user.username.toLowerCase();
+    const username = user?.username.toLowerCase();
 
     const query = searchQuery.toLowerCase();
     return (
