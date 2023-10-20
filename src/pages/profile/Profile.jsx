@@ -2,11 +2,11 @@ import './profile.css'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteUser, fetchUsernames, getUserProjects, updateUser } from '../../redux/apiCalls';
+import { deleteUser, fetchUsernames, getUserProjects, searchCurrentUser, updateUser } from '../../redux/apiCalls';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import firebaseApp from '../../firebase';
 import { useEffect } from 'react';
-import { Cancel, CheckCircle } from '@mui/icons-material';
+import { Cancel, CheckCircle, Verified } from '@mui/icons-material';
 
 
 const Profile = ({children}) => {
@@ -33,6 +33,7 @@ const Profile = ({children}) => {
     useEffect(() => {
         getUserProjects(userId, dispatch);
         fetchUsernames(dispatch);
+        searchCurrentUser(userId, dispatch);
     }, [dispatch, userId]);
 
     const handleProfileLoad = () => {
@@ -217,7 +218,10 @@ const Profile = ({children}) => {
                                 </div>
                             </div>
                             <div className="userProfile_name">
-                                <p>{user?.username}</p>
+                                <div className="userProfile_Verified">
+                                    <p>{user?.username}</p>
+                                    {user.isAdmin && <Verified sx={{fontSize: {xs: 21, sm: 24, m: 24}}} />}
+                                </div>
                                 <span>{user?.bio || "Your bio will appear here. Update your info"}</span>
                             </div>
                             <div className="userProfile_Connections">

@@ -127,7 +127,7 @@ const Project = () => {
                     />
                 </div>
                 <div className="projectDescription">
-                    <h1>PROJECT GOALS</h1>
+                    {project.goals.length > 0 && <h1>PROJECT GOALS</h1>}
                     <ul>
                         {project.goals.map((goal) => (
                             <li key={goal}>{goal}</li>
@@ -135,7 +135,7 @@ const Project = () => {
                     </ul>
                 </div>
                 <div className="projectDescription">
-                    <h1>PROJECT SCOPE</h1>
+                    {project.scope.length > 0 && <h1>PROJECT SCOPE</h1>}
                     <ul>
                         {project.scope.map((scope) => (
                             <li key={scope}>{scope}</li>
@@ -143,7 +143,7 @@ const Project = () => {
                     </ul>
                 </div>
                 <div className="projectDescription">
-                    <h1>PROJECT PLAN</h1>
+                    {project.plan.length > 0 && <h1>PROJECT PLAN</h1>}
                     <ul>
                         {project.plan.map((plan) => (
                             <li key={plan}>{plan}</li>
@@ -151,7 +151,7 @@ const Project = () => {
                     </ul>
                 </div>
                 <div className="projectDescription">
-                    <h1>RESOURCES</h1>
+                    {project.resources.length > 0 && <h1>RESOURCES</h1>}
                     <ul>
                         {project.resources.map((resource) => (
                             <li key={resource}>{resource}</li>
@@ -159,7 +159,7 @@ const Project = () => {
                     </ul>
                 </div>
                 <div className="projectDescription">
-                    <h1>PROJECT BUDGET</h1>
+                    {project.budget.length > 0 && <h1>PROJECT BUDGET</h1>}
                     <ul>
                         {project.budget.map((budget) => (
                             <li key={budget}>{budget}</li>
@@ -167,7 +167,7 @@ const Project = () => {
                     </ul>
                 </div>
                 <div className="projectDescription">
-                    <h1>PROJECT CHALLENGES</h1>
+                    {project.challenges.length > 0 && <h1>PROJECT CHALLENGES</h1>}
                     <ul>
                         {project.challenges.map((challenge) => (
                             <li key={challenge}>{challenge}</li>

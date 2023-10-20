@@ -110,6 +110,7 @@ export const UserLogout = async (dispatch) => {
   dispatch(logout());
 };
 
+// CLEAR SEARCHED USER
 export const ClearSearchedUser = async (dispatch) => {
   dispatch(clearUser());
 };

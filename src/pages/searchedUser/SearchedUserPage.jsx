@@ -5,6 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { connectWithSearchedUser, getUsers, searchUser } from '../../redux/apiCalls';
+import { Verified } from '@mui/icons-material';
 
 const SearchedUserPage = ({children}) => {
     const location = useLocation();
@@ -52,7 +53,10 @@ const SearchedUserPage = ({children}) => {
                                 </div>
                             </div>
                             <div className="userProfile_name">
-                                <p>{searchedUser?.username}</p>
+                                <div className="userProfile_Verified">
+                                    <p>{searchedUser?.username}</p>
+                                    {searchedUser.isAdmin && <Verified sx={{fontSize: {xs: 21, sm: 24, m: 24}}} />}
+                                </div>
                                 <span>{searchedUser?.bio}</span>
                             </div>
                             <div className="userProfile_Connections">

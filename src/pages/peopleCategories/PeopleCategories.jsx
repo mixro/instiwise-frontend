@@ -4,6 +4,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Link } from 'react-router-dom';
 import { connectWithOtherUser } from '../../redux/apiCalls';
 import moment from 'moment';
+import { Verified } from '@mui/icons-material';
 
 const PeopleCategories = () => {
   const dispatch = useDispatch();
@@ -26,8 +27,9 @@ const PeopleCategories = () => {
             
             <div className="peopleCategory_ItemsContainer">
               {users
-                .slice(0, 6)
+                .slice()
                 .sort((a, b) => b.connections.length - a.connections.length)
+                .slice(0, 6)
                 .map((person) => (
                 <div className="peopleCategory_Item" key={person._id}>
                   <div className="peopleCategory_profile">
@@ -42,7 +44,10 @@ const PeopleCategories = () => {
                     </Link>
                     <div className="personItem_profileUsername">
                         <Link to={`/user-profile/${person._id}`} className='link-main'>
-                            <p>{person.username}</p>
+                            <div className="personItem_Verified">
+                                <p>{person?.username.toLowerCase()}</p>
+                                {person.isAdmin && <Verified sx={{fontSize: {xs: 21, sm: 22, m: 22}}} />}
+                            </div>
                             <p>{person.connections.length} connections</p>
                         </Link>
                     </div>
@@ -62,8 +67,9 @@ const PeopleCategories = () => {
             
             <div className="peopleCategory_ItemsContainer">
               {users
-                .slice(0, 6)
+                .slice()
                 .sort((a, b) => b.projects.length - a.projects.length)
+                .slice(0, 6)
                 .map((person) => (
                 <div className="peopleCategory_Item" key={person._id}>
                   <div className="peopleCategory_profile">
@@ -78,7 +84,10 @@ const PeopleCategories = () => {
                     </Link>
                     <div className="personItem_profileUsername">
                         <Link to={`/user-profile/${person._id}`} className='link-main'>
-                            <p>{person.username}</p>
+                            <div className="personItem_Verified">
+                                <p>{person?.username.toLowerCase()}</p>
+                                {person.isAdmin && <Verified sx={{fontSize: {xs: 21, sm: 22, m: 22}}} />}
+                            </div>
                             <p>{person.projects.length} projects</p>
                         </Link>
                     </div>
@@ -98,8 +107,9 @@ const PeopleCategories = () => {
             
             <div className="peopleCategory_ItemsContainer">
               {users
+                .slice()
+                .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
                 .slice(0, 6)
-                .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                 .map((person) => (
                 <div className="peopleCategory_Item" key={person._id}>
                   <div className="peopleCategory_profile">
@@ -114,7 +124,10 @@ const PeopleCategories = () => {
                     </Link>
                     <div className="personItem_profileUsername">
                         <Link to={`/user-profile/${person._id}`} className='link-main'>
-                            <p>{person.username}</p>
+                            <div className="personItem_Verified">
+                                <p>{person?.username.toLowerCase()}</p>
+                                {person.isAdmin && <Verified sx={{fontSize: {xs: 21, sm: 22, m: 22}}} />}
+                            </div>
                             <p>Joined {moment(person.createdAt).fromNow()}</p>
                         </Link>
                     </div>

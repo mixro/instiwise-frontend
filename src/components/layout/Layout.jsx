@@ -4,7 +4,7 @@ import Topbar from '../topbar/Topbar';
 import Sidebar from '../sidebar/Sidebar';
 import { Link } from 'react-router-dom';
 import { BottomNavigation, BottomNavigationAction, Paper } from '@mui/material'
-import { Home, Person, EventNote, RssFeed, Handyman} from "@mui/icons-material";
+import { Home, Person, RssFeed, Handyman, People} from "@mui/icons-material";
 import Footer from '../footer/Footer';
 
 const Layout = ({children}) => {
@@ -36,7 +36,7 @@ const Layout = ({children}) => {
                         onChange={handleChange}
                     >
                         <BottomNavigationAction component={Link} to="/" value="" label="Home" icon={<Home />} />                    
-                        <BottomNavigationAction component={Link} to="/lessons" label="Lessons" value="search" icon={<EventNote />} />
+                        <BottomNavigationAction component={Link} to="/people" label="People" value="People" icon={<People />} />
                         <BottomNavigationAction component={Link} to="/posts" value="events" label="News" icon={<RssFeed/>} />
                         <BottomNavigationAction component={Link} to="/projects" label="Projects" value="projects" icon={<Handyman />} />
                         <BottomNavigationAction component={Link} to="/profile" value="profile" label="Profile" icon={<Person />} />
