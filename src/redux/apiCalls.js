@@ -406,11 +406,11 @@ export const getProjects = async (dispatch) => {
   }
 }
 
-export const deleteProject = async (id, dispatch) => {
+export const deleteProject = async (projectId, dispatch) => {
   dispatch(deleteProjectStart());
   try {
-    await userRequest.delete(`/projects/${id}`);
-    dispatch(deleteProjectSuccess(id));
+    await userRequest.delete(`/projects/${projectId}`);
+    dispatch(deleteProjectSuccess(projectId));
   } catch(err) {
     dispatch(deleteProjectFailure());
   }

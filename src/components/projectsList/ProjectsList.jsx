@@ -42,7 +42,7 @@ const ProjectsList = () => {
                     </div>
                     </div>
                     <div className="projectsSort_Icon">
-                    <Sort />
+                        <Sort />
                     </div>
                 </div>
             </div>

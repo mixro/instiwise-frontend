@@ -47,7 +47,7 @@ const SearchedUserPage = ({children}) => {
                         </div>
                         <div className="userProfile_Self">
                             <div className="userProfile_SmallImage">
-                                <img src={searchedUser?.img || '/assets/profile.jpeg'} style={{display: profileLoading ? "none" : "block"}} onLoad={handleProfileLoad} alt='PR' />
+                                <img src={searchedUser?.img || '/assets/1.png'} style={{display: profileLoading ? "none" : "block"}} onLoad={handleProfileLoad} alt='PR' />
                                 <div className="noProjectProfile" style={{display: profileLoading ? "block" : "none"}}>
                                 </div>
                             </div>

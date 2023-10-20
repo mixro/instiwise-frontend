@@ -65,7 +65,7 @@ const Projects = ({children}) => {
                           <p>Researches</p>
                           <Science sx={{fontSize: {xs: 24, sm: 30}}} />
                         </div>
-                        <span>8</span>
+                        <span>20</span>
                       </div>
                     </Link>
                   </div>

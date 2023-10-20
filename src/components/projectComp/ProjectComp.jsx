@@ -37,10 +37,8 @@ const ProjectComp = ({project, currentUserId, isCurrentUserProfile, isSearchedUs
         AddlikeForSearchedUserProject(currentUserId, projectId, dispatch);
     }
 
-    const handleDelete = (e) => {
-        e.preventDefault();
-        const id = project._id;
-        deleteProject(id, dispatch);
+    const handleDelete = (projectId) => {
+        deleteProject(projectId, dispatch);
         handleClose();
     };
     
@@ -121,7 +119,7 @@ const ProjectComp = ({project, currentUserId, isCurrentUserProfile, isSearchedUs
                                             Edit
                                         </MenuItem>
                                     </Link>
-                                    <MenuItem onClick={handleDelete}>
+                                    <MenuItem onClick={() => handleDelete(project._id)}>
                                         Delete
                                     </MenuItem>
                                 </Menu>

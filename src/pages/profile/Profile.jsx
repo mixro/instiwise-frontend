@@ -111,6 +111,7 @@ const Profile = ({children}) => {
                 if (Object.keys(updatedFields).length > 0) {
                   // Combine all updates into a single user object
                   const updatedUser = { ...inputs, ...updatedFields };
+                  setButtonClicked(true);
                   updateUser(userId, dispatch, updatedUser);
                 } else {
                   // No updates were made, just update with the existing 'inputs'
@@ -158,6 +159,7 @@ const Profile = ({children}) => {
                 if (Object.keys(updatedFields).length > 0) {
                   // Combine all updates into a single user object
                   const updatedUser = { ...inputs, ...updatedFields };
+                  setButtonClicked(true);
                   updateUser(userId, dispatch, updatedUser);
                 } else {
                   // No updates were made, just update with the existing 'inputs'
@@ -177,6 +179,7 @@ const Profile = ({children}) => {
             // Combine all updates into a single user object
             const updatedUser = { ...inputs, ...updatedFields };
             updateUser(userId, dispatch, updatedUser);
+            setButtonClicked(true);
           } else {
             // No updates were made, just update with the existing 'inputs'
             setButtonClicked(true);

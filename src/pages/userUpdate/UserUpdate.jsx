@@ -36,95 +36,125 @@ const UserUpdate = () => {
 
     const handleClick = (e) => {
         e.preventDefault();
-
+      
         // Create an object to accumulate changes
         const updatedFields = {};
-
+      
         if (cover !== null) {
-            const coverName = new Date().getTime() + cover.name;
-            const storage = getStorage(firebaseApp);
-            const storageRef = ref(storage, coverName);
-            const uploadTask = uploadBytesResumable(storageRef, cover);
-        
-            uploadTask.on('state_changed', 
-                (snapshot) => {
-                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    console.log('Upload is ' + progress + '% done');
-                    setCoverPerc(progress);
-                    switch (snapshot.state) {
-                        case 'paused':
-                            console.log('Upload is paused');
-                        break;
-                        case 'running':
-                            console.log('Upload is running');
-                        break;
-                        default:
-                            console.log("Upload is in progress");
-                    }
-                    }, 
-                    (error) => {
-                    }, 
-                    () => {
-                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                        const user = {...inputs, cover: downloadURL};
-                        const id = userId;
-                        updateUser(id, dispatch, user);
-                    });
+          const coverName = new Date().getTime() + cover.name;
+          const storage = getStorage(firebaseApp);
+          const storageRef = ref(storage, coverName);
+          const uploadTask = uploadBytesResumable(storageRef, cover);
+      
+          uploadTask.on('state_changed', 
+            (snapshot) => {
+              const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              console.log('Upload is ' + progress + '% done');
+              setCoverPerc(progress);
+              switch (snapshot.state) {
+                case 'paused':
+                  console.log('Upload is paused');
+                  break;
+                case 'running':
+                  console.log('Upload is running');
+                  break;
+                default:
+                  console.log('Upload is in progress');
+              }
+            }, 
+            (error) => {
+            }, 
+            () => {
+              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                updatedFields.cover = downloadURL;
+      
+                // Check if 'username' is updated and not null
+                if (updatedUsername !== null) {
+                  updatedFields.username = updatedUsername;
                 }
-            )
-        }
-
-        if (profilePicture !== null) {
-            const profilePictureName = new Date().getTime() + profilePicture.name;
-            const storage = getStorage(firebaseApp);
-            const storageRef = ref(storage, profilePictureName);
-            const uploadTask = uploadBytesResumable(storageRef, profilePicture);
-        
-            uploadTask.on('state_changed', 
-                (snapshot) => {
-                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    console.log('Upload is ' + progress + '% done');
-                    setProfilePicturePerc(progress);
-                    switch (snapshot.state) {
-                        case 'paused':
-                            console.log('Upload is paused');
-                        break;
-                        case 'running':
-                            console.log('Upload is running');
-                        break;
-                        default:
-                            console.log("Upload is in progress");
-                    }
-                    }, 
-                    (error) => {
-                    }, 
-                    () => {
-                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                        const user = {...inputs, img: downloadURL};
-                        const id = userId;
-                        updateUser(id, dispatch, user);
-                        setButtonClicked(true);
-                    });
+      
+                // Check if any updates were made
+                if (Object.keys(updatedFields).length > 0) {
+                  // Combine all updates into a single user object
+                  const updatedUser = { ...inputs, ...updatedFields };
+                  setButtonClicked(true);
+                  updateUser(userId, dispatch, updatedUser);
+                } else {
+                  // No updates were made, just update with the existing 'inputs'
+                  setButtonClicked(true);
+                  updateUser(userId, dispatch, inputs);
                 }
-            )
-        }
-
-        if (updatedUsername !== null) {
-            // If updatedUsername is not null, update the 'username' field in updatedFields
-            updatedFields.username = updatedUsername;
-        }
-
-        // Check if any updates were made
-        if (Object.keys(updatedFields).length > 0) {
+              });
+            }
+          );
+        } else if (profilePicture !== null) {
+          // Handle profile picture update
+          const profilePictureName = new Date().getTime() + profilePicture.name;
+          const storage = getStorage(firebaseApp);
+          const storageRef = ref(storage, profilePictureName);
+          const uploadTask = uploadBytesResumable(storageRef, profilePicture);
+      
+          uploadTask.on('state_changed', 
+            (snapshot) => {
+              const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              console.log('Upload is ' + progress + '% done');
+              setProfilePicturePerc(progress);
+              switch (snapshot.state) {
+                case 'paused':
+                  console.log('Upload is paused');
+                  break;
+                case 'running':
+                  console.log('Upload is running');
+                  break;
+                default:
+                  console.log('Upload is in progress');
+              }
+            }, 
+            (error) => {
+            }, 
+            () => {
+              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                updatedFields.img = downloadURL;
+      
+                // Check if 'username' is updated and not null
+                if (updatedUsername !== null) {
+                  updatedFields.username = updatedUsername;
+                }
+      
+                // Check if any updates were made
+                if (Object.keys(updatedFields).length > 0) {
+                  // Combine all updates into a single user object
+                  const updatedUser = { ...inputs, ...updatedFields };
+                  setButtonClicked(true);
+                  updateUser(userId, dispatch, updatedUser);
+                } else {
+                  // No updates were made, just update with the existing 'inputs'
+                  setButtonClicked(true);
+                  updateUser(userId, dispatch, inputs);
+                }
+              });
+            }
+          );
+        } else if (updatedUsername !== null) {
+          // Handle username update
+          setButtonClicked(true);
+          updatedFields.username = updatedUsername;
+      
+          // Check if any updates were made
+          if (Object.keys(updatedFields).length > 0) {
             // Combine all updates into a single user object
             const updatedUser = { ...inputs, ...updatedFields };
-
-            // Update the user with the accumulated changes
             updateUser(userId, dispatch, updatedUser);
-        } else {
+            setButtonClicked(true);
+          } else {
             // No updates were made, just update with the existing 'inputs'
             setButtonClicked(true);
             updateUser(userId, dispatch, inputs);
+          }
+        } else {
+          // No updates were made, just update with the existing 'inputs'
+          setButtonClicked(true);
+          updateUser(userId, dispatch, inputs);
         }
     };
     

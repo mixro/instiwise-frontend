@@ -108,7 +108,7 @@ const NewProject = () => {
               <input id='project-cover' type='file' accept='.jpeg, .jpg, .png' style={{ display: "none" }} onChange={(e) => setProjectPicture(e.target.files[0])} placeholder='image' />
               <label htmlFor='project-cover'>
                 <div className="newProject_UploadButton">
-                   <span>UPLOAD IMAGE {perc > 1 && Math.floor(perc) + "%"}</span>
+                   <span>INSERT IMAGE {perc > 1 && Math.floor(perc) + "%"}</span>
                 </div>
               </label>
             </div>
@@ -326,7 +326,7 @@ const NewProject = () => {
                 ))}
               </div>
             </div>
-            <div className="newProject_Item newProject_Create">
+            <div className={(perc > 0 && perc < 100) ? "newProject_UpdatingButton newProject_Create" : "newProject_Item newProject_Create"}>
               <button onClick={handleClick}>{buttonClicked && isFetching ? 'CREATING...' : 'CREATE PROJECT'}</button>
               {buttonClicked && error && <p style={{color: "red"}}>error occurred !! Try again</p>}
             </div>
