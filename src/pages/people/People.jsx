@@ -6,18 +6,46 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { connectWithOtherUser, getUsers } from '../../redux/apiCalls';
 import moment from 'moment';
+import { IconButton, Menu, MenuItem } from '@mui/material';
+
+const ITEM_HEIGHT = 48;
 
 
 const People = () => {
     const dispatch = useDispatch();
     const [searchQuery, setSearchQuery] = useState('');
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
     const users = useSelector((state) => state.users.users);
     const currentUser = useSelector((state) => state.user.currentUser);
     const currentUserId = currentUser?._id;
+    const [sortedPeople, setSortedPeople] = useState([]);
+    
+    const filteredPeople= Array.isArray(users) && users.filter((user) => {
+        const username = user.username.toLowerCase();
 
+        const query = searchQuery.toLowerCase();
+        return (
+            username.includes(query) 
+        );
+    });
+    
     useEffect(() => {
         getUsers(dispatch);
-    }, [dispatch]);
+
+        if (filteredPeople.length > 0) {
+            const defaultSortedPeople = [...filteredPeople].sort((a, b) => b.connections.length - a.connections.length);
+            setSortedPeople(defaultSortedPeople);
+        }
+    }, [dispatch, filteredPeople]);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     const handleConnect = (anotherUserId) => {
         connectWithOtherUser(currentUserId, anotherUserId, dispatch);
@@ -27,14 +55,26 @@ const People = () => {
         setSearchQuery(event.target.value);
     };
 
-    const filteredPeople= Array.isArray(users) && users.filter((user) => {
-        const username = user.username.toLowerCase();
 
-        const query = searchQuery.toLowerCase();
-        return (
-            username.includes(query) 
-        );
-    });
+    const handleSort = (value) => {
+        handleClose();
+      
+        // Sort the filteredPeople based on the selected sorting criterion
+        let sortedData = [...filteredPeople]; // Create a copy of the filteredPeople array
+      
+        if (value === "recent") {
+          sortedData = sortedData.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+        } else if (value === "connections") {
+          sortedData = sortedData.sort((a, b) => b.connections.length - a.connections.length);
+        } else if (value === "projects") {
+          sortedData = sortedData.sort((a, b) => b.projects.length - a.projects.length);
+        } else if (value === "oldest") {
+            sortedData = sortedData.sort((a, b) => a.createdAt.localeCompare(b.createdAt));
+        }
+      
+        // Update the filteredPeople variable with the sorted array
+        setSortedPeople(sortedData);
+    };      
 
   return (
     <div className="peopleContainer">
@@ -55,14 +95,51 @@ const People = () => {
                                     <Search />
                                 </div>
                             </div>
-                            <div className="peoplesearch_Sort">
-                                <Sort />
+                            <div className="peoplesearch_Sort sortIcon_Button">
+                                <IconButton
+                                    aria-label="more"
+                                    id="long-button"
+                                    aria-controls={open ? 'long-menu' : undefined}
+                                    aria-expanded={open ? 'true' : undefined}
+                                    aria-haspopup="true"
+                                    onClick={handleClick}
+                                >
+                                    <Sort sx={{color: "white"}} />
+                                </IconButton>
+                                <Menu
+                                    id="long-menu"
+                                    MenuListProps={{
+                                        'aria-labelledby': 'long-button',
+                                    }}
+                                    anchorEl={anchorEl}
+                                    open={open}
+                                    onClose={handleClose}
+                                    PaperProps={{
+                                    style: {
+                                        maxHeight: ITEM_HEIGHT * 4.5,
+                                        width: '17ch',
+                                    },
+                                    }}
+                                > 
+                                    <MenuItem onClick={() => handleSort("recent")}>
+                                        Newest members
+                                    </MenuItem>
+                                    <MenuItem onClick={() => handleSort("oldest")}>
+                                        Senior members
+                                    </MenuItem>
+                                    <MenuItem  onClick={() => handleSort("connections")}>
+                                        By Connections
+                                    </MenuItem>
+                                    <MenuItem  onClick={() => handleSort("projects")}>
+                                        By Projects
+                                    </MenuItem>
+                                </Menu>
                             </div>
                         </div>
                     </div>
                     <div className="connectPeople_Container">
-                        {filteredPeople.length > 0 
-                            ?   filteredPeople.slice(0, 95).sort((a, b) => b.connections.length - a.connections.length).map((person) => (
+                        {sortedPeople.length > 0 
+                            ?   sortedPeople.slice(0, 95).map((person) => (
                                 <div className="connectPeople_Item" key={person._id}>
                                     <div className="connectPeople_ItemTop">
                                         <div className="personItem_profile">
@@ -89,20 +166,22 @@ const People = () => {
                                             {currentUserId !== person._id && <button onClick={() => handleConnect(person._id)}>{person.connections.includes(currentUserId) ? "DISCONNECT" : "CONNECT"}</button>}
                                         </div>
                                     </div>
-                                    <div className="personItem_Details">
-                                        <div className="personDetails_Item">
-                                            <p>{person.projects.length}</p>
-                                            <span>Projects</span>
+                                    <Link to={currentUserId === person._id ? "/profile" : `/user-profile/${person._id}`} className='link-main'>
+                                        <div className="personItem_Details">
+                                            <div className="personDetails_Item">
+                                                <p>{person.projects.length}</p>
+                                                <span>Projects</span>
+                                            </div>
+                                            <div className="personDetails_Item">
+                                                <p>{person.connections.length}</p>
+                                                <span>Connections</span>
+                                            </div>
+                                            <div className="personDetails_Item">
+                                                <p>{person.awards.length}</p>
+                                                <span>Awards</span>
+                                            </div>
                                         </div>
-                                        <div className="personDetails_Item">
-                                            <p>{person.connections.length}</p>
-                                            <span>Connections</span>
-                                        </div>
-                                        <div className="personDetails_Item">
-                                            <p>{person.awards.length}</p>
-                                            <span>Awards</span>
-                                        </div>
-                                    </div>
+                                    </Link>
                                 </div>
                             ))
                             :   <div className="noPeople">
@@ -119,7 +198,7 @@ const People = () => {
                             {users
                                 .slice()
                                 .sort((a, b) => b.connections.length - a.connections.length)
-                                .slice(0, 5)
+                                .slice(0, 6)
                                 .map((person) => (
                                 <div className="peopleRight_ListItem" key={person._id}>
                                     <div className="connectPeople_ItemTop">
@@ -158,7 +237,7 @@ const People = () => {
                             {users
                                 .slice()
                                 .sort((a, b) => b.projects.length - a.projects.length)
-                                .slice(0, 5)
+                                .slice(0, 6)
                                 .map((person) => (
                                     <div className="peopleRight_ListItem" key={person._id}>
                                         <div className="connectPeople_ItemTop">
@@ -197,7 +276,7 @@ const People = () => {
                             {users
                                 .slice()
                                 .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
-                                .slice(0, 5)
+                                .slice(0, 6)
                                 .map((person) => (
                                     <div className="peopleRight_ListItem" key={person._id}>
                                         <div className="connectPeople_ItemTop">

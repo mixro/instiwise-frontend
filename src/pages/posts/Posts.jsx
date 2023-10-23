@@ -82,6 +82,13 @@ const Posts = () => {
                                 <p><span>{filteredPosts.length}</span> Search results</p>
                             </div>
                         }
+                        <div className="postCreate_Button">
+                            <div className="createButton">
+                                <Link to="/new-project" className="link-main">
+                                    <button>CREATE PROJECT</button>
+                                </Link>
+                            </div>
+                        </div>
                     </div>
                 {user ?
                     filteredPosts

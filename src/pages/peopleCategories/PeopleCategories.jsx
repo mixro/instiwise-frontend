@@ -102,13 +102,53 @@ const PeopleCategories = () => {
 
           <div className="peopleCategories_Item">
             <div className="peopleCategory-Header">
-              <h2>Joined recently</h2>
+              <h2>New Members</h2>
             </div>
             
             <div className="peopleCategory_ItemsContainer">
               {users
                 .slice()
                 .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+                .slice(0, 6)
+                .map((person) => (
+                <div className="peopleCategory_Item" key={person._id}>
+                  <div className="peopleCategory_profile">
+                    <Link to={`/user-profile/${person._id}`} className='link-main'>
+                        <div className="personItem_ProfileImage peopleRigthImage">
+                            <LazyLoadImage
+                                alt='PR'
+                                src={person.img || '/assets/1.png'} 
+                                style={{display: "block"}}
+                            />
+                        </div>
+                    </Link>
+                    <div className="personItem_profileUsername">
+                        <Link to={`/user-profile/${person._id}`} className='link-main'>
+                            <div className="personItem_Verified">
+                                <p>{person?.username.toLowerCase()}</p>
+                                {person.isAdmin && <Verified sx={{fontSize: {xs: 21, sm: 22, m: 22}}} />}
+                            </div>
+                            <p>Joined {moment(person.createdAt).fromNow()}</p>
+                        </Link>
+                    </div>
+                  </div>
+                  <div className="personItem_ConnectButton">
+                      <button onClick={() => handleConnect(person._id)}>{person.connections.includes(currentUserId) ? "DISCONNECT" : "CONNECT"}</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="peopleCategories_Item">
+            <div className="peopleCategory-Header">
+              <h2>Senior Members</h2>
+            </div>
+            
+            <div className="peopleCategory_ItemsContainer">
+              {users
+                .slice()
+                .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                 .slice(0, 6)
                 .map((person) => (
                 <div className="peopleCategory_Item" key={person._id}>
