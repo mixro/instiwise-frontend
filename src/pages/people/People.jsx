@@ -14,6 +14,7 @@ const ITEM_HEIGHT = 48;
 const People = () => {
     const dispatch = useDispatch();
     const [searchQuery, setSearchQuery] = useState('');
+    const [sort, setSort] = useState('connections');
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const users = useSelector((state) => state.users.users);
@@ -32,12 +33,11 @@ const People = () => {
     
     useEffect(() => {
         getUsers(dispatch);
+    }, [dispatch]);
 
-        if (filteredPeople.length > 0) {
-            const defaultSortedPeople = [...filteredPeople].sort((a, b) => b.connections.length - a.connections.length);
-            setSortedPeople(defaultSortedPeople);
-        }
-    }, [dispatch, filteredPeople]);
+    useEffect(() => {
+        handleSort(sort);
+    }, [sort]);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -73,6 +73,7 @@ const People = () => {
         }
       
         // Update the filteredPeople variable with the sorted array
+        setSort(value);
         setSortedPeople(sortedData);
     };      
 
@@ -276,6 +277,45 @@ const People = () => {
                             {users
                                 .slice()
                                 .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+                                .slice(0, 6)
+                                .map((person) => (
+                                    <div className="peopleRight_ListItem" key={person._id}>
+                                        <div className="connectPeople_ItemTop">
+                                            <div className="personItem_profile">
+                                                <Link to={`/user-profile/${person._id}`} className='link-main'>
+                                                    <div className="personItem_ProfileImage peopleRigthImage">
+                                                        <LazyLoadImage
+                                                            alt='PR'
+                                                            src={person.img || '/assets/1.png'} 
+                                                            style={{display: "block"}}
+                                                        />
+                                                    </div>
+                                                </Link>
+                                                <div className="personItem_profileUsername">
+                                                    <Link to={`/user-profile/${person._id}`} className='link-main'>
+                                                        <div className="personItem_Verified">
+                                                            <p>{person?.username.toLowerCase()}</p>
+                                                            {person.isAdmin && <Verified sx={{fontSize: {xs: 21, sm: 22, m: 22}}} />}
+                                                        </div>
+                                                        <p>Joined {moment(person.createdAt).fromNow()}</p>
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                            <div className="personItem_ConnectButton modified-Button">
+                                                {currentUserId !== person._id && <button onClick={() => handleConnect(person._id)}>{person.connections.includes(currentUserId) ? "DISCONNECT" : "CONNECT"}</button>}
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+                    <div className="peopleRight_Item">
+                        <h2>Senior Members</h2>
+                        <div className="peopleRight_List">
+                            {users
+                                .slice()
+                                .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                                 .slice(0, 6)
                                 .map((person) => (
                                     <div className="peopleRight_ListItem" key={person._id}>

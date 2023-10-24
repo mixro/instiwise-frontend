@@ -207,7 +207,7 @@ const Profile = ({children}) => {
                 <div className="userProfile_Left">
                     <div className="userProfile_Images">
                         <div className="userProfile_cover">
-                            <img src={user?.cover || '/assets/project.jpg'} style={{display: profileCoverLoading ? "none" : "block"}} onLoad={handleProfileCoverLoad} alt='BACKGROUND' />
+                            <img src={user?.cover || '/assets/no-profile.png'} style={{display: profileCoverLoading ? "none" : "block"}} onLoad={handleProfileCoverLoad} alt='BACKGROUND' />
                             <div className="noProfileCover" style={{display: profileCoverLoading ? "block" : "none"}}>
                             </div>
                         </div>

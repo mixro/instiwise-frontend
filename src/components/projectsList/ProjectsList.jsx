@@ -13,6 +13,7 @@ const ProjectsList = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+    const [sort, setSort] = useState('connections');
     const [sortedProjects, setSortedProjects] = useState([]);
     const projects = useSelector((state) => state.projects.projects);
     const user = useSelector((state) => state.user.currentUser);
@@ -29,11 +30,8 @@ const ProjectsList = () => {
     });
 
     useEffect(() => {
-        if( filteredProjects.length > 0 ) {
-            const defaultSortedProjects = [...filteredProjects].sort((a, b) => b.likes.length - a.likes.length);
-            setSortedProjects(defaultSortedProjects);
-        }
-    }, [filteredProjects]);
+        handleSort(sort);
+    }, [sort]);
 
     const handleSearchInputChange = (event) => {
         setSearchQuery(event.target.value);
@@ -63,6 +61,7 @@ const ProjectsList = () => {
         }
       
         // Update the filteredPeople variable with the sorted array
+        setSort(value);
         setSortedProjects(sortedData);
     };      
 
@@ -71,21 +70,21 @@ const ProjectsList = () => {
     <div className="projectList_Container">
         <div className="projectsBody_Left">
             <div className="projectLeft_Top">
-            <h1>DISCOVER</h1>
+                <h1>DISCOVER</h1>
 
-            <div className="projectsSearch">
-                <div className="ditsoSearch projectSearchItem">
-                    <input 
-                        type='text' 
-                        placeholder='Search projects...' 
-                        value={searchQuery}
-                        onChange={handleSearchInputChange} 
-                    />
-                    <div className="Search_Icon">
-                        <Search />
+                <div className="projectsSearch">
+                    <div className="ditsoSearch projectSearchItem">
+                        <input 
+                            type='text' 
+                            placeholder='Search projects...' 
+                            value={searchQuery}
+                            onChange={handleSearchInputChange} 
+                        />
+                        <div className="Search_Icon">
+                            <Search />
+                        </div>
                     </div>
-                </div>
-                <div className="projectsSort_Icon sortIcon_Button">
+                    <div className="projectsSort_Icon sortIcon_Button">
                         <IconButton
                             aria-label="more"
                             id="long-button"
@@ -114,13 +113,18 @@ const ProjectsList = () => {
                             <MenuItem onClick={() => handleSort("newest")}>
                                 New projects
                             </MenuItem>
-                            <MenuItem onClick={() => handleSort("popular")}>
+                            <MenuItem onClicEk={() => handleSort("popular")}>
                                 Popular projects
                             </MenuItem>
                             <MenuItem  onClick={() => handleSort("oldest")}>
                                 Past projects
                             </MenuItem>
                         </Menu>
+                    </div>
+                    <div className="createProject_BUTTON">
+                        <Link to="/new-project" className="link-main">
+                            <button>CREATE</button>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -130,11 +134,13 @@ const ProjectsList = () => {
                 </div>
             }
             
-            <div className="postCreate_Button">
-                <div className="createButton">
-                    <Link to="/new-project" className="link-main">
-                        <button>CREATE PROJECT</button>
-                    </Link>
+            <div className="SMALLSCREEN">
+                <div className="postCreate_Button">
+                    <div className="createButton">
+                        <Link to="/new-project" className="link-main">
+                            <button>CREATE PROJECT</button>
+                        </Link>
+                    </div>
                 </div>
             </div>
 
