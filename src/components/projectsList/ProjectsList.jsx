@@ -13,12 +13,17 @@ const ProjectsList = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
-    const [sort, setSort] = useState('connections');
     const [sortedProjects, setSortedProjects] = useState([]);
     const projects = useSelector((state) => state.projects.projects);
     const user = useSelector((state) => state.user.currentUser);
     const currentUserId = user._id;
 
+    useEffect(() => {
+        if (projects) {
+            const sortedData = [...projects].sort((a, b) => b.likes.length - a.likes.length);
+            setSortedProjects(sortedData);
+        }
+    }, [projects]);
 
     const filteredProjects = Array.isArray(projects) && projects.filter((project) => {
     const title = project.title.toLowerCase();
@@ -28,10 +33,6 @@ const ProjectsList = () => {
             title.includes(query) 
         );
     });
-
-    useEffect(() => {
-        handleSort(sort);
-    }, [sort]);
 
     const handleSearchInputChange = (event) => {
         setSearchQuery(event.target.value);
@@ -60,8 +61,6 @@ const ProjectsList = () => {
             sortedData = sortedData.sort((a, b) => a.createdAt.localeCompare(b.createdAt));
         }
       
-        // Update the filteredPeople variable with the sorted array
-        setSort(value);
         setSortedProjects(sortedData);
     };      
 
@@ -113,7 +112,7 @@ const ProjectsList = () => {
                             <MenuItem onClick={() => handleSort("newest")}>
                                 New projects
                             </MenuItem>
-                            <MenuItem onClicEk={() => handleSort("popular")}>
+                            <MenuItem onClick={() => handleSort("popular")}>
                                 Popular projects
                             </MenuItem>
                             <MenuItem  onClick={() => handleSort("oldest")}>

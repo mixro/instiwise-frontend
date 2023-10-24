@@ -14,7 +14,6 @@ const ITEM_HEIGHT = 48;
 const People = () => {
     const dispatch = useDispatch();
     const [searchQuery, setSearchQuery] = useState('');
-    const [sort, setSort] = useState('connections');
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const users = useSelector((state) => state.users.users);
@@ -36,8 +35,11 @@ const People = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        handleSort(sort);
-    }, [sort]);
+        if (users) {
+            const sortedData = [...users].sort((a, b) => b.connections.length - a.connections.length);
+            setSortedPeople(sortedData);
+        }
+    }, [users]);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -55,7 +57,6 @@ const People = () => {
         setSearchQuery(event.target.value);
     };
 
-
     const handleSort = (value) => {
         handleClose();
       
@@ -72,8 +73,6 @@ const People = () => {
             sortedData = sortedData.sort((a, b) => a.createdAt.localeCompare(b.createdAt));
         }
       
-        // Update the filteredPeople variable with the sorted array
-        setSort(value);
         setSortedPeople(sortedData);
     };      
 
