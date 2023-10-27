@@ -26,7 +26,7 @@ const OngoingCoursesComp = () => {
     <div className="container">
         <div className="SMALLSCREEN">
             <div className="small_room_header small_font smallest_font">
-                <h1>Ongoing Courses ({ongoingCourses && ongoingCourses.length})</h1>
+                <h1>Ongoing Classes ({ongoingCourses && ongoingCourses.length})</h1>
                 <div className="input_search">
                     <input type='text'
                         placeholder='Search Lesson'
@@ -83,7 +83,7 @@ const OngoingCoursesComp = () => {
                                     </Link>
                                 ))
                             :   <div className="NODATA_COMP">
-                                    <h1>NO COURSE WITH LESSON AT THE MOMENT</h1>
+                                    <h1>NO ONGOING CLASSES</h1>
                                 </div>
                         }
                     </div>

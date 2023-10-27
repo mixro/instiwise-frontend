@@ -51,6 +51,10 @@
     min-height: 140px;
 }
 
+.COURSE_TOP {
+    padding-bottom: 10px;
+}
+
 .lesson_top p {
     display: flex;
     align-items: center;
@@ -81,6 +85,11 @@
 
 .lesson_top p {
     color: rgb(83, 83, 83);
+}
+
+.Course_Status p {
+    color: green;
+    font-weight: 600;
 }
 
 .lesson-bottom {

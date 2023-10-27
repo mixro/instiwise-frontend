@@ -260,11 +260,11 @@ const Home = () => {
           <div className="topInfo_item">
             <Link to='/courses' className='link-main'>
               <div className="topInfo_header">
-                <p>Courses</p>
+                <p>Classes</p>
                 <span>{courses && courses.length}</span>
               </div>
               <div className="topInfo_desc">
-                <p>{window.innerWidth >= 770 ? "Access all courses with seamless convenience" : "Access all available courses easily"}</p>
+                <p>{window.innerWidth >= 770 ? "Access all classes courses with seamless convenience" : "Access all available classes easily"}</p>
                 <div className="topInfo_item_link">
                   <span>Explore more!</span>
                 </div>
@@ -414,11 +414,11 @@ const Home = () => {
             <div className="topInfo_item">
               <Link to='/ongoingcourses' className='link-main'>
                 <div className="topInfo_header">
-                  <p>On course</p>
+                  <p>On classes</p>
                   <span>{ongoingCourses && ongoingCourses.length}</span>
                 </div>
                 <div className="topInfo_desc">
-                  <p>{window.innerWidth >= 770 ? "Complete access to all institute lessons" : "Complete access to all lessons"}</p>
+                  <p>{window.innerWidth >= 770 ? "Complete access to all institute lessons" : "Complete access to all classes"}</p>
                   <div className="topInfo_item_link">
                     <span>Explore more!</span>
                   </div>

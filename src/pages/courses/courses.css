@@ -70,6 +70,15 @@
     padding: 10px;
 }
 
+.Course_Status {
+    padding: 15px 0 4px;
+}
+
+.Course_Status span {
+    font-weight: 500;
+    color: black;
+}
+
 
     /* -------------- course right -------------------*/
 .courses_right {

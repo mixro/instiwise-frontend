@@ -21,7 +21,7 @@ const Profile = ({children}) => {
     const [profilePicturePerc, setProfilePicturePerc] = useState(0);
     const user = useSelector((state) => state.user.currentUser);
     const [isChanging, setIsChanging] = useState(false);
-    const [updatedUsername, setUpdatedUsername] = useState(user.username);
+    const [updatedUsername, setUpdatedUsername] = useState(user?.username);
     const [usernameValid, setUsernameValid] = useState(true);
     const [isUsernameAvailable, setIsUsernameAvailable] = useState(true);
     const dispatch = useDispatch();

@@ -1,4 +1,4 @@
-import { Home, MeetingRoom, ChairAlt, Book, Groups2Sharp, PlayLesson, ArrowCircleUpSharp, Person, Login, HowToReg, Today, AdminPanelSettings, RssFeed, Handyman, People} from "@mui/icons-material";
+import { Home, MeetingRoom, ChairAlt, Book, PlayLesson, ArrowCircleUpSharp, Person, Login, HowToReg, Today, AdminPanelSettings, RssFeed, Handyman, Groups, Diversity3} from "@mui/icons-material";
 
 export const AnnouncementData = [
     {
@@ -552,8 +552,8 @@ export const topbarLinks = [
 
     {
         id:4,
-        icon:<Groups2Sharp />,
-        text:"Courses",
+        icon:<Groups />,
+        text:"Classes",
         location:"/courses",
     },
 
@@ -573,7 +573,7 @@ export const topbarLinks = [
 
     {
         id:7,
-        icon:<People />,
+        icon:<Diversity3 />,
         text:"People",
         location:"/people",
     },

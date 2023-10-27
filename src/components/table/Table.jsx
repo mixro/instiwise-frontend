@@ -35,7 +35,7 @@ const Table = () => {
       { field: "end", headerName: "End", width: window.innerWidth >= 768 ? 80 : 100 },
       {
         field: "courseId",
-        headerName: "Course",
+        headerName: "Class",
         width: 120,
         renderCell: (params) => {
           return (
