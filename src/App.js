@@ -42,6 +42,9 @@ import SearchedUserConnection from './components/searchedUserConnections/Searche
 import Researches from './components/researches/Researches';
 import SearchedUserPage from './pages/searchedUser/SearchedUserPage';
 import SetUsername from './pages/setUsername/SetUsername';
+import Password from './pages/password/Password';
+import SettingsPage from './pages/settings/SettingsPage';
+import Delete from './pages/delete/Delete';
 
 function App() {
   const dispatch = useDispatch();
@@ -135,6 +138,8 @@ function App() {
                     } 
                   />
                   <Route path="/profile-update/:id" element={<UserUpdate />} />
+                  <Route path="/password-update/:id" element={<Password />} />
+                  <Route path="/delete-account/:id" element={<Delete />} />
                   <Route 
                     path="/user-profile/:id/*" 
                     element={
@@ -181,6 +186,8 @@ function App() {
                       </PeopleLayout>
                     }
                   />
+
+                  <Route path='/settings' element={<SettingsPage />} />
                 </Routes>
                 </Layout>
             }

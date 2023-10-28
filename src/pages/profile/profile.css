@@ -186,7 +186,17 @@
     flex-basis: 27%;
 }
 
+.profile_settings {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .userProfile_Right h2 {
+    font-weight: 600;
+}
+
+.profile_settings h2 {
     font-weight: 600;
 }
 
@@ -201,6 +211,27 @@
 
 .no_PaddingBottom {
     padding-bottom: 7px;
+}
+
+.profileSetting_buttons {
+    padding-top: 30px;
+}
+
+.profileSetting_item {
+    width: 100%;
+    background: blue;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px;
+    cursor: pointer;
+}
+
+.profileAuthentication {
+    padding-top: 40px;
 }
 
 .userProfile_UpdateUsernames {
@@ -242,7 +273,7 @@
     color: white;
     margin-top: 6px;
     font-size: 15px;
-    padding: 4.5px;
+    padding: 7.3px;
     cursor: pointer;
 }
 

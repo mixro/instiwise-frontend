@@ -2,32 +2,17 @@ import './profile.css'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteUser, fetchUsernames, getUserProjects, searchCurrentUser, updateUser } from '../../redux/apiCalls';
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
-import firebaseApp from '../../firebase';
+import { UserLogout, fetchUsernames, getUserProjects, searchCurrentUser } from '../../redux/apiCalls';
 import { useEffect } from 'react';
-import { Cancel, CheckCircle, Verified } from '@mui/icons-material';
+import { Delete, HowToReg, Login, Logout, Person, Settings, Shield, Verified } from '@mui/icons-material';
 
 
 const Profile = ({children}) => {
-    const [buttonClicked, setButtonClicked] = useState(false);
-    const [deleteButtonClicked, setDeleteButtonClicked] = useState(false);
-    const [inputs, setInputs] = useState({});
     const [profileLoading, setProfileLoading] = useState(true);
     const [profileCoverLoading, setProfileCoverLoading] = useState(true);
-    const [cover, setCover] = useState(null);
-    const [coverPerc, setCoverPerc] = useState(0);
-    const [profilePicture, setProfilePicture] = useState(null);
-    const [profilePicturePerc, setProfilePicturePerc] = useState(0);
     const user = useSelector((state) => state.user.currentUser);
-    const [isChanging, setIsChanging] = useState(false);
-    const [updatedUsername, setUpdatedUsername] = useState(user?.username);
-    const [usernameValid, setUsernameValid] = useState(true);
-    const [isUsernameAvailable, setIsUsernameAvailable] = useState(true);
     const dispatch = useDispatch();
-    const { isFetching, error } = useSelector((state) => state.user);
     const userProjects = useSelector((state) => state.userProjects.projects);
-    const existingUsernames = useSelector((state) => state.usernames.usernames);
     const userId = user?._id;
 
     useEffect(() => {
@@ -42,162 +27,11 @@ const Profile = ({children}) => {
 
     const handleProfileCoverLoad = () => {
         setProfileCoverLoading(false);
-    };
+    };        
 
-    const handleChange = (e) => {
-        setInputs((prev) => {
-          return { ...prev, [e.target.name]: e.target.value };
-        });
-    };
-
-    const handleChangeUsername = (e) => {
-        const newUsername = e.target.value;
-        setIsChanging(true);
-        setUpdatedUsername(newUsername);
-        const isUsernameValid = newUsername.length >= 4;
-        setUsernameValid(isUsernameValid);
-    
-        // Normalize the case for comparison
-        const newUsernameNormalized = newUsername.replace(/\s+/g, '').toLowerCase();
-
-        const existingUsernamesNormalized = existingUsernames.map(username => username.replace(/\s+/g, '').toLowerCase());
-
-        if (existingUsernamesNormalized.includes(newUsernameNormalized)) {
-            setIsUsernameAvailable(false);
-        } else {
-            setIsUsernameAvailable(true);
-        }
-    };         
-
-    const handleClick = (e) => {
+    const handleLogout = (e) => {
         e.preventDefault();
-      
-        // Create an object to accumulate changes
-        const updatedFields = {};
-      
-        if (cover !== null) {
-          const coverName = new Date().getTime() + cover.name;
-          const storage = getStorage(firebaseApp);
-          const storageRef = ref(storage, coverName);
-          const uploadTask = uploadBytesResumable(storageRef, cover);
-      
-          uploadTask.on('state_changed', 
-            (snapshot) => {
-              const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-              console.log('Upload is ' + progress + '% done');
-              setCoverPerc(progress);
-              switch (snapshot.state) {
-                case 'paused':
-                  console.log('Upload is paused');
-                  break;
-                case 'running':
-                  console.log('Upload is running');
-                  break;
-                default:
-                  console.log('Upload is in progress');
-              }
-            }, 
-            (error) => {
-            }, 
-            () => {
-              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                updatedFields.cover = downloadURL;
-      
-                // Check if 'username' is updated and not null
-                if (updatedUsername !== null) {
-                  updatedFields.username = updatedUsername;
-                }
-      
-                // Check if any updates were made
-                if (Object.keys(updatedFields).length > 0) {
-                  // Combine all updates into a single user object
-                  const updatedUser = { ...inputs, ...updatedFields };
-                  setButtonClicked(true);
-                  updateUser(userId, dispatch, updatedUser);
-                } else {
-                  // No updates were made, just update with the existing 'inputs'
-                  setButtonClicked(true);
-                  updateUser(userId, dispatch, inputs);
-                }
-              });
-            }
-          );
-        } else if (profilePicture !== null) {
-          // Handle profile picture update
-          const profilePictureName = new Date().getTime() + profilePicture.name;
-          const storage = getStorage(firebaseApp);
-          const storageRef = ref(storage, profilePictureName);
-          const uploadTask = uploadBytesResumable(storageRef, profilePicture);
-      
-          uploadTask.on('state_changed', 
-            (snapshot) => {
-              const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-              console.log('Upload is ' + progress + '% done');
-              setProfilePicturePerc(progress);
-              switch (snapshot.state) {
-                case 'paused':
-                  console.log('Upload is paused');
-                  break;
-                case 'running':
-                  console.log('Upload is running');
-                  break;
-                default:
-                  console.log('Upload is in progress');
-              }
-            }, 
-            (error) => {
-            }, 
-            () => {
-              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                updatedFields.img = downloadURL;
-      
-                // Check if 'username' is updated and not null
-                if (updatedUsername !== null) {
-                  updatedFields.username = updatedUsername;
-                }
-      
-                // Check if any updates were made
-                if (Object.keys(updatedFields).length > 0) {
-                  // Combine all updates into a single user object
-                  const updatedUser = { ...inputs, ...updatedFields };
-                  setButtonClicked(true);
-                  updateUser(userId, dispatch, updatedUser);
-                } else {
-                  // No updates were made, just update with the existing 'inputs'
-                  setButtonClicked(true);
-                  updateUser(userId, dispatch, inputs);
-                }
-              });
-            }
-          );
-        } else if (updatedUsername !== null) {
-          // Handle username update
-          setButtonClicked(true);
-          updatedFields.username = updatedUsername;
-      
-          // Check if any updates were made
-          if (Object.keys(updatedFields).length > 0) {
-            // Combine all updates into a single user object
-            const updatedUser = { ...inputs, ...updatedFields };
-            updateUser(userId, dispatch, updatedUser);
-            setButtonClicked(true);
-          } else {
-            // No updates were made, just update with the existing 'inputs'
-            setButtonClicked(true);
-            updateUser(userId, dispatch, inputs);
-          }
-        } else {
-          // No updates were made, just update with the existing 'inputs'
-          setButtonClicked(true);
-          updateUser(userId, dispatch, inputs);
-        }
-    };
-      
-    const handleDelete = (e) => {
-        e.preventDefault();
-        const id = userId;
-        deleteUser(id, dispatch);
-        setDeleteButtonClicked(true);
+        UserLogout(dispatch);
     }
 
   return (
@@ -257,7 +91,7 @@ const Profile = ({children}) => {
                                 </div>
                             </div>
                             <div className="ProfielUpdate-SmallButton">
-                                <Link to={`/profile-update/${user._id}`} className='link-main'>
+                                <Link to={`/settings`} className='link-main'>
                                     <button>UPDATE YOUR INFO</button>
                                 </Link>
                             </div>
@@ -270,122 +104,51 @@ const Profile = ({children}) => {
                 </div>
 
                 <div className="userProfile_Right userProfile_Nosticky">
-                    <h2>Update your info</h2>
-                    <div className="userProfile_Update">
-                        <div className="userProfile_UpdateItem no_PaddingBottom">
-                            <p>Username</p>
-                            <input 
-                                type="text"
-                                name="username"
-                                placeholder={user?.username}
-                                className="userUpdateInput"
-                                onChange={handleChangeUsername}
-                            />
-                        </div>
-                        {isChanging && updatedUsername && 
-                            <div className="userProfile_UpdateUsernames">
-                                {usernameValid && isUsernameAvailable ? <p>Username available</p> : <p style={{color: "red"}}>Username not available</p>}
-                                <div className="usernameComparison-Icon">
-                                    {usernameValid && isUsernameAvailable ? <CheckCircle sx={{color: "green", fontSize: 18}} /> : <Cancel sx={{color: "red", fontSize: 18}} />}
-                                </div>
+                    <div className="profile_settings">
+                        <h2>Settings</h2>
+                        <Settings />
+                    </div>
+                    <div className="profileSetting_buttons">
+                        <Link to={`/profile-update/${user._id}`} className='link-main'>
+                            <div className="profileSetting_item">
+                                <Person />
+                                <p>Personal details</p>
                             </div>
-                        }
-                        <div className="userProfile_UpdateItem">
-                            <p>Bio</p>
-                            <input 
-                                type="text"
-                                placeholder={user?.bio || "this is my biography"}
-                                className="userUpdateInput"
-                                onChange={handleChange}
-                                name="bio"
-                            />
-                        </div>
-                        <div className="userProfile_UpdateItem">
-                            <p>Password</p>
-                            <input 
-                                type="password"
-                                name="password"
-                                placeholder="password"
-                                className="userUpdateInput"
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div className="userProfile_UpdateItem">
-                            <p>Course</p>
-                            <input 
-                                type="text"
-                                name="course"
-                                placeholder={user?.course || "eg. electrical"}
-                                className="userUpdateInput"
-                                onChange={handleChange}
-                            />
-                        </div> 
-                        <div className="userProfile_UpdateItem">
-                            <p>Email</p>
-                            <input 
-                                type="text"
-                                placeholder={user?.email || "eg. john@gmail.com"}
-                                className="userUpdateInput"
-                                onChange={handleChange}
-                                name="email"
-                            />
-                        </div>
-                        <div className="userProfile_UpdateItem">
-                            <p>Phone</p>
-                            <input 
-                                type="text"
-                                placeholder={user?.phoneNumber || "eg. +2556 986 778 999"}
-                                onChange={handleChange}
-                                name="phoneNumber"
-                                className="userUpdateInput"
-                            />
-                        </div>       
-                        <div className="userProfile_UpdateItem">
-                            <p>Profile picture</p>
-                            <input type='file' id='profile-picture' accept='.jpeg, .jpg, .png' onChange={(e) => setProfilePicture(e.target.files[0])} style={{ display: "none" }} placeholder='cover' />
-                            <label htmlFor="profile-picture">
-                                <div className="Profile_UploadButton">
-                                    <span>{profilePicturePerc > 0 && profilePicturePerc < 100 ? "UPLOADING..." : "UPLOAD PROFILE PICTURE"}</span>
-                                </div>
-                            </label>
-                        </div>                  
-                        <div className="userProfile_UpdateItem">
-                            <p>Profile cover</p>
-                            <input type='file' id='profile-cover' accept='.jpeg, .jpg, .png' onChange={(e) => setCover(e.target.files[0])}  style={{ display: "none" }} placeholder='cover' />
-                            <label htmlFor="profile-cover">
-                                <div className="Profile_UploadButton">
-                                    <span>{coverPerc > 0 && coverPerc < 100 ? "UPLOADING..." : "UPLOAD COVER"}</span>
-                                </div>
-                            </label>
-                        </div>
-                        <div className="userProfile_UpdateItem">
-                            <p>Gender</p>
-                            <select onChange={handleChange} className="newUserSelect" name="gender" id="active">
-                                <option value="male">male</option>
-                                <option value="female">female</option>
-                                <option value="female">others</option>
-                            </select>
-                        </div>
-                        <div className={(coverPerc > 0 && coverPerc < 100) || (profilePicturePerc > 0 && profilePicturePerc < 100) ? "userProfile-bottonUpdating" : "userProfile-UpdateButton"}>
-                            <button 
-                                onClick={handleClick} 
-                                style={{cursor: !isUsernameAvailable ? "not-allowed" : "pointer"}}
-                                className='updating'
-                            >
-                                {isFetching && buttonClicked ? "UPDATING..." : "UPDATE"}
-                            </button>
-                            {buttonClicked && error && <p style={{color: "red"}}>error occurred</p>}
-                        </div>
+                        </Link>
+                        <Link to={`/password-update/${user._id}`} className='link-main'>
+                            <div className="profileSetting_item">
+                                <Shield />
+                                <p>Password and security</p>
+                            </div>
+                        </Link>
+                        <Link to={`/delete-account/${user._id}`} className='link-main'>
+                            <div className="profileSetting_item">
+                                <Delete />
+                                <p>Delete account</p>
+                            </div>
+                        </Link>
+                    </div>
 
-                        <div className="Profile_LogoutPart">
-                            <h1 className="userTitle">DELETE ACCOUNT</h1>
-                            <div className="logout">
-                                <div className="logoutButton">
-                                    <button onClick={handleDelete}>{isFetching && deleteButtonClicked ? "Deleting..." : "Delete Account"}</button>
-                                </div>
-                                {deleteButtonClicked && error && <p style={{color: "red"}}>error occurred while deleting, try again!!</p>}
+                    <div className="profile_settings profileAuthentication">
+                        <h2>Authentication</h2>
+                        <HowToReg />
+                    </div>
+                    <div className="profileSetting_buttons">
+                        <Link to='/register' className='link-main'>
+                            <div className="profileSetting_item">
+                                <HowToReg />
+                                <p>Register</p>
                             </div>
-                            <p className='logoutWarning'>*If you delete account, Your data will not be retrevied!</p>
+                        </Link>
+                        <Link to='/login' className='link-main'>
+                            <div className="profileSetting_item">
+                                <Login />
+                                <p>Login</p>
+                            </div>
+                        </Link>
+                        <div className="profileSetting_item" onClick={handleLogout}>
+                            <Logout />
+                            <p>Logout</p>
                         </div>
                     </div>
                 </div>

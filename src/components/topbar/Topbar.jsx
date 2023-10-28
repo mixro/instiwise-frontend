@@ -202,6 +202,14 @@ const Navbar = () => {
                   },
                   }}
                 > 
+                  <Link to="/profile" className='link-main'>
+                      <MenuItem  onClick={handleClose}>
+                          <div className="menuIconItem">
+                            <Person2 sx={{fontSize: 22,}} /> Profile
+                          </div>
+                      </MenuItem>
+                  </Link>      
+                              
                   <Link to="/register" className='link-main'>
                       <MenuItem  onClick={handleClose}>
                           <div className="menuIconItem">
@@ -218,13 +226,6 @@ const Navbar = () => {
                       </MenuItem>
                   </Link>                  
 
-                  <Link to="/profile" className='link-main'>
-                      <MenuItem  onClick={handleClose}>
-                          <div className="menuIconItem">
-                            <Person2 sx={{fontSize: 22,}} /> Profile
-                          </div>
-                      </MenuItem>
-                  </Link>                  
 
                   {user && 
                     <MenuItem  onClick={handleLogout}>

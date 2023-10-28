@@ -3,12 +3,11 @@ import './userUpdate.css';
 import { useEffect, useState } from 'react';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import firebaseApp from '../../firebase';
-import { deleteUser, fetchUsernames, updateUser } from '../../redux/apiCalls';
+import { fetchUsernames, updateUser } from '../../redux/apiCalls';
 import { Cancel, CheckCircle } from '@mui/icons-material';
 
 const UserUpdate = () => {
     const [buttonClicked, setButtonClicked] = useState(false);
-    const [deleteButtonClicked, setDeleteButtonClicked] = useState(false);
     const [inputs, setInputs] = useState({});
     const [cover, setCover] = useState(null);
     const [coverPerc, setCoverPerc] = useState(0);
@@ -178,113 +177,103 @@ const UserUpdate = () => {
     };         
 
 
-    const handleDelete = (e) => {
-        e.preventDefault();
-        const id = userId;
-        deleteUser(id, dispatch);
-        setDeleteButtonClicked(true);
-    }
-
   return (
     <div className="userUpdate_Container">
         <div className="userUpdate_Wrapper">
             <h2>Update Your Info</h2>
 
             <div className="userUpdate_Body">
-                <div className="userUpdate_Item">
-                    <p>Username</p>
-                    <input 
-                        type="text"
-                        name="username"
-                        placeholder={user?.username}
-                        className="userUpdateInput"
-                        onChange={handleChangeUsername}
-                    />
-                </div>
-                {isChanging && updatedUsername && 
-                    <div className="userProfile_UpdateUsernames">
-                        {usernameValid && isUsernameAvailable ? <p>Username available</p> : <p style={{color: "red"}}>Username not available</p>}
-                        <div className="usernameComparison-Icon">
-                            {usernameValid && isUsernameAvailable ? <CheckCircle sx={{color: "green", fontSize: 18}} /> : <Cancel sx={{color: "red", fontSize: 18}} />}
-                        </div>
+                <div className="userUpdateFlex">
+                  <div className="userUpdateFlex-item">
+                    <div className="userUpdate_Item">
+                        <p>Username</p>
+                        <input 
+                            type="text"
+                            name="username"
+                            placeholder={user?.username}
+                            className="userUpdateInput"
+                            onChange={handleChangeUsername}
+                        />
                     </div>
-                }
-                <div className="userUpdate_Item">
-                    <p>Bio</p>
-                    <input 
-                        type="text"
-                        placeholder={user?.bio || "this is my biography"}
-                        className="userUpdateInput"
-                        onChange={handleChange}
-                        name="bio"
-                    />
-                </div>
-                <div className="userUpdate_Item">
-                    <p>Password</p>
-                    <input 
-                        type="password"
-                        name="password"
-                        placeholder="password"
-                        className="userUpdateInput"
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="userUpdate_Item">
-                    <p>Course</p>
-                    <input 
-                        type="text"
-                        name="course"
-                        placeholder={user?.course || "eg. electrical"}
-                        className="userUpdateInput"
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="userUpdate_Item">
-                    <p>Email</p>
-                    <input 
-                        type="text"
-                        placeholder={user?.email || "eg. john@gmail.com"}
-                        className="userUpdateInput"
-                        onChange={handleChange}
-                        name="email"
-                    />
-                </div>
-                <div className="userUpdate_Item">
-                    <p>Phone</p>
-                    <input 
-                        type="text"
-                        placeholder={user?.phoneNumber || "eg. +2556 986 778 999"}
-                        onChange={handleChange}
-                        name="phoneNumber"
-                        className="userUpdateInput"
-                    />
-                </div>
-                <div className="userUpdate_Item">
-                    <p>Profile picture</p>
-                    <input type='file' id='profile-picture' accept='.jpeg, .jpg, .png' onChange={(e) => setProfilePicture(e.target.files[0])} style={{ display: "none" }} placeholder='cover' />
-                    <label htmlFor="profile-picture">
-                        <div className="Profile_UploadButton Profile_UploadButtons">
-                            <span>{profilePicturePerc > 0 && profilePicturePerc <100 ? "UPLOADING..." : "UPLOAD PROFILE PICTURE"}</span>
+                    {isChanging && updatedUsername && 
+                        <div className="userProfile_UpdateUsernames">
+                            {usernameValid && isUsernameAvailable ? <p>Username available</p> : <p style={{color: "red"}}>Username not available</p>}
+                            <div className="usernameComparison-Icon">
+                                {usernameValid && isUsernameAvailable ? <CheckCircle sx={{color: "green", fontSize: 18}} /> : <Cancel sx={{color: "red", fontSize: 18}} />}
+                            </div>
                         </div>
-                    </label>
+                    }
+                    <div className="userUpdate_Item">
+                        <p>Bio</p>
+                        <input 
+                            type="text"
+                            placeholder={user?.bio || "this is my biography"}
+                            className="userUpdateInput"
+                            onChange={handleChange}
+                            name="bio"
+                        />
+                    </div>
+                    <div className="userUpdate_Item">
+                        <p>Course</p>
+                        <input 
+                            type="text"
+                            name="course"
+                            placeholder={user?.course || "eg. electrical"}
+                            className="userUpdateInput"
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="userUpdate_Item">
+                        <p>Email</p>
+                        <input 
+                            type="text"
+                            placeholder={user?.email || "eg. john@gmail.com"}
+                            className="userUpdateInput"
+                            onChange={handleChange}
+                            name="email"
+                        />
+                    </div>
+                  </div>
+                  <div className="userUpdateFlex-item">
+                    <div className="userUpdate_Item">
+                        <p>Phone</p>
+                        <input 
+                            type="text"
+                            placeholder={user?.phoneNumber || "eg. +2556 986 778 999"}
+                            onChange={handleChange}
+                            name="phoneNumber"
+                            className="userUpdateInput"
+                        />
+                    </div>
+                    <div className="userUpdate_Item">
+                        <p>Profile picture</p>
+                        <input type='file' id='profile-picture' accept='.jpeg, .jpg, .png' onChange={(e) => setProfilePicture(e.target.files[0])} style={{ display: "none" }} placeholder='cover' />
+                        <label htmlFor="profile-picture">
+                            <div className="Profile_UploadButton Profile_UploadButtons">
+                                <span>{profilePicturePerc > 0 && profilePicturePerc <100 ? "UPLOADING..." : "UPLOAD PROFILE PICTURE"}</span>
+                            </div>
+                        </label>
+                    </div>
+                    <div className="userUpdate_Item">
+                        <p>Profile cover</p>
+                        <input type='file' id='profile-cover' accept='.jpeg, .jpg, .png' onChange={(e) => setCover(e.target.files[0])}  style={{ display: "none" }} placeholder='cover' />
+                        <label htmlFor="profile-cover">
+                            <div className="Profile_UploadButton Profile_UploadButtons">
+                                <span>{coverPerc > 0 && coverPerc <100 ? "UPLOADING..." : "UPLOAD COVER"}</span>
+                            </div>
+                        </label>
+                    </div>
+                    <div className="userUpdate_Item">
+                        <p>Gender</p>
+                        <select onChange={handleChange} className="newUserSelect" name="gender" id="active">
+                            <option value="male">male</option>
+                            <option value="female">female</option>
+                            <option value="female">others</option>
+                        </select>
+                    </div>
+                  </div>
                 </div>
-                <div className="userUpdate_Item">
-                    <p>Profile cover</p>
-                    <input type='file' id='profile-cover' accept='.jpeg, .jpg, .png' onChange={(e) => setCover(e.target.files[0])}  style={{ display: "none" }} placeholder='cover' />
-                    <label htmlFor="profile-cover">
-                        <div className="Profile_UploadButton Profile_UploadButtons">
-                            <span>{coverPerc > 0 && coverPerc <100 ? "UPLOADING..." : "UPLOAD COVER"}</span>
-                        </div>
-                    </label>
-                </div>
-                <div className="userUpdate_Item">
-                    <p>Gender</p>
-                    <select onChange={handleChange} className="newUserSelect" name="gender" id="active">
-                        <option value="male">male</option>
-                        <option value="female">female</option>
-                        <option value="female">others</option>
-                    </select>
-                </div>
+                                
                 <div className={(coverPerc > 0 && coverPerc < 100) || (profilePicturePerc > 0 && profilePicturePerc < 100) ? "userUpdate_UpdatingButton" : "userUpdate_Button"}>
                     <button 
                         onClick={handleClick} 
@@ -296,7 +285,7 @@ const UserUpdate = () => {
                 </div>
             </div>
         </div>
-        <div className="Profile_LogoutPart UserUpdate_Profile">
+        {/* <div className="Profile_LogoutPart UserUpdate_Profile">
             <h1 className="userTitle">DELETE ACCOUNT</h1>
             <div className="logout">
                 <div className="logoutButton">
@@ -305,7 +294,7 @@ const UserUpdate = () => {
                  {deleteButtonClicked && error && <p style={{color: "red"}}>error occurred while deleting, try again!!</p>}
             </div>
             <p className='logoutWarning'>*If you delete account, Your data will not be retrevied!</p>
-        </div>
+        </div> */}
     </div>
   )
 }
