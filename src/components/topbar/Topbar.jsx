@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Search, DensityMedium, Login, HowToReg, Person2, Logout } from "@mui/icons-material";
+import { DensityMedium, Login, HowToReg, Person2, Logout } from "@mui/icons-material";
 import './topbar.css'
 import { Box, Divider, Drawer, ListItem, List, ListItemButton, ListItemIcon, ListItemText, Menu, MenuItem} from "@mui/material";
 import { Link } from "react-router-dom";
@@ -155,12 +155,6 @@ const Navbar = () => {
                   </React.Fragment>
                 ))}   
               </div> 
-              {/* <div className="searchBar"> 
-                  <input type="text" placeholder="Search timetables, lessons, rooms..." />
-                  <div className="searchIcon">
-                  <Search />  
-                  </div> 
-              </div> */}
               <Link className="link-top" to="/ongoinglessons">
                   <div className="navbarItem">
                     <p>Ongoing lesson <span>{ongoingLessons.length}</span></p>
