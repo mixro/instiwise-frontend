@@ -19,6 +19,7 @@ const Navbar = () => {
   const open = Boolean(anchorEl);
   const dispatch = useDispatch();
   const ongoingLessons = useSelector((state) => state.ongoingLessons.ongoingLessons);
+  const upcomingLessons = useSelector((state) => state.upcomingLessons.upcomingLessons);
   const user = useSelector((state) => state.user.currentUser);
 
   const handleClick = (event) => {
@@ -154,21 +155,27 @@ const Navbar = () => {
                   </React.Fragment>
                 ))}   
               </div> 
-              <div className="searchBar"> 
+              {/* <div className="searchBar"> 
                   <input type="text" placeholder="Search timetables, lessons, rooms..." />
                   <div className="searchIcon">
                   <Search />  
                   </div> 
-              </div>
+              </div> */}
               <Link className="link-top" to="/ongoinglessons">
                   <div className="navbarItem">
-                    <p>ongoing lesson <span>{ongoingLessons.length}</span></p>
+                    <p>Ongoing lesson <span>{ongoingLessons.length}</span></p>
                   </div>
               </Link>
 
+              <Link className="link-top" to="/upcominglessons">
+                  <div className="navbarItem navbarItem_Margin">
+                    <p>Upcoming lessons <span>{upcomingLessons.length}</span></p>
+                  </div>
+              </Link> 
+
               <Link className="link-top" to="/freerooms">
-                  <div className="navbarItem">
-                    <p>free rooms <span>{freeRooms.length}</span></p>
+                  <div className="navbarItem navbarItem_Margin">
+                    <p>Free rooms <span>{freeRooms.length}</span></p>
                   </div>
               </Link>           
             </div>

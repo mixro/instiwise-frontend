@@ -60,9 +60,18 @@
 }
 
 .navbarItem {
-    margin-left: 20px;
     display: flex;
     align-items: center;
+    border-radius: 5px;
+    padding: 5px 10px;
+    
+    -webkit-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+}
+
+.navbarItem_Margin {
+    margin-left: 20px;
 }
 
 .navbarItem p {
