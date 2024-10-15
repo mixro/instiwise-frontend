@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <!-- Home Page -->
+   <url>
+      <loc>https://instiwise.netlify.app/</loc>
+      <lastmod>2024-10-15</lastmod>
+      <priority>1.00</priority>
+   </url>
+
+   <!-- Lessons Page -->
+   <url>
+      <loc>https://instiwise.netlify.app/lessons</loc>
+      <lastmod>2024-10-15</lastmod>
+      <priority>0.80</priority>
+   </url>
+
+   <!-- Rooms Page -->
+   <url>
+      <loc>https://instiwise.netlify.app/rooms</loc>
+      <lastmod>2024-10-15</lastmod>
+      <priority>0.80</priority>
+   </url>
+
+   <!-- Courses Page -->
+   <url>
+      <loc>https://instiwise.netlify.app/courses</loc>
+      <lastmod>2024-10-15</lastmod>
+      <priority>0.80</priority>
+   </url>
+
+   <!-- People Page -->
+   <url>
+      <loc>https://instiwise.netlify.app/people</loc>
+      <lastmod>2024-10-15</lastmod>
+      <priority>0.70</priority>
+   </url>
+
+   <!-- Projects Page -->
+   <url>
+      <loc>https://instiwise.netlify.app/projects</loc>
+      <lastmod>2024-10-15</lastmod>
+      <priority>0.80</priority>
+   </url>
+</urlset>
