@@ -92,7 +92,7 @@ instiwise-frontend/
 
 1. Clone the repository:  
    ```bash
-   git clone https://github.com/your-org/instiwise-frontend
+   git clone https://github.com/mixro/instiwise-frontend
    cd instiwise-frontend
    ```  
 
@@ -161,5 +161,5 @@ Deploy to:
 ## Support  
 
 For issues or inquiries:  
-- Contact the development team via [email@example.com].  
+- Contact the development team via [josephchongola43@gmail.com].  
 - Raise issues on the GitHub repository.  
