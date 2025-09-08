@@ -1,70 +1,165 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# InstiWise Platform – Frontend Documentation  
 
-## Available Scripts
+![React](https://img.shields.io/badge/React-v18-blue)
+![Redux](https://img.shields.io/badge/Redux-Toolkit-purple)
+![Firebase](https://img.shields.io/badge/Firebase-Auth%20%26%20Storage-orange)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow)
+![CSS](https://img.shields.io/badge/CSS3-Styling-blue)  
 
-In the project directory, you can run:
+The **InstiWise Platform** is a comprehensive solution for institutes, designed to connect students, improve academic management, enable project sharing, and provide real-time updates through news and announcements. This repository contains the **frontend application**, developed using React and Redux, and integrated with Firebase for authentication and data handling.  
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Table of Contents  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [Overview](#overview)  
+- [Architecture](#architecture)  
+- [Technologies](#technologies)  
+- [Setup Instructions](#setup-instructions)  
+- [Directory Structure](#directory-structure)  
+- [Core Features](#core-features)  
+- [Testing](#testing)  
+- [Deployment](#deployment)  
+- [Future Improvements](#future-improvements)  
+- [Support](#support)  
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Overview  
 
-### `npm run build`
+InstiWise empowers students and administrators with tools to:  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Manage and view **academic resources** (lessons, rooms, classes).  
+- Share and explore **student projects**.  
+- Stay informed with **real-time news & announcements** from student organizations and administration.  
+- Connect with peers for collaboration and community building.  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The platform enhances **communication, accessibility, and efficiency** within institutes.  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Architecture  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Components  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **React (Frontend)** – Builds user interface and interactive views.  
+- **Redux Toolkit** – Manages application state (auth, lessons, rooms, projects).  
+- **Firebase** – Handles authentication, file storage, and project sharing.  
+- **REST API Integration** – Communicates with the backend for lessons, rooms, and academic data.  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Directory Structure  
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```plaintext
+instiwise-frontend/
+├── public/                  # Static assets
+├── src/
+│   ├── components/          # Reusable UI components
+│   ├── pages/               # Application pages (Dashboard, Lessons, Projects, News)
+│   ├── redux/               # Redux store and slices
+│   ├── app.css              # Global styles
+│   ├── App.js               # Main App entry
+│   ├── dummyData.js         # Mock data for testing
+│   ├── firebase.js          # Firebase config
+│   ├── index.css            # Root CSS
+│   ├── index.js             # App bootstrap
+│   ├── requestMethod.js     # Axios instance for API requests
+├── package.json             # Dependencies
+├── README.md                # Documentation
+```  
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Technologies  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **React** (v18) – Component-based frontend framework  
+- **Redux Toolkit** – Global state management  
+- **Firebase** – Authentication & storage  
+- **Axios** – API requests  
+- **Moment.js** – Date/time formatting  
+- **CSS3** – Styling  
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Setup Instructions  
 
-### Analyzing the Bundle Size
+### Prerequisites  
+- **Node.js** v18+  
+- **npm** or **yarn**  
+- Firebase project credentials  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Installation  
 
-### Making a Progressive Web App
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/your-org/instiwise-frontend
+   cd instiwise-frontend
+   ```  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+2. Install dependencies:  
+   ```bash
+   npm install
+   ```  
 
-### Advanced Configuration
+3. Configure Firebase:  
+   - Create a project on Firebase Console.  
+   - Enable Authentication & Firestore/Storage.  
+   - Add your config details in `src/firebase.js`.  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+4. Run the app:  
+   ```bash
+   npm start
+   ```  
+   The app runs at `http://localhost:3000`.  
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Core Features  
 
-### `npm run build` fails to minify
+- **Student Networking** – Profiles, connections, and collaboration tools.  
+- **Project Sharing** – Upload, explore, and collaborate on projects.  
+- **News & Announcements** – Real-time updates from administration & student orgs.  
+- **Academic Resources** – Lessons, schedules, and room availability.  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## Testing  
+
+- **Dummy Data** in `dummyData.js` is provided for UI testing.  
+- For manual testing, run:  
+  ```bash
+  npm test
+  ```  
+
+---
+
+## Deployment  
+
+### Local  
+```bash
+npm run build
+serve -s build
+```  
+
+### Production  
+Deploy to:  
+- **Firebase Hosting**  
+- **Vercel**  
+- **Netlify**  
+
+---
+
+## Future Improvements  
+
+- Advanced analytics dashboards.  
+- Mobile application support.  
+- AI-powered project recommendations.  
+- Offline access to class schedules.  
+
+---
+
+## Support  
+
+For issues or inquiries:  
+- Contact the development team via [email@example.com].  
+- Raise issues on the GitHub repository.  
