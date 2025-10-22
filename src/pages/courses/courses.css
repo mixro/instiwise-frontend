@@ -1,0 +1,166 @@
+.courses_container {
+    padding-bottom: 50px;
+}
+
+.courses_header {
+    padding-bottom: 30px;
+}
+
+.courses_header h1 {
+    font-weight: normal;
+    font-size: 25px;
+}
+
+.courses_body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.courses_body h1 {
+    font-size: 23px;
+    font-weight: normal;
+}
+
+.courses_left h1, .courses_right h1 {
+    margin-bottom: 20px;
+}
+
+
+    /* -------------- course left -------------------*/
+.courses_left {
+    flex-basis: 67%;
+}
+
+.courses_items {
+    display: flex;
+    align-items: center;
+    gap: 4%;
+    flex-wrap: wrap;
+}
+
+.courses_item {
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 30px;
+    position: relative;
+    cursor: pointer;
+}
+
+.courses_item_top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 0 20px;
+    background: rgb(179, 179, 179);
+}
+
+.course_ongoing {
+    background: pink;
+}
+
+.courses_item_top p {
+    width: 80%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.courses_item_bottom {
+    padding: 10px;
+}
+
+.Course_Status {
+    padding: 15px 0 4px;
+}
+
+.Course_Status span {
+    font-weight: 500;
+    color: black;
+}
+
+
+    /* -------------- course right -------------------*/
+.courses_right {
+    flex-basis: 30%;
+}
+
+
+
+@media screen and (max-width: 770px) {
+    .COURSE_CONTAINER {
+        margin: 0 2%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .COURSE_TOP {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .COURSE_TOP p {
+        width: 80%;
+        text-align: center;
+    }
+
+    
+        /*   ------------ Course_SmallContainer -------------    */
+    
+    .Course_SmallContainer {
+        border-radius: 5px;
+        border: 1px solid #d0cfcf;
+        margin-bottom: 25px;
+    }
+
+    .NoSmallDisplay {
+        display: none;
+    }
+
+    .Course_SmallHeader {
+        background: #e0e0e0;
+        padding: 10px 10px 5px;
+    }
+
+    .Course_SmallContainer h1 {
+        font-weight: 600;
+        color: rgb(58, 58, 58);
+        font-size: 23px;
+        line-height: 28px;
+    }
+
+    .Course_SmallHeader p {
+        font-size: 15px;
+    }
+
+    .course_SmallBottom {
+        padding: 15px 10px;
+    }
+
+    .course_SmallBottom p {
+        font-size: 15px;
+    }
+
+    .course_SmallBottom span {
+        font-weight: 600;
+        color: rgb(58, 58, 58);
+    }
+
+    .Course_Status {
+        padding: 15px 0 4px;
+    }
+
+    .Course_Status span {
+        font-weight: 500;
+        color: black;
+    }
+
+    .Course_Status p {
+        color: green;
+        font-weight: 600;
+    }
+}

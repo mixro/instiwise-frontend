@@ -1,0 +1,62 @@
+.LESSONS_LEFT {
+    flex-basis: 100%;
+}
+
+.LESSONS_MAIN {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3.5%;
+}
+
+.category_desc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.LessonFlex {
+    display: none;
+}
+
+
+
+
+@media screen and (max-width: 770px) {
+    .LESSONS_MAIN {
+        justify-content: center;
+    }
+
+    .LessonFlex {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .todaysLesson {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 6px;
+        background: blue;
+        color: white;
+        border-radius: 5px;
+    }
+
+    .todaysLesson p {
+        font-weight: 400;
+    }
+
+    .todaysLesson span, .todaysLesson p {
+        font-size: 14px;
+    }
+
+    .greenColor {
+        background: transparent;
+        color: green;
+    }
+}

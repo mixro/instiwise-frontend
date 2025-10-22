@@ -1,0 +1,81 @@
+.sidebarContainer {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    font-family: "poppins";
+    cursor: pointer;
+    color: white;
+}
+
+.link {
+    text-decoration: none;
+    color:white;
+}
+
+    /*------------- logo -------------*/
+.logo {
+    margin: 0;
+    padding: 10px 0 20px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom:  0.5px solid rgba(255, 255, 255, 0.226);
+}
+
+.logo p {
+    font-weight: 600;
+}
+
+    /*---------center section---------*/
+.sidebarCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    align-items: left;
+    padding-top: 20px;
+    overflow-y: scroll;
+    scrollbar-width: 0;
+}
+
+.centerSectio_Margin {
+    margin-bottom: 35px;
+}
+
+.sidebarCenter::-webkit-scrollbar {
+    display: none;
+}
+
+.centerSection  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding-left: 10%;
+    padding-right: 10px;
+    justify-content: flex-start;
+}
+
+.centerSection ul li {
+    justify-content: flex-start;
+    display: flex;
+    gap: 6px;
+    width: 100%;
+    margin: 5px;
+    padding: 5px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.centerSection ul li:hover {
+    background: #b30631;
+}
+
+.side-icons {
+    font-size: 28px;
+    margin-right: 20px;
+    color: white;
+}

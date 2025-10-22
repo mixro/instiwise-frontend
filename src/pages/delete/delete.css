@@ -1,0 +1,38 @@
+.deleteContainer {
+    min-height: calc(100vh - 60px);
+}
+
+.deleteWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 60px);
+    width: 100%;
+}
+
+.deleteBody {
+    width: 45%;
+}
+
+.deleteButton {
+    padding-top: 30px;
+}
+
+.deleteBody button {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    background: red;
+    color: white;
+    font-weight: 500;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 770px) {
+    .deleteBody {
+        width: 100%;
+    }
+}

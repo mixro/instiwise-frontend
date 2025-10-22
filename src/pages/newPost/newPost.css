@@ -1,0 +1,127 @@
+.newPost {
+    min-height: calc(100vh - 50px);
+}
+
+.newPost_header {
+    padding-bottom: 4%;
+}
+
+.postBodyTop {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2%;
+}
+
+.postBody_Item {
+    flex-basis: 48%;
+}
+
+.newPost_item {
+    padding-bottom: 1%;
+}
+
+.newPost_item p {
+    font-size: 20px;
+    font-weight: 600px;
+    margin-bottom: 10px;
+}
+
+.newPost_Input_text input {
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 17px;
+    border: 1px solid gray;
+    outline: none;
+    width: 90%;
+}
+
+.newPost_Button {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    padding-top: 4%;
+}
+
+.newPost_Button button {
+    width: 100%;
+    background: green;
+    padding: 8px;
+    color: white;
+    font-size: 19px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+.inputFile {
+    cursor: pointer;
+    width: 100%;
+    background: gainsboro;
+    border-radius: 5px;
+    border: 1px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 0;
+}
+
+.newPost_Input textarea {
+    width: 100%;
+    min-height: 30vh;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    padding: 5px;
+}
+
+
+
+@media screen and (max-width: 770px) {
+    .newPost {
+        padding: 2% 0 6%;
+    }
+
+    .postBodyTop {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .newPost_header h1 {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .postBody_Item {
+        width: 100%;
+        flex-basis: 100%;
+    }
+
+    .newPost_item p {
+        font-size: 17px;
+    }
+
+    .newPost_Input_text input {
+        font-size: 16px;
+        width: 100%;
+    }
+
+    .newPost_Button {
+        width: 100%;
+        padding-bottom: 2%;
+    }
+
+    .inputFile {
+        width: 100%;
+    }
+
+    .inputFile {
+        border: 1px solid gray;
+        background: gainsboro;
+        color: black;
+    }
+    
+    .newPost_Input textarea {
+        min-height: 42vh;
+    }
+}

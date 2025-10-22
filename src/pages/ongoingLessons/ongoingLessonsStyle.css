@@ -1,0 +1,233 @@
+.container{
+    width: 100%;
+    padding: 30px 0;
+}
+
+.lesson-wrapper{
+    display: flex;
+    justify-content: space-between;
+    min-height: calc(100vh - 140px);
+}
+
+.lesson-left {
+    flex-basis: 100%;
+}
+
+.lesson-left h2, .lesson-right h2 {
+    margin-bottom: 40px;
+}
+
+.lessons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6%;
+    padding-left: 2%;
+}
+
+.DIVITEM_COMP {
+    flex-basis: 31%;
+}
+
+.lesson-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3%;
+    border: 1px solid rgb(211, 211, 211);
+    flex-basis: 100%;
+    cursor: pointer;
+    height: fit-content;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 3px 3px 5px rgb(231, 231, 231);
+}
+
+.lesson_top {
+    padding: 20px 10px 20px;
+    text-align: center;
+    background: rgb(204, 204, 204);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    min-height: 140px;
+}
+
+.COURSE_TOP {
+    padding-bottom: 10px;
+}
+
+.lesson_top p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-weight: bold;
+}
+
+.lesson_top p span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+}
+
+.lesson_top h1:nth-child(1) {
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    color: rgb(49, 49, 49);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.lesson_top p {
+    color: rgb(83, 83, 83);
+}
+
+.Course_Status p {
+    color: green;
+    font-weight: 600;
+}
+
+.lesson-bottom {
+    padding: 20px 5px 10px 15px;
+}
+
+.lesson-bottom p span {
+    font-weight: 500;
+    color: rgb(73, 73, 73);
+}
+
+.lesson_dot {
+    height: 10px;
+    width: 10px;
+    background: green;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    animation: dot 2s ease-in-out infinite;
+}
+
+.lesson_remaining {
+    text-align: right;
+    color: green;
+    padding-top: 10px;
+}
+
+.small_lessons_header {
+    display: none;
+}
+
+.gray_color {
+    padding-left: 2%;
+}
+
+.gray_color p span {
+    color: rgb(115, 115, 115);
+}
+
+
+
+
+
+    /*-------Animation--------*/
+@keyframes dot {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+
+
+@media screen and (max-width: 770px){
+    .lesson-wrapper {
+        justify-content: space-between;
+    }
+    
+    .small_lessons_header {
+        display: block;
+        padding-bottom: 30px;
+    }
+
+    .smallest_font h1 {
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+
+    .lessons {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0;
+        padding-left: 0;
+    }
+
+    .DIVITEM_COMP {
+        flex-basis: 100%;
+    }
+
+    .lesson-bottom {
+        padding: 20px 5px 4px 15px;
+    }
+
+    .lesson-container {
+        border: 0;
+        margin-bottom: 40px;
+        width: 100%;
+        border: 1px solid #7f7f7f;
+    }
+
+    .lesson-left h2 {
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 50px;
+        font-size: 30px;
+        font-weight: normal;
+    }
+
+    .lesson-left {
+        flex-basis: 100%;
+        padding: 0;
+    }
+
+    .roomTypes h2:first-child, .roomFilter h2:first-child {
+        white-space: nowrap;
+    }
+
+    .lesson-profile {
+        padding: 9px 6px;
+    }
+
+    .lessons {
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .lesson_top p span {
+        margin-bottom: 5px;
+    }
+
+    .lesson-bottom {
+        padding-top: 20px;
+        border-left: 1px solid rgb(214, 214, 214);
+        border-bottom-left-radius: 5px;
+    }
+
+    .lesson-bottom p {
+        margin-bottom: 0px;
+    }
+
+    .lesson_remaining {
+        font-size: 15px;
+    }
+}

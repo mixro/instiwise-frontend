@@ -1,0 +1,81 @@
+.postMainWrapper {
+    padding-top: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.postMainHeader h1 {
+    font-weight: 500;
+}
+
+.SearchTop_Padding {
+    padding-bottom: 4%;
+}
+
+.SearchTopSmall_Padding {
+    padding-bottom: 40px;
+}
+
+.PostsSearch_result {
+    padding: 15px 0 0;
+}
+
+.PostsSearch_result span {
+    font-weight: 600;
+}
+
+.largeFont_results {
+    font-size: 18px;
+    padding-left: 1%;
+    margin-bottom: 2%;
+}
+
+.noUser {
+    width: 100%;
+    height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5%;
+}
+
+.noUserButtons {
+    display: flex;
+    align-items: center;
+    gap: 10%;
+}
+
+.noUserButton {
+    padding: 3px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.noUserButton:hover {
+    border: 2px solid blue;
+}
+
+.noUserButton button {
+    padding: 6px 20px;
+    border-radius: 5px;
+    border: 4px solid transparent;
+    font-size: 18px;
+    background: green;
+    color: white;
+    cursor: pointer;
+}
+
+.loginText {
+    width: 40%;
+    text-align: center;
+    line-height: 25px;
+}
+
+
+@media screen and (max-width: 770px) {
+    .postMainWrapper {
+        flex-direction: column;
+    }
+}

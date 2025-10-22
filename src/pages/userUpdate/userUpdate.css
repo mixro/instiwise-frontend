@@ -1,0 +1,135 @@
+.userUpdate_Container {
+    min-height: calc(100vh - 60px);
+    padding: 2% 0 3%; 
+    display: flex;
+}
+
+.userUpdate_Wrapper {
+    width: 100%;
+}
+
+.UserUpdate_Profile {
+    width: 100%;
+}
+
+.userUpdate_Wrapper h2 {
+    font-weight: 600;
+    margin-bottom: 25px;
+    font-size: 28px;
+    text-transform: uppercase;
+}
+
+.userUpdateFlex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.userUpdateFlex-item {
+    width: 46%;
+}
+
+.userUpdate_Item {
+    padding-bottom: 12px;
+}
+
+.userUpdate_Item p {
+    font-size: 17px;
+    margin-bottom: 7px;
+}
+
+.userUpdate_Item input {
+    width: 100%;
+    padding: 6px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    font-size: 16px;
+}
+
+.userUpdate_Button {
+    width: 100%;
+    padding-top: 40px;
+}
+
+.userUpdate_UpdatingButton {
+    padding-top: 40px;
+    width: 100%;
+}
+
+.userUpdate_Button button {
+    width: 46%;
+    padding: 7px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 17px;
+    color: white;
+    border: none;
+    background: green;
+    border: 1px solid transparent;
+}
+
+.userUpdate_UpdatingButton button {
+    width: 100%;
+    padding: 7px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 17px;
+    color: white;
+    border: none;
+    border: 1px solid green;
+    background: rgb(0, 221, 151);
+    transition: background-color 0.3s;
+    background-image: linear-gradient(to right, green,50%, transparent 50%);
+    background-size: 200% 100%;
+    animation: progress 3s linear infinite;
+}
+
+.userUpdate_Item select {
+    width: 100%;
+    padding: 7px 3px;
+    margin-top: 6px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+
+@media screen and (max-width: 770px) {
+    .userUpdate_Container {
+        min-height: calc(100vh - 60px);
+        padding: 3% 0; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .userUpdate_Wrapper {
+        width: 100%;
+        padding: 15px 2% 15px;
+        border-radius: 5px;
+        -webkit-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+        -moz-box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+        box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+    }
+
+    .userUpdate_Item select {
+        width: 100%;
+        padding: 7px 3px;
+        margin-top: 6px;
+        border-radius: 5px;
+        border: 1px solid gray;
+    }
+
+    .userUpdateFlex {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    
+    .userUpdateFlex-item {
+        width: 100%;
+    }
+
+    .userUpdate_Button button {
+        width: 100%;
+    }
+}

@@ -1,0 +1,374 @@
+.registerContainer {
+    padding: 1% 2% 0;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    position: relative;
+    background: linear-gradient(120deg, rgb(160, 241, 254), royalblue);
+}
+
+.register_loader {
+    background: rgba(131, 131, 131, 0.88);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+}
+
+.registerTop {
+    width: 100%
+}
+
+.registerTop_Image {
+    display: flex;
+    align-items: center;
+    gap: 1%;
+}
+
+.registerImage_Logo {
+    width: 55px;
+}
+
+.registerTop_Image p {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.registerBody {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    width: 100%;
+}
+
+.registerTop_item p {
+    padding-left: 0.1%;
+    font-weight: 600;
+    font-size: 23px;
+}
+
+    /* --- left ----*/
+
+.registerBody_left {
+    width: 500px;
+    background: white;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.registerBody_left img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px 0px 0px 10px;
+}
+
+
+    /* --- right ----*/
+
+.registerBody_right {
+    flex-basis: 30%;
+    padding: 1% 2% 10px;
+    border-radius: 10px;
+    backdrop-filter: 0.5;
+}
+
+.registerBody_right h1 {
+    text-align: center;
+    margin-bottom: 4%;
+}
+
+.google_button {
+    width: 100%;
+}
+
+.registerBody_item {
+    padding-bottom: 10px;
+}
+
+.registerBody_item h3 {
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.registerBody_item  input {
+    min-width: 380px;
+    width: 100%;
+    border-radius: 5px;
+    padding: 9px 5px;
+    outline: none;
+    font-size: 16px;
+    border: 1px solid rgb(68, 68, 68);
+}
+
+.registerButton button {
+    background: blue;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 4%;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    width: 100%;
+    border: 2px solid blue;
+}
+
+.googleAuth button:last-child {
+    margin-top: 2%;
+    border: 1px solid rgb(159, 159, 159);
+    background: rgb(229, 229, 229);
+    color: blue;
+    padding: 5px;
+    -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+}
+
+.registerButton span {
+    font-size: 25px;
+}
+
+.registerText {
+    padding-top: 15px;
+}
+
+.registerText p span {
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.registerhighPadding {
+    padding: 6% 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.authComp {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 5px;
+}
+
+.authComp_item {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+}
+
+.red {
+    color: white;
+    background: blue;
+}
+
+.LARGESCREEN {
+    display: block;
+}
+
+.SMALLSCREEN {
+    display: none;
+}
+
+.registerOr {
+    padding-top: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.registerOr p, .registerhighPadding p {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.GoogleLogin_Special {
+    margin-top: 4%;
+    border: 1px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: white;
+    border-radius: 5px;
+    overflow-x: hidden;
+    height: fit-content;
+    overflow: hidden;
+    padding: 0;
+}
+
+.GoogleLogin_Special span {
+    font-family: 'Poppins', sans serif;
+    font-size: 17px;
+    font-weight: normal;
+}
+
+
+    /*------------------- loaders ---------------------- */
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+      
+
+
+
+
+
+@media screen and (max-width: 770px) {
+    .registerContainer {
+        padding: 12% 4% 4%;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+        gap: 8%;
+        background: linear-gradient(120deg, rgb(160, 241, 254), royalblue);
+    }
+
+    .registerTop_item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .registerTop_Image p {
+        padding-left: 3%;
+        gap: 0;
+        width: fit-content;
+    }
+
+    .registerImage_Logo {
+        width: 60px;
+    }
+
+    .registerTop {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .registerTop_item {
+        width: 100%;
+    }
+
+    .registerTop_item h1 {
+        font-size: 28px;
+        text-align: left;
+        font-weight: 600;
+        margin-bottom: 6%;
+    }
+
+    .registerBody {
+        flex-direction: column;
+        padding: 0 1%;
+        align-items: center;
+    }
+
+    .registerBody_left {
+        display: none;
+    }
+
+    .registerBody_right {
+        border-radius: 5px;
+        padding-top: 5%;
+        padding: 5% 3% 10px;
+        max-width: 400px;
+        width: 100%;
+    }
+
+    .registerButton button {
+        padding: 10px;
+    }
+
+    .smallButtonPading button {
+        padding: 8px;
+        margin-bottom: 3%;
+    }
+
+    .registerBody_right h1 {
+        margin-bottom: 30px;
+        font-weight: 500;
+        font-size: 25px;
+    }
+
+    .registerBody_item {
+        padding-bottom: 18px;
+    }
+
+    .registerButton {
+        padding-top: 2px;
+    }
+
+    .registerBody_item  input {
+        width: 100%;
+        border-radius: 5px;
+        padding: 11px 5px;
+        font-size: 16px;
+        min-width: 50px;
+        outline: none;
+        border: 1px solid rgb(68, 68, 68);
+    }
+
+    .smallPaddingButton input {
+        padding: 9px 5px; 
+    }
+
+    .LARGESCREEN {
+        display: none;
+    }
+    
+    .SMALLSCREEN {
+        display: block;
+    }
+}

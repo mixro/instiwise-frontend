@@ -1,0 +1,585 @@
+.userProfile {
+    padding: 2% 0 4%;
+    min-height: calc(100vh - 60px);
+}
+
+.userProfile_Wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+    /*---------------- left ---------------------*/
+.userProfile_Left {
+    flex-basis: 71%;
+}
+
+.userProfile_cover {
+    width: 100%;
+}
+
+.userProfile_cover img {
+    width: 100%;
+    border-radius: 5px;
+    aspect-ratio: 1/0.23;
+    object-fit: cover;
+}
+
+.noProfileCover {
+    width: 100%;
+    aspect-ratio: 1/0.23;
+    background: grey;
+    border-radius: 5px;
+}
+
+.userProfile_Images {
+    padding-bottom: 60px;
+    border-bottom: 1px solid gray;
+}
+
+.userProfile_Self {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.userProfile_SmallImage {
+    height:  80px;
+    width: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.userProfile_SmallImage img {
+    border-radius: 50%;
+    height: 130px;
+    aspect-ratio: 1/1;
+    border: 5px solid var(--main-color);
+    object-fit: cover;
+    transform: translateY(-30px);
+}
+
+.noProjectProfile {
+    border-radius: 50%;
+    width: 100%;
+    aspect-ratio: 1/1;
+    border: 5px solid var(--main-color);
+    background: grey;
+    transform: translateY(-30px);
+}
+
+.ProjectProfile_IMAGE {
+    transform: translateY(0);
+    border: 2px solid var(--main-color);
+}
+
+.userProfile_name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.userProfile_Verified {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.userProfile_name p {
+    font-weight: 600;
+    font-size: 17px;
+    text-transform: capitalize;
+}
+
+.userProfile_name span {
+    text-align: center;
+}
+
+.userProfile_Connections {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+    padding: 15px 0 0;
+    width: 100%;
+}
+
+.userProfile-FollowItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: 2px 10px;
+    border-radius: 5px;
+    background: rgb(223, 223, 223);
+}
+
+.userProfile-FollowItem:hover {
+    border: 1px solid gray;
+}
+
+.userProfile-FollowItem p {
+    font-weight: 600;
+    font-size: 17px;
+    text-transform: uppercase;
+}
+
+.userProfile-FollowItem span {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.userProfile-details {
+    padding-top: 2.5%;
+}
+
+.userProfile_Buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3%;
+    width: 100%;
+    padding-top: 3%;
+}
+
+.userProfile-ButtonItem {
+    flex-basis: 20%;
+    min-width: 200px;
+    border-radius: 5px;
+    padding: 3px;
+    border: 1.5px solid transparent;
+}
+
+.userProfile-ButtonItem:hover {
+    border: 1.5px solid green;
+}
+
+.userProfile-ButtonItem button {
+    background: green;
+    cursor: pointer;
+    color: white;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 5px;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.Profile_paddingTop {
+    padding-top: 50px;
+}
+
+.ProfielUpdate-SmallButton {
+    display: none;
+}
+
+
+    /*---------------- right ---------------------*/
+.userProfile_Right {
+    flex-basis: 27%;
+}
+
+.profile_settings {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.userProfile_Right h2 {
+    font-weight: 600;
+}
+
+.profile_settings h2 {
+    font-weight: 600;
+}
+
+.userProfile_Update {
+    padding-top: 6%;
+    width: 100%;
+}
+
+.userProfile_UpdateItem {
+    padding-bottom: 15px;
+}
+
+.no_PaddingBottom {
+    padding-bottom: 7px;
+}
+
+.profileSetting_buttons {
+    padding-top: 30px;
+}
+
+.profileSetting_item {
+    width: 100%;
+    background: blue;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px;
+    cursor: pointer;
+}
+
+.profileAuthentication {
+    padding-top: 40px;
+}
+
+.userProfile_UpdateUsernames {
+    padding: 0 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.userProfile_UpdateUsernames p {
+    font-size: 14px;
+    color: rgb(1, 163, 1);
+}
+
+.userProfile_UpdateItem input {
+    width: 100%;
+    padding: 5px 3px;
+    margin-top: 6px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    outline: none;
+}
+
+.userProfile_UpdateItem select {
+    width: 100%;
+    padding: 5px 3px;
+    margin-top: 6px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.Profile_UploadButton {
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(0, 64, 255);
+    color: white;
+    margin-top: 6px;
+    font-size: 15px;
+    padding: 7.3px;
+    cursor: pointer;
+}
+
+.userProfile-UpdateButton {
+    width: 100%;
+    padding-top: 35px;
+}
+
+.userProfile-bottonUpdating {
+    width: 100%;
+    padding-top: 35px;
+}
+
+.userProfile-UpdateButton button {
+    width: 100%;
+    border-radius: 5px;
+    padding: 6px;
+    font-size: 18px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    background: green;
+    border: 1px solid transparent;
+}
+
+.userProfile-bottonUpdating button {
+    width: 100%;
+    border-radius: 5px;
+    padding: 6px;
+    font-size: 18px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border: 1px solid green;
+    background: rgb(0, 221, 151);
+    transition: background-color 0.3s;
+    background-image: linear-gradient(to right, green,50%, transparent 50%);
+    background-size: 200% 100%;
+    animation: progress 3s linear infinite;
+}
+
+
+@keyframes progress {
+    to {
+        background-position: -200% 0;
+    }
+}
+
+
+    /*------------------ logout ---------------------*/
+.Profile_LogoutPart {
+    padding-top: 40px;
+    margin-top: 60px;
+    border-top: 1px solid gray;
+}
+
+.Profile_LogoutPart h1 {
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.logout {
+    display: flex;
+    flex-direction: column;
+}
+
+.logoutButton {
+    flex-basis: 100%;
+}
+
+.logoutButton button {
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    background: orange;
+    width: 100%;
+    border: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 6px;
+    font-size: 16px;
+}
+
+.delete button {
+    color: white;
+    background: red;
+}
+
+
+    /*---------------- no user ------------------*/
+.noUser {
+    width: 100%;
+    height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5%;
+}
+    
+.noUserButtons {
+    display: flex;
+    align-items: center;
+    gap: 10%;
+}
+    
+.noUserButton {
+    padding: 3px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+    
+.noUserButton:hover {
+    border: 2px solid blue;
+}
+    
+.noUserButton button {
+    padding: 6px 20px;
+    border-radius: 5px;
+    border: 4px solid transparent;
+    font-size: 18px;
+    background: green;
+    color: white;
+    cursor: pointer;
+}
+    
+.loginText {
+    width: 40%;
+    text-align: center;
+    line-height: 25px;
+}
+
+
+    /*-------------- no projects found --------------*/
+.noProjects_Found {
+    width: 100%;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.noProjects_Found button {
+    padding: 6px;
+    width: 200px;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    background: green;
+}
+
+
+
+@keyframes movingBackground {
+    0% {
+        background: red;
+        background-position: left;
+    }
+
+    100% {
+        background: blue;
+    }
+}
+
+
+
+
+@media screen and (max-width: 770px) {
+    .userProfile_Wrapper {
+        flex-direction: column;
+    }
+
+    .userProfile_Left {
+        flex-basis: 100%;
+    }
+
+    .userProfile_Right {
+        display: none;
+    }
+
+    .userProfile_cover img {
+        aspect-ratio: 1/0.4;
+    }
+
+    .noProfileCover {
+        aspect-ratio: 1/0.4;
+    }
+
+    .userProfile_name span {
+        line-height: 20px;
+        margin-top: 4px;
+    }
+
+    .userProfile_SmallImage {
+        height:  70px;
+        width: 110px;
+    }
+
+    .userProfile_SmallImage img {
+        height: 105px;
+        aspect-ratio: 1/1;
+    }
+
+    .userProfile_Buttons {
+        gap: 2%;
+        padding-top: 20px;
+        justify-content: space-between;
+    }
+
+    .userProfile-ButtonItem {
+        flex-basis: 49%;
+        min-width: fit-content;
+        border: none;
+        padding: 0;
+    }
+
+    .userProfile-ButtonItem:hover {
+        border: none;
+    }
+
+    .userProfile-ButtonItem button {
+        background: green;
+        cursor: pointer;
+        color: white;
+        font-size: 16px;
+        font-weight: normal;
+        padding: 7px;
+        border: none;
+        width: 100%;
+        border-radius: 5px;
+    }
+
+    .ProfielUpdate-SmallButton {
+        width: 100%;
+        padding-top: 8px;
+        display: block;
+    }
+
+    .ProfielUpdate-SmallButton button {
+        width: 100%;
+        padding: 7px;
+        border-radius: 5px;
+        border: none;
+        background: var(--royalblue-color);
+        color: white;
+        font-size: 16px;
+    }
+
+    .logoutContainer {
+        padding-top: 60px;
+                         }
+
+    .logoutButton button {
+        padding: 8px 15px;
+    }
+
+    .loginText {
+        width: 90%;
+        text-align: center;
+        line-height: 25px;
+    }
+    
+    .Profile_UploadButtons {
+        padding: 8px;
+    }
+
+    .Profile_LogoutPart {
+        width: 100%;
+    }
+
+    .ProjectProfile_IMAGE {
+        transform: translateY(0);
+        border: 0;
+    }
+
+    .userProfile_Connections {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 3px;
+        padding: 20px 0 0;
+        width: 100%;
+    }
+
+    .userProfile-FollowItem {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        cursor: pointer;
+        border: 1px solid transparent;
+        padding: 2px 10px;
+        border-radius: 5px;
+        background: rgb(224, 224, 224);
+    }
+
+    .userProfile-FollowItem p {
+        font-weight: 600;
+        font-size: 16px;
+        text-transform: uppercase;
+    }
+}

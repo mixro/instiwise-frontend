@@ -1,0 +1,29 @@
+.lesson_desc {
+    padding-top: 20px;
+}
+
+.lesson_desc p {
+    margin: 10px 0;
+}
+
+.lesson_desc p span {
+    font-weight: 600;
+}
+
+.lessonStatus p {
+    font-size: 18px;
+}
+
+.lessonStatus p span {
+    color: green;
+}
+
+.course_header h1 {
+    text-transform: capitalize;
+}
+
+.hoverBorder {
+    border: 1px solid rgb(220, 220, 220);
+    padding: 0.5px 3px;
+    border-radius: 5px;
+}

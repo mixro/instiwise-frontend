@@ -1,0 +1,159 @@
+.room-list {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(182, 182, 182);
+    margin-bottom: 44px;
+    padding-bottom: 40px;
+    width: 100%;
+}
+
+.roomImg {
+    flex-basis: 30%;
+}
+
+.image-list {
+    height: 100%;
+    width: 100%;
+    min-height: 150px;
+}
+
+.roomImg img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    height: 100%;
+}
+
+.room_Desc {
+    flex-basis: 68%;
+}
+
+.topDesc {
+    line-height: 20px;
+    color: rgb(78, 78, 78);
+}
+
+.room_Desc h1 {
+    font-size: 30px;
+    color: rgba(0, 0, 0, 0.644);
+}
+
+.room-seats {
+    display: flex;
+    gap: 4.5%;
+}
+
+.room-seats span {
+    color: rgb(78, 78, 78);
+}
+
+.room-rating {
+    color: black;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.star {
+    font-size: 18px;
+    color: rgb(199, 52, 52);
+}
+
+.star:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.descBottom {
+    text-align: right;
+    padding-right: 10%;
+    color: rgb(78, 78, 78);;
+}
+
+.descBottom span {
+    color: green;
+    padding: 1px 5px;
+    border-radius: 50px;
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 520px){
+    .room-list {
+        padding: 0 3%;
+        flex-direction: column;
+        border-bottom: none;
+        padding-bottom: 40px;
+        margin: 0;
+    }
+
+    .roomImg {
+        flex-basis: 100%;
+        padding-bottom: 20px;
+    }
+
+    .image-list {
+        width: 100%;
+        height: 240px;
+    }
+
+    .image-list img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+
+@media screen and (max-width: 770px){
+    .room-list {
+        padding-bottom: 30px;
+        margin-bottom: 80px;
+        border-bottom: 1px solid rgb(182, 182, 182);
+    }
+
+    .roomImg {
+        padding-bottom: 0;
+    }
+
+    .image-list {
+        width: 100%;
+        max-height: fit-content;
+    }
+
+    .room_Desc {
+        padding-top: 15px;
+        padding-bottom: 30px;
+    }
+
+    .room_Desc h1 {
+        font-size: 25px;
+        margin-bottom: 5px;
+    }
+
+    .room-seats span {
+        white-space: nowrap;
+    }
+
+    .topDesc {
+        margin-bottom: 5px;
+    }
+
+    .topDesc, .room-seats {
+        font-size: 17px;
+    }
+
+    .descBottom span {
+        font-size: 16px;
+        padding: 2px 10px;
+        border: 1px solid green;
+    }
+
+    .descBottom p {
+        display: none;
+    }
+}

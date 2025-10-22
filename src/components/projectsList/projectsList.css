@@ -1,0 +1,18 @@
+.createProject_BUTTON button {
+    background: green;
+    color: white;
+    height: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0 15px;
+    border: none;
+    outline: none;
+    font-size: 17px;
+}
+
+
+@media screen and (max-width: 770px) {
+    .createProject_BUTTON {
+        display: none;
+    }
+}

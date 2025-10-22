@@ -1,0 +1,26 @@
+.peopleLayout_Topbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow-x: scroll;
+    margin-bottom: 10px;
+}
+
+.peopleLayout_Topbar::-webkit-scrollbar {
+    display: none;
+}
+
+.peopleLayout_TopbarItem {
+    background: rgb(211, 211, 211);
+    padding: 6px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 7px;
+    border: 1px solid rgb(139, 139, 139);
+}
+
+.peopleLayout_TopbarItem p {
+    white-space: nowrap;
+}
